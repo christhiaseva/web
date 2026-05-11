@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "description": "Churches planted, in roughly the order they were planted. status: mature | growing | new.",
+    "needs": "null if self-sustaining; otherwise { kind: building|pastor, goal, raised, label }"
+  },
+  "churches": [
+    { "id": "shidalagatta",   "town": "Shidalagatta",   "established": 1980, "members": 140, "pastor": "Pastor Rajesh",            "status": "mature",  "note": "Where the mission began. The first home gathering met here in 1980 — and where Silpa came to faith as a child.", "needs": null },
+    { "id": "chintamani",     "town": "Chintamani",     "established": 1992, "members": 180, "pastor": "Pastor Daniel",            "status": "mature",  "note": "A built sanctuary serving the silk-trading town. Hosts the regional Bible study and youth gatherings.", "needs": null },
+    { "id": "chickaballapur", "town": "Chickaballapur", "established": 1998, "members": 160, "pastor": "Pastor Joseph",            "status": "mature",  "note": "The district-headquarters congregation. Meets in a rented hall; saving toward a permanent space.", "needs": { "kind": "building", "goal": 18000, "raised": 6400, "label": "Building fund · permanent sanctuary" } },
+    { "id": "gowribindanur",  "town": "Gowribindanur",  "established": 2003, "members": 120, "pastor": "Pastor Kumar",             "status": "mature",  "note": "Planted in a market town near the Andhra border; a steady, self-supporting congregation.", "needs": null },
+    { "id": "bagepalli",      "town": "Bagepalli",      "established": 2008, "members": 95,  "pastor": "Pastor Stephen",           "status": "growing", "note": "A farming community on the highway north. Worship under a tin roof beside the pastor's home.", "needs": { "kind": "pastor", "goal": 4800, "raised": 1850, "label": "Pastor support · second year" } },
+    { "id": "devaganhalli",   "town": "Devaganhalli",   "established": 2012, "members": 80,  "pastor": "Pastor Mark",              "status": "growing", "note": "A young congregation gathered from three nearby hamlets; meets weekly in a rented shopfront.", "needs": null },
+    { "id": "chelur",         "town": "Chelur",         "established": 2015, "members": 65,  "pastor": "Pastor Babu",              "status": "growing", "note": "A village plant born out of evening prayer meetings. Many first-generation believers.", "needs": null },
+    { "id": "gudibande",      "town": "Gudibande",      "established": 2018, "members": 55,  "pastor": "Pastor Thomas",            "status": "growing", "note": "A small hill-fort town. The congregation walks in from surrounding hamlets for Sunday worship.", "needs": { "kind": "building", "goal": 7500, "raised": 1200, "label": "Roof and chairs for the meeting space" } },
+    { "id": "peresandra",     "town": "Peresandra",     "established": 2021, "members": 42,  "pastor": "Pastor John",              "status": "new",     "note": "A roadside village along the Bangalore highway. Twelve families meet every Sunday in a home.", "needs": { "kind": "pastor", "goal": 4800, "raised": 980, "label": "Pastor support · first full year" } },
+    { "id": "kodigenhalli",   "town": "Kodigenhalli",   "established": 2024, "members": 28,  "pastor": "Pastor Babu (planting)",   "status": "new",     "note": "The newest plant. A home gathering of seven families; raising funds for a meeting hall.", "needs": { "kind": "building", "goal": 9500, "raised": 2100, "label": "Meeting hall · first lease + chairs" } }
+  ],
+  "plant_line_items": [
+    { "item": "Pastor support · year 1",   "cost": 4800, "note": "Full-time stipend for a trained pastor in a new village." },
+    { "item": "Meeting space · first lease", "cost": 2400, "note": "A rented hall or shopfront for the first year." },
+    { "item": "Bibles & study materials",   "cost": 600,  "note": "Telugu-language Bibles and discipleship materials for new believers." },
+    { "item": "Chairs, sound, basics",      "cost": 1200, "note": "A simple PA, plastic chairs, a small keyboard." },
+    { "item": "Outreach in the village",    "cost": 800,  "note": "Tracts, evening gatherings, transport for door-to-door visits." }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_meta": "Top-level site copy and stats. Used by home page and footer.",
+  "mission_name": "Christhia Seva Mission",
+  "tagline": "Faith-led ministry in Karnataka, India · since 1980",
+  "stats": {
+    "years": 46,
+    "churches": 10,
+    "students_supported": "200+",
+    "towns": 10
+  },
+  "hero_default_variant": "story",
+  "donate_url": "/donate",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "mailing_address": ""
+  }
+}

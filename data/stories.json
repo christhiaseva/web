@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "description": "Student stories — both completed (status: past) and active (status: current).",
+    "guidance": "Past stories show outcome + invested. Current stories show raised/goal/sponsors/days."
+  },
+  "stories": [
+    {
+      "id": "silpa",
+      "name": "Silpa",
+      "village": "Shidalagatta",
+      "status": "past",
+      "role": "Nurse · graduated 8 years ago",
+      "headline": "$200 a year for three years gave Silpa a whole new life.",
+      "summary": "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
+      "invested": "$600 over 3 years",
+      "outcome": "Working nurse · brick home for her mother",
+      "tag": "Healthcare"
+    },
+    {
+      "id": "rajesh-pastor",
+      "name": "Pastor Rajesh",
+      "village": "Shidalagatta",
+      "status": "past",
+      "role": "Pastor · ordained 2019",
+      "headline": "\"My uncle laughed when I said I wanted to plant a church. Now he prays with us every Sunday.\"",
+      "summary": "Rajesh was sponsored through Bible college. He now pastors a 90-member congregation that meets in a rented hall — including the uncle who once mocked him.",
+      "invested": "Bible college tuition · 4 years",
+      "outcome": "Lead pastor · 90-member congregation",
+      "tag": "Ministry"
+    }
+  ]
+}

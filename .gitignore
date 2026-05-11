@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Image slot prototype state
+.image-slots.state.json

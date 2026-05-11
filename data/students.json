@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "description": "Current students seeking sponsorship. Single sponsor per student at $200/year.",
+    "fields": {
+      "id": "URL slug — lowercase, no spaces",
+      "name": "First name",
+      "age": "Age in years",
+      "course": "Program/degree",
+      "school": "Institution name",
+      "village": "Hometown (one of the 10 mission towns)",
+      "raised": "Dollars raised so far (0 = unsponsored)",
+      "goal": "Annual goal — should always be 200",
+      "sponsored": "true if a sponsor has committed for the year",
+      "days": "Days remaining before term starts (used for urgency)",
+      "tag": "Category — Healthcare | Trade | Business | Ministry | Technology | Education | Agriculture",
+      "photo": "Path to portrait, e.g. /images/students/priya.jpg"
+    }
+  },
+  "students": [
+    { "id": "priya",   "name": "Priya",   "age": 18, "course": "B.Sc. Nursing",          "school": "Govt Nursing College, Bangalore", "village": "Chintamani",     "raised": 0,   "goal": 200, "sponsored": false, "days": 14, "tag": "Healthcare",  "photo": "" },
+    { "id": "arjun",   "name": "Arjun",   "age": 17, "course": "Diploma · Mechanic",     "school": "ITI Chickaballapur",              "village": "Bagepalli",      "raised": 0,   "goal": 200, "sponsored": false, "days": 22, "tag": "Trade",       "photo": "" },
+    { "id": "lakshmi", "name": "Lakshmi", "age": 19, "course": "B.Com",                  "school": "Bangalore University",            "village": "Chickaballapur", "raised": 200, "goal": 200, "sponsored": true,  "days": 0,  "tag": "Business",    "photo": "" },
+    { "id": "samuel",  "name": "Samuel",  "age": 18, "course": "B.A. Theology",          "school": "Bible College, Bangalore",        "village": "Gowribindanur",  "raised": 0,   "goal": 200, "sponsored": false, "days": 30, "tag": "Ministry",    "photo": "" },
+    { "id": "meena",   "name": "Meena",   "age": 17, "course": "B.Sc. Computer Science", "school": "Govt Engineering College",        "village": "Gudibande",      "raised": 0,   "goal": 200, "sponsored": false, "days": 18, "tag": "Technology",  "photo": "" },
+    { "id": "david",   "name": "David",   "age": 18, "course": "Diploma · Electrician",  "school": "ITI Chintamani",                  "village": "Peresandra",     "raised": 0,   "goal": 200, "sponsored": false, "days": 28, "tag": "Trade",       "photo": "" },
+    { "id": "asha",    "name": "Asha",    "age": 19, "course": "B.Ed (Teaching)",        "school": "Sri Sathya Sai College",          "village": "Chelur",         "raised": 200, "goal": 200, "sponsored": true,  "days": 0,  "tag": "Education",   "photo": "" },
+    { "id": "thomas",  "name": "Thomas",  "age": 18, "course": "B.Sc. Agriculture",      "school": "UAS Bangalore",                   "village": "Devaganhalli",   "raised": 0,   "goal": 200, "sponsored": false, "days": 24, "tag": "Agriculture", "photo": "" }
+  ]
+}
