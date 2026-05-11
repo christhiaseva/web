@@ -39,9 +39,17 @@ Components read these globals. Nothing else fetches.
 
 ### Routing
 
-`app.jsx` owns a tiny hash-router (`#/education`, `#/profile/priya`,
-`#/donate?fund=education&id=priya`, etc.). All inter-page links call
-`navigate(page, params)` which is passed down as a prop.
+`app.jsx` owns a tiny pushState router with clean URLs:
+`/sponsor-a-student`, `/student/priya`, `/our-story`, `/student-stories`,
+`/plant-a-church`, `/donate/:fund/:id?amount=N`. All inter-page links call
+`navigate(page, params)` which is passed down as a prop. Back/forward and
+refresh work via `popstate`.
+
+**SPA fallback (required for deploy):** `_redirects` at the project root
+contains `/*  /index.html  200` — both Cloudflare Pages and Netlify honor
+this file natively so deep links (e.g. `/student/priya`) serve `index.html`
+instead of 404'ing on direct visit. If you ever switch to a host that does
+not read `_redirects`, set up an equivalent rewrite rule there.
 
 ---
 

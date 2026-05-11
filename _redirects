@@ -1,0 +1,4 @@
+# SPA fallback for Cloudflare Pages / Netlify.
+# Any path the host can't find is served index.html so the React
+# router can resolve it client-side (e.g. /student/priya, /donate/...).
+/*    /index.html   200

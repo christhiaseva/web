@@ -8,60 +8,134 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "density": "regular"
 }/*EDITMODE-END*/;
 
-// Hash-based URL routing — only /donate uses URL params; everything else stays state-only.
-function parseHash() {
-  const h = window.location.hash || '';
-  const m = h.match(/^#\/donate(?:\/([^/?]+))?(?:\/([^/?]+))?(?:\?(.*))?$/);
-  if (!m) return null;
-  const [, fund, id, query] = m;
-  const params = { fund, id };
-  if (query) {
-    for (const pair of query.split('&')) {
-      const [k, v] = pair.split('=');
-      if (k) params[decodeURIComponent(k)] = decodeURIComponent(v || '');
-    }
+// ── URL routing (History API / pushState) ─────────
+// Clean URLs — every page has a real path so back/forward, refresh, and
+// link-sharing all work. Deploys to Cloudflare Pages / Netlify need an SPA
+// fallback (a `_redirects` file with `/* /index.html 200`) so deep paths serve
+// index.html rather than 404.
+//
+// Pattern → page
+//   /                        → home
+//   /sponsor-a-student       → education
+//   /student-stories         → stories
+//   /our-story               → story
+//   /plant-a-church          → churches
+//   /student/:id             → profile
+//   /donate[/:fund[/:id]]    → donate (?amount=N supported)
+//
+// Legacy hash URLs (#/donate/...) are redirected once at load.
+const ROUTES = [
+  { page: 'education', path: '/sponsor-a-student' },
+  { page: 'stories',   path: '/student-stories'   },
+  { page: 'story',     path: '/our-story'         },
+  { page: 'churches',  path: '/plant-a-church'    },
+  { page: 'profile',   path: '/student/:id'       },
+];
+
+// Base path — supports deploys to /foo/ subpaths. Inferred from the path to
+// index.html on first load (any subdir before the SPA's "virtual" routes).
+const BASE = (() => {
+  const p = window.location.pathname;
+  // If first load was on a SPA path itself we have to assume root; otherwise
+  // strip a trailing index.html and use the surrounding directory.
+  if (p.endsWith('/index.html')) return p.slice(0, -'index.html'.length);
+  // If the path matches a known SPA route, base is "/".
+  return '/';
+})();
+
+function parseQuery(qs) {
+  const out = {};
+  if (!qs) return out;
+  for (const pair of qs.split('&')) {
+    const [k, v = ''] = pair.split('=');
+    if (k) out[decodeURIComponent(k)] = decodeURIComponent(v);
   }
-  return { page: 'donate', params };
+  return out;
 }
 
-function buildDonateHash({ fund, id, amount } = {}) {
-  let path = '#/donate';
-  if (fund) path += '/' + fund;
-  if (id)   path += '/' + id;
-  if (amount) path += '?amount=' + amount;
-  return path;
+function parseLocation() {
+  let path = window.location.pathname || '/';
+  if (BASE !== '/' && path.startsWith(BASE)) path = path.slice(BASE.length - 1);
+  if (!path.startsWith('/')) path = '/' + path;
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+
+  const query = parseQuery(window.location.search.replace(/^\?/, ''));
+
+  if (path === '/' || path === '') return { page: 'home', params: query };
+
+  // /donate[/fund[/id]]
+  const dm = path.match(/^\/donate(?:\/([^/]+))?(?:\/([^/]+))?$/);
+  if (dm) {
+    return { page: 'donate', params: { fund: dm[1], id: dm[2], ...query } };
+  }
+
+  for (const r of ROUTES) {
+    const parts = r.path.split('/').filter(Boolean);
+    const got   = path.split('/').filter(Boolean);
+    if (parts.length !== got.length) continue;
+    const params = { ...query };
+    let ok = true;
+    for (let i = 0; i < parts.length; i++) {
+      if (parts[i].startsWith(':')) params[parts[i].slice(1)] = decodeURIComponent(got[i]);
+      else if (parts[i] !== got[i]) { ok = false; break; }
+    }
+    if (ok) return { page: r.page, params };
+  }
+
+  return { page: 'home', params: {} };
 }
+
+function buildUrl(page, params = {}) {
+  const base = BASE === '/' ? '' : BASE.replace(/\/$/, '');
+
+  if (page === 'home') return base + '/';
+
+  if (page === 'donate') {
+    let p = base + '/donate';
+    if (params.fund) p += '/' + encodeURIComponent(params.fund);
+    if (params.id)   p += '/' + encodeURIComponent(params.id);
+    if (params.amount) p += '?amount=' + encodeURIComponent(params.amount);
+    return p;
+  }
+
+  const r = ROUTES.find(r => r.page === page);
+  if (!r) return base + '/';
+  return base + r.path.split('/').map(seg =>
+    seg.startsWith(':') ? encodeURIComponent(params[seg.slice(1)] || '') : seg
+  ).join('/');
+}
+
+
 
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const [route, setRoute] = useState(() => parseHash() || { page: 'home', params: {} });
+  const [route, setRoute] = useState(() => parseLocation());
 
-  // Listen for hash changes (back/forward, manual URL edit)
+  // Back/forward via History API
   useEffect(() => {
-    const onHash = () => {
-      const r = parseHash();
-      if (r) { setRoute(r); window.scrollTo({ top: 0, behavior: 'instant' }); }
-      else if (route.page === 'donate') { setRoute({ page: 'home', params: {} }); }
+    const onPop = () => {
+      setRoute(parseLocation());
+      window.scrollTo({ top: 0, behavior: 'instant' });
     };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  // eslint-disable-next-line
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
 
   const navigate = (page, params = {}) => {
-    if (page === 'donate') {
-      const newHash = buildDonateHash(params);
-      if (window.location.hash !== newHash) {
-        window.history.pushState(null, '', newHash);
-      }
-      setRoute({ page, params });
-    } else {
-      // Clear donate hash if leaving
-      if (window.location.hash.startsWith('#/donate')) {
-        window.history.pushState(null, '', window.location.pathname + window.location.search);
-      }
-      setRoute({ page, params });
+    // Back-compat: old "sponsor" page redirects to /donate
+    if (page === 'sponsor') {
+      const fund = params.studentId ? 'education' : (params.church ? 'church' : 'general');
+      const id   = params.studentId || params.church || undefined;
+      return navigate('donate', { fund, id, amount: params.amount });
     }
+
+    const target  = buildUrl(page, params);
+    const current = window.location.pathname + window.location.search;
+
+    if (target !== current) {
+      window.history.pushState(null, '', target);
+    }
+    setRoute({ page, params });
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
@@ -81,12 +155,6 @@ function App() {
     content = <Education navigate={navigate} />;
   } else if (route.page === 'profile') {
     content = <StudentProfile id={route.params.id} navigate={navigate} />;
-  } else if (route.page === 'sponsor') {
-    // Backward compat: redirect old sponsor route to /donate
-    const p = route.params || {};
-    const fund = p.studentId ? 'education' : (p.church ? 'church' : 'general');
-    const id = p.studentId || p.church || undefined;
-    content = <Donate params={{ fund, id, amount: p.amount }} navigate={navigate} />;
   } else if (route.page === 'donate') {
     content = <Donate params={route.params} navigate={navigate} />;
   } else if (route.page === 'story') {

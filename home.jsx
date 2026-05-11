@@ -47,8 +47,8 @@ function HeroPhotoOverlay({ navigate }) {
 function HeroFeaturedStory({ navigate }) {
   return (
     <section style={{padding:'56px 0 24px'}}>
-      <div className="container" style={{display:'grid', gridTemplateColumns:'1.05fr 1fr', gap:64, alignItems:'center'}}>
-        <div>
+      <div className="container hero-story-grid">
+        <div className="hero-story-intro">
           <Eyebrow primary>A success story · Shidalagatta</Eyebrow>
           <h1 style={{fontFamily:'var(--serif)', fontSize:'clamp(40px, 5.4vw, 72px)', lineHeight:1.04, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
             Silpa got a whole new life — for <span className="under-wave">$200 a year, three years.</span>
@@ -56,24 +56,19 @@ function HeroFeaturedStory({ navigate }) {
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, lineHeight:1.55, maxWidth: 520}}>
             At eleven, she'd dropped out of school to care for her asthmatic mother. Today she's a working nurse — and built the first brick home in her village.
           </p>
-          <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
-            <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
-              Sponsor a student
-            </button>
-            <button className="btn btn-ghost" onClick={() => {
-              const el = document.getElementById('silpa-story');
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}>
-              Read Silpa's story
-            </button>
-          </div>
-          <div style={{marginTop: 44, display:'flex', gap:32, fontSize:14, color:'var(--ink-3)'}}>
-            <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>46</strong>years of ministry</div>
-            <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
-            <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
-          </div>
         </div>
-        <div style={{position:'relative'}}>
+        <div className="hero-story-buttons" style={{display:'flex', gap:14, flexWrap:'wrap'}}>
+          <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
+            Sponsor a student
+          </button>
+          <button className="btn btn-ghost" onClick={() => {
+            const el = document.getElementById('silpa-story');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}>
+            Read Silpa's story
+          </button>
+        </div>
+        <div className="hero-story-photo" style={{position:'relative'}}>
           <ImgSlot id="hero-silpa" h="600px" placeholder="Silpa · portrait, vertical · in nursing uniform or with her brick home"
                    shape="rounded" radius={20} style={{borderRadius:20}} />
           <div style={{
@@ -86,6 +81,11 @@ function HeroFeaturedStory({ navigate }) {
             <div style={{fontFamily:'var(--serif)', fontSize:24, marginBottom:6, lineHeight:1.1}}>$600 total <span style={{color:'var(--ink-3)', fontSize:14}}>over 3 years</span></div>
             <div style={{fontSize:12.5, color:'var(--ink-3)', marginTop:8, lineHeight:1.4}}>Now: 8 years as a nurse · home for her mother</div>
           </div>
+        </div>
+        <div className="hero-story-stats">
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>46</strong>years of ministry</div>
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
         </div>
       </div>
     </section>
@@ -255,9 +255,9 @@ function FeaturedStories({ navigate }) {
           </div>
         </div>
 
-        <div style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>
+        <div className="silpa-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>
           {/* Photo column */}
-          <div style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
+          <div className="silpa-photos" style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
             <ImgSlot id="silpa-portrait" h="540px" placeholder="Silpa · portrait or graduation, vertical" radius={16} style={{borderRadius:16}} />
             <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 12}}>
               <ImgSlot id="silpa-house"   h="180px" placeholder="Silpa's brick home · the first in her village" radius={12} />

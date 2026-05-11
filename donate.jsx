@@ -311,6 +311,7 @@ function Donate({ params, navigate }) {
                                  display:'flex', alignItems:'center', gap:6}}>
                       <span style={{fontFamily:'var(--serif)', fontSize: 26, opacity:.6}}>$</span>
                       <input type="number" placeholder="Custom" value={custom}
+                             className="no-spin"
                              onChange={e => setCustom(e.target.value)}
                              style={{flex:1, minWidth:0, border:0, outline:0, background:'transparent', color:'inherit',
                                      fontFamily:'var(--serif)', fontSize: 26}} />

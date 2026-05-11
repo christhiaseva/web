@@ -13,6 +13,7 @@ const CrossIcon = ({ size = 14, color }) => (
 // ── Nav ───────────────────────────────────────
 function Nav({ page, navigate }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const wrapRef = useRef(null);
 
   useEffect(() => {
@@ -23,13 +24,30 @@ function Nav({ page, navigate }) {
     return () => document.removeEventListener('mousedown', onClick);
   }, []);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   const ministries = [
     { key: 'education', label: 'Education', sub: 'Sponsor a student' },
     { key: 'evangelism', label: 'Evangelism', sub: 'Sharing the Gospel' },
     { key: 'churches',   label: 'Churches',   sub: 'Planting and pastoring' },
   ];
 
+  const go = (p, params) => { setMobileOpen(false); navigate(p, params); };
+
+  const mobileLinks = [
+    { key: 'story',     label: 'Our Story' },
+    { key: 'education', label: 'Sponsor a Student' },
+    { key: 'churches',  label: 'Help Plant a Church' },
+    { key: 'evangelism',label: 'Evangelism' },
+    { key: 'stories',   label: 'Student Stories' },
+  ];
+
   return (
+    <React.Fragment>
     <nav className="nav">
       <div className="container nav-inner">
         <a className="brand" onClick={() => navigate('home')}>
@@ -72,8 +90,36 @@ function Nav({ page, navigate }) {
             Donate
           </button>
         </div>
+
+        <button className="nav-hamburger" aria-label="Open menu"
+                onClick={() => setMobileOpen(true)}>
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
+
+    {mobileOpen && (
+        <div className="mobile-menu" role="dialog" aria-modal="true">
+          <div className="mobile-menu-header">
+            <a className="brand" onClick={() => go('home')}>
+              <div className="brand-mark" aria-hidden="true"></div>
+              <div className="brand-name"><span>Christhia Seva Mission</span></div>
+            </a>
+            <button className="mobile-menu-close" aria-label="Close menu"
+                    onClick={() => setMobileOpen(false)}>×</button>
+          </div>
+          <div className="mobile-menu-links">
+            {mobileLinks.map(l => (
+              <a key={l.key} className={`mobile-menu-link ${page === l.key ? 'active' : ''}`}
+                 onClick={() => go(l.key)}>{l.label}</a>
+            ))}
+            <button className="donate-cta mobile-donate" onClick={() => go('donate')}>
+              Donate
+            </button>
+          </div>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 
@@ -81,7 +127,7 @@ function Nav({ page, navigate }) {
 function Footer({ navigate }) {
   return (
     <footer className="footer">
-      <div className="container" style={{display:'grid', gridTemplateColumns:'1.4fr 1fr 1fr 1fr', gap: 60}}>
+      <div className="container footer-grid" style={{display:'grid', gridTemplateColumns:'1.4fr 1fr 1fr 1fr', gap: 60}}>
         <div>
           <div style={{display:'flex', alignItems:'center', gap:14, marginBottom:18}}>
             <div className="brand-mark" aria-hidden="true" style={{background:'var(--accent)'}}></div>

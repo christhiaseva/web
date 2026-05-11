@@ -90,11 +90,10 @@ function HowItWorks() {
 }
 
 function Education({ navigate }) {
-  const [filter, setFilter] = useState('All');
   const [sort, setSort] = useState('urgent');
 
   const all = window.STUDENTS || STUDENTS;
-  let list = filter === 'All' ? all : all.filter(s => s.tag === filter);
+  let list = all;
   if (sort === 'urgent') list = [...list].sort((a,b) => a.days - b.days);
   else if (sort === 'newest') list = [...list].sort((a,b) => b.days - a.days);
   else if (sort === 'almost') list = [...list].sort((a,b) => (b.raised/b.goal) - (a.raised/a.goal));
@@ -137,26 +136,10 @@ function Education({ navigate }) {
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Sort */}
       <section style={{padding:'40px 0 24px'}}>
         <div className="container">
-          <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap: 24}}>
-            <div style={{display:'flex', gap: 6, flexWrap:'wrap'}}>
-              {STUDENT_TAGS.map(t => (
-                <button key={t}
-                        onClick={() => setFilter(t)}
-                        style={{
-                          appearance:'none', border:'1px solid', cursor:'pointer',
-                          borderColor: filter === t ? 'var(--ink)' : 'var(--line)',
-                          background: filter === t ? 'var(--ink)' : 'transparent',
-                          color: filter === t ? 'var(--bg)' : 'var(--ink-2)',
-                          padding:'8px 14px', borderRadius: 999,
-                          fontSize: 13.5, fontFamily:'var(--sans)', fontWeight:500,
-                        }}>
-                  {t}
-                </button>
-              ))}
-            </div>
+          <div style={{display:'flex', justifyContent:'flex-end', alignItems:'center', flexWrap:'wrap', gap: 24}}>
             <div style={{display:'flex', alignItems:'center', gap: 10, fontSize:13.5}}>
               <span style={{color:'var(--ink-3)'}}>Sort by</span>
               <select value={sort} onChange={e => setSort(e.target.value)}

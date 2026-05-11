@@ -259,7 +259,7 @@ function PlantCTA({ navigate }) {
   const opts = [50, 100, 250, 500];
   return (
     <section id="plant-form" className="section" style={{background:'var(--ink)', color:'var(--bg)'}}>
-      <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 64, alignItems:'center'}}>
+      <div className="container plant-form-grid" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 64, alignItems:'center'}}>
         <div>
           <span className="eyebrow" style={{color:'var(--accent-soft)'}}>
             <span className="dot" style={{background:'var(--accent-soft)'}}></span>The next plant
@@ -292,8 +292,8 @@ function PlantCTA({ navigate }) {
           <div style={{display:'flex', alignItems:'center', gap: 10, padding:'12px 14px', border:'1px solid rgba(247,241,226,0.2)', borderRadius: 8, background:'rgba(0,0,0,0.15)'}}>
             <span style={{color:'rgba(247,241,226,0.6)'}}>$</span>
             <input type="number" value={amount} onChange={e => setAmount(Number(e.target.value) || 0)}
-                   style={{flex:1, background:'transparent', border:'none', outline:'none', color:'#FFF8EA', fontFamily:'var(--serif)', fontSize: 22, padding:'4px 0'}}/>
-            <span style={{fontSize:13, color:'rgba(247,241,226,0.6)'}}>one-time</span>
+                   className="no-spin"
+                   style={{flex:1, minWidth:0, background:'transparent', border:'none', outline:'none', color:'#FFF8EA', fontFamily:'var(--serif)', fontSize: 22, padding:'4px 0'}}/>
           </div>
           <button className="btn btn-primary btn-arrow" style={{width:'100%', marginTop: 18, justifyContent:'center'}}
                   onClick={() => navigate('donate', { fund:'church', id:'next', amount })}>

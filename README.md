@@ -26,39 +26,12 @@ Content lives in `data/*.json`:
 
 Once Decap CMS is wired up (see `CLAUDE.md`), staff edit these via `/admin/`.
 
-## Deploy (Netlify)
+## Deploy
 
-This is a static site with no build step. Hosted on **Netlify** for native Decap CMS support.
-
-### Setup
-
-1. Log in to [Netlify](https://app.netlify.com/) → **Add new site** → **Import an existing project**
-2. Connect to GitHub and select `christhiaseva/web`
-3. Configure the build:
-   - **Branch to deploy**: `main`
-   - **Build command**: *(leave empty)*
-   - **Publish directory**: `.` (dot — the repo root)
-4. Click **Deploy site**
-
-The site will be live at `https://<site-name>.netlify.app` within a minute.
-
-### Custom domain
-
-1. In the Netlify site dashboard → **Domain management** → **Add a domain**
-2. Enter your domain (e.g. `christhiaseva.org`)
-3. Add these DNS records at your registrar:
-
-| Type  | Name | Target                          |
-|-------|------|---------------------------------|
-| CNAME | @    | `<site-name>.netlify.app`       |
-| CNAME | www  | `<site-name>.netlify.app`       |
-
-Alternatively, use Netlify DNS for automatic configuration. Netlify handles HTTPS automatically.
-
-### How deploys work
-
-Every push to `main` triggers a new deploy automatically. Preview deploys are
-created for pull requests.
+This is a static site. Deploy any of:
+- **Cloudflare Pages** *(recommended)* — connect the GitHub repo, no build command, output dir `/`
+- **Netlify** — same, plus enables Netlify Identity for Decap CMS
+- **GitHub Pages** — works, but Decap CMS needs an external OAuth proxy
 
 ## Donations
 
