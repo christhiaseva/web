@@ -1,14 +1,9 @@
-# Decap CMS config
-# Replace OWNER/REPO with your GitHub org+repo once you've pushed the project.
-# After deploy: enable Netlify Identity OR wire a Cloudflare Worker OAuth proxy
-# (see /CLAUDE.md "Step 3 — Decap CMS" for details).
+# Decap CMS config — uses Netlify Identity (git-gateway) for auth.
+# Content edits commit to the stage branch for review before production.
 
 backend:
-  name: github
-  repo: OWNER/REPO          # e.g. christhia-seva-mission/site
-  branch: main
-  # If using Netlify Identity instead of bare GitHub OAuth, swap to:
-  # name: git-gateway
+  name: git-gateway
+  branch: stage
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
