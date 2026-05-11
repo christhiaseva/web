@@ -26,12 +26,42 @@ Content lives in `data/*.json`:
 
 Once Decap CMS is wired up (see `CLAUDE.md`), staff edit these via `/admin/`.
 
-## Deploy
+## Deploy (Cloudflare Pages)
 
-This is a static site. Deploy any of:
-- **Cloudflare Pages** *(recommended)* — connect the GitHub repo, no build command, output dir `/`
-- **Netlify** — same, plus enables Netlify Identity for Decap CMS
-- **GitHub Pages** — works, but Decap CMS needs an external OAuth proxy
+This is a static site with no build step. Recommended host: **Cloudflare Pages**.
+
+### Setup
+
+1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create**
+2. Select **Connect to Git** and authorize access to `christhiaseva/web`
+3. Configure the build:
+   - **Project name**: `csm-web` (or whatever you prefer — this determines the `*.pages.dev` subdomain)
+   - **Production branch**: `main`
+   - **Build command**: *(leave empty)*
+   - **Build output directory**: `/` (root)
+4. Click **Save and Deploy**
+
+The site will be live at `https://<project-name>.pages.dev` within a minute.
+
+### Custom domain
+
+Once you have a domain (e.g. `christhiaseva.org`):
+
+1. In the Cloudflare Pages project → **Custom domains** → **Set up a custom domain**
+2. Enter your domain (e.g. `christhiaseva.org`)
+3. Add these DNS records at your registrar (or in Cloudflare DNS if the domain is on Cloudflare):
+
+| Type  | Name | Target                          |
+|-------|------|---------------------------------|
+| CNAME | @    | `<project-name>.pages.dev`      |
+| CNAME | www  | `<project-name>.pages.dev`      |
+
+Cloudflare handles HTTPS automatically.
+
+### How deploys work
+
+Every push to `main` triggers a new deploy automatically. Preview deploys are
+created for pull requests.
 
 ## Donations
 
