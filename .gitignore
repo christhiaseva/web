@@ -6,3 +6,6 @@ node_modules/
 
 # Image slot prototype state
 .image-slots.state.json
+
+# Local uploads/screenshots
+uploads/
