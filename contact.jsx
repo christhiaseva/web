@@ -1,5 +1,69 @@
 // contact.jsx — Contact page with US and India locations
 
+const FORMSPREE_URL = 'https://formspree.io/f/mbdwwwed';
+
+const fieldStyle = {
+  width:'100%', padding:'14px 16px', borderRadius:10, border:'1px solid var(--line)',
+  background:'var(--card)', color:'var(--ink)', fontFamily:'var(--sans)', fontSize:15, outline:'none',
+};
+
+function ContactForm() {
+  const [form, setForm] = useState({ name:'', email:'', message:'' });
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('sent');
+        setForm({ name:'', email:'', message:'' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  if (status === 'sent') return (
+    <div style={{textAlign:'center', padding:'48px 0'}}>
+      <div style={{width: 56, height: 56, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 24, fontFamily:'var(--serif)'}}>✓</div>
+      <h3 className="serif" style={{fontSize: 24, fontWeight:400, marginTop: 20}}>Message sent.</h3>
+      <p style={{fontSize: 16, color:'var(--ink-2)', marginTop: 12}}>We'll get back to you as soon as we can.</p>
+    </div>
+  );
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16, marginBottom: 16}}>
+        <div>
+          <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Name</label>
+          <input type="text" required value={form.name} onChange={e => setForm({...form, name: e.target.value})} style={fieldStyle} />
+        </div>
+        <div>
+          <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Email</label>
+          <input type="email" required value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={fieldStyle} />
+        </div>
+      </div>
+      <div style={{marginBottom: 24}}>
+        <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Message</label>
+        <textarea required value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={5}
+                  style={{...fieldStyle, resize:'vertical'}} />
+      </div>
+      {status === 'error' && <p style={{color:'#c0392b', fontSize:14, marginBottom:16}}>Something went wrong. Please try again or email us directly.</p>}
+      <button type="submit" className="btn btn-primary btn-arrow" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Send message'}
+      </button>
+    </form>
+  );
+}
+
 function Contact({ navigate }) {
   return (
     <>
@@ -75,6 +139,17 @@ function Contact({ navigate }) {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Contact form */}
+      <section style={{padding:'0 0 80px'}}>
+        <div className="narrow">
+          <Eyebrow primary>Send us a message</Eyebrow>
+          <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 42px)', lineHeight:1.1, marginTop: 22, fontWeight:400, letterSpacing:'-0.01em', marginBottom: 36}}>
+            We'd love to hear from you.
+          </h2>
+          <ContactForm />
         </div>
       </section>
 

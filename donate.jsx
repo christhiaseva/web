@@ -377,11 +377,30 @@ function Donate({ params, navigate }) {
                   </div>
                   <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius:10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14}}>
                     <div style={{flexShrink:0, width:24, height:24, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', display:'grid', placeItems:'center', fontSize:13, fontFamily:'var(--serif)'}}>✓</div>
-                    <div>Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email immediately.</div>
+                    <div>Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email.</div>
                   </div>
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
                     <button className="btn btn-ghost" onClick={() => setStep(2)}>← Back</button>
-                    <button className="btn btn-primary btn-arrow" onClick={() => setStep(4)}>
+                    <button className="btn btn-primary btn-arrow" onClick={async () => {
+                      try {
+                        await fetch('https://formspree.io/f/mbdwwwed', {
+                          method: 'POST',
+                          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            _subject: `Donation: $${Number(finalAmount).toLocaleString()}${recurring ? '/month' : ' one-time'} toward ${d.title}`,
+                            name: info.name || '(not provided)',
+                            email: info.email || '(not provided)',
+                            address: info.address || '(not provided)',
+                            amount: `$${Number(finalAmount).toLocaleString()}${recurring ? '/month' : ' (one-time)'}`,
+                            designation: d.title,
+                            fund: d.fund,
+                            anonymous: info.anon ? 'Yes' : 'No',
+                            note: info.note || '(none)',
+                          }),
+                        });
+                      } catch (e) { /* don't block confirmation if email fails */ }
+                      setStep(4);
+                    }}>
                       Complete gift · ${Number(finalAmount).toLocaleString()}{recurring ? '/mo' : ''}
                     </button>
                   </div>
@@ -390,12 +409,17 @@ function Donate({ params, navigate }) {
 
               {step === 4 && (
                 <div style={{padding:'40px 0', textAlign:'center', maxWidth: 560, margin:'0 auto'}}>
-                  <div style={{width: 72, height: 72, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 32, fontFamily:'var(--serif)'}}>✓</div>
+                  {d.sidebar.kind === 'student' && d.sidebar.s?.photo ? (
+                    <img src={d.sidebar.s.photo} alt={d.sidebar.s.name}
+                         style={{width: 120, height: 120, borderRadius:'50%', objectFit:'cover', margin:'0 auto', display:'block'}} />
+                  ) : (
+                    <div style={{width: 72, height: 72, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 32, fontFamily:'var(--serif)'}}>✓</div>
+                  )}
                   <h2 className="serif" style={{fontSize:'clamp(28px, 3.6vw, 42px)', marginTop: 32, fontWeight:400, lineHeight:1.15}}>
-                    Thank you, {info.name?.split(' ')[0] || 'friend'}.
+                    Thank you.
                   </h2>
                   <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 18, lineHeight:1.55}}>
-                    Your ${Number(finalAmount).toLocaleString()}{recurring ? '/month' : ''} gift toward <strong>{d.title}</strong> has been recorded. We'll send a receipt right away.
+                    Your ${Number(finalAmount).toLocaleString()}{recurring ? '/month' : ' (one-time)'} gift toward <strong>{d.receiptName}</strong> has been received. You'll receive an email with next steps.
                   </p>
                   <p className="serif" style={{fontStyle:'italic', fontSize: 19, color:'var(--ink-2)', marginTop: 36, padding:'24px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)'}}>
                     "And whoever gives one of these little ones even a cup of cold water… truly, I say to you, he will by no means lose his reward."
