@@ -19,12 +19,11 @@ function getDesignation({ fund, id }) {
       kind:'student', fund, id,
       title: `Sponsor ${s.name}`,
       heading: <>Sponsor {s.name} for <em style={{fontStyle:'italic', color:'var(--primary)'}}>$200 a year.</em></>,
-      sub: `Each student is sponsored by one person for $200/year. That covers tuition, books, and hostel for the full school year. Pay it as $200 once, or as $17/month.`,
+      sub: `Each student is sponsored by one person for $200/year. That covers tuition, books, and hostel for the full school year.`,
       breadcrumb: ['education', `profile:${s.id}`],
       crumbLabels: ['Sponsor a student', s.name],
       // Locked amount — single-sponsor model
       lockedAmount: 200,
-      monthlyEquivalent: 17,
       defaultRecurring: false,
       defaultAmount: 200,
       sidebar: { kind:'student', s },
@@ -136,7 +135,6 @@ function Donate({ params, navigate }) {
   const [step, setStep] = useState(1);
   const [amount, setAmount] = useState(initialAmount || d.defaultAmount);
   const [custom, setCustom] = useState('');
-  const [recurring, setRecurring] = useState(d.defaultRecurring);
   const [info, setInfo] = useState({ name:'', email:'', country:'United States', anon:false, note:'' });
 
   // Reset step + amount when designation changes
@@ -144,13 +142,10 @@ function Donate({ params, navigate }) {
     setStep(1);
     setAmount(initialAmount || d.defaultAmount);
     setCustom('');
-    setRecurring(d.defaultRecurring);
   // eslint-disable-next-line
   }, [fund, id]);
 
-  const finalAmount = d.lockedAmount
-    ? (recurring ? d.monthlyEquivalent : d.lockedAmount)
-    : (custom ? Number(custom) : amount);
+  const finalAmount = d.lockedAmount || (custom ? Number(custom) : amount);
   const stepLabels = ['Amount', 'Your info', 'Confirm'];
 
   return (
@@ -227,28 +222,14 @@ function Donate({ params, navigate }) {
             <div style={{marginTop: 36}}>
               {step === 1 && d.lockedAmount && (
                 <>
-                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>How would you like to pay?</h2>
+                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Sponsor for $200/year</h2>
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 28}}>{d.sub}</p>
 
-                  <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14}}>
-                    <button onClick={() => setRecurring(false)}
-                            style={{padding:'28px 22px', borderRadius:14, cursor:'pointer', textAlign:'left',
-                                    background: !recurring ? 'var(--ink)' : 'var(--card)',
-                                    color: !recurring ? 'var(--bg)' : 'var(--ink)',
-                                    border: !recurring ? '1px solid var(--ink)' : '1px solid var(--line)'}}>
-                      <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', opacity: .7, marginBottom: 8}}>One-time</div>
-                      <div style={{fontFamily:'var(--serif)', fontSize: 38, lineHeight: 1}}>$200</div>
-                      <div style={{fontSize:13.5, marginTop: 8, opacity: .8}}>Pay for the full year up front</div>
-                    </button>
-                    <button onClick={() => setRecurring(true)}
-                            style={{padding:'28px 22px', borderRadius:14, cursor:'pointer', textAlign:'left',
-                                    background: recurring ? 'var(--ink)' : 'var(--card)',
-                                    color: recurring ? 'var(--bg)' : 'var(--ink)',
-                                    border: recurring ? '1px solid var(--ink)' : '1px solid var(--line)'}}>
-                      <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', opacity: .7, marginBottom: 8}}>Monthly · recurring</div>
-                      <div style={{fontFamily:'var(--serif)', fontSize: 38, lineHeight: 1}}>$17<span style={{fontSize:18, opacity:.7}}>/mo</span></div>
-                      <div style={{fontSize:13.5, marginTop: 8, opacity: .8}}>Spread over twelve months</div>
-                    </button>
+                  <div style={{padding:'28px 22px', borderRadius:14, textAlign:'left',
+                              background:'var(--ink)', color:'var(--bg)', border:'1px solid var(--ink)'}}>
+                    <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', opacity: .7, marginBottom: 8}}>One-time</div>
+                    <div style={{fontFamily:'var(--serif)', fontSize: 38, lineHeight: 1}}>$200</div>
+                    <div style={{fontSize:13.5, marginTop: 8, opacity: .8}}>Tuition, books, and hostel for the full school year</div>
                   </div>
 
                   <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius: 10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14, alignItems:'flex-start'}}>
@@ -266,7 +247,7 @@ function Donate({ params, navigate }) {
                   <button className="btn btn-primary btn-arrow"
                           style={{marginTop: 36, fontSize: 16, padding:'16px 28px'}}
                           onClick={() => setStep(2)}>
-                    Continue · {recurring ? '$17/month' : '$200 one-time'}
+                    Continue · $200
                   </button>
                 </>
               )}
@@ -276,23 +257,6 @@ function Donate({ params, navigate }) {
                   <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Choose an amount</h2>
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 28}}>{d.sub}</p>
 
-                  <div style={{display:'flex', gap: 8, padding: 4, background:'var(--bg-2)', borderRadius: 999, width:'fit-content', marginBottom: 28, border:'1px solid var(--line-soft)'}}>
-                    <button onClick={() => setRecurring(false)}
-                            style={{padding:'10px 22px', borderRadius:999, border:0, cursor:'pointer',
-                                    background: !recurring ? 'var(--ink)' : 'transparent',
-                                    color: !recurring ? 'var(--bg)' : 'var(--ink-2)',
-                                    fontFamily:'var(--sans)', fontSize:14.5, fontWeight: 500}}>
-                      One-time
-                    </button>
-                    <button onClick={() => setRecurring(true)}
-                            style={{padding:'10px 22px', borderRadius:999, border:0, cursor:'pointer',
-                                    background: recurring ? 'var(--ink)' : 'transparent',
-                                    color: recurring ? 'var(--bg)' : 'var(--ink-2)',
-                                    fontFamily:'var(--sans)', fontSize:14.5, fontWeight: 500}}>
-                      Monthly
-                    </button>
-                  </div>
-
                   <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:12}}>
                     {d.presets.filter(v => v > 0).map((v, i) => (
                       <button key={`${v}-${i}`} onClick={() => { setAmount(v); setCustom(''); }}
@@ -301,8 +265,7 @@ function Donate({ params, navigate }) {
                                       color: amount === v && !custom ? 'var(--bg)' : 'var(--ink)',
                                       border: amount === v && !custom ? '1px solid var(--ink)' : '1px solid var(--line)',
                                       fontFamily:'var(--serif)', fontSize: 26}}>
-                        ${v.toLocaleString()}{recurring && <span style={{fontSize:12, fontFamily:'var(--sans)', opacity:.7}}>/mo</span>}
-                      </button>
+                        ${v.toLocaleString()}                      </button>
                     ))}
                     <div style={{padding:'22px 16px', borderRadius:12,
                                  background: custom ? 'var(--ink)' : 'var(--card)',
@@ -322,8 +285,7 @@ function Donate({ params, navigate }) {
                           style={{marginTop: 40, fontSize: 16, padding:'16px 28px'}}
                           onClick={() => setStep(2)}
                           disabled={!finalAmount}>
-                    Continue · ${Number(finalAmount).toLocaleString()}{recurring ? '/month' : ''}
-                  </button>
+                    Continue · ${Number(finalAmount).toLocaleString()}                  </button>
                 </>
               )}
 
@@ -369,7 +331,7 @@ function Donate({ params, navigate }) {
                     Confirm and we'll connect you to our payment partner to complete the gift.
                   </p>
                   <div className="card" style={{padding:'28px 28px'}}>
-                    <ReviewRow label="Gift" value={`$${Number(finalAmount).toLocaleString()}${recurring ? ' / month' : ' (one-time)'}`} />
+                    <ReviewRow label="Gift" value={`$${Number(finalAmount).toLocaleString()}$`} />
                     <ReviewRow label="Designation" value={d.title} />
                     <ReviewRow label="Name" value={info.anon ? `${info.name} (anonymous)` : info.name || '—'} />
                     <ReviewRow label="Email" value={info.email || '—'} />
@@ -387,11 +349,11 @@ function Donate({ params, navigate }) {
                           method: 'POST',
                           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                           body: JSON.stringify({
-                            _subject: `Donation: $${Number(finalAmount).toLocaleString()}${recurring ? '/month' : ' one-time'} toward ${d.title}`,
+                            _subject: `Donation: $${Number(finalAmount).toLocaleString()} toward ${d.title}`,
                             name: info.name || '(not provided)',
                             email: info.email || '(not provided)',
                             address: info.address || '(not provided)',
-                            amount: `$${Number(finalAmount).toLocaleString()}${recurring ? '/month' : ' (one-time)'}`,
+                            amount: `$${Number(finalAmount).toLocaleString()}`,
                             designation: d.title,
                             fund: d.fund,
                             anonymous: info.anon ? 'Yes' : 'No',
@@ -401,8 +363,7 @@ function Donate({ params, navigate }) {
                       } catch (e) { /* don't block confirmation if email fails */ }
                       setStep(4);
                     }}>
-                      Complete gift · ${Number(finalAmount).toLocaleString()}{recurring ? '/mo' : ''}
-                    </button>
+                      Complete gift · ${Number(finalAmount).toLocaleString()}                    </button>
                   </div>
                 </>
               )}
@@ -419,7 +380,7 @@ function Donate({ params, navigate }) {
                     Thank you.
                   </h2>
                   <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 18, lineHeight:1.55}}>
-                    Your ${Number(finalAmount).toLocaleString()}{recurring ? '/month' : ' (one-time)'} gift toward <strong>{d.receiptName}</strong> has been received. You'll receive an email with next steps.
+                    Your ${Number(finalAmount).toLocaleString()} gift toward <strong>{d.receiptName}</strong> has been received. You'll receive an email with next steps.
                   </p>
                   <p className="serif" style={{fontStyle:'italic', fontSize: 19, color:'var(--ink-2)', marginTop: 36, padding:'24px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)'}}>
                     "And whoever gives one of these little ones even a cup of cold water… truly, I say to you, he will by no means lose his reward."
@@ -437,10 +398,6 @@ function Donate({ params, navigate }) {
           {/* Sidebar */}
           <aside style={{position:'sticky', top: 92, alignSelf:'flex-start'}}>
             <DonateSidebar d={d} navigate={navigate} />
-            <div style={{marginTop: 24, padding:'18px 22px', background:'var(--bg-2)', borderRadius: 10, border:'1px solid var(--line-soft)', fontSize:13.5, color:'var(--ink-2)', lineHeight:1.55}}>
-              <strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:15}}>Why monthly?</strong>
-              <p style={{marginTop: 8}}>Recurring gifts cover tuition, leases, and pastor support steadily across the year, exactly when bills come due.</p>
-            </div>
           </aside>
         </div>
       </section>
