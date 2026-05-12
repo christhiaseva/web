@@ -358,6 +358,7 @@ function Donate({ params, navigate }) {
                             fund: d.fund,
                             anonymous: info.anon ? 'Yes' : 'No',
                             note: info.note || '(none)',
+                            ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
                           }),
                         });
                       } catch (e) { /* don't block confirmation if email fails */ }

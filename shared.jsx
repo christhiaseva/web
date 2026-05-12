@@ -142,7 +142,7 @@ function Footer({ navigate }) {
         </div>
       </div>
       <div className="container" style={{marginTop:60, paddingTop:24, borderTop:'1px solid rgba(247,241,226,0.12)', display:'flex', justifyContent:'space-between', fontSize:13, color:'rgba(247,241,226,0.5)'}}>
-        <span>© 2026 Christhia Seva Mission</span>
+        <span>© {new Date().getFullYear()} Christhia Seva Mission</span>
         <span>Karnataka, India</span>
       </div>
     </footer>

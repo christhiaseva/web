@@ -73,10 +73,6 @@ function StoryProse() {
           <span style={dropStyle}>K</span>nowing where they would settle and work in India seemed like a foregone conclusion. Mathew and Mary Mathai had done their homework. They chose a place with good weather, good educational opportunities, and a place to raise a family.
         </p>
 
-        <Pull who="Mathew">
-          I was already supporting my cousin, K Mathai. We had sent him to the state of Andhra to learn the language and prepare for our coming.
-        </Pull>
-
         <p style={proseStyle}>
           The Mathai family (with kids Cecil, Suja, and Jaisen) arrived in May of 1980. Mary went to Kerala to settle their oldest two children, Cecil and Suja, in boarding school while Mathew went on to Andhra. That's when the plan hit a snag.
         </p>
@@ -103,10 +99,9 @@ function StoryProse() {
           Not knowing the language, Mathew simply stood in the middle of the intersection with a briefcase, wondering what to do next. To his surprise, he looked down the road to see the bus come to a stop and then turn around and come back. <em>This sort of thing never happens in India.</em> The conductor personally helped Mathew find the minister's house.
         </p>
 
-        {/* Inline visual break */}
-        <div style={{margin:'40px 0', display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14}}>
-          <ImgSlot id="story-bus" h="280px" placeholder="bus / road / intersection" radius={12} />
-          <ImgSlot id="story-briefcase" h="280px" placeholder="village / Karnataka countryside" radius={12} />
+        <div style={{margin:'40px 0'}}>
+          <img src="/images/story-mathew-mrs-solomon.jpg" alt="Mathew and Mrs. Solomon" style={{width:'100%', borderRadius:12, display:'block'}} />
+          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Mathew and Mrs. Solomon at the mission house in 1982</p>
         </div>
 
         <ChapterHeader num="Chapter III" title="Mrs. Solomon's crucial help" />
@@ -120,8 +115,8 @@ function StoryProse() {
         </Pull>
 
         <div style={{margin:'40px 0'}}>
-          <img src="/images/story-mathew-mrs-solomon.jpg" alt="Mathew and Mrs. Solomon" style={{width:'100%', borderRadius:12, display:'block'}} />
-          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Mathew and Mrs. Solomon at the mission house in 1982</p>
+          <img src="/images/story-white-oak-ordination.jpg" alt="White Oak Christian Church sign announcing Mathew Mathai's ordination" style={{width:'100%', borderRadius:12, display:'block'}} />
+          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>White Oak Christian Church announcing Mathew's ordination as minister to India, 1980</p>
         </div>
 
         <p style={proseStyle}>
@@ -162,7 +157,7 @@ function StoryStats() {
   return (
     <section className="section">
       <SectionHeader
-        eyebrow="46 years on"
+        eyebrow={`${new Date().getFullYear() - 1980} years on`}
         title="Where the work stands today."
         sub="What started in one intersection in Karnataka has grown into a multi-state mission across southern India."
       />

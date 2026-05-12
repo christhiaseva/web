@@ -82,7 +82,7 @@ function HeroFeaturedStory({ navigate }) {
           </div>
         </div>
         <div className="hero-story-stats">
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>46</strong>years of ministry</div>
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>{new Date().getFullYear() - 1980}</strong>years of ministry</div>
           <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
           <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
         </div>
