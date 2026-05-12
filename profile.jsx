@@ -10,8 +10,8 @@ function StudentProfile({ id, navigate }) {
       tagline: 'Priya wants to be the first nurse from her village.',
       paras: [
         "Priya is the eldest of three sisters. Her father picks cotton during the season and rents auto-rickshaws when there is no work. Her mother stitches blouses at home for the women in their colony.",
-        "When Priya was eleven, an aunt was lost during childbirth — three hours from the nearest hospital, with no one trained to help. That night, Priya told her mother she would become a nurse.",
-        "She finished tenth standard at the top of her class. The Government Nursing College in Bangalore accepted her this year, but the tuition, hostel, and books come to ₹2,00,000 over four years — about $2,400. Her family has saved what they can. The mission is helping her with the rest, alongside sponsors like you.",
+        "When Priya was eleven, an aunt was lost during childbirth, three hours from the nearest hospital, with no one trained to help. That night, Priya told her mother she would become a nurse.",
+        "She finished tenth standard at the top of her class. The Government Nursing College in Bangalore accepted her this year, but the tuition, hostel, and books come to ₹2,00,000 over four years, about $2,400. Her family has saved what they can. The mission is helping her with the rest, alongside sponsors like you.",
         "Priya joins us each Sunday at the Chintamani home church. She has been baptized, and prays often that her work as a nurse would be a way to love her village in Jesus' name.",
       ],
       verse: 'Romans 12:11',
@@ -19,11 +19,11 @@ function StudentProfile({ id, navigate }) {
     }
   };
   const story = stories[s.id] || {
-    tagline: `${s.name} is studying ${s.course} — and needs help to finish.`,
+    tagline: `${s.name} is studying ${s.course} and needs help to finish.`,
     paras: [
       `${s.name} comes from ${s.village}, where ${s.name === 'Arjun' ? 'his' : 'her'} family works hard but cannot meet the cost of the program ahead.`,
       `${s.name} has already been accepted into ${s.school}. The mission has known this family for many years through our home church there. With a small group of sponsors, ${s.name === 'Arjun' || s.name === 'David' || s.name === 'Samuel' || s.name === 'Thomas' ? 'he' : 'she'} can begin classes this term.`,
-      `Education is one of the most enduring ways the Gospel changes a family's trajectory — bringing dignity, opportunity, and a future to the next generation.`,
+      `Education is one of the most enduring ways the Gospel changes a family's trajectory, bringing dignity, opportunity, and a future to the next generation.`,
     ],
     verse: 'Jeremiah 29:11',
     verseText: 'For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.'
@@ -157,7 +157,7 @@ function StudentProfile({ id, navigate }) {
             ))}
           </div>
           <div style={{marginTop: 40, fontSize: 14.5, color:'var(--ink-3)', fontStyle:'italic'}}>
-            Sponsors receive these updates by email — plus a personal letter from {s.name} once per academic year.
+            Sponsors receive these updates by email, plus a personal letter from {s.name} once per academic year.
           </div>
         </div>
       </section>

@@ -27,7 +27,7 @@ function HeroPhotoOverlay({ navigate }) {
               A faith-led mission · since 1980
             </div>
             <h1 style={{fontFamily:'var(--serif)', color:'#FFF8EA', fontSize:'clamp(40px, 5.6vw, 76px)', lineHeight:1.02, fontWeight:400, letterSpacing:'-0.015em'}}>
-              Jesus is reaching villages across India — <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>one family at a time.</em>
+              Jesus is reaching villages across India, <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>one family at a time.</em>
             </h1>
             <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
               <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
@@ -54,7 +54,7 @@ function HeroFeaturedStory({ navigate }) {
             Silpa dropped out at 11. Prayer and a sponsor <span className="under-wave">changed everything.</span>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, lineHeight:1.55, maxWidth: 520}}>
-            At eleven, she'd dropped out of school to care for her asthmatic mother. Today she's a working nurse — and built the first brick home in her village.
+            At eleven, she'd dropped out of school to care for her asthmatic mother. Today she's a working nurse. She built the first brick home in her village.
           </p>
         </div>
         <div className="hero-story-buttons" style={{display:'flex', gap:14, flexWrap:'wrap'}}>
@@ -109,7 +109,7 @@ function HeroCollage({ navigate }) {
             Faces of a mission. <em style={{color:'var(--primary)', fontStyle:'italic'}}>Lives changed by Jesus</em> across India.
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, maxWidth: 600, lineHeight:1.55}}>
-            Every photograph here is someone — a student, a pastor, a family hearing the Gospel for the first time.
+            Every photograph here is someone: a student, a pastor, a family hearing the Gospel for the first time.
           </p>
           <div style={{display:'flex', gap:14, marginTop: 32}}>
             <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
@@ -139,7 +139,7 @@ function HeroVerseSplit({ navigate }) {
           </p>
           <span className="verse-cite">John 10:10</span>
           <h2 style={{fontFamily:'var(--serif)', fontSize:'clamp(28px, 3vw, 40px)', marginTop: 56, fontWeight:400, lineHeight:1.15, letterSpacing:'-0.01em'}}>
-            Bringing that abundant life — Gospel, education, and hope — to villages across India since 1980.
+            Bringing that abundant life, Gospel, education, and hope, to villages across India since 1980.
           </h2>
           <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
             <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
@@ -168,7 +168,7 @@ function MissionBand() {
       <div className="narrow text-center">
         <Eyebrow primary>Our calling</Eyebrow>
         <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 42px)', lineHeight:1.2, marginTop: 22, fontWeight:400, letterSpacing:'-0.01em'}}>
-          We exist to make Jesus known in the towns and villages of southern India — through churches, schools, and the daily care of our neighbors.
+          We exist to make Jesus known in the towns and villages of southern India, through churches, schools, and the daily care of our neighbors.
         </h2>
       </div>
     </section>
@@ -178,15 +178,15 @@ function MissionBand() {
 // ── Ministries ────────────────────────────
 function Ministries({ navigate }) {
   const items = [
-    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'From a man with a briefcase at a country intersection to ten congregations across the district — we walk every plant through home gathering, growth, and pastoring.', verse:'Matthew 16:18', stat:'10', statLabel:'churches planted' },
-    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools — opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
+    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'From a man with a briefcase at a country intersection to ten congregations across the district, we walk every plant through home gathering, growth, and pastoring.', verse:'Matthew 16:18', stat:'10', statLabel:'churches planted' },
+    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
   ];
   return (
     <section className="section">
       <SectionHeader
         eyebrow="Ministries"
         title="Two ways the mission ministers."
-        sub="The Gospel is the heart of everything we do. Around it, we build the practical work that makes love visible — schools, churches, and care for those in need."
+        sub="The Gospel is the heart of everything we do. Around it, we build the practical work that makes love visible: schools, churches, and care for those in need."
       />
       <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap: 20}}>
         {items.map(it => (
@@ -269,7 +269,7 @@ function FeaturedStories({ navigate }) {
             </p>
 
             <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 20}}>
-              The father had left before Silpa was born — she has never met him. Mary and I took her and her mom under our wings, provided all their needs, and started to send her to school. She had to restart fifth grade.
+              The father had left before Silpa was born. She has never met him. Mary and I took her and her mom under our wings, provided all their needs, and started to send her to school. She had to restart fifth grade.
             </p>
 
             <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 20}}>
@@ -277,7 +277,7 @@ function FeaturedStories({ navigate }) {
             </p>
 
             <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 32}}>
-              Eight years ago she graduated and started to work as a nurse. With the help of White Oak Christian Church and her own ability, she built a two-bedroom brick home in her own village for her and her mom — <strong style={{color:'var(--ink)', fontWeight:500}}>the first brick home in that village</strong>.
+              Eight years ago she graduated and started to work as a nurse. With the help of White Oak Christian Church and her own ability, she built a two-bedroom brick home in her own village for her and her mom, <strong style={{color:'var(--ink)', fontWeight:500}}>the first brick home in that village</strong>.
             </p>
 
             {/* Pull quote */}
@@ -335,7 +335,7 @@ function EducationPreview({ navigate }) {
             Choose a student. <em style={{fontStyle:'italic', color:'var(--primary)'}}>Change a generation.</em>
           </h2>
           <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 22, lineHeight:1.6}}>
-            Education is one of the surest ways out of generational poverty. We work directly with students whose families cannot afford post-secondary tuition — colleges, nursing schools, and trade programs — and connect them to sponsors around the world.
+            Education is one of the surest ways out of generational poverty. We work directly with students whose families cannot afford post-secondary tuition (colleges, nursing schools, and trade programs) and connect them to sponsors around the world.
           </p>
           <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 18, lineHeight:1.6}}>
             Every student has a profile, a story, and a transparent funding goal. You'll see exactly where your gift goes.
@@ -467,10 +467,10 @@ function ChurchesMap() {
             <span className="dot" style={{background:'var(--accent-soft)'}}></span>Where we are
           </div>
           <h2 className="serif" style={{color:'var(--bg)', fontSize:'clamp(34px, 4.4vw, 54px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            From one corner of Karnataka — <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>ten churches and counting.</em>
+            From one corner of Karnataka, <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>ten churches and counting.</em>
           </h2>
           <p style={{fontSize:17, color:'rgba(247,241,226,0.72)', marginTop: 22, lineHeight:1.6, maxWidth: 480}}>
-            Most of these congregations started in living rooms. A few began with a single family hosting prayer. Today they meet in homes, in rented halls, and in buildings the mission has helped construct — all within a 90-kilometer arc of where Mathew and Mary first arrived in 1980.
+            Most of these congregations started in living rooms. A few began with a single family hosting prayer. Today they meet in homes, in rented halls, and in buildings the mission has helped construct, all within a 90-kilometer arc of where Mathew and Mary first arrived in 1980.
           </p>
           <div style={{display:'flex', gap:32, marginTop: 36, flexWrap:'wrap'}}>
             {[
@@ -643,7 +643,7 @@ function TownPin({ town, position, visible, delay }) {
 // ── Timeline ───────────────────────────────
 function Timeline() {
   const events = [
-    { y:'1980', t:'Mathew arrives at a Shidalagatta intersection', d:'A briefcase, no contacts, no language. Through Mrs. Solomon — a retired teacher half the town had once been a student of — the first introductions are made.' },
+    { y:'1980', t:'Mathew arrives at a Shidalagatta intersection', d:'A briefcase, no contacts, no language. Through Mrs. Solomon, a retired teacher half the town had once been a student of, the first introductions are made.' },
     { y:'1987', t:'First pastor ordained', d:'The first home church grows enough to call a full-time pastor.' },
     { y:'1995', t:'Church building dedicated', d:'After 15 years of meeting in homes, the first sanctuary is built and dedicated.' },
     { y:'2003', t:'Education ministry begins', d:'Sponsorship for the first 12 students starting college.' },

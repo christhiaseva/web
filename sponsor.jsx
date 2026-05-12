@@ -78,7 +78,7 @@ function Sponsor({ studentId, mode, navigate }) {
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 28}}>
                     {student
                       ? `${student.name} needs $${(student.goal - student.raised).toLocaleString()} more to fully fund the term.`
-                      : 'Your gift supports the entire mission — Gospel work, education, churches, and family aid.'}
+                      : 'Your gift supports the entire mission: Gospel work, education, churches, and family aid.'}
                   </p>
 
                   {/* Recurring toggle */}
@@ -223,7 +223,7 @@ function Sponsor({ studentId, mode, navigate }) {
                   <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius:10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14}}>
                     <div style={{flexShrink:0, width:24, height:24, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', display:'grid', placeItems:'center', fontSize:13, fontFamily:'var(--serif)'}}>✓</div>
                     <div>
-                      Christhia Seva Mission is a registered 501(c)(3) — your gift is tax-deductible. You'll receive a receipt by email immediately.
+                      Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email immediately.
                     </div>
                   </div>
 
@@ -300,7 +300,7 @@ function Sponsor({ studentId, mode, navigate }) {
 
             <div style={{marginTop: 24, padding:'18px 22px', background:'var(--bg-2)', borderRadius: 10, border:'1px solid var(--line-soft)', fontSize:13.5, color:'var(--ink-2)', lineHeight:1.55}}>
               <strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:15}}>Why monthly?</strong>
-              <p style={{marginTop: 8}}>Recurring gifts cover tuition steadily across the academic year — exactly when bills come due.</p>
+              <p style={{marginTop: 8}}>Recurring gifts cover tuition steadily across the academic year, exactly when bills come due.</p>
             </div>
           </aside>
         </div>

@@ -34,7 +34,7 @@ const STUDENT_STORIES = [
     status: 'current',
     course: 'Diploma · Mechanic',
     school: 'ITI Chickaballapur',
-    headline: "Arjun fixes everything in his colony — now he's training to do it for a living.",
+    headline: "Arjun fixes everything in his colony; now he's training to do it for a living.",
     summary: "The neighbors bring him broken radios and bicycle gears. With a diploma, Arjun can open a small shop and support his grandmother and younger sister.",
     raised: 480, goal: 1100, sponsors: 9, days: 22,
     tag: 'Trade',
@@ -48,7 +48,7 @@ const STUDENT_STORIES = [
     course: 'B.Com',
     school: 'Andhra University',
     headline: 'One semester away from being the first college graduate in her family.',
-    summary: "Lakshmi is six months from finishing her degree. Her sponsors have carried her this far — a final push gets her across the line.",
+    summary: "Lakshmi is six months from finishing her degree. Her sponsors have carried her this far; a final push gets her across the line.",
     raised: 2100, goal: 2200, sponsors: 34, days: 6,
     tag: 'Business',
   },
@@ -72,7 +72,7 @@ const STUDENT_STORIES = [
     status: 'past',
     role: 'Pastor · ordained 2019',
     headline: '"My uncle laughed when I said I wanted to plant a church. Now he prays with us every Sunday."',
-    summary: "Rajesh was sponsored through Bible college. He now pastors a 90-member congregation that meets in a rented hall — including the uncle who once mocked him.",
+    summary: "Rajesh was sponsored through Bible college. He now pastors a 90-member congregation that meets in a rented hall, including the uncle who once mocked him.",
     invested: 'Bible college tuition · 4 years',
     outcome: 'Lead pastor · 90-member congregation',
     tag: 'Ministry',
@@ -99,7 +99,7 @@ const STUDENT_STORIES = [
     course: 'B.Sc. Computer Science',
     school: 'Acharya Nagarjuna University',
     headline: 'Meena is the first girl in her colony to study computer science.',
-    summary: "Her uncle — a lab technician — was the first to graduate college. Meena is following his path, with her family and her home church behind her.",
+    summary: "Her uncle, a lab technician, was the first to graduate college. Meena is following his path, with her family and her home church behind her.",
     raised: 1650, goal: 2600, sponsors: 21, days: 18,
     tag: 'Technology',
   },
@@ -111,10 +111,10 @@ function StoriesHero({ navigate }) {
       <div className="container">
         <Eyebrow primary>Student stories</Eyebrow>
         <h1 className="serif" style={{fontSize:'clamp(44px, 6vw, 84px)', lineHeight:1.0, marginTop: 22, fontWeight:400, letterSpacing:'-0.02em', maxWidth: 1100}}>
-          Lives that the Gospel — <em style={{fontStyle:'italic', color:'var(--primary)'}}>and a small group of sponsors</em> — quietly rewrote.
+          Lives that the Gospel, <em style={{fontStyle:'italic', color:'var(--primary)'}}>and a small group of sponsors,</em> quietly rewrote.
         </h1>
         <p style={{fontSize: 19, color:'var(--ink-2)', marginTop: 28, maxWidth: 720, lineHeight:1.55}}>
-          Some of these stories are finished. Some are mid-chapter and need a sponsor to keep going. Either way, they begin the same: a child, a family, a village — and a small obedience that opened a door.
+          Some of these stories are finished. Some are mid-chapter and need a sponsor to keep going. Either way, they begin the same: a child, a family, a village, and a small obedience that opened a door.
         </p>
       </div>
     </section>
@@ -261,7 +261,7 @@ function Stories({ navigate }) {
             Start the next story.
           </h2>
           <p style={{fontSize:17, color:'rgba(247,241,226,0.72)', marginTop: 22, lineHeight:1.6, maxWidth: 540, margin:'22px auto 0'}}>
-            A small group of sponsors — sometimes just three or four — is what carries a student across the finish line.
+            A small group of sponsors, sometimes just three or four, is what carries a student across the finish line.
           </p>
           <div style={{display:'flex', gap:14, justifyContent:'center', marginTop: 36, flexWrap:'wrap'}}>
             <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Browse all students</button>

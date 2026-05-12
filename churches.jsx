@@ -4,7 +4,7 @@ const CHURCHES = [
   {
     id:'shidalagatta', town:'Shidalagatta', count:1, established:1980, members:140, pastor:'Pastor Rajesh',
     status:'mature',
-    note:"Where the mission began. The first home gathering met here in 1980 — and where Silpa came to faith as a child.",
+    note:"Where the mission began. The first home gathering met here in 1980, and where Silpa came to faith as a child.",
     needs: null,
   },
   {
@@ -81,7 +81,7 @@ function ChurchesHero({ navigate }) {
           Ten churches.<br/><em style={{fontStyle:'italic', color:'var(--primary)'}}>One more, somewhere new.</em>
         </h1>
         <p style={{fontSize: 19, color:'var(--ink-2)', marginTop: 28, maxWidth: 720, lineHeight:1.55}}>
-          Every town the mission operates in started with three families and a Bible. Below are the churches we've planted so far — and the ones still finding their feet.
+          Every town the mission operates in started with three families and a Bible. Below are the churches we've planted so far, and the ones still finding their feet.
         </p>
         <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
           <button className="btn btn-primary btn-arrow" onClick={() => {
@@ -216,7 +216,7 @@ function PlantBreakdown() {
             ${total.toLocaleString()} plants a church for its first year.
           </h2>
           <p style={{fontSize:16.5, color:'var(--ink-2)', marginTop: 22, lineHeight:1.6}}>
-            That's the full cost — pastor, space, materials, outreach. By year two, almost every plant covers more than half its own costs from local giving. By year five, most are self-sustaining.
+            That's the full cost: pastor, space, materials, outreach. By year two, almost every plant covers more than half its own costs from local giving. By year five, most are self-sustaining.
           </p>
           <p className="serif" style={{fontStyle:'italic', fontSize:18, color:'var(--ink-2)', marginTop: 26, lineHeight: 1.5}}>
             "We don't plant outposts that depend on us. We plant churches that go on to plant others."

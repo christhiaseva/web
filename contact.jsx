@@ -11,7 +11,7 @@ function Contact({ navigate }) {
             <em style={{fontStyle:'italic', color:'var(--primary)'}}>One mission.</em>
           </h1>
           <p style={{fontSize: 20, color:'var(--ink-2)', marginTop: 32, maxWidth: 620, lineHeight:1.55}}>
-            We're rooted in the villages of Karnataka and supported from the heart of Ohio — 8,700 miles apart, joined by a single calling. You can email us at <a href="mailto:hello@csmforchrist.com" style={{color:'var(--primary)'}}>hello@csmforchrist.com</a>.
+            We're rooted in the villages of Karnataka and supported from the heart of Ohio, 8,700 miles apart, joined by a single calling. You can email us at <a href="mailto:hello@csmforchrist.com" style={{color:'var(--primary)'}}>hello@csmforchrist.com</a>.
           </p>
         </div>
       </section>

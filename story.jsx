@@ -10,7 +10,7 @@ function StoryHero() {
           And a bus that turned around.
         </h1>
         <p style={{fontSize: 20, color:'var(--ink-2)', marginTop: 32, maxWidth: 720, lineHeight:1.55}}>
-          The story of Christhia Seva Mission begins with a young couple, a long journey, and a plan that fell apart — only to be rebuilt by God, mile by mile, into something they never could have engineered themselves.
+          The story of Christhia Seva Mission begins with a young couple, a long journey, and a plan that fell apart, only to be rebuilt by God, mile by mile, into something they never could have engineered themselves.
         </p>
       </div>
     </section>
@@ -78,7 +78,7 @@ function StoryProse() {
         </Pull>
 
         <p style={proseStyle}>
-          The Mathai family — with kids Cecil, Suja, and Jaisen — arrived in May of 1980. Mary went to Kerala to settle their oldest two children, Cecil and Suja, in boarding school while Mathew went on to Andhra. That's when the plan hit a snag.
+          The Mathai family (with kids Cecil, Suja, and Jaisen) arrived in May of 1980. Mary went to Kerala to settle their oldest two children, Cecil and Suja, in boarding school while Mathew went on to Andhra. That's when the plan hit a snag.
         </p>
 
         <Pull who="Mathew">
@@ -86,7 +86,7 @@ function StoryProse() {
         </Pull>
 
         <p style={proseStyle}>
-          Somewhat discouraged but not disheartened, Mathew went to another city. He stayed a week and visited surrounding villages — but heard the same story. Then a friend of his, a preacher, told Mathew about the state of Karnataka. It was a place where doing ministry work was difficult, but the opportunities were plentiful.
+          Somewhat discouraged but not disheartened, Mathew went to another city. He stayed a week and visited surrounding villages, but heard the same story. Then a friend of his, a preacher, told Mathew about the state of Karnataka. It was a place where doing ministry work was difficult, but the opportunities were plentiful.
         </p>
 
         <ChapterHeader num="Chapter II" title="An interesting journey into Chikkaballapur" />
@@ -112,7 +112,7 @@ function StoryProse() {
         <ChapterHeader num="Chapter III" title="Mrs. Solomon's crucial help" />
 
         <p style={proseStyle}>
-          Mathew realized immediately that this minister was the key to his next step. The two talked about the possibilities for ministry, and the minister suggested Mathew visit the town of Chikkaballapur. There he met a Christian widow named <strong style={{color:'var(--ink)', fontWeight:500}}>Mrs. Solomon</strong>. She had been a school teacher and spoke English. Over the course of the next week, Mathew shared his dream with her. She was excited — she felt this was the opportunity she herself had been waiting for.
+          Mathew realized immediately that this minister was the key to his next step. The two talked about the possibilities for ministry, and the minister suggested Mathew visit the town of Chikkaballapur. There he met a Christian widow named <strong style={{color:'var(--ink)', fontWeight:500}}>Mrs. Solomon</strong>. She had been a school teacher and spoke English. Over the course of the next week, Mathew shared his dream with her. She was excited. She felt this was the opportunity she herself had been waiting for.
         </p>
 
         <Pull who="Mathew">
@@ -129,7 +129,7 @@ function StoryProse() {
         </p>
 
         <p style={proseStyle}>
-          Mrs. Solomon had great insight. She realized they were going to have to lay some groundwork before they earned the right to share the Gospel — and the easiest way to do that was by meeting needs. It quickly became evident to them that the biggest need in the villages was access to medical care.
+          Mrs. Solomon had great insight. She realized they were going to have to lay some groundwork before they earned the right to share the Gospel, and the easiest way to do that was by meeting needs. It quickly became evident to them that the biggest need in the villages was access to medical care.
         </p>
 
         <p style={proseStyle}>
@@ -194,10 +194,10 @@ function StoryFamily() {
             What began with two has grown to many.
           </h2>
           <p style={{fontSize:17, color:'var(--ink-2)', marginTop: 24, lineHeight:1.6}}>
-            Mathew and Mary were the seed. Today, the mission is carried by Indian pastors, Indian congregations, and a small support team — together praying, ministering, and walking alongside families across Karnataka.
+            Mathew and Mary were the seed. Today, the mission is carried by Indian pastors, Indian congregations, and a small support team, together praying, ministering, and walking alongside families across Karnataka.
           </p>
           <p style={{fontSize:17, color:'var(--ink-2)', marginTop: 18, lineHeight:1.6}}>
-            We've grown to be a mighty ministry — small enough that every dollar finds its way to a person, large enough to plant churches and send students through college, and faithful in believing that God is still in the business of stopping buses and turning them around.
+            We've grown to be a mighty ministry, small enough that every dollar finds its way to a person, large enough to plant churches and send students through college, and faithful in believing that God is still in the business of stopping buses and turning them around.
           </p>
         </div>
       </div>

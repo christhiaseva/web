@@ -58,7 +58,7 @@ function StudentCard({ s, navigate }) {
 function HowItWorks() {
   const steps = [
     { n:'01', t:'Browse students', d:'Each student has a profile, story, and a transparent goal.' },
-    { n:'02', t:'Choose someone to sponsor', d:'One sponsor, one student — $200 covers tuition for the year.' },
+    { n:'02', t:'Choose someone to sponsor', d:'One sponsor, one student. $200 covers tuition for the year.' },
     { n:'03', t:'Receive updates', d:'Get letters, photos, and academic reports every term.' },
     { n:'04', t:'Watch a life change', d:'When they graduate, you celebrate alongside them.' },
   ];
@@ -97,12 +97,12 @@ function Education({ navigate }) {
             Choose a student. <em style={{fontStyle:'italic', color:'var(--primary)'}}>Send them to school.</em>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, maxWidth: 720, lineHeight:1.55}}>
-            These eight students need help paying for the program ahead of them. Their families have already sacrificed to get them here. A small group of sponsors — sometimes just three or four people — can carry them across the finish line.
+            These eight students need help paying for the program ahead of them. Their families have already sacrificed to get them here. A small group of sponsors (sometimes just three or four people) can carry them across the finish line.
           </p>
           <div style={{marginTop: 28, display:'flex', alignItems:'center', gap: 14, flexWrap:'wrap'}}>
             <a onClick={() => navigate('stories')}
                style={{cursor:'pointer', fontSize: 15, color:'var(--primary)', fontWeight:500, borderBottom:'1px solid var(--primary)', paddingBottom: 2}}>
-              Read student stories — past graduates and current sponsorships →
+              Read student stories: past graduates and current sponsorships →
             </a>
           </div>
         </div>

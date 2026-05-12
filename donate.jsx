@@ -19,7 +19,7 @@ function getDesignation({ fund, id }) {
       kind:'student', fund, id,
       title: `Sponsor ${s.name}`,
       heading: <>Sponsor {s.name} for <em style={{fontStyle:'italic', color:'var(--primary)'}}>$200 a year.</em></>,
-      sub: `Each student is sponsored by one person for $200/year — that covers tuition, books, and hostel for the full school year. Pay it as $200 once, or as $17/month.`,
+      sub: `Each student is sponsored by one person for $200/year. That covers tuition, books, and hostel for the full school year. Pay it as $200 once, or as $17/month.`,
       breadcrumb: ['education', `profile:${s.id}`],
       crumbLabels: ['Sponsor a student', s.name],
       // Locked amount — single-sponsor model
@@ -36,7 +36,7 @@ function getDesignation({ fund, id }) {
     kind:'fund', fund, id:null,
     title:'Give to education',
     heading: <>Sponsor the next <em style={{fontStyle:'italic', color:'var(--primary)'}}>generation of students.</em></>,
-    sub: 'Your gift goes to the general education fund — supporting students who don\'t yet have a sponsor of their own.',
+    sub: 'Your gift goes to the general education fund, supporting students who don\'t yet have a sponsor of their own.',
     breadcrumb: ['education'],
     crumbLabels: ['Sponsor a student'],
     presets: [50, 100, 250, 500, 1000],
@@ -53,7 +53,7 @@ function getDesignation({ fund, id }) {
       title: `Give to ${c.town}`,
       heading: <>Stand with the church in <em style={{fontStyle:'italic', color:'var(--primary)'}}>{c.town}.</em></>,
       sub: c.needs
-        ? `${c.needs.label} — $${(c.needs.goal - c.needs.raised).toLocaleString()} still needed.`
+        ? `${c.needs.label}: $${(c.needs.goal - c.needs.raised).toLocaleString()} still needed.`
         : `${c.town} is self-sustaining. Your gift goes toward special projects and pastor support.`,
       breadcrumb: ['churches'],
       crumbLabels: ['Help Plant a Church'],
@@ -71,7 +71,7 @@ function getDesignation({ fund, id }) {
     heading: <>Help us plant <em style={{fontStyle:'italic', color:'var(--primary)'}}>the next church.</em></>,
     sub: id === 'next'
       ? "We're praying about a new village in the Chickaballapur district. Your gift starts the work."
-      : 'Your gift supports the church-planting fund — pastor support, leases, Bibles, chairs, and outreach for new and growing congregations.',
+      : 'Your gift supports the church-planting fund: pastor support, leases, Bibles, chairs, and outreach for new and growing congregations.',
     breadcrumb: ['churches'],
     crumbLabels: ['Help Plant a Church'],
     presets: [50, 100, 250, 500, 1000],
@@ -86,7 +86,7 @@ function getDesignation({ fund, id }) {
     kind:'general', fund:'general', id:null,
     title:'Make a donation',
     heading: <>Walk with us. <em style={{fontStyle:'italic', color:'var(--primary)'}}>Carry the work forward.</em></>,
-    sub: 'Your gift supports the entire mission — Gospel work, education, churches, and family aid.',
+    sub: 'Your gift supports the entire mission: Gospel work, education, churches, and family aid.',
     breadcrumb: [],
     crumbLabels: [],
     presets: [50, 100, 250, 500, 1000],
@@ -259,7 +259,7 @@ function Donate({ params, navigate }) {
                          style={{color:'var(--primary)', cursor:'pointer', borderBottom:'1px solid var(--primary)'}}>
                         general student fund
                       </a>
-                      {' '}— covering students who don't yet have a personal sponsor.
+                      {' '}and covers students who don't yet have a personal sponsor.
                     </div>
                   </div>
 
@@ -377,7 +377,7 @@ function Donate({ params, navigate }) {
                   </div>
                   <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius:10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14}}>
                     <div style={{flexShrink:0, width:24, height:24, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', display:'grid', placeItems:'center', fontSize:13, fontFamily:'var(--serif)'}}>✓</div>
-                    <div>Christhia Seva Mission is a registered 501(c)(3) — your gift is tax-deductible. You'll receive a receipt by email immediately.</div>
+                    <div>Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email immediately.</div>
                   </div>
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
                     <button className="btn btn-ghost" onClick={() => setStep(2)}>← Back</button>
@@ -415,7 +415,7 @@ function Donate({ params, navigate }) {
             <DonateSidebar d={d} navigate={navigate} />
             <div style={{marginTop: 24, padding:'18px 22px', background:'var(--bg-2)', borderRadius: 10, border:'1px solid var(--line-soft)', fontSize:13.5, color:'var(--ink-2)', lineHeight:1.55}}>
               <strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:15}}>Why monthly?</strong>
-              <p style={{marginTop: 8}}>Recurring gifts cover tuition, leases, and pastor support steadily across the year — exactly when bills come due.</p>
+              <p style={{marginTop: 8}}>Recurring gifts cover tuition, leases, and pastor support steadily across the year, exactly when bills come due.</p>
             </div>
           </aside>
         </div>
@@ -469,7 +469,7 @@ function DonateSidebar({ d, navigate }) {
       <div className="card" style={{padding: 28}}>
         <h3 className="serif" style={{fontSize: 22, fontWeight:400, marginBottom: 14}}>Education fund</h3>
         <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
-          Pooled gifts support students who don't yet have a sponsor — and cover books, hostels, and emergency tuition gaps.
+          Pooled gifts support students who don't yet have a sponsor, and cover books, hostels, and emergency tuition gaps.
         </p>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
           {[{n:'200+', l:'students supported'}, {n:'94%', l:'graduation rate'}, {n:'$1,650', l:'avg. annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
@@ -490,7 +490,7 @@ function DonateSidebar({ d, navigate }) {
       <div className="card" style={{padding: 28}}>
         <h3 className="serif" style={{fontSize: 22, fontWeight:400, marginBottom: 14}}>Church planting fund</h3>
         <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
-          $9,800 plants a church for its first year — pastor, lease, Bibles, chairs, and outreach. By year five, most plants are self-sustaining.
+          $9,800 plants a church for its first year: pastor, lease, Bibles, chairs, and outreach. By year five, most plants are self-sustaining.
         </p>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
           {[{n:'10', l:'churches planted'}, {n:'8', l:'pastors raised up'}, {n:'$9,800', l:'cost per plant'}, {n:'960+', l:'in worship weekly'}].map(s => (
