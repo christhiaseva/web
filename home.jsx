@@ -1,9 +1,9 @@
 // home.jsx — Home page
 
 const homeStudents = [
-  { id: 'priya',   name: 'Priya', age: 18, course: 'B.Sc. Nursing',     village: 'Chintamani',     raised: 1240, goal: 2400 },
-  { id: 'arjun',   name: 'Arjun', age: 17, course: 'Diploma · Mechanic', village: 'Bagepalli',     raised: 480,  goal: 1100 },
-  { id: 'lakshmi', name: 'Lakshmi', age: 19, course: 'B.Com',           village: 'Chickaballapur', raised: 2100, goal: 2200 },
+  { id: 'priya',   name: 'Priya',   course: 'B.Sc. Nursing',      village: 'Chintamani',     goal: 200, sponsored: false },
+  { id: 'arjun',   name: 'Arjun',   course: 'Diploma · Mechanic', village: 'Bagepalli',      goal: 200, sponsored: false },
+  { id: 'lakshmi', name: 'Lakshmi', course: 'B.Com',              village: 'Chickaballapur', goal: 200, sponsored: true  },
 ];
 
 // ── Hero variants ─────────────────────────
@@ -51,7 +51,7 @@ function HeroFeaturedStory({ navigate }) {
         <div className="hero-story-intro">
           <Eyebrow primary>A success story · Shidalagatta</Eyebrow>
           <h1 style={{fontFamily:'var(--serif)', fontSize:'clamp(40px, 5.4vw, 72px)', lineHeight:1.04, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            Silpa got a whole new life — for <span className="under-wave">$200 a year, three years.</span>
+            Silpa dropped out at 11. Prayer and a sponsor <span className="under-wave">changed everything.</span>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, lineHeight:1.55, maxWidth: 520}}>
             At eleven, she'd dropped out of school to care for her asthmatic mother. Today she's a working nurse — and built the first brick home in her village.
@@ -69,8 +69,7 @@ function HeroFeaturedStory({ navigate }) {
           </button>
         </div>
         <div className="hero-story-photo" style={{position:'relative'}}>
-          <ImgSlot id="hero-silpa" h="600px" placeholder="Silpa · portrait, vertical · in nursing uniform or with her brick home"
-                   shape="rounded" radius={20} style={{borderRadius:20}} />
+          <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', height:600, objectFit:'cover', borderRadius:20, display:'block'}} />
           <div style={{
             position:'absolute', left:-32, bottom:32,
             background:'var(--card)', border:'1px solid var(--line)',
@@ -179,16 +178,14 @@ function MissionBand() {
 // ── Ministries ────────────────────────────
 function Ministries({ navigate }) {
   const items = [
-    { key:'evangelism', label:'Evangelism', kicker:'Sharing the Gospel', desc:'Going village to village, household by household — sharing the Good News in homes, marketplaces, and prayer gatherings.', verse:'Romans 10:14', stat:'14', statLabel:'villages reached this year' },
+    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'From a man with a briefcase at a country intersection to ten congregations across the district — we walk every plant through home gathering, growth, and pastoring.', verse:'Matthew 16:18', stat:'10', statLabel:'churches planted' },
     { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools — opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
-    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'From a man with a briefcase at a country intersection to ten congregations across the district — we walk every plant through home gathering, growth, and pastoring.', verse:'Matthew 16:18', stat:'14', statLabel:'churches planted' },
-    { key:'financial',  label:'Financial Aid', kicker:'Lifting families', desc:'Emergency support for medical needs, widows, and families in crisis — meeting urgent needs in Jesus\' name.', verse:'James 1:27', stat:'120', statLabel:'families helped in 2025' },
   ];
   return (
     <section className="section">
       <SectionHeader
         eyebrow="Ministries"
-        title="Four ways the mission ministers."
+        title="Two ways the mission ministers."
         sub="The Gospel is the heart of everything we do. Around it, we build the practical work that makes love visible — schools, churches, and care for those in need."
       />
       <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap: 20}}>
@@ -245,7 +242,7 @@ function FeaturedStories({ navigate }) {
       <div className="container">
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom: 48, gap: 32, flexWrap:'wrap'}}>
           <div style={{maxWidth: 720}}>
-            <Eyebrow primary>The full story · in Mathew's words</Eyebrow>
+            <Eyebrow primary>Silpa's full story · in Mathew's words</Eyebrow>
             <h2 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 18, fontWeight:400, letterSpacing:'-0.015em'}}>
               $200 a year for three years. <em style={{color:'var(--primary)', fontStyle:'italic'}}>A whole new life.</em>
             </h2>
@@ -258,7 +255,7 @@ function FeaturedStories({ navigate }) {
         <div className="silpa-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>
           {/* Photo column */}
           <div className="silpa-photos" style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
-            <ImgSlot id="silpa-portrait" h="540px" placeholder="Silpa · portrait or graduation, vertical" radius={16} style={{borderRadius:16}} />
+            <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', height:540, objectFit:'cover', borderRadius:16, display:'block'}} />
             <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 12}}>
               <ImgSlot id="silpa-house"   h="180px" placeholder="Silpa's brick home · the first in her village" radius={12} />
               <ImgSlot id="silpa-mom"     h="180px" placeholder="Silpa with her mother" radius={12} />
@@ -324,6 +321,11 @@ function FeaturedStories({ navigate }) {
 
 // ── Education preview ─────────────────────
 function EducationPreview({ navigate }) {
+  const all = window.STUDENTS || homeStudents;
+  const [featured] = useState(() => {
+    const shuffled = [...all].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 3);
+  });
   return (
     <section className="section">
       <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1.1fr', gap: 80, alignItems:'center'}}>
@@ -340,35 +342,27 @@ function EducationPreview({ navigate }) {
           </p>
           <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
             <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Browse students</button>
-            <button className="btn btn-ghost" onClick={() => navigate('education')}>How it works</button>
           </div>
         </div>
         <div style={{display:'flex', flexDirection:'column', gap:16}}>
-          {homeStudents.map(s => {
-            const pct = (s.raised / s.goal) * 100;
-            return (
-              <div key={s.id} className="card" style={{display:'grid', gridTemplateColumns:'120px 1fr auto', gap:24, padding:18, alignItems:'center', cursor:'pointer'}}
-                   onClick={() => navigate('profile', { id: s.id })}>
-                <div style={{width:120, height:120, borderRadius:8, overflow:'hidden'}}>
-                  <ImgSlot id={`home-${s.id}`} h="120px" w="120px" placeholder={`${s.name}, ${s.age}`} radius={8} />
+          {featured.map(s => (
+              <div key={s.id} className="card" style={{padding:'22px 24px'}}>
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12}}>
+                  <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+                  <span style={{fontSize:13.5, color:'var(--ink-3)', whiteSpace:'nowrap'}}>{s.course} · {s.village}</span>
                 </div>
-                <div>
-                  <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}, {s.age}</div>
-                  <div style={{fontSize:13.5, color:'var(--ink-3)', marginTop:4}}>{s.course} · {s.village}</div>
-                  <div style={{marginTop: 14, display:'flex', alignItems:'center', gap:14}}>
-                    <div style={{flex:1}}><Progress value={s.raised} max={s.goal} /></div>
-                    <div style={{fontSize:12.5, color:'var(--ink-3)', whiteSpace:'nowrap'}}>{Math.round(pct)}%</div>
-                  </div>
-                </div>
-                <div style={{textAlign:'right'}}>
-                  <div style={{fontFamily:'var(--serif)', fontSize:18}}>${(s.goal - s.raised).toLocaleString()}</div>
-                  <div style={{fontSize:11.5, color:'var(--ink-3)', marginTop:2}}>still needed</div>
+                {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>
+                  {s.sponsored
+                    ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
+                    : <span style={{fontFamily:'var(--serif)', fontSize:16, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>}
+                  <a style={{fontSize:14, fontWeight:500, color:'var(--primary)', cursor:'pointer'}}
+                     onClick={() => navigate('profile', { id: s.id })}>Read more →</a>
                 </div>
               </div>
-            );
-          })}
+          ))}
           <button className="btn btn-ghost btn-arrow" onClick={() => navigate('education')} style={{alignSelf:'flex-end', marginTop: 4}}>
-            See all 24 students
+            See all {all.length} students
           </button>
         </div>
       </div>

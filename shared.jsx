@@ -62,25 +62,7 @@ function Nav({ page, navigate }) {
           <a className={`nav-link ${page === 'story' ? 'active' : ''}`}
              onClick={() => navigate('story')}>Our Story</a>
 
-          <div className="nav-dropdown" ref={wrapRef}>
-            <a className={`nav-link ${['education','profile','sponsor'].includes(page) ? 'active' : ''}`}
-               onClick={() => setMenuOpen(o => !o)}>
-              Ministries <span style={{fontSize:10, marginLeft:4, opacity:.6}}>▾</span>
-            </a>
-            {menuOpen && (
-              <div className="nav-dropdown-menu" onClick={() => setMenuOpen(false)}>
-                {ministries.map(m => (
-                  <a key={m.key} className="nav-dropdown-link"
-                     onClick={() => navigate(m.key === 'education' ? 'education' : m.key)}>
-                    <span>{m.label}</span>
-                    <small>{m.sub}</small>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <a className={`nav-link ${page === 'education' ? 'active' : ''}`}
+          <a className={`nav-link ${['education', 'profile'].includes(page) ? 'active' : ''}`}
              onClick={() => navigate('education')}>Sponsor a Student</a>
 
           <a className={`nav-link ${page === 'churches' ? 'active' : ''}`}
@@ -145,24 +127,18 @@ function Footer({ navigate }) {
         </div>
         <div>
           <h4>Ministries</h4>
-          <a onClick={() => navigate('evangelism')}>Evangelism</a>
           <a onClick={() => navigate('education')}>Education</a>
           <a onClick={() => navigate('churches')}>Churches</a>
-          <a onClick={() => navigate('financial')}>Financial Aid</a>
         </div>
         <div>
           <h4>About</h4>
           <a onClick={() => navigate('story')}>Our Story</a>
-          <a onClick={() => navigate('story')}>Leadership</a>
-          <a onClick={() => navigate('story')}>Annual Reports</a>
-          <a onClick={() => navigate('story')}>Contact</a>
+          <a onClick={() => navigate('contact')}>Contact</a>
         </div>
         <div>
           <h4>Give</h4>
-          <a onClick={() => navigate('donate')}>Donate</a>
           <a onClick={() => navigate('education')}>Sponsor a Student</a>
           <a onClick={() => navigate('donate', { fund:'church' })}>Plant a Church</a>
-          <a onClick={() => navigate('story')}>Tax Information</a>
         </div>
       </div>
       <div className="container" style={{marginTop:60, paddingTop:24, borderTop:'1px solid rgba(247,241,226,0.12)', display:'flex', justifyContent:'space-between', fontSize:13, color:'rgba(247,241,226,0.5)'}}>
@@ -229,4 +205,10 @@ function Progress({ value, max }) {
   );
 }
 
-Object.assign(window, { Nav, Footer, Verse, Eyebrow, SectionHeader, ImgSlot, Progress, CrossIcon });
+const STRIPE_BG = 'repeating-linear-gradient(-45deg, var(--bg-2), var(--bg-2) 8px, var(--line-soft) 8px, var(--line-soft) 9px)';
+function StudentPhoto({ src, alt, style }) {
+  if (src) return <img src={src} alt={alt || ''} style={{width:'100%', height:'100%', objectFit:'cover', display:'block', ...style}} />;
+  return <div style={{width:'100%', height:'100%', background: STRIPE_BG, ...style}} />;
+}
+
+Object.assign(window, { Nav, Footer, Verse, Eyebrow, SectionHeader, ImgSlot, Progress, CrossIcon, StudentPhoto });

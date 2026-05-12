@@ -22,9 +22,9 @@ function StoryHeroPhoto() {
     <section style={{padding:'0 0 32px'}}>
       <div className="container">
         <div style={{position:'relative', borderRadius:'var(--r-lg)', overflow:'hidden'}}>
-          <ImgSlot id="story-hero" h="520px" placeholder="Mathew & Mary, 1980 · or family / village photograph" radius={20} style={{borderRadius:20}} />
-          <div style={{position:'absolute', left: 32, bottom: 28, padding:'14px 20px', background:'rgba(247,241,226,0.92)', borderRadius:8, fontSize: 13.5, color:'var(--ink-2)', maxWidth: 420, backdropFilter:'blur(6px)'}}>
-            <strong style={{fontFamily:'var(--serif)', fontSize:15, color:'var(--ink)'}}>Mathew &amp; Mary Mathai</strong> arrived in India with their three children in May 1980.
+          <img src="/images/story-mathew-mary-john.jpg" alt="Mathew, Mary, John and their children at a beach in India" style={{width:'100%', height:520, objectFit:'cover', borderRadius:20, display:'block'}} />
+          <div style={{position:'absolute', left: 32, bottom: 28, padding:'14px 20px', background:'rgba(247,241,226,0.92)', borderRadius:8, fontSize: 13.5, color:'var(--ink-2)', maxWidth: 520, backdropFilter:'blur(6px)'}}>
+            Mathew, Mary, Mathew's brother John and their 3 children Cecil, Suja and Jaisen at a beach in India. John was part of the mission from the beginning until his death in 2023.
           </div>
         </div>
       </div>
@@ -119,6 +119,11 @@ function StoryProse() {
           That's how I put my feet in Chikkaballapur.
         </Pull>
 
+        <div style={{margin:'40px 0'}}>
+          <img src="/images/story-mathew-mrs-solomon.jpg" alt="Mathew and Mrs. Solomon" style={{width:'100%', borderRadius:12, display:'block'}} />
+          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Mathew and Mrs. Solomon at the mission house in 1982</p>
+        </div>
+
         <p style={proseStyle}>
           That was just the beginning. Through Mrs. Solomon, Mathew began to meet many influential people in the town. It seemed everyone had been her student at one time or another.
         </p>
@@ -130,6 +135,11 @@ function StoryProse() {
         <p style={proseStyle}>
           So that's where they began.
         </p>
+
+        <div style={{margin:'40px 0'}}>
+          <img src="/images/story-mathew-field.jpg" alt="Mathew at the location of a new church plant" style={{width:'100%', borderRadius:12, display:'block'}} />
+          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Mathew at the location of a new church plant</p>
+        </div>
       </div>
     </section>
   );
@@ -177,17 +187,17 @@ function StoryFamily() {
   return (
     <section className="section" style={{background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)'}}>
       <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1.1fr', gap: 64, alignItems:'center'}}>
-        <ImgSlot id="story-family" h="520px" placeholder="The Mathai family · group portrait or candid" radius={16} style={{borderRadius:16}} />
+        <img src="/images/story-mathew-mary.jpg" alt="Mathew and Mary" style={{width:'100%', height:520, objectFit:'cover', borderRadius:16, display:'block'}} />
         <div>
           <Eyebrow primary>The family</Eyebrow>
           <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 42px)', lineHeight:1.1, marginTop: 22, fontWeight:400, letterSpacing:'-0.01em'}}>
             What began with two has grown to many.
           </h2>
           <p style={{fontSize:17, color:'var(--ink-2)', marginTop: 24, lineHeight:1.6}}>
-            Mathew and Mary, with Cecil, Suja, and Jaisen, were the seed. Today, the mission is carried by Indian pastors, Indian congregations, and a small support team — together praying, ministering, and walking alongside families across Andhra Pradesh, Telangana, and Karnataka.
+            Mathew and Mary were the seed. Today, the mission is carried by Indian pastors, Indian congregations, and a small support team — together praying, ministering, and walking alongside families across Karnataka.
           </p>
           <p style={{fontSize:17, color:'var(--ink-2)', marginTop: 18, lineHeight:1.6}}>
-            We remain a family ministry — small enough that every dollar finds its way to a person, large enough to plant churches and send students through college, and faithful in believing that God is still in the business of stopping buses and turning them around.
+            We've grown to be a mighty ministry — small enough that every dollar finds its way to a person, large enough to plant churches and send students through college, and faithful in believing that God is still in the business of stopping buses and turning them around.
           </p>
         </div>
       </div>

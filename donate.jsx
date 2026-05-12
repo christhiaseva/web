@@ -432,14 +432,10 @@ function DonateSidebar({ d, navigate }) {
         <div style={{borderRadius:8, overflow:'hidden', marginBottom: 18, aspectRatio:'4/3'}}>
           <ImgSlot id={`don-stu-${s.id}`} h="100%" placeholder={s.name} radius={8} />
         </div>
-        <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{s.name}, {s.age}</div>
+        <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{s.name}</div>
         <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 4}}>{s.course}</div>
         <div style={{fontSize:13, color:'var(--ink-3)'}}>{s.school}</div>
-        <div style={{marginTop: 18}}><Progress value={s.raised} max={s.goal} /></div>
-        <div style={{display:'flex', justifyContent:'space-between', fontSize:12.5, color:'var(--ink-3)', marginTop: 8}}>
-          <span>${s.raised.toLocaleString()} raised</span>
-          <span>${(s.goal - s.raised).toLocaleString()} to go</span>
-        </div>
+        <div style={{fontSize:13, color:'var(--ink-2)', marginTop: 12}}>${s.goal.toLocaleString()}/year</div>
       </div>
     );
   }
@@ -511,26 +507,7 @@ function DonateSidebar({ d, navigate }) {
   }
 
   // general
-  return (
-    <div className="card" style={{padding: 28, background:'var(--ink)', color:'var(--bg)', border:'1px solid var(--ink)'}}>
-      <h3 className="serif" style={{color:'var(--bg)', fontSize: 22, fontWeight:400, marginBottom: 14}}>Where your gift goes</h3>
-      {[
-        {l:'Education sponsorships', p:'42%'},
-        {l:'Church planting & buildings', p:'28%'},
-        {l:'Pastor support & training', p:'14%'},
-        {l:'Family & emergency aid', p:'12%'},
-        {l:'Operations', p:'4%'},
-      ].map(r => (
-        <div key={r.l} style={{display:'flex', justifyContent:'space-between', padding:'10px 0', borderTop:'1px solid rgba(247,241,226,0.14)', fontSize:14}}>
-          <span style={{color:'rgba(247,241,226,0.78)'}}>{r.l}</span>
-          <span style={{color:'var(--accent-soft)', fontFamily:'var(--serif)'}}>{r.p}</span>
-        </div>
-      ))}
-      <div style={{marginTop: 24, fontSize:13, color:'rgba(247,241,226,0.6)', lineHeight:1.55}}>
-        Audited annually. Reports available on request.
-      </div>
-    </div>
-  );
+  return null;
 }
 
 function FormField({ label, value, onChange, type = 'text' }) {

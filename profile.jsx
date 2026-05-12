@@ -3,7 +3,6 @@
 function StudentProfile({ id, navigate }) {
   const s = (window.STUDENTS || []).find(x => x.id === id) || (window.STUDENTS || [])[0];
   if (!s) return null;
-  const pct = (s.raised / s.goal) * 100;
 
   // Long-form story per student (a sample for Priya, generic for others)
   const stories = {
@@ -51,18 +50,13 @@ function StudentProfile({ id, navigate }) {
       <section style={{padding:'40px 0 60px'}}>
         <div className="container" style={{display:'grid', gridTemplateColumns:'1.1fr 1fr', gap: 64, alignItems:'flex-start'}}>
           <div style={{position:'sticky', top: 92, alignSelf:'flex-start'}}>
-            <ImgSlot id={`prof-${s.id}`} h="640px" placeholder={`${s.name} · portrait, vertical`} radius={16} style={{borderRadius:16}} />
-            <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 10, marginTop: 12}}>
-              <ImgSlot id={`prof-${s.id}-2`} h="120px" placeholder="with family" radius={10} />
-              <ImgSlot id={`prof-${s.id}-3`} h="120px" placeholder="at school" radius={10} />
-              <ImgSlot id={`prof-${s.id}-4`} h="120px" placeholder="at church" radius={10} />
-            </div>
+            <StudentPhoto src={s.photo} alt={s.name} style={{borderRadius:16, height:640}} />
           </div>
 
           <div>
             <span className="tag tag-primary">{s.tag}</span>
             <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-              {s.name}, <span style={{color:'var(--ink-3)', fontWeight:400}}>{s.age}</span>
+              {s.name}
             </h1>
             <p className="serif" style={{fontStyle:'italic', fontSize: 22, color:'var(--ink-2)', marginTop: 16, lineHeight:1.4, maxWidth: 520}}>
               {story.tagline}
@@ -85,27 +79,27 @@ function StudentProfile({ id, navigate }) {
             <div className="card" style={{marginTop: 32, padding:'28px 28px 28px', background:'var(--card)'}}>
               <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline'}}>
                 <div>
-                  <div style={{fontFamily:'var(--serif)', fontSize: 32}}>${s.raised.toLocaleString()}</div>
-                  <div style={{fontSize:13.5, color:'var(--ink-3)', marginTop:2}}>raised of ${s.goal.toLocaleString()} goal</div>
+                  <div style={{fontFamily:'var(--serif)', fontSize: 32}}>${s.goal.toLocaleString()}</div>
+                  <div style={{fontSize:13.5, color:'var(--ink-3)', marginTop:2}}>per year</div>
                 </div>
                 <div style={{textAlign:'right'}}>
-                  <div style={{fontFamily:'var(--serif)', fontSize: 32, color:'var(--primary)'}}>{Math.round(pct)}%</div>
-                  <div style={{fontSize:13.5, color:'var(--ink-3)', marginTop:2}}>funded</div>
+                  {s.sponsored
+                    ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
+                    : <span className="tag tag-primary">Needs a sponsor</span>}
                 </div>
               </div>
-              <div style={{marginTop: 18}}><Progress value={s.raised} max={s.goal} /></div>
-              <div style={{display:'flex', justifyContent:'space-between', fontSize:13.5, color:'var(--ink-3)', marginTop: 14}}>
-                <span>{s.sponsors} sponsors so far</span>
-                <span>{s.days} days left this term</span>
-              </div>
-              <button className="btn btn-primary btn-arrow"
-                      style={{marginTop: 24, width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
-                      onClick={() => navigate('donate', { fund:'education', id: s.id })}>
-                Sponsor {s.name}
-              </button>
-              <div style={{textAlign:'center', fontSize: 13, color:'var(--ink-3)', marginTop: 14}}>
-                Any amount helps. <a style={{cursor:'pointer', color:'var(--primary)', textDecoration:'underline'}}>Tax-deductible</a>.
-              </div>
+              {!s.sponsored && (
+                <>
+                  <button className="btn btn-primary btn-arrow"
+                          style={{marginTop: 24, width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
+                          onClick={() => navigate('donate', { fund:'education', id: s.id })}>
+                    Sponsor {s.name}
+                  </button>
+                  <div style={{textAlign:'center', fontSize: 13, color:'var(--ink-3)', marginTop: 14}}>
+                    100% goes to tuition. <a style={{cursor:'pointer', color:'var(--primary)', textDecoration:'underline'}}>Tax-deductible</a>.
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -114,13 +108,27 @@ function StudentProfile({ id, navigate }) {
       {/* Story */}
       <section style={{padding:'40px 0 80px', background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)'}}>
         <div className="narrow">
-          <Eyebrow primary>{s.name}'s story</Eyebrow>
+          <p style={{fontFamily:'var(--serif)', fontSize:22, lineHeight:1.45, color:'var(--ink)', marginBottom:32, fontWeight:400}}>
+            {s.name} comes from the town of {s.village} and is studying {s.course} at {s.school}.
+          </p>
+          <Eyebrow primary>In {s.name}'s words</Eyebrow>
           <div style={{marginTop: 32}}>
-            {story.paras.map((p, i) => (
-              <p key={i} style={{fontFamily: i === 0 ? 'var(--serif)' : 'var(--sans)', fontSize: i === 0 ? 22 : 17.5, lineHeight: i === 0 ? 1.45 : 1.7, color: i === 0 ? 'var(--ink)' : 'var(--ink-2)', marginBottom: 24, fontWeight: 400}}>
-                {p}
-              </p>
-            ))}
+            {s.why_assistance && (
+              <>
+                <p style={{fontStyle:'italic', fontSize:15, color:'var(--ink-3)', marginTop:28, marginBottom:10}}>Why are you applying for sponsorship?</p>
+                <p style={{fontFamily:'var(--sans)', fontSize:17.5, lineHeight:1.7, color:'var(--ink-2)', marginBottom:24, fontWeight:400}}>
+                  {s.why_assistance}
+                </p>
+              </>
+            )}
+            {s.testimony && (
+              <>
+                <p style={{fontStyle:'italic', fontSize:15, color:'var(--ink-3)', marginTop:28, marginBottom:10}}>How did you come to know Jesus?</p>
+                <p style={{fontFamily:'var(--sans)', fontSize:17.5, lineHeight:1.7, color:'var(--ink-2)', marginBottom:24, fontWeight:400}}>
+                  {s.testimony}
+                </p>
+              </>
+            )}
           </div>
 
           <div style={{marginTop: 56, padding:'40px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)', textAlign:'center'}}>
@@ -167,27 +175,20 @@ function StudentProfile({ id, navigate }) {
             <button className="btn btn-ghost btn-arrow" onClick={() => navigate('education')}>See all students</button>
           </div>
           <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 20}}>
-            {(window.STUDENTS || []).filter(x => x.id !== s.id).slice(0, 3).map(o => {
-              const op = (o.raised/o.goal)*100;
-              return (
+            {(window.STUDENTS || []).filter(x => x.id !== s.id && !x.sponsored).slice(0, 3).map(o => (
                 <div key={o.id} className="card" style={{padding: 18, cursor:'pointer'}} onClick={() => navigate('profile', {id: o.id})}>
                   <div style={{display:'grid', gridTemplateColumns:'80px 1fr', gap: 16, alignItems:'center'}}>
                     <div style={{width:80, height:80, borderRadius:8, overflow:'hidden'}}>
                       <ImgSlot id={`pother-${o.id}`} h="80px" w="80px" placeholder={o.name} radius={8} />
                     </div>
                     <div>
-                      <div style={{fontFamily:'var(--serif)', fontSize:18}}>{o.name}, {o.age}</div>
+                      <div style={{fontFamily:'var(--serif)', fontSize:18}}>{o.name}</div>
                       <div style={{fontSize:12.5, color:'var(--ink-3)'}}>{o.course}</div>
+                      <div style={{fontSize:12.5, color:'var(--ink-3)', marginTop:2}}>${o.goal.toLocaleString()}/year</div>
                     </div>
                   </div>
-                  <div style={{marginTop: 14}}><Progress value={o.raised} max={o.goal} /></div>
-                  <div style={{display:'flex', justifyContent:'space-between', fontSize:12, color:'var(--ink-3)', marginTop: 8}}>
-                    <span>{Math.round(op)}% funded</span>
-                    <span>${(o.goal - o.raised).toLocaleString()} to go</span>
-                  </div>
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>

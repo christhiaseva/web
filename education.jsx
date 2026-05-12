@@ -1,32 +1,29 @@
 // education.jsx — Browse students (Watsi-style)
 
 // Single-sponsor model: one sponsor per student at $200/year (or $17/mo recurring).
-//  raised = 0   → unsponsored (open for sponsorship)
-//  raised = 200 → fully sponsored for the year
 const STUDENT_GOAL = 200;
 const STUDENTS = [
-  { id:'priya',    name:'Priya',    age:18, course:'B.Sc. Nursing',          school:'Govt Nursing College, Bangalore', village:'Chintamani',     raised:0,           goal:STUDENT_GOAL, sponsored:false, days:14, tag:'Healthcare' },
-  { id:'arjun',    name:'Arjun',    age:17, course:'Diploma · Mechanic',     school:'ITI Chickaballapur',              village:'Bagepalli',      raised:0,           goal:STUDENT_GOAL, sponsored:false, days:22, tag:'Trade' },
-  { id:'lakshmi',  name:'Lakshmi',  age:19, course:'B.Com',                  school:'Bangalore University',            village:'Chickaballapur', raised:STUDENT_GOAL, goal:STUDENT_GOAL, sponsored:true,  days:0,  tag:'Business' },
-  { id:'samuel',   name:'Samuel',   age:18, course:'B.A. Theology',          school:'Bible College, Bangalore',        village:'Gowribindanur',  raised:0,           goal:STUDENT_GOAL, sponsored:false, days:30, tag:'Ministry' },
-  { id:'meena',    name:'Meena',    age:17, course:'B.Sc. Computer Science', school:'Govt Engineering College',        village:'Gudibande',      raised:0,           goal:STUDENT_GOAL, sponsored:false, days:18, tag:'Technology' },
-  { id:'david',    name:'David',    age:18, course:'Diploma · Electrician',  school:'ITI Chintamani',                  village:'Peresandra',     raised:0,           goal:STUDENT_GOAL, sponsored:false, days:28, tag:'Trade' },
-  { id:'asha',     name:'Asha',     age:19, course:'B.Ed (Teaching)',        school:'Sri Sathya Sai College',          village:'Chelur',         raised:STUDENT_GOAL, goal:STUDENT_GOAL, sponsored:true,  days:0,  tag:'Education' },
-  { id:'thomas',   name:'Thomas',   age:18, course:'B.Sc. Agriculture',      school:'UAS Bangalore',                   village:'Devaganhalli',   raised:0,           goal:STUDENT_GOAL, sponsored:false, days:24, tag:'Agriculture' },
+  { id:'priya',    name:'Priya',    course:'B.Sc. Nursing',          school:'Govt Nursing College, Bangalore', village:'Chintamani',     goal:STUDENT_GOAL, sponsored:false, days:14, tag:'Healthcare' },
+  { id:'arjun',    name:'Arjun',    course:'Diploma · Mechanic',     school:'ITI Chickaballapur',              village:'Bagepalli',      goal:STUDENT_GOAL, sponsored:false, days:22, tag:'Trade' },
+  { id:'lakshmi',  name:'Lakshmi',  course:'B.Com',                  school:'Bangalore University',            village:'Chickaballapur', goal:STUDENT_GOAL, sponsored:true,  days:0,  tag:'Business' },
+  { id:'samuel',   name:'Samuel',   course:'B.A. Theology',          school:'Bible College, Bangalore',        village:'Gowribindanur',  goal:STUDENT_GOAL, sponsored:false, days:30, tag:'Ministry' },
+  { id:'meena',    name:'Meena',    course:'B.Sc. Computer Science', school:'Govt Engineering College',        village:'Gudibande',      goal:STUDENT_GOAL, sponsored:false, days:18, tag:'Technology' },
+  { id:'david',    name:'David',    course:'Diploma · Electrician',  school:'ITI Chintamani',                  village:'Peresandra',     goal:STUDENT_GOAL, sponsored:false, days:28, tag:'Trade' },
+  { id:'asha',     name:'Asha',     course:'B.Ed (Teaching)',        school:'Sri Sathya Sai College',          village:'Chelur',         goal:STUDENT_GOAL, sponsored:true,  days:0,  tag:'Education' },
+  { id:'thomas',   name:'Thomas',   course:'B.Sc. Agriculture',      school:'UAS Bangalore',                   village:'Devaganhalli',   goal:STUDENT_GOAL, sponsored:false, days:24, tag:'Agriculture' },
 ];
 
 const STUDENT_TAGS = ['All', 'Healthcare', 'Trade', 'Business', 'Ministry', 'Technology', 'Education', 'Agriculture'];
 
 function StudentCard({ s, navigate }) {
-  const pct = (s.raised / s.goal) * 100;
-  const isUrgent = s.days <= 10;
+  const isUrgent = s.days > 0 && s.days <= 10;
   return (
     <article className="card" style={{display:'flex', flexDirection:'column', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease'}}
              onClick={() => navigate('profile', { id: s.id })}
              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(42,32,20,0.10)';}}
              onMouseLeave={e => { e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='';}}>
-      <div style={{position:'relative', aspectRatio:'4/3'}}>
-        <ImgSlot id={`stu-${s.id}`} h="100%" placeholder={`${s.name} · ${s.age}`} radius={0} style={{borderRadius:0}} />
+      <div style={{position:'relative', aspectRatio:'4/3', display:'flex', alignItems:'center', justifyContent:'center', padding:'24px 22px', background:'var(--bg-2)'}}>
+        {s.intro && <p style={{fontFamily:'var(--serif)', fontSize:32, fontStyle:'italic', color:'var(--primary)', lineHeight:1.2, margin:0, textAlign:'center'}}>{s.intro}</p>}
         <div style={{position:'absolute', top:14, left:14}}>
           <span className="tag tag-primary" style={{background:'rgba(255,251,241,0.92)', borderColor:'transparent'}}>{s.tag}</span>
         </div>
@@ -35,25 +32,23 @@ function StudentCard({ s, navigate }) {
             <span className="tag" style={{background:'var(--primary)', color:'#FFF8EA', borderColor:'transparent'}}>{s.days} days left</span>
           </div>
         )}
+        {s.sponsored && (
+          <div style={{position:'absolute', top:14, right:14}}>
+            <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
+          </div>
+        )}
       </div>
       <div style={{padding:'22px 22px 24px', display:'flex', flexDirection:'column', flex:1}}>
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12}}>
-          <h3 className="serif" style={{fontSize: 24, fontWeight:400}}>{s.name}, {s.age}</h3>
+          <h3 className="serif" style={{fontSize: 24, fontWeight:400}}>{s.name}</h3>
           <span style={{fontSize:12.5, color:'var(--ink-3)'}}>{s.village}</span>
         </div>
         <div style={{fontSize:14, color:'var(--ink-2)', marginTop:6}}>{s.course}</div>
         <div style={{fontSize:13, color:'var(--ink-3)', marginTop:3}}>{s.school}</div>
 
-        <div style={{marginTop: 'auto', paddingTop: 22}}>
-          <div style={{display:'flex', justifyContent:'space-between', fontSize:13, marginBottom:8}}>
-            <span style={{color:'var(--ink-2)'}}><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:18}}>${s.raised.toLocaleString()}</strong> <span style={{color:'var(--ink-3)'}}>of ${s.goal.toLocaleString()}</span></span>
-            <span style={{color:'var(--ink-3)'}}>{s.sponsors} sponsors</span>
-          </div>
-          <Progress value={s.raised} max={s.goal} />
-          <div style={{marginTop: 16, display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-            <span style={{fontSize:13, color:'var(--ink-3)'}}>{Math.round(pct)}% funded</span>
-            <span style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Sponsor {s.name} →</span>
-          </div>
+        <div style={{marginTop: 'auto', paddingTop: 22, display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+          <span style={{fontSize:14, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>
+          {!s.sponsored && <span style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Sponsor {s.name} →</span>}
         </div>
       </div>
     </article>
@@ -63,7 +58,7 @@ function StudentCard({ s, navigate }) {
 function HowItWorks() {
   const steps = [
     { n:'01', t:'Browse students', d:'Each student has a profile, story, and a transparent goal.' },
-    { n:'02', t:'Choose someone to sponsor', d:'Give any amount — partial sponsors fund students together.' },
+    { n:'02', t:'Choose someone to sponsor', d:'One sponsor, one student — $200 covers tuition for the year.' },
     { n:'03', t:'Receive updates', d:'Get letters, photos, and academic reports every term.' },
     { n:'04', t:'Watch a life change', d:'When they graduate, you celebrate alongside them.' },
   ];
@@ -90,13 +85,7 @@ function HowItWorks() {
 }
 
 function Education({ navigate }) {
-  const [sort, setSort] = useState('urgent');
-
   const all = window.STUDENTS || STUDENTS;
-  let list = all;
-  if (sort === 'urgent') list = [...list].sort((a,b) => a.days - b.days);
-  else if (sort === 'newest') list = [...list].sort((a,b) => b.days - a.days);
-  else if (sort === 'almost') list = [...list].sort((a,b) => (b.raised/b.goal) - (a.raised/a.goal));
 
   return (
     <>
@@ -136,28 +125,11 @@ function Education({ navigate }) {
         </div>
       </section>
 
-      {/* Sort */}
-      <section style={{padding:'40px 0 24px'}}>
-        <div className="container">
-          <div style={{display:'flex', justifyContent:'flex-end', alignItems:'center', flexWrap:'wrap', gap: 24}}>
-            <div style={{display:'flex', alignItems:'center', gap: 10, fontSize:13.5}}>
-              <span style={{color:'var(--ink-3)'}}>Sort by</span>
-              <select value={sort} onChange={e => setSort(e.target.value)}
-                      style={{appearance:'none', border:'1px solid var(--line)', borderRadius:999, padding:'8px 28px 8px 14px', background:'transparent', font:'inherit', cursor:'pointer', backgroundImage:`url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%237A6B55' d='M0 0h10L5 6z'/></svg>")`, backgroundRepeat:'no-repeat', backgroundPosition:'right 12px center'}}>
-                <option value="urgent">Most urgent</option>
-                <option value="almost">Almost funded</option>
-                <option value="newest">Newest</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Grid */}
       <section style={{paddingBottom: 80}}>
         <div className="container">
           <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap: 24}}>
-            {list.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
+            {all.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
           </div>
         </div>
       </section>

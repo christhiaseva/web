@@ -542,6 +542,7 @@ image-slot::before {
   font-size: 15px;
   display: block;
   padding: 4px 0;
+  cursor: pointer;
 }
 .footer a:hover { opacity: 1; color: var(--accent-soft); }
 

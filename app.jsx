@@ -29,6 +29,7 @@ const ROUTES = [
   { page: 'stories',   path: '/student-stories'   },
   { page: 'story',     path: '/our-story'         },
   { page: 'churches',  path: '/plant-a-church'    },
+  { page: 'contact',   path: '/contact'           },
   { page: 'profile',   path: '/student/:id'       },
 ];
 
@@ -111,11 +112,14 @@ function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [route, setRoute] = useState(() => parseLocation());
 
-  // Back/forward via History API
+  // Back/forward via History API — restore saved scroll position
   useEffect(() => {
-    const onPop = () => {
+    const onPop = (e) => {
       setRoute(parseLocation());
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      const scrollY = e.state && e.state.scrollY;
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: scrollY || 0, behavior: 'instant' });
+      });
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -132,8 +136,11 @@ function App() {
     const target  = buildUrl(page, params);
     const current = window.location.pathname + window.location.search;
 
+    // Save current scroll position in history state before navigating
+    window.history.replaceState({ scrollY: window.scrollY }, '');
+
     if (target !== current) {
-      window.history.pushState(null, '', target);
+      window.history.pushState({ scrollY: 0 }, '', target);
     }
     setRoute({ page, params });
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -163,6 +170,8 @@ function App() {
     content = <Stories navigate={navigate} />;
   } else if (route.page === 'churches') {
     content = <Churches navigate={navigate} />;
+  } else if (route.page === 'contact') {
+    content = <Contact navigate={navigate} />;
   } else {
     content = <ComingSoon page={route.page} navigate={navigate} />;
   }

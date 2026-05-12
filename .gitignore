@@ -9,3 +9,6 @@ node_modules/
 
 # Local uploads/screenshots
 uploads/
+
+# Local dev server
+serve.py
