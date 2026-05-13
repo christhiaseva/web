@@ -16,40 +16,21 @@ const STUDENTS = [
 const STUDENT_TAGS = ['All', 'Healthcare', 'Trade', 'Business', 'Ministry', 'Technology', 'Education', 'Agriculture'];
 
 function StudentCard({ s, navigate }) {
-  const isUrgent = s.days > 0 && s.days <= 10;
   return (
-    <article className="card" style={{display:'flex', flexDirection:'column', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease'}}
+    <article className="card" style={{padding:'22px 24px', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease'}}
              onClick={() => navigate('profile', { id: s.id })}
              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(42,32,20,0.10)';}}
              onMouseLeave={e => { e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='';}}>
-      <div style={{position:'relative', aspectRatio:'4/3', display:'flex', alignItems:'center', justifyContent:'center', padding:'24px 22px', background:'var(--bg-2)'}}>
-        {s.intro && <p style={{fontFamily:'var(--serif)', fontSize:32, fontStyle:'italic', color:'var(--primary)', lineHeight:1.2, margin:0, textAlign:'center'}}>{s.intro}</p>}
-        <div style={{position:'absolute', top:14, left:14}}>
-          <span className="tag tag-primary" style={{background:'rgba(255,251,241,0.92)', borderColor:'transparent'}}>{s.tag}</span>
-        </div>
-        {isUrgent && (
-          <div style={{position:'absolute', top:14, right:14}}>
-            <span className="tag" style={{background:'var(--primary)', color:'#FFF8EA', borderColor:'transparent'}}>{s.days} days left</span>
-          </div>
-        )}
-        {s.sponsored && (
-          <div style={{position:'absolute', top:14, right:14}}>
-            <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
-          </div>
-        )}
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
+        <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+        <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
       </div>
-      <div style={{padding:'22px 22px 24px', display:'flex', flexDirection:'column', flex:1}}>
-        <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12}}>
-          <h3 className="serif" style={{fontSize: 24, fontWeight:400}}>{s.name}</h3>
-          <span style={{fontSize:12.5, color:'var(--ink-3)'}}>{s.village}</span>
-        </div>
-        <div style={{fontSize:14, color:'var(--ink-2)', marginTop:6}}>{s.course}</div>
-        <div style={{fontSize:13, color:'var(--ink-3)', marginTop:3}}>{s.school}</div>
-
-        <div style={{marginTop: 'auto', paddingTop: 22, display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-          <span style={{fontSize:14, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>
-          {!s.sponsored && <span style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Sponsor {s.name} →</span>}
-        </div>
+      {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>
+        {s.sponsored
+          ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
+          : <span style={{fontFamily:'var(--serif)', fontSize:16, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>}
+        <a style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Read more →</a>
       </div>
     </article>
   );

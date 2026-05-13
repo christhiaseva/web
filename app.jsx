@@ -310,10 +310,10 @@ async function loadData() {
     }
   };
   await Promise.all([
-    tryLoad('data/students.json', 'STUDENTS'),
-    tryLoad('data/churches.json', 'CHURCHES'),
-    tryLoad('data/stories.json',  'STORIES'),
-    tryLoad('data/site.json',     'SITE'),
+    tryLoad('/data/students.json', 'STUDENTS'),
+    tryLoad('/data/churches.json', 'CHURCHES'),
+    tryLoad('/data/stories.json',  'STORIES'),
+    tryLoad('/data/site.json',     'SITE'),
   ]);
 }
 

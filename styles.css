@@ -650,8 +650,14 @@ image-slot::before {
   /* Tables: let the church plant breakdown scroll horizontally */
   table { display: block; overflow-x: auto; }
 
-  /* Footer: 4 cols → 2 cols on mobile */
-  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  /* Footer: brand left, 3 link groups stacked right */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 24px 32px !important;
+  }
+  .footer-grid > :first-child { grid-row: 1 / -1; }
+  .footer-bottom { flex-direction: column !important; gap: 6px; align-items: center !important; text-align: center; }
 
   /* Plant a church form: stack + prevent overflow */
   .plant-form-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
@@ -660,6 +666,9 @@ image-slot::before {
   /* Silpa full story: stack photo above text */
   .silpa-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
   .silpa-photos { position: static !important; top: auto !important; }
+
+  /* Our Story hero photo: don't crop on mobile */
+  .story-hero-img { height: auto !important; }
 
   /* Footer */
   .footer { padding: 56px 0 32px; margin-top: 56px; }

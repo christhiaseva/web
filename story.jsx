@@ -22,7 +22,7 @@ function StoryHeroPhoto() {
     <section style={{padding:'0 0 32px'}}>
       <div className="container">
         <div style={{position:'relative', borderRadius:'var(--r-lg)', overflow:'hidden'}}>
-          <img src="/images/story-mathew-mary-john.jpg" alt="Mathew, Mary, John and their children at a beach in India" style={{width:'100%', height:520, objectFit:'cover', borderRadius:20, display:'block'}} />
+          <img src="/images/story-mathew-mary-john.jpg" alt="Mathew, Mary, John and their children at a beach in India" className="story-hero-img" style={{width:'100%', height:520, objectFit:'cover', borderRadius:20, display:'block'}} />
           <div style={{position:'absolute', left: 32, bottom: 28, padding:'14px 20px', background:'rgba(247,241,226,0.92)', borderRadius:8, fontSize: 13.5, color:'var(--ink-2)', maxWidth: 520, backdropFilter:'blur(6px)'}}>
             Mathew, Mary, Mathew's brother John and their 3 children Cecil, Suja and Jaisen at a beach in India. John was part of the mission from the beginning until his death in 2023.
           </div>

@@ -151,7 +151,7 @@ function Donate({ params, navigate }) {
   return (
     <>
       {/* Breadcrumb */}
-      <div className="container" style={{padding:'24px 0 0', fontSize:13.5, color:'var(--ink-3)'}}>
+      <div className="container" style={{paddingTop:24, fontSize:13.5, color:'var(--ink-3)'}}>
         <a onClick={() => navigate('home')} style={{cursor:'pointer'}}>Home</a>
         {d.breadcrumb.map((b, i) => {
           const [page, sub] = b.split(':');

@@ -344,12 +344,12 @@ function EducationPreview({ navigate }) {
             <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Browse students</button>
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'column', gap:16}}>
+        <div style={{display:'flex', flexDirection:'column', gap:16, minWidth:0}}>
           {featured.map(s => (
-              <div key={s.id} className="card" style={{padding:'22px 24px'}}>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12}}>
+              <div key={s.id} className="card" style={{padding:'22px 24px', minWidth:0}}>
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
                   <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
-                  <span style={{fontSize:13.5, color:'var(--ink-3)', whiteSpace:'nowrap'}}>{s.course} · {s.village}</span>
+                  <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
                 </div>
                 {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
                 <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>

@@ -38,7 +38,7 @@ function StudentProfile({ id, navigate }) {
   return (
     <>
       {/* Breadcrumb */}
-      <div className="container" style={{padding:'24px 0 0', fontSize:13.5, color:'var(--ink-3)'}}>
+      <div className="container" style={{paddingTop:24, fontSize:13.5, color:'var(--ink-3)'}}>
         <a onClick={() => navigate('home')} style={{cursor:'pointer'}}>Home</a>
         <span style={{margin:'0 8px'}}>/</span>
         <a onClick={() => navigate('education')} style={{cursor:'pointer'}}>Sponsor a student</a>
@@ -176,16 +176,15 @@ function StudentProfile({ id, navigate }) {
           </div>
           <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 20}}>
             {(window.STUDENTS || []).filter(x => x.id !== s.id && !x.sponsored).slice(0, 3).map(o => (
-                <div key={o.id} className="card" style={{padding: 18, cursor:'pointer'}} onClick={() => navigate('profile', {id: o.id})}>
-                  <div style={{display:'grid', gridTemplateColumns:'80px 1fr', gap: 16, alignItems:'center'}}>
-                    <div style={{width:80, height:80, borderRadius:8, overflow:'hidden'}}>
-                      <ImgSlot id={`pother-${o.id}`} h="80px" w="80px" placeholder={o.name} radius={8} />
-                    </div>
-                    <div>
-                      <div style={{fontFamily:'var(--serif)', fontSize:18}}>{o.name}</div>
-                      <div style={{fontSize:12.5, color:'var(--ink-3)'}}>{o.course}</div>
-                      <div style={{fontSize:12.5, color:'var(--ink-3)', marginTop:2}}>${o.goal.toLocaleString()}/year</div>
-                    </div>
+                <div key={o.id} className="card" style={{padding:'22px 24px', cursor:'pointer'}} onClick={() => navigate('profile', {id: o.id})}>
+                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
+                    <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{o.name}</div>
+                    <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{o.course}</span>
+                  </div>
+                  {o.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{o.intro}</p>}
+                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>
+                    <span style={{fontFamily:'var(--serif)', fontSize:16, color:'var(--ink-2)'}}>${o.goal.toLocaleString()}/year</span>
+                    <span style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Read more →</span>
                   </div>
                 </div>
             ))}

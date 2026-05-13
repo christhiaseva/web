@@ -42,8 +42,6 @@ function Nav({ page, navigate }) {
     { key: 'story',     label: 'Our Story' },
     { key: 'education', label: 'Sponsor a Student' },
     { key: 'churches',  label: 'Help Plant a Church' },
-    { key: 'evangelism',label: 'Evangelism' },
-    { key: 'stories',   label: 'Student Stories' },
   ];
 
   return (
@@ -92,7 +90,7 @@ function Nav({ page, navigate }) {
           </div>
           <div className="mobile-menu-links">
             {mobileLinks.map(l => (
-              <a key={l.key} className={`mobile-menu-link ${page === l.key ? 'active' : ''}`}
+              <a key={l.key} className={`mobile-menu-link ${(l.key === 'education' ? ['education', 'profile'].includes(page) : page === l.key) ? 'active' : ''}`}
                  onClick={() => go(l.key)}>{l.label}</a>
             ))}
             <button className="donate-cta mobile-donate" onClick={() => go('donate')}>
@@ -141,9 +139,9 @@ function Footer({ navigate }) {
           <a onClick={() => navigate('donate', { fund:'church' })}>Plant a Church</a>
         </div>
       </div>
-      <div className="container" style={{marginTop:60, paddingTop:24, borderTop:'1px solid rgba(247,241,226,0.12)', display:'flex', justifyContent:'space-between', fontSize:13, color:'rgba(247,241,226,0.5)'}}>
+      <div className="container footer-bottom" style={{marginTop:60, paddingTop:24, borderTop:'1px solid rgba(247,241,226,0.12)', display:'flex', justifyContent:'space-between', fontSize:13, color:'rgba(247,241,226,0.5)'}}>
         <span>© {new Date().getFullYear()} Christhia Seva Mission</span>
-        <span>Karnataka, India</span>
+        <span>A registered 501(c)(3) organization</span>
       </div>
     </footer>
   );

@@ -26,7 +26,7 @@ function ContactForm() {
       } else {
         setStatus('error');
       }
-    } catch {
+    } catch (e) {
       setStatus('error');
     }
   };
