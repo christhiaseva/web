@@ -166,6 +166,25 @@ function Eyebrow({ children, primary = false }) {
   );
 }
 
+// ── Breadcrumb ─────────────────────────────
+// crumbs: array of { label, page, params? } — last item is plain text (current page)
+function Breadcrumb({ crumbs, navigate }) {
+  return (
+    <div className="container" style={{paddingTop:24, fontSize:13.5, color:'var(--ink-3)'}}>
+      <a onClick={() => navigate('home')} style={{cursor:'pointer'}}>Home</a>
+      {crumbs.map((c, i) => (
+        <React.Fragment key={i}>
+          <span style={{margin:'0 8px'}}>/</span>
+          {i < crumbs.length - 1
+            ? <a onClick={() => navigate(c.page, c.params)} style={{cursor:'pointer'}}>{c.label}</a>
+            : <span style={{color:'var(--ink-2)'}}>{c.label}</span>
+          }
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 // ── Section header ──────────────────────────
 function SectionHeader({ eyebrow, title, sub, primary = true }) {
   return (

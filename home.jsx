@@ -61,10 +61,7 @@ function HeroFeaturedStory({ navigate }) {
           <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
             Sponsor a student
           </button>
-          <button className="btn btn-ghost" onClick={() => {
-            const el = document.getElementById('silpa-story');
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }}>
+          <button className="btn btn-ghost" onClick={() => navigate('story-detail', { id: 'silpa' })}>
             Read Silpa's story
           </button>
         </div>
@@ -76,9 +73,8 @@ function HeroFeaturedStory({ navigate }) {
             borderRadius: 12, padding:'18px 22px', maxWidth: 300,
             boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
           }}>
-            <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>The investment</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:24, marginBottom:6, lineHeight:1.1}}>$600 total <span style={{color:'var(--ink-3)', fontSize:14}}>over 3 years</span></div>
-            <div style={{fontSize:12.5, color:'var(--ink-3)', marginTop:8, lineHeight:1.4}}>Now: 8 years as a nurse · home for her mother</div>
+            <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
+            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>8 years as a nurse · a home for her mother</div>
           </div>
         </div>
         <div className="hero-story-stats">
@@ -230,90 +226,6 @@ function Ministries({ navigate }) {
             </div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-// ── Featured success story · Silpa ────────
-function FeaturedStories({ navigate }) {
-  return (
-    <section id="silpa-story" className="section" style={{background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)', borderBottom:'1px solid var(--line-soft)'}}>
-      <div className="container">
-        <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom: 48, gap: 32, flexWrap:'wrap'}}>
-          <div style={{maxWidth: 720}}>
-            <Eyebrow primary>Silpa's full story · in Mathew's words</Eyebrow>
-            <h2 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 18, fontWeight:400, letterSpacing:'-0.015em'}}>
-              $200 a year for three years. <em style={{color:'var(--primary)', fontStyle:'italic'}}>A whole new life.</em>
-            </h2>
-          </div>
-          <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase'}}>
-            Silpa &middot; Shidalagatta
-          </div>
-        </div>
-
-        <div className="silpa-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>
-          {/* Photo column */}
-          <div className="silpa-photos" style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
-            <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', height:540, objectFit:'cover', borderRadius:16, display:'block'}} />
-            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 12}}>
-              <ImgSlot id="silpa-house"   h="180px" placeholder="Silpa's brick home · the first in her village" radius={12} />
-              <ImgSlot id="silpa-mom"     h="180px" placeholder="Silpa with her mother" radius={12} />
-            </div>
-          </div>
-
-          {/* Story column */}
-          <div>
-            <p className="serif" style={{fontSize: 24, lineHeight: 1.45, color:'var(--ink)', marginBottom: 28, textWrap:'pretty'}}>
-              I met Silpa in our church in Shidalagatta when she was eleven years old. She had dropped out of school and was working in the fields all day to take care of her mom, who was an asthma patient. They were living in a hut.
-            </p>
-
-            <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 20}}>
-              The father had left before Silpa was born. She has never met him. Mary and I took her and her mom under our wings, provided all their needs, and started to send her to school. She had to restart fifth grade.
-            </p>
-
-            <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 20}}>
-              High school was free at the government school; we only needed to provide her uniform and supplies. She passed with good marks, and we sent her to nursing college.
-            </p>
-
-            <p style={{fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 32}}>
-              Eight years ago she graduated and started to work as a nurse. With the help of White Oak Christian Church and her own ability, she built a two-bedroom brick home in her own village for her and her mom, <strong style={{color:'var(--ink)', fontWeight:500}}>the first brick home in that village</strong>.
-            </p>
-
-            {/* Pull quote */}
-            <figure style={{margin:'8px 0 32px', padding:'28px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)'}}>
-              <blockquote style={{margin:0, fontFamily:'var(--serif)', fontStyle:'italic', fontSize:'clamp(22px, 2.6vw, 30px)', lineHeight:1.4, color:'var(--ink)', textWrap:'balance'}}>
-                "It was a small amount for us, but a huge investment in Silpa's life. We didn't lose anything &mdash; she gained a new life."
-              </blockquote>
-              <figcaption style={{marginTop: 16, fontSize:13, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', fontWeight:500}}>
-                &mdash; Mathew Mathai, founder
-              </figcaption>
-            </figure>
-
-            {/* Investment summary */}
-            <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 0, border:'1px solid var(--line)', borderRadius: 12, overflow:'hidden', background:'var(--card)'}}>
-              {[
-                { n:'$600', l:'total invested over 3 years' },
-                { n:'8 yrs', l:'working as a nurse since' },
-                { n:'1', l:'whole new life · and a house for her mom' },
-              ].map((s, i) => (
-                <div key={s.l} style={{padding:'24px 22px', borderRight: i < 2 ? '1px solid var(--line)' : 'none'}}>
-                  <div style={{fontFamily:'var(--serif)', fontSize: 32, color:'var(--primary)', lineHeight: 1}}>{s.n}</div>
-                  <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 10, lineHeight:1.4}}>{s.l}</div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{marginTop: 32, display:'flex', gap: 14, flexWrap:'wrap'}}>
-              <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
-                Be the next $200
-              </button>
-              <button className="btn btn-ghost" onClick={() => navigate('education')}>
-                Browse students
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -640,45 +552,6 @@ function TownPin({ town, position, visible, delay }) {
   );
 }
 
-// ── Timeline ───────────────────────────────
-function Timeline() {
-  const events = [
-    { y:'1980', t:'Mathew arrives at a Shidalagatta intersection', d:'A briefcase, no contacts, no language. Through Mrs. Solomon, a retired teacher half the town had once been a student of, the first introductions are made.' },
-    { y:'1987', t:'First pastor ordained', d:'The first home church grows enough to call a full-time pastor.' },
-    { y:'1995', t:'Church building dedicated', d:'After 15 years of meeting in homes, the first sanctuary is built and dedicated.' },
-    { y:'2003', t:'Education ministry begins', d:'Sponsorship for the first 12 students starting college.' },
-    { y:'2014', t:'Five churches across the region', d:'Cluster congregations begin in surrounding villages.' },
-    { y:'2020', t:'Family aid expands during COVID-19', d:'Emergency relief reaches 400+ families in lockdown.' },
-    { y:'2026', t:'10 churches · 200+ students supported', d:'Today, the mission walks alongside thousands across the Chickaballapur district and beyond.' },
-  ];
-  return (
-    <section className="section">
-      <SectionHeader
-        eyebrow="Our story · since 1980"
-        title="From one intersection to ten churches."
-        sub="Forty-six years of small obediences, faithfully accumulated."
-      />
-      <div className="container">
-        <div style={{position:'relative'}}>
-          <div style={{position:'absolute', left:'7.5%', top: 8, bottom: 8, width: 1, background:'var(--line)'}}></div>
-          {events.map((e, i) => (
-            <div key={e.y} style={{display:'grid', gridTemplateColumns:'15% 85%', gap: 24, padding:'24px 0', position:'relative'}}>
-              <div style={{textAlign:'right', paddingRight: 24, position:'relative'}}>
-                <div style={{fontFamily:'var(--serif)', fontSize: 28, color:'var(--primary)'}}>{e.y}</div>
-                <div style={{position:'absolute', right: -7, top: 14, width:13, height:13, borderRadius:'50%', background:'var(--bg)', border:'2px solid var(--primary)'}}></div>
-              </div>
-              <div style={{paddingLeft: 16, paddingRight: 24}}>
-                <h4 className="serif" style={{fontSize: 22, marginBottom: 6, fontWeight:400}}>{e.t}</h4>
-                <p style={{color:'var(--ink-2)', fontSize:15.5, lineHeight:1.55, maxWidth: 600}}>{e.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── Final CTA ─────────────────────────────
 function FinalCTA({ navigate }) {
   return (
@@ -697,8 +570,8 @@ function FinalCTA({ navigate }) {
           <button className="btn" onClick={() => navigate('education')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
             Sponsor a student →
           </button>
-          <button className="btn btn-outline" onClick={() => navigate('donate')} style={{color:'#FFF8EA', borderColor:'rgba(255,248,234,0.7)'}}>
-            Make a donation
+          <button className="btn" onClick={() => navigate('churches')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
+            Help plant a church →
           </button>
         </div>
       </div>
@@ -713,11 +586,9 @@ function Home({ navigate, heroVariant }) {
       <Hero variant={heroVariant} navigate={navigate} />
       <MissionBand />
       <Ministries navigate={navigate} />
-      <FeaturedStories navigate={navigate} />
       <Verse text="And he said to them, 'Go into all the world and proclaim the gospel to the whole creation.'" cite="Mark 16:15" />
       <EducationPreview navigate={navigate} />
       <ChurchesMap />
-      <Timeline />
       <FinalCTA navigate={navigate} />
     </>
   );

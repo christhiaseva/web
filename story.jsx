@@ -128,7 +128,22 @@ function StoryProse() {
         </p>
 
         <p style={proseStyle}>
-          So that's where they began.
+          So that's where they began. And God has been faithful. Over the decades, the generosity of supporting churches and individuals has been multiplied far beyond what anyone could have planned. What started as two people at an intersection has become a movement reaching villages across southern India with the love of Jesus.
+        </p>
+
+        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16, margin:'40px 0'}}>
+          <div>
+            <img src="/images/story-church-construction.jpg" alt="Church building under construction" style={{width:'100%', aspectRatio:'1', objectFit:'cover', borderRadius:12, display:'block'}} />
+            <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Church in Shidalagatta being built</p>
+          </div>
+          <div>
+            <img src="/images/story-baptism.jpg" alt="Pastor Moses baptizing a young woman" style={{width:'100%', aspectRatio:'1', objectFit:'cover', borderRadius:12, display:'block'}} />
+            <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Pastor Moses baptizing a young woman</p>
+          </div>
+        </div>
+
+        <p style={proseStyle}>
+          Today, more than fifteen pastors serve across ten churches, ministering to over a thousand people who have come to know Christ. Each pastor was raised up from within the communities the mission serves. Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.
         </p>
 
         <div style={{margin:'40px 0'}}>
@@ -224,6 +239,7 @@ function StoryCTA({ navigate }) {
 function Story({ navigate }) {
   return (
     <>
+      <Breadcrumb crumbs={[{ label:'Our story' }]} navigate={navigate} />
       <StoryHero />
       <StoryHeroPhoto />
       <StoryProse />

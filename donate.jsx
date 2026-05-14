@@ -1,13 +1,12 @@
 // donate.jsx — Unified donation flow
 // Designations:
 //   fund = 'general' | 'education' | 'church'
-//   id   = student id (when fund=education) | church id (when fund=church) | 'next' | undefined
-// Hash routes parsed by app.jsx:
-//   #/donate                          → general
-//   #/donate/education                → education general fund
-//   #/donate/education/{studentId}    → specific student
-//   #/donate/church                   → church planting general fund
-//   #/donate/church/{churchId}        → specific church
+//   id   = student id (when fund=education) | 'next' | undefined
+// Routes parsed by app.jsx:
+//   /donate                          → general
+//   /donate/education                → education general fund
+//   /donate/education/{studentId}    → specific student
+//   /donate/church                   → church planting fund
 //   ?amount=NN appended → preselect amount
 
 function getDesignation({ fund, id }) {
@@ -45,32 +44,11 @@ function getDesignation({ fund, id }) {
     receiptName: 'students',
   };
 
-  if (fund === 'church' && id && id !== 'next') {
-    const c = (window.CHURCHES || []).find(x => x.id === id);
-    if (c) return {
-      kind:'church', fund, id,
-      title: `Give to ${c.town}`,
-      heading: <>Stand with the church in <em style={{fontStyle:'italic', color:'var(--primary)'}}>{c.town}.</em></>,
-      sub: c.needs
-        ? `${c.needs.label}: $${(c.needs.goal - c.needs.raised).toLocaleString()} still needed.`
-        : `${c.town} is self-sustaining. Your gift goes toward special projects and pastor support.`,
-      breadcrumb: ['churches'],
-      crumbLabels: ['Help Plant a Church'],
-      presets: [50, 100, 250, 500, 1000],
-      defaultRecurring: false,
-      defaultAmount: 100,
-      sidebar: { kind:'church', c },
-      receiptName: c.town,
-    };
-  }
-
   if (fund === 'church') return {
-    kind:'fund', fund, id: id === 'next' ? 'next' : null,
-    title: id === 'next' ? 'Help plant the next church' : 'Give to church planting',
+    kind:'fund', fund, id: null,
+    title: 'Help plant the next church',
     heading: <>Help us plant <em style={{fontStyle:'italic', color:'var(--primary)'}}>the next church.</em></>,
-    sub: id === 'next'
-      ? "We're praying about a new village in the Chickaballapur district. Your gift starts the work."
-      : 'Your gift supports the church-planting fund: pastor support, leases, Bibles, chairs, and outreach for new and growing congregations.',
+    sub: "Your gift supports the church-planting fund, helping new and growing congregations take root across the district.",
     breadcrumb: ['churches'],
     crumbLabels: ['Help Plant a Church'],
     presets: [50, 100, 250, 500, 1000],
@@ -150,23 +128,18 @@ function Donate({ params, navigate }) {
 
   return (
     <>
-      {/* Breadcrumb */}
-      <div className="container" style={{paddingTop:24, fontSize:13.5, color:'var(--ink-3)'}}>
-        <a onClick={() => navigate('home')} style={{cursor:'pointer'}}>Home</a>
-        {d.breadcrumb.map((b, i) => {
-          const [page, sub] = b.split(':');
-          return (
-            <React.Fragment key={i}>
-              <span style={{margin:'0 8px'}}>/</span>
-              <a onClick={() => sub ? navigate(page, { id: sub }) : navigate(page)} style={{cursor:'pointer'}}>
-                {d.crumbLabels[i]}
-              </a>
-            </React.Fragment>
-          );
-        })}
-        <span style={{margin:'0 8px'}}>/</span>
-        <span style={{color:'var(--ink-2)'}}>Donate</span>
-      </div>
+      <Breadcrumb crumbs={(() => {
+        if (!d.crumbLabels.length) return [{ label: 'Donate' }];
+        if (d.kind === 'student') return [
+          { label: 'Donate', page: 'donate' },
+          { label: d.crumbLabels[0], page: 'donate', params: { fund } },
+          { label: d.title },
+        ];
+        return [
+          { label: 'Donate', page: 'donate' },
+          { label: d.crumbLabels[0] },
+        ];
+      })()} navigate={navigate} />
 
       <section style={{padding:'40px 0 80px'}}>
         <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 380px', gap: 64, alignItems:'flex-start'}}>
@@ -182,15 +155,6 @@ function Donate({ params, navigate }) {
               <FundTabs fund={fund} navigate={navigate} />
             )}
 
-            {/* When pinned to specific recipient, show a "switch to general fund" link */}
-            {step === 1 && (d.kind === 'student' || d.kind === 'church') && (
-              <div style={{marginTop: 22, fontSize:13.5}}>
-                <a onClick={() => navigate('donate', { fund })}
-                   style={{cursor:'pointer', color:'var(--ink-3)'}}>
-                  ← Give to the general {fund === 'education' ? 'education' : 'church-planting'} fund instead
-                </a>
-              </div>
-            )}
 
             {/* Steps */}
             <div style={{display:'flex', gap: 0, marginTop: 36, borderBottom:'1px solid var(--line)'}}>
@@ -412,36 +376,15 @@ function DonateSidebar({ d, navigate }) {
     return (
       <div className="card" style={{padding: 22}}>
         <div style={{borderRadius:8, overflow:'hidden', marginBottom: 18, aspectRatio:'4/3'}}>
-          <ImgSlot id={`don-stu-${s.id}`} h="100%" placeholder={s.name} radius={8} />
+          {s.photo
+            ? <img src={s.photo} alt={s.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}} />
+            : <ImgSlot id={`don-stu-${s.id}`} h="100%" placeholder={s.name} radius={8} />
+          }
         </div>
         <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{s.name}</div>
         <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 4}}>{s.course}</div>
         <div style={{fontSize:13, color:'var(--ink-3)'}}>{s.school}</div>
         <div style={{fontSize:13, color:'var(--ink-2)', marginTop: 12}}>${s.goal.toLocaleString()}/year</div>
-      </div>
-    );
-  }
-
-  if (d.sidebar.kind === 'church') {
-    const c = d.sidebar.c;
-    return (
-      <div className="card" style={{padding: 22}}>
-        <div style={{borderRadius:8, overflow:'hidden', marginBottom: 18, aspectRatio:'4/3'}}>
-          <ImgSlot id={`don-ch-${c.id}`} h="100%" placeholder={c.town} radius={8} />
-        </div>
-        <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{c.town}</div>
-        <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 4}}>Since {c.established} · {c.pastor}</div>
-        <div style={{fontSize:13, color:'var(--ink-3)'}}>{c.members} in worship</div>
-        {c.needs && (
-          <>
-            <div style={{marginTop: 18}}><Progress value={c.needs.raised} max={c.needs.goal} /></div>
-            <div style={{display:'flex', justifyContent:'space-between', fontSize:12.5, color:'var(--ink-3)', marginTop: 8}}>
-              <span>${c.needs.raised.toLocaleString()} raised</span>
-              <span>${(c.needs.goal - c.needs.raised).toLocaleString()} to go</span>
-            </div>
-            <div style={{fontSize: 12.5, color:'var(--ink-3)', marginTop: 12, lineHeight: 1.5}}>{c.needs.label}</div>
-          </>
-        )}
       </div>
     );
   }
@@ -454,7 +397,7 @@ function DonateSidebar({ d, navigate }) {
           Pooled gifts support students who don't yet have a sponsor, and cover books, hostels, and emergency tuition gaps.
         </p>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
-          {[{n:'200+', l:'students supported'}, {n:'94%', l:'graduation rate'}, {n:'$1,650', l:'avg. annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
+          {[{n:'200+', l:'students supported'}, {n:'$200', l:'annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
             <div key={s.l} style={{padding:'10px 0'}}>
               <div style={{fontFamily:'var(--serif)', fontSize: 22, color:'var(--primary)'}}>{s.n}</div>
               <div style={{fontSize:12, color:'var(--ink-3)', marginTop:2}}>{s.l}</div>
@@ -471,17 +414,17 @@ function DonateSidebar({ d, navigate }) {
     return (
       <div className="card" style={{padding: 28}}>
         <h3 className="serif" style={{fontSize: 22, fontWeight:400, marginBottom: 14}}>Church planting fund</h3>
-        <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
-          $9,800 plants a church for its first year: pastor, lease, Bibles, chairs, and outreach. By year five, most plants are self-sustaining.
-        </p>
-        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
-          {[{n:'10', l:'churches planted'}, {n:'8', l:'pastors raised up'}, {n:'$9,800', l:'cost per plant'}, {n:'960+', l:'in worship weekly'}].map(s => (
+        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16, marginBottom: 18}}>
+          {[{n:'--', l:'churches planted'}, {n:'----', l:'in worship weekly'}].map(s => (
             <div key={s.l} style={{padding:'10px 0'}}>
               <div style={{fontFamily:'var(--serif)', fontSize: 22, color:'var(--primary)'}}>{s.n}</div>
               <div style={{fontSize:12, color:'var(--ink-3)', marginTop:2}}>{s.l}</div>
             </div>
           ))}
         </div>
+        <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
+          By donating to the church planting fund, you'll receive updates as we identify where the next church will be and have the opportunity to join us on the journey from the very beginning.
+        </p>
         <button className="btn btn-ghost" style={{marginTop: 18, width:'100%', justifyContent:'center'}}
                 onClick={() => navigate('churches')}>See where we are →</button>
       </div>

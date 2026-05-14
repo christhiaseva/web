@@ -26,7 +26,8 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 // Legacy hash URLs (#/donate/...) are redirected once at load.
 const ROUTES = [
   { page: 'education', path: '/sponsor-a-student' },
-  { page: 'stories',   path: '/student-stories'   },
+  { page: 'stories',      path: '/student-stories'      },
+  { page: 'story-detail', path: '/student-stories/:id' },
   { page: 'story',     path: '/our-story'         },
   { page: 'churches',  path: '/plant-a-church'    },
   { page: 'contact',   path: '/contact'           },
@@ -165,6 +166,8 @@ function App() {
     content = <Donate params={route.params} navigate={navigate} />;
   } else if (route.page === 'story') {
     content = <Story navigate={navigate} />;
+  } else if (route.page === 'story-detail') {
+    content = <StoryDetail id={route.params.id} navigate={navigate} />;
   } else if (route.page === 'stories') {
     content = <Stories navigate={navigate} />;
   } else if (route.page === 'churches') {
@@ -301,7 +304,6 @@ async function loadData() {
       if (key === 'STUDENTS' && json.students) window.STUDENTS = json.students;
       if (key === 'CHURCHES' && json.churches) {
         window.CHURCHES = json.churches;
-        if (json.plant_line_items) window.PLANT_LINE_ITEMS = json.plant_line_items;
       }
       if (key === 'STORIES'  && json.stories)  window.STORIES  = json.stories;
       if (key === 'SITE')                      window.SITE     = json;

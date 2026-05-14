@@ -37,14 +37,10 @@ function StudentProfile({ id, navigate }) {
 
   return (
     <>
-      {/* Breadcrumb */}
-      <div className="container" style={{paddingTop:24, fontSize:13.5, color:'var(--ink-3)'}}>
-        <a onClick={() => navigate('home')} style={{cursor:'pointer'}}>Home</a>
-        <span style={{margin:'0 8px'}}>/</span>
-        <a onClick={() => navigate('education')} style={{cursor:'pointer'}}>Sponsor a student</a>
-        <span style={{margin:'0 8px'}}>/</span>
-        <span style={{color:'var(--ink-2)'}}>{s.name}</span>
-      </div>
+      <Breadcrumb crumbs={[
+        { label:'Sponsor a student', page:'education' },
+        { label: s.name },
+      ]} navigate={navigate} />
 
       {/* Hero */}
       <section style={{padding:'40px 0 60px'}}>

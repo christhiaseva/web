@@ -12,21 +12,19 @@
       "role": "Nurse · graduated 8 years ago",
       "headline": "$200 a year for three years gave Silpa a whole new life.",
       "summary": "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
-      "invested": "$600 over 3 years",
       "outcome": "Working nurse · brick home for her mother",
       "tag": "Healthcare"
     },
     {
-      "id": "rajesh-pastor",
-      "name": "Pastor Rajesh",
-      "village": "Shidalagatta",
+      "id": "megana",
+      "name": "Megana",
+      "village": "Chickaballapur",
       "status": "past",
-      "role": "Pastor · ordained 2019",
-      "headline": "\"My uncle laughed when I said I wanted to plant a church. Now he prays with us every Sunday.\"",
-      "summary": "Rajesh was sponsored through Bible college. He now pastors a 90-member congregation that meets in a rented hall — including the uncle who once mocked him.",
-      "invested": "Bible college tuition · 4 years",
-      "outcome": "Lead pastor · 90-member congregation",
-      "tag": "Ministry"
+      "role": "Nurse · graduated 4 years ago",
+      "headline": "She was cleaning houses at seven. Today she cares for patients at a hospital.",
+      "summary": "Megana started attending Sunday school at nine and cleaning houses at seven to support her family. Generous sponsors helped her through nursing college. Four years later, she's a working nurse helping her sister through college.",
+      "outcome": "Working nurse · helping her sister through college",
+      "tag": "Healthcare"
     }
   ]
 }

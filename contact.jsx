@@ -67,6 +67,7 @@ function ContactForm() {
 function Contact({ navigate }) {
   return (
     <>
+      <Breadcrumb crumbs={[{ label:'Contact' }]} navigate={navigate} />
       <section style={{padding:'56px 0 0'}}>
         <div className="container">
           <Eyebrow primary>Get in touch</Eyebrow>

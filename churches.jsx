@@ -2,75 +2,67 @@
 
 const CHURCHES = [
   {
-    id:'shidalagatta', town:'Shidalagatta', count:1, established:1980, members:140, pastor:'Pastor Rajesh',
+    id:'chickaballapur', town:'Chickaballapur', count:1, established:'--', members:'--', pastor:'--',
+    status:'mature',
+    note:'The district-headquarters congregation. Meets in a rented hall; saving toward a permanent space.',
+    needs: null,
+  },
+  {
+    id:'shidalagatta', town:'Shidalagatta', count:1, established:'--', members:'--', pastor:'--',
     status:'mature',
     note:"Where the mission began. The first home gathering met here in 1980, and where Silpa came to faith as a child.",
     needs: null,
   },
   {
-    id:'chintamani', town:'Chintamani', count:1, established:1992, members:180, pastor:'Pastor Daniel',
+    id:'chintamani', town:'Chintamani', count:1, established:'--', members:'--', pastor:'--',
     status:'mature',
     note:'A built sanctuary serving the silk-trading town. Hosts the regional Bible study and youth gatherings.',
     needs: null,
   },
   {
-    id:'chickaballapur', town:'Chickaballapur', count:1, established:1998, members:160, pastor:'Pastor Joseph',
-    status:'mature',
-    note:'The district-headquarters congregation. Meets in a rented hall; saving toward a permanent space.',
-    needs: { kind:'building', goal: 18000, raised: 6400, label:'Building fund · permanent sanctuary' },
-  },
-  {
-    id:'gowribindanur', town:'Gowribindanur', count:1, established:2003, members:120, pastor:'Pastor Kumar',
+    id:'gowribindanur', town:'Gowribindanur', count:1, established:'--', members:'--', pastor:'--',
     status:'mature',
     note:'Planted in a market town near the Andhra border; a steady, self-supporting congregation.',
     needs: null,
   },
   {
-    id:'bagepalli', town:'Bagepalli', count:1, established:2008, members:95, pastor:'Pastor Stephen',
+    id:'bagepalli', town:'Bagepalli', count:1, established:'--', members:'--', pastor:'--',
     status:'growing',
     note:'A farming community on the highway north. Worship under a tin roof beside the pastor\'s home.',
-    needs: { kind:'pastor', goal: 4800, raised: 1850, label:'Pastor support · second year' },
+    needs: null,
   },
   {
-    id:'devaganhalli', town:'Devaganhalli', count:1, established:2012, members:80, pastor:'Pastor Mark',
+    id:'devaganhalli', town:'Devaganhalli', count:1, established:'--', members:'--', pastor:'--',
     status:'growing',
     note:'A young congregation gathered from three nearby hamlets; meets weekly in a rented shopfront.',
     needs: null,
   },
   {
-    id:'chelur', town:'Chelur', count:1, established:2015, members:65, pastor:'Pastor Babu',
+    id:'chelur', town:'Chelur', count:1, established:'--', members:'--', pastor:'--',
     status:'growing',
     note:'A village plant born out of evening prayer meetings. Many first-generation believers.',
     needs: null,
   },
   {
-    id:'gudibande', town:'Gudibande', count:1, established:2018, members:55, pastor:'Pastor Thomas',
+    id:'gudibande', town:'Gudibande', count:1, established:'--', members:'--', pastor:'--',
     status:'growing',
     note:'A small hill-fort town. The congregation walks in from surrounding hamlets for Sunday worship.',
-    needs: { kind:'building', goal: 7500, raised: 1200, label:'Roof and chairs for the meeting space' },
+    needs: null,
   },
   {
-    id:'peresandra', town:'Peresandra', count:1, established:2021, members:42, pastor:'Pastor John',
+    id:'peresandra', town:'Peresandra', count:1, established:'--', members:'--', pastor:'--',
     status:'new',
     note:'A roadside village along the Bangalore highway. Twelve families meet every Sunday in a home.',
-    needs: { kind:'pastor', goal: 4800, raised: 980, label:'Pastor support · first full year' },
+    needs: null,
   },
   {
-    id:'kodigenhalli', town:'Kodigenhalli', count:1, established:2024, members:28, pastor:'Pastor Babu (planting)',
+    id:'kodigenhalli', town:'Kodigenhalli', count:1, established:'--', members:'--', pastor:'--',
     status:'new',
     note:'The newest plant. A home gathering of seven families; raising funds for a meeting hall.',
-    needs: { kind:'building', goal: 9500, raised: 2100, label:'Meeting hall · first lease + chairs' },
+    needs: null,
   },
 ];
 
-// What "planting a church" actually costs
-const PLANT_LINE_ITEMS = [
-  { item:'Pastor support · year 1', cost: 4800, note:'Full-time stipend for a trained pastor in a new village.' },
-  { item:'Meeting space · first lease', cost: 2400, note:'A rented hall or shopfront for the first year.' },
-  { item:'Bibles & study materials', cost: 600,  note:'Telugu-language Bibles and discipleship materials for new believers.' },
-  { item:'Chairs, sound, basics',     cost: 1200, note:'A simple PA, plastic chairs, a small keyboard.' },
-  { item:'Outreach in the village',   cost: 800,  note:'Tracts, evening gatherings, transport for door-to-door visits.' },
-];
 
 function ChurchesHero({ navigate }) {
   return (
@@ -84,9 +76,7 @@ function ChurchesHero({ navigate }) {
           Every town the mission operates in started with three families and a Bible. Below are the churches we've planted so far, and the ones still finding their feet.
         </p>
         <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
-          <button className="btn btn-primary btn-arrow" onClick={() => {
-            document.getElementById('plant-form')?.scrollIntoView({ behavior:'smooth', block:'start' });
-          }}>Help plant the next one</button>
+          <button className="btn btn-primary btn-arrow" onClick={() => navigate('donate', { fund:'church' })}>Help plant the next one</button>
           <button className="btn btn-ghost" onClick={() => {
             document.getElementById('church-list')?.scrollIntoView({ behavior:'smooth', block:'start' });
           }}>See where we are</button>
@@ -125,7 +115,7 @@ const STATUS_META = {
 function ChurchRow({ c, navigate }) {
   const meta = STATUS_META[c.status];
   return (
-    <article className="card" style={{display:'grid', gridTemplateColumns:'1.1fr 1.4fr 1fr', gap: 0, padding: 0, alignItems:'stretch'}}>
+    <article className="card" style={{display:'grid', gridTemplateColumns:'1fr 1.4fr', gap: 0, padding: 0, alignItems:'stretch'}}>
       {/* Town header column */}
       <div style={{padding:'28px 28px 28px 32px', borderRight:'1px solid var(--line)', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight: 200}}>
         <div>
@@ -138,51 +128,15 @@ function ChurchRow({ c, navigate }) {
           </div>
         </div>
         <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 24, paddingTop: 16, borderTop:'1px dashed var(--line)'}}>
-          {c.pastor} · {c.members} in worship
+          Pastors {c.pastor} · {c.members} in worship
         </div>
       </div>
 
       {/* Note column */}
-      <div style={{padding:'28px 32px', borderRight:'1px solid var(--line)', display:'flex', flexDirection:'column', justifyContent:'center'}}>
+      <div style={{padding:'28px 32px', display:'flex', flexDirection:'column', justifyContent:'center'}}>
         <p className="serif" style={{fontSize: 18, lineHeight: 1.5, color:'var(--ink)', textWrap:'pretty'}}>
           {c.note}
         </p>
-      </div>
-
-      {/* Action column — needs or stable */}
-      <div style={{padding:'28px 32px', display:'flex', flexDirection:'column', justifyContent:'center', background:'var(--bg-2)'}}>
-        {c.needs ? (
-          <>
-            <div style={{fontSize:11, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom: 10, fontWeight:500}}>
-              Active need
-            </div>
-            <div style={{fontFamily:'var(--serif)', fontSize:17, lineHeight:1.3, marginBottom: 14}}>
-              {c.needs.label}
-            </div>
-            <div style={{fontSize:13, color:'var(--ink-2)', marginBottom: 8}}>
-              <strong style={{fontFamily:'var(--serif)', fontSize:18, color:'var(--ink)'}}>${c.needs.raised.toLocaleString()}</strong>
-              <span style={{color:'var(--ink-3)'}}> of ${c.needs.goal.toLocaleString()}</span>
-            </div>
-            <Progress value={c.needs.raised} max={c.needs.goal} />
-            <button className="btn btn-primary btn-arrow" style={{marginTop: 18}}
-                    onClick={() => navigate('donate', { fund:'church', id: c.id })}>
-              Give to {c.town}
-            </button>
-          </>
-        ) : (
-          <>
-            <div style={{fontSize:11, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--ink-3)', marginBottom: 10, fontWeight:500}}>
-              Self-sustaining
-            </div>
-            <p style={{fontSize: 14.5, color:'var(--ink-2)', lineHeight: 1.55, marginBottom: 18}}>
-              This congregation supports itself. You can still pray for them and follow updates.
-            </p>
-            <button className="btn btn-ghost" style={{alignSelf:'flex-start'}}
-                    onClick={() => navigate('donate', { fund:'church', id: c.id })}>
-              Send a gift anyway
-            </button>
-          </>
-        )}
       </div>
     </article>
   );
@@ -204,51 +158,24 @@ function ChurchList({ navigate }) {
   );
 }
 
-function PlantBreakdown() {
-  const items = window.PLANT_LINE_ITEMS || PLANT_LINE_ITEMS;
-  const total = items.reduce((a, b) => a + b.cost, 0);
+function PlantBreakdown({ navigate }) {
   return (
     <section style={{padding:'72px 0', background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)', borderBottom:'1px solid var(--line-soft)'}}>
-      <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1.2fr', gap: 64, alignItems:'start'}}>
-        <div>
-          <Eyebrow primary>What it takes</Eyebrow>
-          <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 44px)', lineHeight:1.1, marginTop: 18, fontWeight:400, letterSpacing:'-0.01em'}}>
-            ${total.toLocaleString()} plants a church for its first year.
-          </h2>
-          <p style={{fontSize:16.5, color:'var(--ink-2)', marginTop: 22, lineHeight:1.6}}>
-            That's the full cost: pastor, space, materials, outreach. By year two, almost every plant covers more than half its own costs from local giving. By year five, most are self-sustaining.
-          </p>
-          <p className="serif" style={{fontStyle:'italic', fontSize:18, color:'var(--ink-2)', marginTop: 26, lineHeight: 1.5}}>
-            "We don't plant outposts that depend on us. We plant churches that go on to plant others."
-          </p>
-        </div>
-        <div>
-          <table style={{width:'100%', borderCollapse:'collapse', fontSize: 15}}>
-            <tbody>
-              {items.map((row, i) => (
-                <tr key={row.item} style={{borderBottom:'1px solid var(--line)'}}>
-                  <td style={{padding:'18px 0 18px 0', verticalAlign:'top', width: 24, color:'var(--primary)', fontFamily:'var(--serif)', fontSize:14}}>
-                    {String(i+1).padStart(2,'0')}
-                  </td>
-                  <td style={{padding:'18px 16px', verticalAlign:'top'}}>
-                    <div style={{fontFamily:'var(--serif)', fontSize: 18, marginBottom: 4}}>{row.item}</div>
-                    <div style={{fontSize: 13.5, color:'var(--ink-3)', lineHeight: 1.5}}>{row.note}</div>
-                  </td>
-                  <td style={{padding:'18px 0', verticalAlign:'top', textAlign:'right', fontFamily:'var(--serif)', fontSize: 22, color:'var(--ink)', whiteSpace:'nowrap'}}>
-                    ${row.cost.toLocaleString()}
-                  </td>
-                </tr>
-              ))}
-              <tr>
-                <td></td>
-                <td style={{padding:'22px 16px', fontSize: 13, color:'var(--ink-3)', letterSpacing:'0.14em', textTransform:'uppercase'}}>Total · Year 1</td>
-                <td style={{padding:'22px 0', textAlign:'right', fontFamily:'var(--serif)', fontSize: 28, color:'var(--primary)'}}>
-                  ${total.toLocaleString()}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div className="narrow">
+        <Eyebrow primary>How a church begins</Eyebrow>
+        <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 44px)', lineHeight:1.1, marginTop: 18, fontWeight:400, letterSpacing:'-0.01em'}}>
+          It starts with a Bible study in someone's home.
+        </h2>
+        <p style={{fontSize:16.5, color:'var(--ink-2)', marginTop: 22, lineHeight:1.7}}>
+          In many villages across the Chickaballapur district, Christians travel over an hour to reach the nearest church. When the mission identifies a growing base of believers in an area, it begins planting the seeds of a new congregation.
+        </p>
+        <p style={{fontSize:16.5, color:'var(--ink-2)', marginTop: 18, lineHeight:1.7}}>
+          It starts small: a weekly Bible study with a few families. As the group grows, it becomes a home church with regular worship. Over time, with enough support, the congregation moves into a dedicated building of its own. This process, from first gathering to established church, is something the mission has repeated across ten towns over {new Date().getFullYear() - 1980} years.
+        </p>
+        <button className="btn btn-primary btn-arrow" style={{marginTop: 40}}
+                onClick={() => navigate('donate', { fund:'church' })}>
+          Donate to plant a church
+        </button>
       </div>
     </section>
   );
@@ -268,7 +195,7 @@ function PlantCTA({ navigate }) {
             Help us plant the eleventh.
           </h2>
           <p style={{fontSize:17, color:'rgba(247,241,226,0.72)', marginTop: 22, lineHeight:1.6, maxWidth: 480}}>
-            We're praying about a new village in the Chickaballapur district. The pastor is identified. The families are gathering. What's left is the support to begin.
+            The harvest is plentiful. Across the district, believers are gathering in homes, waiting for the support to grow into a church of their own. Your gift helps turn those gatherings into lasting congregations.
           </p>
         </div>
         <div style={{background:'rgba(255,248,234,0.06)', border:'1px solid rgba(247,241,226,0.16)', borderRadius:'var(--r-md)', padding:'32px 32px 28px'}}>
@@ -296,11 +223,11 @@ function PlantCTA({ navigate }) {
                    style={{flex:1, minWidth:0, background:'transparent', border:'none', outline:'none', color:'#FFF8EA', fontFamily:'var(--serif)', fontSize: 22, padding:'4px 0'}}/>
           </div>
           <button className="btn btn-primary btn-arrow" style={{width:'100%', marginTop: 18, justifyContent:'center'}}
-                  onClick={() => navigate('donate', { fund:'church', id:'next', amount })}>
+                  onClick={() => navigate('donate', { fund:'church', amount })}>
             Give ${amount.toLocaleString()} toward the next plant
           </button>
           <div style={{fontSize:12.5, color:'rgba(247,241,226,0.55)', marginTop: 14, textAlign:'center', lineHeight: 1.5}}>
-            Or designate to a specific church above. 100% goes to the work.
+            100% goes to the work.
           </div>
         </div>
       </div>
@@ -311,11 +238,12 @@ function PlantCTA({ navigate }) {
 function Churches({ navigate }) {
   return (
     <>
+      <Breadcrumb crumbs={[{ label:'Plant a church' }]} navigate={navigate} />
       <ChurchesHero navigate={navigate} />
       <StatStrip />
       <ChurchList navigate={navigate} />
       <Verse text="And the Lord added to their number day by day those who were being saved." cite="Acts 2:47" />
-      <PlantBreakdown />
+      <PlantBreakdown navigate={navigate} />
       <PlantCTA navigate={navigate} />
     </>
   );
@@ -324,4 +252,3 @@ function Churches({ navigate }) {
 window.Churches = Churches;
 // JSON-loaded data wins; in-file constants are the offline fallback.
 window.CHURCHES = window.CHURCHES || CHURCHES;
-window.PLANT_LINE_ITEMS = window.PLANT_LINE_ITEMS || PLANT_LINE_ITEMS;

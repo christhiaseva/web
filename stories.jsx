@@ -9,8 +9,18 @@ const STUDENT_STORIES = [
     role: 'Nurse · graduated 8 years ago',
     headline: '$200 a year for three years gave Silpa a whole new life.',
     summary: "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
-    invested: '$600 over 3 years',
     outcome: 'Working nurse · brick home for her mother',
+    tag: 'Healthcare',
+  },
+  {
+    id: 'megana',
+    name: 'Megana',
+    village: 'Chickaballapur',
+    status: 'past',
+    role: 'Nurse · graduated 4 years ago',
+    headline: 'She was cleaning houses at seven. Today she cares for patients at a hospital.',
+    summary: "Megana started attending Sunday school at nine and cleaning houses at seven to support her family. Generous sponsors helped her through nursing college. Four years later, she's a working nurse helping her sister through college.",
+    outcome: 'Working nurse · helping her sister through college',
     tag: 'Healthcare',
   },
   {
@@ -66,18 +76,6 @@ const STUDENT_STORIES = [
     tag: 'Ministry',
   },
   {
-    id: 'rajesh',
-    name: 'Pastor Rajesh',
-    village: 'Shidalagatta',
-    status: 'past',
-    role: 'Pastor · ordained 2019',
-    headline: '"My uncle laughed when I said I wanted to plant a church. Now he prays with us every Sunday."',
-    summary: "Rajesh was sponsored through Bible college. He now pastors a 90-member congregation that meets in a rented hall, including the uncle who once mocked him.",
-    invested: 'Bible college tuition · 4 years',
-    outcome: 'Lead pastor · 90-member congregation',
-    tag: 'Ministry',
-  },
-  {
     id: 'asha',
     name: 'Asha',
     age: 19,
@@ -113,9 +111,6 @@ function StoriesHero({ navigate }) {
         <h1 className="serif" style={{fontSize:'clamp(44px, 6vw, 84px)', lineHeight:1.0, marginTop: 22, fontWeight:400, letterSpacing:'-0.02em', maxWidth: 1100}}>
           Lives that the Gospel, <em style={{fontStyle:'italic', color:'var(--primary)'}}>and a small group of sponsors,</em> quietly rewrote.
         </h1>
-        <p style={{fontSize: 19, color:'var(--ink-2)', marginTop: 28, maxWidth: 720, lineHeight:1.55}}>
-          Some of these stories are finished. Some are mid-chapter and need a sponsor to keep going. Either way, they begin the same: a child, a family, a village, and a small obedience that opened a door.
-        </p>
       </div>
     </section>
   );
@@ -199,15 +194,15 @@ function CurrentStoryCard({ s, navigate }) {
   );
 }
 
-function PastStoryCard({ s, navigate }) {
+function PastStoryCard({ s, navigate, hasDetail }) {
   return (
-    <article className="card" style={{display:'grid', gridTemplateColumns:'320px 1fr', gap: 0, background:'var(--bg-2)', borderColor:'var(--line)'}}>
+    <article className="card" style={{display:'grid', gridTemplateColumns:'320px 1fr', gap: 0, background:'var(--bg-2)', borderColor:'var(--line)', cursor: hasDetail ? 'pointer' : 'default'}}
+             onClick={hasDetail ? () => navigate('story-detail', { id: s.id }) : undefined}>
       <div style={{position:'relative', minHeight: 320}}>
-        <ImgSlot id={`stories-${s.id}`} h="100%" placeholder={`${s.name} · today`} radius={0} style={{borderRadius:0}} />
-        <div style={{position:'absolute', top:14, left:14, display:'flex', gap:6}}>
-          <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>✓ Success story</span>
-          <span className="tag" style={{background:'rgba(255,251,241,0.92)', borderColor:'transparent'}}>{s.tag}</span>
-        </div>
+        {hasDetail && STORY_DETAILS[s.id]?.photo
+          ? <img src={STORY_DETAILS[s.id].photo} alt={s.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}} />
+          : <ImgSlot id={`stories-${s.id}`} h="100%" placeholder={`${s.name} · today`} radius={0} style={{borderRadius:0}} />
+        }
       </div>
       <div style={{padding:'28px 32px 28px', display:'flex', flexDirection:'column'}}>
         <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', color:'var(--ink-3)', fontWeight:500}}>
@@ -219,36 +214,33 @@ function PastStoryCard({ s, navigate }) {
         <p style={{fontSize: 15.5, lineHeight: 1.6, color:'var(--ink-2)', marginTop: 16, maxWidth: 600}}>
           {s.summary}
         </p>
-        <div style={{marginTop: 'auto', paddingTop: 22, display:'grid', gridTemplateColumns:'1fr 1fr', gap: 24, paddingTop: 24, borderTop:'1px solid var(--line)'}}>
-          <div>
-            <div style={{fontSize:11, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--ink-3)', marginBottom:6}}>Invested</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:18, color:'var(--primary)'}}>{s.invested}</div>
-          </div>
-          <div>
-            <div style={{fontSize:11, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--ink-3)', marginBottom:6}}>Today</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:18}}>{s.outcome}</div>
-          </div>
+        <div style={{marginTop: 'auto', paddingTop: 24, borderTop:'1px solid var(--line)'}}>
+          <div style={{fontSize:11, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--ink-3)', marginBottom:6}}>Today</div>
+          <div style={{fontFamily:'var(--serif)', fontSize:18}}>{s.outcome}</div>
         </div>
+        {hasDetail && (
+          <div style={{marginTop: 18}}>
+            <span style={{fontSize:14, fontWeight:500, color:'var(--primary)'}}>Read full story →</span>
+          </div>
+        )}
       </div>
     </article>
   );
 }
 
 function Stories({ navigate }) {
-  const [filter, setFilter] = useState('all');
   const all = window.STORIES || STUDENT_STORIES;
-  const list = all.filter(s => filter === 'all' ? true : s.status === filter);
 
   return (
     <>
+      <Breadcrumb crumbs={[{ label:'Student stories' }]} navigate={navigate} />
       <StoriesHero navigate={navigate} />
-      <StoryFilters filter={filter} setFilter={setFilter} count={list.length} />
 
       <section style={{padding:'40px 0 80px'}}>
         <div className="container" style={{display:'flex', flexDirection:'column', gap: 20}}>
-          {list.map(s => s.status === 'current'
+          {all.map(s => s.status === 'current'
             ? <CurrentStoryCard key={s.id} s={s} navigate={navigate} />
-            : <PastStoryCard    key={s.id} s={s} navigate={navigate} />
+            : <PastStoryCard    key={s.id} s={s} navigate={navigate} hasDetail={!!STORY_DETAILS[s.id]} />
           )}
         </div>
       </section>
@@ -275,6 +267,153 @@ function Stories({ navigate }) {
   );
 }
 
+// ── Story detail data ─────────────────────
+const STORY_DETAILS = {
+  silpa: {
+    name: 'Silpa',
+    village: 'Shidalagatta',
+    eyebrow: "Silpa's full story · in Mathew's words",
+    headline: <>$200 a year for three years. <em style={{color:'var(--primary)', fontStyle:'italic'}}>A whole new life.</em></>,
+    photo: '/images/silpa-story.jpg',
+    photoAlt: 'Silpa in her nursing scrubs',
+    paragraphs: [
+      { style: 'lead', text: "I met Silpa in our church in Shidalagatta when she was eleven years old. She had dropped out of school and was working in the fields all day to take care of her mom, who was an asthma patient. They were living in a hut." },
+      { text: "The father had left before Silpa was born. She has never met him. Mary and I took her and her mom under our wings, provided all their needs, and started to send her to school. She had to restart fifth grade." },
+      { text: "High school was free at the government school; we only needed to provide her uniform and supplies. She passed with good marks, and we sent her to nursing college." },
+      { text: "Eight years ago she graduated and started to work as a nurse. With the help of White Oak Christian Church and her own ability, she built a two-bedroom brick home in her own village for her and her mom.", bold: "the first brick home in that village" },
+    ],
+    quote: "It was a small amount for us, but a huge investment in Silpa's life. We didn't lose anything \u2014 she gained a new life.",
+    quoteAttrib: 'Mathew Mathai, founder',
+    stats: [
+      { n: '8 yrs', l: 'working as a nurse since' },
+      { n: '1', l: 'whole new life · and a house for her mom' },
+    ],
+    photoSlots: [
+      { id: 'silpa-house', placeholder: "Silpa's brick home · the first in her village" },
+      { id: 'silpa-mom', placeholder: 'Silpa with her mother' },
+    ],
+  },
+  megana: {
+    name: 'Megana',
+    village: 'Chickaballapur',
+    eyebrow: "Megana's full story · in Mathew's words",
+    headline: <>$200 a year for three years. <em style={{color:'var(--primary)', fontStyle:'italic'}}>An investment with great return.</em></>,
+    photo: '/images/megana-story.jpg',
+    photoAlt: 'Megana in her nursing uniform',
+    paragraphs: [
+      { style: 'lead', text: "Megana is from Chamrajpet, Chickaballapur. She started attending our Sunday school class when she was nine years old. She comes from a very poor family: just her, her sister, and her sick mother." },
+      { text: "She started cleaning other people's houses for a little money when she was seven years old to help provide for the family. We stepped in to help, so that she and her sister could go to school." },
+      { text: "She passed high school with very good marks but had no way of going to college. Her mother began talking about arranging a marriage when Megana was fifteen. We discouraged her mother from it." },
+      { text: "Generous sponsors agreed to support her through nursing college. Four years ago she graduated, and today she is working in a hospital in Chickaballapur. They moved out of their hut and are renting a small one-bedroom apartment." },
+      { text: "When Mary and I were admitted to the hospital with Covid-19 for nineteen days, Megana was the nurse who took care of us. She is now helping her sister go to college too." },
+    ],
+    quote: "Just $200 a year for three years has made such an impact in the life of a person and a family. Very little for us, but an investment with great return.",
+    quoteAttrib: 'Mathew Mathai, founder',
+    stats: [
+      { n: '4 yrs', l: 'working as a nurse since' },
+      { n: '2', l: 'sisters · both now in school or working' },
+    ],
+    photoSlots: [
+      { id: 'megana-family', placeholder: 'Megana with her sister and mother' },
+      { id: 'megana-hospital', placeholder: 'Megana at the hospital' },
+    ],
+  },
+};
+
+function StoryDetail({ id, navigate }) {
+  const story = STORY_DETAILS[id];
+
+  if (!story) {
+    // Fall back to stories list if no detail page exists for this id
+    return <Stories navigate={navigate} />;
+  }
+
+  return (
+    <>
+      <Breadcrumb crumbs={[
+        { label:'Student stories', page:'stories' },
+        { label: story.name },
+      ]} navigate={navigate} />
+
+      <section style={{padding:'40px 0 80px'}}>
+        <div className="container">
+          <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom: 48, gap: 32, flexWrap:'wrap'}}>
+            <div style={{maxWidth: 720}}>
+              <Eyebrow primary>{story.eyebrow}</Eyebrow>
+              <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 18, fontWeight:400, letterSpacing:'-0.015em'}}>
+                {story.headline}
+              </h1>
+            </div>
+            <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase'}}>
+              {story.name} &middot; {story.village}
+            </div>
+          </div>
+
+          <div className="silpa-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>
+            {/* Photo column */}
+            <div className="silpa-photos" style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
+              <img src={story.photo} alt={story.photoAlt} style={{width:'100%', height:540, objectFit:'cover', borderRadius:16, display:'block'}} />
+              {story.photoSlots && (
+                <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 12}}>
+                  {story.photoSlots.map(slot => (
+                    <ImgSlot key={slot.id} id={slot.id} h="180px" placeholder={slot.placeholder} radius={12} />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Story column */}
+            <div>
+              <Eyebrow primary>{story.eyebrow}</Eyebrow>
+              <div style={{marginTop: 24}}></div>
+              {story.paragraphs.map((p, i) => (
+                <p key={i} className={p.style === 'lead' ? 'serif' : ''}
+                   style={p.style === 'lead'
+                     ? {fontSize: 24, lineHeight: 1.45, color:'var(--ink)', marginBottom: 28, textWrap:'pretty'}
+                     : {fontSize: 17.5, lineHeight: 1.7, color:'var(--ink-2)', marginBottom: 20}
+                   }>
+                  {p.text}
+                  {p.bold && <> <strong style={{color:'var(--ink)', fontWeight:500}}>{p.bold}</strong>.</>}
+                </p>
+              ))}
+
+              {/* Pull quote */}
+              <figure style={{margin:'8px 0 32px', padding:'28px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)'}}>
+                <blockquote style={{margin:0, fontFamily:'var(--serif)', fontStyle:'italic', fontSize:'clamp(22px, 2.6vw, 30px)', lineHeight:1.4, color:'var(--ink)', textWrap:'balance'}}>
+                  "{story.quote}"
+                </blockquote>
+                <figcaption style={{marginTop: 16, fontSize:13, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', fontWeight:500}}>
+                  &mdash; {story.quoteAttrib}
+                </figcaption>
+              </figure>
+
+              {/* Stats */}
+              <div style={{display:'grid', gridTemplateColumns:`repeat(${story.stats.length}, 1fr)`, gap: 0, border:'1px solid var(--line)', borderRadius: 12, overflow:'hidden', background:'var(--card)'}}>
+                {story.stats.map((s, i) => (
+                  <div key={s.l} style={{padding:'24px 22px', borderRight: i < story.stats.length - 1 ? '1px solid var(--line)' : 'none'}}>
+                    <div style={{fontFamily:'var(--serif)', fontSize: 32, color:'var(--primary)', lineHeight: 1}}>{s.n}</div>
+                    <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 10, lineHeight:1.4}}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{marginTop: 32, display:'flex', gap: 14, flexWrap:'wrap'}}>
+                <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
+                  Be the next $200
+                </button>
+                <button className="btn btn-ghost" onClick={() => navigate('education')}>
+                  Browse students
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 window.Stories = Stories;
+window.StoryDetail = StoryDetail;
 // JSON-loaded data wins; in-file STUDENT_STORIES is the offline fallback.
 window.STORIES = window.STORIES || STUDENT_STORIES;

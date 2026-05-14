@@ -70,6 +70,7 @@ function Education({ navigate }) {
 
   return (
     <>
+      <Breadcrumb crumbs={[{ label:'Sponsor a student' }]} navigate={navigate} />
       {/* Header */}
       <section style={{padding:'56px 0 32px'}}>
         <div className="container">
