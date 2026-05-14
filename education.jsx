@@ -79,7 +79,7 @@ function Education({ navigate }) {
             Choose a student. <em style={{fontStyle:'italic', color:'var(--primary)'}}>Send them to school.</em>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, maxWidth: 720, lineHeight:1.55}}>
-            These eight students need help paying for the program ahead of them. Their families have already sacrificed to get them here. A small group of sponsors (sometimes just three or four people) can carry them across the finish line.
+            For most of these students, sponsorship is what makes college possible. It is an opportunity to walk alongside a student and their family, changing the trajectory of their life and of generations to come.
           </p>
           <div style={{marginTop: 28, display:'flex', alignItems:'center', gap: 14, flexWrap:'wrap'}}>
             <a onClick={() => navigate('stories')}
