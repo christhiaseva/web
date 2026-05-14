@@ -10,7 +10,7 @@ function StoryHero() {
           And a bus that turned around.
         </h1>
         <p style={{fontSize: 20, color:'var(--ink-2)', marginTop: 32, maxWidth: 720, lineHeight:1.55}}>
-          The story of Christhia Seva Mission begins with a young couple, a long journey, and a plan that fell apart, only to be rebuilt by God, mile by mile, into something they never could have engineered themselves.
+          The story of Christhia Seva Mission begins with a young couple, a sponsoring church, a long journey, and a plan that fell apart, only to be rebuilt by God, mile by mile, into something they never could have engineered themselves.
         </p>
       </div>
     </section>
@@ -74,7 +74,7 @@ function StoryProse() {
         </p>
 
         <p style={proseStyle}>
-          The Mathai family (with kids Cecil, Suja, and Jaisen) arrived in May of 1980. Mary went to Kerala to settle their oldest two children, Cecil and Suja, in boarding school while Mathew went on to Andhra. That's when the plan hit a snag.
+          The Mathai family (along with their children) were sent by White Oak Christian Church in 1980. Mary went to Kerala to settle their oldest two children, Cecil and Suja, in boarding school while Mathew went on to Andhra. That's when the plan hit a snag.
         </p>
 
         <Pull who="Mathew">
