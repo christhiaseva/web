@@ -76,9 +76,14 @@ function ContactForm() {
         <textarea ref={refs.message} value={form.message} onChange={e => update('message', e.target.value)} rows={5}
                   style={{...styleFor('message'), resize:'vertical'}} />
       </div>
-      {status === 'error' && <p style={{color:'#c0392b', fontSize:14, marginBottom:16}}>Something went wrong. Please try again or email us directly.</p>}
-      <button type="submit" className="btn btn-primary btn-arrow" disabled={status === 'sending'}>
+      {status === 'error' && (
+        <div style={{marginBottom: 20, padding:'14px 18px', background:'#FDECEA', border:'1px solid #E53935', borderRadius:10, color:'#8B1C1C', fontSize:14}}>
+          We couldn't send your message. Please try again, or email us at hello@csmforchrist.com.
+        </div>
+      )}
+      <button type="submit" className={`btn btn-primary${status === 'sending' ? '' : ' btn-arrow'}`} disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending…' : 'Send message'}
+        {status === 'sending' && <span className="btn-spinner" aria-hidden="true"></span>}
       </button>
     </form>
   );
