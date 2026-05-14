@@ -619,7 +619,9 @@ image-slot::before {
   [style*="grid-template-columns: 1fr 1.1fr"],
   [style*="grid-template-columns: 320px 1fr"],
   [style*="grid-template-columns: 120px 1fr"],
-  [style*="grid-template-columns: 80px 1fr"] {
+  [style*="grid-template-columns: 80px 1fr"],
+  [style*="grid-template-columns: 1fr 380px"],
+  [style*="grid-template-columns:1fr 380px"] {
     grid-template-columns: 1fr !important;
     gap: 28px !important;
   }

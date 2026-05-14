@@ -9,10 +9,28 @@ const fieldStyle = {
 
 function ContactForm() {
   const [form, setForm] = useState({ name:'', email:'', message:'' });
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const refs = { name: useRef(), email: useRef(), message: useRef() };
+
+  const update = (k, v) => {
+    setForm(prev => ({...prev, [k]: v}));
+    if (errors[k]) setErrors(prev => { const n = {...prev}; delete n[k]; return n; });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const next = {};
+    if (!form.name.trim())    next.name = true;
+    if (!form.email.trim())   next.email = true;
+    if (!form.message.trim()) next.message = true;
+    if (Object.keys(next).length) {
+      setErrors(next);
+      const first = ['name', 'email', 'message'].find(f => next[f]);
+      refs[first]?.current?.focus();
+      return;
+    }
+    setErrors({});
     setStatus('sending');
     try {
       const res = await fetch(FORMSPREE_URL, {
@@ -31,6 +49,8 @@ function ContactForm() {
     }
   };
 
+  const styleFor = (k) => errors[k] ? { ...fieldStyle, border: '2px solid #E53935' } : fieldStyle;
+
   if (status === 'sent') return (
     <div style={{textAlign:'center', padding:'48px 0'}}>
       <div style={{width: 56, height: 56, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 24, fontFamily:'var(--serif)'}}>✓</div>
@@ -44,17 +64,17 @@ function ContactForm() {
       <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16, marginBottom: 16}}>
         <div>
           <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Name</label>
-          <input type="text" required value={form.name} onChange={e => setForm({...form, name: e.target.value})} style={fieldStyle} />
+          <input type="text" ref={refs.name} value={form.name} onChange={e => update('name', e.target.value)} style={styleFor('name')} />
         </div>
         <div>
           <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Email</label>
-          <input type="email" required value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={fieldStyle} />
+          <input type="email" ref={refs.email} value={form.email} onChange={e => update('email', e.target.value)} style={styleFor('email')} />
         </div>
       </div>
       <div style={{marginBottom: 24}}>
         <label style={{fontSize:13, color:'var(--ink-2)', fontWeight:500, display:'block', marginBottom:8}}>Message</label>
-        <textarea required value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={5}
-                  style={{...fieldStyle, resize:'vertical'}} />
+        <textarea ref={refs.message} value={form.message} onChange={e => update('message', e.target.value)} rows={5}
+                  style={{...styleFor('message'), resize:'vertical'}} />
       </div>
       {status === 'error' && <p style={{color:'#c0392b', fontSize:14, marginBottom:16}}>Something went wrong. Please try again or email us directly.</p>}
       <button type="submit" className="btn btn-primary btn-arrow" disabled={status === 'sending'}>

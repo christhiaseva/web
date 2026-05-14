@@ -114,17 +114,62 @@ function Donate({ params, navigate }) {
   const [amount, setAmount] = useState(initialAmount || d.defaultAmount);
   const [custom, setCustom] = useState('');
   const [info, setInfo] = useState({ name:'', email:'', country:'United States', anon:false, note:'' });
+  const [errors, setErrors] = useState({});
+  const infoRefs = { name: useRef(), email: useRef(), country: useRef() };
+
+  const updateInfo = (k, v) => {
+    setInfo(prev => ({...prev, [k]: v}));
+    if (errors[k]) setErrors(prev => { const n = {...prev}; delete n[k]; return n; });
+  };
 
   // Reset step + amount when designation changes
   useEffect(() => {
     setStep(1);
     setAmount(initialAmount || d.defaultAmount);
     setCustom('');
+    setErrors({});
   // eslint-disable-next-line
   }, [fund, id]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   const finalAmount = d.lockedAmount || (custom ? Number(custom) : amount);
-  const stepLabels = ['Amount', 'Your info', 'Confirm'];
+  const stepLabels = ['Amount', 'Your info'];
+
+  const submitGift = async () => {
+    const next = {};
+    if (!info.name.trim())    next.name = true;
+    if (!info.email.trim())   next.email = true;
+    if (!info.country.trim()) next.country = true;
+    if (Object.keys(next).length) {
+      setErrors(next);
+      const first = ['name', 'email', 'country'].find(f => next[f]);
+      infoRefs[first]?.current?.focus();
+      return;
+    }
+    setErrors({});
+    try {
+      await fetch('https://formspree.io/f/mbdwwwed', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Donation: $${Number(finalAmount).toLocaleString()} toward ${d.title}`,
+          name: info.name || '(not provided)',
+          email: info.email || '(not provided)',
+          address: info.address || '(not provided)',
+          amount: `$${Number(finalAmount).toLocaleString()}`,
+          designation: d.title,
+          fund: d.fund,
+          anonymous: info.anon ? 'Yes' : 'No',
+          note: info.note || '(none)',
+          ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
+        }),
+      });
+    } catch (e) { /* don't block confirmation if email fails */ }
+    setStep(3);
+  };
 
   return (
     <>
@@ -260,9 +305,9 @@ function Donate({ params, navigate }) {
                     So we can send your tax receipt and updates from {d.receiptName}.
                   </p>
                   <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 20}}>
-                    <FormField label="Full name" value={info.name} onChange={v => setInfo({...info, name: v})} />
-                    <FormField label="Email" value={info.email} onChange={v => setInfo({...info, email: v})} type="email" />
-                    <FormField label="Country" value={info.country} onChange={v => setInfo({...info, country: v})} />
+                    <FormField label="Full name" value={info.name} onChange={v => updateInfo('name', v)} inputRef={infoRefs.name} error={errors.name} />
+                    <FormField label="Email" value={info.email} onChange={v => updateInfo('email', v)} type="email" inputRef={infoRefs.email} error={errors.email} />
+                    <FormField label="Country" value={info.country} onChange={v => updateInfo('country', v)} inputRef={infoRefs.country} error={errors.country} />
                     <FormField label="Address (optional)" value={info.address || ''} onChange={v => setInfo({...info, address: v})} />
                   </div>
                   <div style={{marginTop: 28}}>
@@ -281,59 +326,19 @@ function Donate({ params, navigate }) {
                            style={{width:18, height:18, accentColor:'var(--primary)'}} />
                     <span style={{color:'var(--ink-2)'}}>Give anonymously</span>
                   </label>
-                  <div style={{display:'flex', gap:14, marginTop: 36}}>
-                    <button className="btn btn-ghost" onClick={() => setStep(1)}>← Back</button>
-                    <button className="btn btn-primary btn-arrow" onClick={() => setStep(3)}>Review & confirm</button>
-                  </div>
-                </>
-              )}
-
-              {step === 3 && (
-                <>
-                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Almost there</h2>
-                  <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 32}}>
-                    Confirm and we'll connect you to our payment partner to complete the gift.
-                  </p>
-                  <div className="card" style={{padding:'28px 28px'}}>
-                    <ReviewRow label="Gift" value={`$${Number(finalAmount).toLocaleString()}$`} />
-                    <ReviewRow label="Designation" value={d.title} />
-                    <ReviewRow label="Name" value={info.anon ? `${info.name} (anonymous)` : info.name || '—'} />
-                    <ReviewRow label="Email" value={info.email || '—'} />
-                    {info.note && <ReviewRow label="Note" value={`"${info.note}"`} />}
-                  </div>
                   <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius:10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14}}>
                     <div style={{flexShrink:0, width:24, height:24, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', display:'grid', placeItems:'center', fontSize:13, fontFamily:'var(--serif)'}}>✓</div>
                     <div>Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email.</div>
                   </div>
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
-                    <button className="btn btn-ghost" onClick={() => setStep(2)}>← Back</button>
-                    <button className="btn btn-primary btn-arrow" onClick={async () => {
-                      try {
-                        await fetch('https://formspree.io/f/mbdwwwed', {
-                          method: 'POST',
-                          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            _subject: `Donation: $${Number(finalAmount).toLocaleString()} toward ${d.title}`,
-                            name: info.name || '(not provided)',
-                            email: info.email || '(not provided)',
-                            address: info.address || '(not provided)',
-                            amount: `$${Number(finalAmount).toLocaleString()}`,
-                            designation: d.title,
-                            fund: d.fund,
-                            anonymous: info.anon ? 'Yes' : 'No',
-                            note: info.note || '(none)',
-                            ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
-                          }),
-                        });
-                      } catch (e) { /* don't block confirmation if email fails */ }
-                      setStep(4);
-                    }}>
+                    <button className="btn btn-ghost" onClick={() => setStep(1)}>← Back</button>
+                    <button className="btn btn-primary btn-arrow" onClick={submitGift}>
                       Complete gift · ${Number(finalAmount).toLocaleString()}                    </button>
                   </div>
                 </>
               )}
 
-              {step === 4 && (
+              {step === 3 && (
                 <div style={{padding:'40px 0', textAlign:'center', maxWidth: 560, margin:'0 auto'}}>
                   {d.sidebar.kind === 'student' && d.sidebar.s?.photo ? (
                     <img src={d.sidebar.s.photo} alt={d.sidebar.s.name}
@@ -435,24 +440,16 @@ function DonateSidebar({ d, navigate }) {
   return null;
 }
 
-function FormField({ label, value, onChange, type = 'text' }) {
+function FormField({ label, value, onChange, type = 'text', inputRef, error }) {
   return (
     <label style={{display:'flex', flexDirection:'column', gap:8}}>
       <span style={{fontSize:13, color:'var(--ink-2)', fontWeight:500}}>{label}</span>
-      <input type={type} value={value} onChange={e => onChange(e.target.value)}
-             style={{padding:'14px 16px', borderRadius:10, border:'1px solid var(--line)',
+      <input type={type} ref={inputRef} value={value} onChange={e => onChange(e.target.value)}
+             style={{padding:'14px 16px', borderRadius:10,
+                     border: error ? '2px solid #E53935' : '1px solid var(--line)',
                      background:'var(--card)', color:'var(--ink)', fontFamily:'var(--sans)',
                      fontSize:15, outline:'none'}} />
     </label>
-  );
-}
-
-function ReviewRow({ label, value }) {
-  return (
-    <div style={{display:'flex', justifyContent:'space-between', padding:'14px 0', borderBottom:'1px solid var(--line-soft)', fontSize:15, gap: 24}}>
-      <span style={{color:'var(--ink-3)'}}>{label}</span>
-      <span style={{color:'var(--ink)', fontWeight:500, textAlign:'right', maxWidth:'60%'}}>{value}</span>
-    </div>
   );
 }
 
