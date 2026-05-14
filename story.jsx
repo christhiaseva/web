@@ -143,7 +143,7 @@ function StoryProse() {
         </div>
 
         <p style={proseStyle}>
-          Today, more than fifteen pastors serve across ten churches, ministering to over a thousand people who have come to know Christ. Each pastor was raised up from within the communities the mission serves. Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.
+          Today, more than fifteen pastors serve across ten churches, ministering to over a thousand people who have come to know Christ. Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.
         </p>
 
         <div style={{margin:'40px 0'}}>
