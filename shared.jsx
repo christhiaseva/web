@@ -141,7 +141,7 @@ function Footer({ navigate }) {
       </div>
       <div className="container footer-bottom" style={{marginTop:60, paddingTop:24, borderTop:'1px solid rgba(247,241,226,0.12)', display:'flex', justifyContent:'space-between', fontSize:13, color:'rgba(247,241,226,0.5)'}}>
         <span>© {new Date().getFullYear()} Christhia Seva Mission</span>
-        <span>A registered 501(c)(3) organization</span>
+        <span>A registered 501(c)(3) organization through White Oak Christian Church</span>
       </div>
     </footer>
   );
