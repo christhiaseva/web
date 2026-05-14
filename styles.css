@@ -212,6 +212,19 @@ button { font-family: inherit; }
 }
 .btn-arrow:hover::after { transform: translateX(3px); }
 
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  vertical-align: -2px;
+  animation: btn-spin .8s linear infinite;
+}
+
 /* donate variants */
 [data-donate="solid"] .donate-cta { background: var(--primary); color: #FFF8EA; padding: 11px 20px; border-radius: 999px; }
 [data-donate="solid"] .donate-cta:hover { background: var(--primary-deep); }

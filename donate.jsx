@@ -115,6 +115,8 @@ function Donate({ params, navigate }) {
   const [custom, setCustom] = useState('');
   const [info, setInfo] = useState({ name:'', email:'', country:'United States', anon:false, note:'' });
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const infoRefs = { name: useRef(), email: useRef(), country: useRef() };
 
   const updateInfo = (k, v) => {
@@ -139,6 +141,7 @@ function Donate({ params, navigate }) {
   const stepLabels = ['Amount', 'Your info'];
 
   const submitGift = async () => {
+    if (submitting) return;
     const next = {};
     if (!info.name.trim())    next.name = true;
     if (!info.email.trim())   next.email = true;
@@ -150,8 +153,10 @@ function Donate({ params, navigate }) {
       return;
     }
     setErrors({});
+    setSubmitError(null);
+    setSubmitting(true);
     try {
-      await fetch('https://formspree.io/f/mbdwwwed', {
+      const res = await fetch('https://formspree.io/f/mbdwwwed', {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -167,8 +172,13 @@ function Donate({ params, navigate }) {
           ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
         }),
       });
-    } catch (e) { /* don't block confirmation if email fails */ }
-    setStep(3);
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStep(3);
+    } catch (e) {
+      setSubmitError("We couldn't submit your gift. Please try again, or email us at hello@csmforchrist.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -330,10 +340,17 @@ function Donate({ params, navigate }) {
                     <div style={{flexShrink:0, width:24, height:24, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', display:'grid', placeItems:'center', fontSize:13, fontFamily:'var(--serif)'}}>✓</div>
                     <div>Christhia Seva Mission is a registered 501(c)(3). Your gift is tax-deductible, and you'll receive a receipt by email.</div>
                   </div>
+                  {submitError && (
+                    <div style={{marginTop: 28, padding:'14px 18px', background:'#FDECEA', border:'1px solid #E53935', borderRadius:10, color:'#8B1C1C', fontSize:14}}>
+                      {submitError}
+                    </div>
+                  )}
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
-                    <button className="btn btn-ghost" onClick={() => setStep(1)}>← Back</button>
-                    <button className="btn btn-primary btn-arrow" onClick={submitGift}>
-                      Complete gift · ${Number(finalAmount).toLocaleString()}                    </button>
+                    <button className="btn btn-ghost" onClick={() => setStep(1)} disabled={submitting}>← Back</button>
+                    <button className={`btn btn-primary${submitting ? '' : ' btn-arrow'}`} onClick={submitGift} disabled={submitting}>
+                      {submitting ? 'Sending…' : `Complete gift · $${Number(finalAmount).toLocaleString()}`}
+                      {submitting && <span className="btn-spinner" aria-hidden="true"></span>}
+                    </button>
                   </div>
                 </>
               )}
