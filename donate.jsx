@@ -188,7 +188,7 @@ function Donate({ params, navigate }) {
         if (d.kind === 'student') return [
           { label: 'Donate', page: 'donate' },
           { label: d.crumbLabels[0], page: 'donate', params: { fund } },
-          { label: d.title },
+          { label: d.crumbLabels[1] },
         ];
         return [
           { label: 'Donate', page: 'donate' },
