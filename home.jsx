@@ -74,7 +74,7 @@ function HeroFeaturedStory({ navigate }) {
             boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
           }}>
             <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse. Built the first brick home in her village.</div>
+            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse, Shilpa built the first brick home in her village.</div>
           </div>
         </div>
         <div className="hero-story-stats">

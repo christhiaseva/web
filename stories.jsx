@@ -9,7 +9,7 @@ const STUDENT_STORIES = [
     role: 'Nurse · graduated 8 years ago',
     headline: '$200 a year for three years gave Silpa a whole new life.',
     summary: "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
-    outcome: 'Working as a nurse. Built the first brick home in her village.',
+    outcome: 'Working as a nurse, Shilpa built the first brick home in her village.',
     tag: 'Healthcare',
   },
   {
