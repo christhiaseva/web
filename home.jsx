@@ -51,10 +51,10 @@ function HeroFeaturedStory({ navigate }) {
         <div className="hero-story-intro">
           <Eyebrow primary>A success story · Shidalagatta</Eyebrow>
           <h1 style={{fontFamily:'var(--serif)', fontSize:'clamp(40px, 5.4vw, 72px)', lineHeight:1.04, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            Silpa dropped out at 11. Prayer and a sponsor <span className="under-wave">changed everything.</span>
+            Shilpa quit school at 11 to take care of mom. <span className="under-wave">Now she's a nurse.</span>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, lineHeight:1.55, maxWidth: 520}}>
-            At eleven, she'd dropped out of school to care for her asthmatic mother. Today she's a working nurse. She built the first brick home in her village.
+            At eleven, she quit school to take care of her asthmatic mom. Today she's a working nurse. She built the first brick home in her village.
           </p>
         </div>
         <div className="hero-story-buttons" style={{display:'flex', gap:14, flexWrap:'wrap'}}>
@@ -74,7 +74,7 @@ function HeroFeaturedStory({ navigate }) {
             boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
           }}>
             <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>8 years as a nurse · a home for her mother</div>
+            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse. Built the first brick home in her village.</div>
           </div>
         </div>
         <div className="hero-story-stats">
@@ -259,8 +259,14 @@ function EducationPreview({ navigate }) {
         <div style={{display:'flex', flexDirection:'column', gap:16, minWidth:0}}>
           {featured.map(s => (
               <div key={s.id} className="card" style={{padding:'22px 24px', minWidth:0}}>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
-                  <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
+                  <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
+                    {s.photo && (
+                      <img src={s.photo} alt={s.name}
+                           style={{width:32, height:32, borderRadius:'50%', objectFit:'cover', flexShrink:0, display:'block'}} />
+                    )}
+                    <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+                  </div>
                   <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
                 </div>
                 {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}

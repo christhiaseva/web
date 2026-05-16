@@ -45,16 +45,28 @@ function StudentProfile({ id, navigate }) {
       {/* Hero */}
       <section style={{padding:'40px 0 60px'}}>
         <div className="container" style={{display:'grid', gridTemplateColumns:'1.1fr 1fr', gap: 64, alignItems:'flex-start'}}>
-          <div style={{position:'sticky', top: 92, alignSelf:'flex-start'}}>
+          <div className="profile-hero-photo-desktop" style={{position:'sticky', top: 92, alignSelf:'flex-start'}}>
             <StudentPhoto src={s.photo} alt={s.name} style={{borderRadius:16, height:640}} />
           </div>
 
           <div>
-            <span className="tag tag-primary">{s.tag}</span>
-            <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
+            <div className="profile-hero-mobile" style={{gap: 16, marginBottom: 20, alignItems:'center'}}>
+              <div style={{width:104, height:104, borderRadius:14, overflow:'hidden', flexShrink:0}}>
+                <StudentPhoto src={s.photo} alt={s.name} />
+              </div>
+              <div style={{minWidth:0}}>
+                <h1 className="serif" style={{fontSize: 26, lineHeight:1.1, fontWeight:400, letterSpacing:'-0.015em', margin:0}}>
+                  {s.name}
+                </h1>
+                <p className="serif" style={{fontStyle:'italic', fontSize: 15.5, color:'var(--ink-2)', marginTop: 6, marginBottom: 0, lineHeight:1.4}}>
+                  {story.tagline}
+                </p>
+              </div>
+            </div>
+            <h1 className="profile-hero-name-desktop serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
               {s.name}
             </h1>
-            <p className="serif" style={{fontStyle:'italic', fontSize: 22, color:'var(--ink-2)', marginTop: 16, lineHeight:1.4, maxWidth: 520}}>
+            <p className="profile-hero-name-desktop serif" style={{fontStyle:'italic', fontSize: 22, color:'var(--ink-2)', marginTop: 16, lineHeight:1.4, maxWidth: 520}}>
               {story.tagline}
             </p>
 
@@ -173,8 +185,14 @@ function StudentProfile({ id, navigate }) {
           <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 20}}>
             {(window.STUDENTS || []).filter(x => x.id !== s.id && !x.sponsored).slice(0, 3).map(o => (
                 <div key={o.id} className="card" style={{padding:'22px 24px', cursor:'pointer'}} onClick={() => navigate('profile', {id: o.id})}>
-                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
-                    <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{o.name}</div>
+                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
+                    <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
+                      {o.photo && (
+                        <img src={o.photo} alt={o.name}
+                             style={{width:32, height:32, borderRadius:'50%', objectFit:'cover', flexShrink:0, display:'block'}} />
+                      )}
+                      <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{o.name}</div>
+                    </div>
                     <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{o.course}</span>
                   </div>
                   {o.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{o.intro}</p>}

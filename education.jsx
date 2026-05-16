@@ -21,8 +21,14 @@ function StudentCard({ s, navigate }) {
              onClick={() => navigate('profile', { id: s.id })}
              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(42,32,20,0.10)';}}
              onMouseLeave={e => { e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='';}}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', gap:12, flexWrap:'wrap'}}>
-        <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
+        <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
+          {s.photo && (
+            <img src={s.photo} alt={s.name}
+                 style={{width:32, height:32, borderRadius:'50%', objectFit:'cover', flexShrink:0, display:'block'}} />
+          )}
+          <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
+        </div>
         <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
       </div>
       {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}

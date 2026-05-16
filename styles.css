@@ -595,8 +595,15 @@ image-slot::before {
   color: var(--ink-3);
 }
 
+/* Student profile: desktop shows big sticky photo + name; mobile shows compact header */
+.profile-hero-mobile { display: none; }
+
 /* ── Mobile responsive ─────────────────────────── */
 @media (max-width: 820px) {
+  .profile-hero-photo-desktop,
+  .profile-hero-name-desktop { display: none; }
+  .profile-hero-mobile { display: flex; }
+
   .hero-story-grid {
     grid-template-columns: 1fr;
     grid-template-areas: "intro" "photo" "buttons" "stats";
