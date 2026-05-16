@@ -305,7 +305,7 @@ const STORY_DETAILS = {
       { text: "She started cleaning other people's houses for a little money when she was seven years old to help provide for the family. We stepped in to help, so that she and her sister could go to school." },
       { text: "She passed high school with very good marks but had no way of going to college. Her mother began talking about arranging a marriage when Megana was fifteen. We discouraged her mother from it." },
       { text: "Generous sponsors agreed to support her through nursing college. Four years ago she graduated, and today she is working in a hospital in Chickaballapur. They moved out of their hut and are renting a small one-bedroom apartment." },
-      { text: "When Mary and I were admitted to the hospital with Covid-19 for nineteen days, Megana was the nurse who took care of us. She is now helping her sister go to college too." },
+      { text: "When Mary and I were admitted to the hospital with Covid-19 for nineteen days, Megana was the nurse who took care of us. She is now helping her sister go to college too. Looking back, I see God's hand in all of it. His faithfulness in her life, and in ours." },
     ],
     quote: "Just $200 a year for three years has made such an impact in the life of a person and a family. Very little for us, but an investment with great return.",
     quoteAttrib: 'Mathew Mathai, founder',
