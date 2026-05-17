@@ -17,7 +17,7 @@ const STUDENT_TAGS = ['All', 'Healthcare', 'Trade', 'Business', 'Ministry', 'Tec
 
 function StudentCard({ s, navigate }) {
   return (
-    <article className="card" style={{padding:'22px 24px', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease'}}
+    <article className="card" style={{padding:'22px 24px', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease', display:'flex', flexDirection:'column', height:'100%'}}
              onClick={() => navigate('profile', { id: s.id })}
              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(42,32,20,0.10)';}}
              onMouseLeave={e => { e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='';}}>
@@ -32,7 +32,7 @@ function StudentCard({ s, navigate }) {
         <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
       </div>
       {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:'auto', paddingTop:14}}>
         {s.sponsored
           ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
           : <span style={{fontFamily:'var(--serif)', fontSize:16, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>}
