@@ -87,10 +87,14 @@ function Education({ navigate }) {
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, maxWidth: 720, lineHeight:1.55}}>
             For most of these students, sponsorship is what makes college possible. It is an opportunity to walk alongside a student and their family, changing the trajectory of their life and of generations to come.
           </p>
-          <div style={{marginTop: 28, display:'flex', alignItems:'center', gap: 14, flexWrap:'wrap'}}>
+          <div style={{marginTop: 28, display:'flex', alignItems:'center', gap: 24, flexWrap:'wrap'}}>
             <a onClick={() => navigate('stories')}
                style={{cursor:'pointer', fontSize: 15, color:'var(--primary)', fontWeight:500, borderBottom:'1px solid var(--primary)', paddingBottom: 2}}>
               Read student stories: past graduates and current sponsorships →
+            </a>
+            <a onClick={() => navigate('featured-student')}
+               style={{cursor:'pointer', fontSize: 15, color:'var(--primary)', fontWeight:500, borderBottom:'1px solid var(--primary)', paddingBottom: 2}}>
+              Meet today's featured student →
             </a>
           </div>
         </div>

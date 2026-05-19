@@ -17,6 +17,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 // Pattern → page
 //   /                        → home
 //   /sponsor-a-student       → education
+//   /featured-student        → featured-student (random bio)
 //   /student-stories         → stories
 //   /our-story               → story
 //   /plant-a-church          → churches
@@ -25,13 +26,14 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 //
 // Legacy hash URLs (#/donate/...) are redirected once at load.
 const ROUTES = [
-  { page: 'education', path: '/sponsor-a-student' },
-  { page: 'stories',      path: '/student-stories'      },
-  { page: 'story-detail', path: '/student-stories/:id' },
-  { page: 'story',     path: '/our-story'         },
-  { page: 'churches',  path: '/plant-a-church'    },
-  { page: 'contact',   path: '/contact'           },
-  { page: 'profile',   path: '/student/:id'       },
+  { page: 'education',        path: '/sponsor-a-student'    },
+  { page: 'featured-student', path: '/featured-student'     },
+  { page: 'stories',          path: '/student-stories'      },
+  { page: 'story-detail',     path: '/student-stories/:id'  },
+  { page: 'story',            path: '/our-story'            },
+  { page: 'churches',         path: '/plant-a-church'       },
+  { page: 'contact',          path: '/contact'              },
+  { page: 'profile',          path: '/student/:id'          },
 ];
 
 // Base path — supports deploys to /foo/ subpaths. Inferred from the path to
@@ -160,6 +162,8 @@ function App() {
     content = <Home navigate={navigate} heroVariant={t.heroVariant} />;
   } else if (route.page === 'education') {
     content = <Education navigate={navigate} />;
+  } else if (route.page === 'featured-student') {
+    content = <FeaturedStudent navigate={navigate} />;
   } else if (route.page === 'profile') {
     content = <StudentProfile id={route.params.id} navigate={navigate} />;
   } else if (route.page === 'donate') {
