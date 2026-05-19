@@ -19,21 +19,6 @@
   },
   "students": [
     {
-      "id": "harsha-m-00b",
-      "name": "Harsha.",
-      "course": "Pre-University Year 2 (12th Grade), Commerce",
-      "school": "Adhyayana PU College",
-      "village": "Chintamani",
-      "goal": 200,
-      "sponsored": false,
-      "days": 0,
-      "tag": "Business",
-      "photo": "/images/students/harsha-m-00b.jpg",
-      "testimony": "Few years back when I was a kid, my mother was sick & she was not feeling well & also she had an evil spirit attack, one day someone told us to go to church & pray for her we went to church & pastors prayed for her then she was cured & we all came to church",
-      "why_assistance": "I need this assistance for my further studies, we are facing some challenges at home & financially it will be good for my studies",
-      "intro": "We've had some financial setbacks at home and a sponsorship would help me finish my business studies."
-    },
-    {
       "id": "prem-kumar-f33",
       "name": "Prem",
       "course": "Pre-University Year 2 (12th Grade), Commerce",
@@ -47,6 +32,21 @@
       "testimony": "When I was studying in my high school I came to Chintamani to my aunty house for my studies. My aunty & family there were going to church regularly so I was going with them every week and I came to know about Jesus & I believed in Jesus & took baptism last year",
       "why_assistance": "I need financial assistance to continue my higher education. My family has limited income and it is difficult to manage college fees & other expenses.",
       "intro": "My family's income barely covers our basics, and I'm asking for help to stay in school."
+    },
+    {
+      "id": "harsha-m-00b",
+      "name": "Harsha.",
+      "course": "Pre-University Year 2 (12th Grade), Commerce",
+      "school": "Adhyayana PU College",
+      "village": "Chintamani",
+      "goal": 200,
+      "sponsored": false,
+      "days": 0,
+      "tag": "Business",
+      "photo": "/images/students/harsha-m-00b.jpg",
+      "testimony": "Few years back when I was a kid, my mother was sick & she was not feeling well & also she had an evil spirit attack, one day someone told us to go to church & pray for her we went to church & pastors prayed for her then she was cured & we all came to church",
+      "why_assistance": "I need this assistance for my further studies, we are facing some challenges at home & financially it will be good for my studies",
+      "intro": "We've had some financial setbacks at home and a sponsorship would help me finish my degree."
     },
     {
       "id": "shruthi-mv-7d5",
