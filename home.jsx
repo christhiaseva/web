@@ -175,7 +175,7 @@ function MissionBand() {
 function Ministries({ navigate }) {
   const items = [
     { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.', verse:'Matthew 16:18', stat:'10', statLabel:'churches planted' },
-    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
+    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat:`${Math.floor(((window.STUDENTS||[]).length)/10)*10}+`, statLabel:'students supported', highlight:true },
   ];
   return (
     <section className="section">

@@ -100,7 +100,7 @@ function Education({ navigate }) {
       <section style={{padding:'24px 0 24px', borderTop:'1px solid var(--line-soft)', borderBottom:'1px solid var(--line-soft)', background:'var(--bg-2)'}}>
         <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 32}}>
           {[
-            {n:'200+', l:'students supported since 2003'},
+            {n:`${Math.floor(all.length / 10) * 10}+`, l:'students supported since 2003'},
             {n:'94%',  l:'graduation rate'},
             {n:'$1,650', l:'average annual cost'},
             {n:'100%', l:'goes directly to tuition'},
