@@ -116,28 +116,24 @@ function StudentProfile({ id, navigate }) {
       {/* Story */}
       <section style={{padding:'40px 0 80px', background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)'}}>
         <div className="narrow">
-          <p style={{fontFamily:'var(--serif)', fontSize:22, lineHeight:1.45, color:'var(--ink)', marginBottom:32, fontWeight:400}}>
-            {s.name} comes from the town of {s.village} and is studying {s.course} at {s.school}.
-          </p>
-          <Eyebrow primary>In {s.name}'s words</Eyebrow>
-          <div style={{marginTop: 32}}>
-            {s.why_assistance && (
-              <>
-                <p style={{fontStyle:'italic', fontSize:15, color:'var(--ink-3)', marginTop:28, marginBottom:10}}>Why are you applying for sponsorship?</p>
-                <p style={{fontFamily:'var(--sans)', fontSize:17.5, lineHeight:1.7, color:'var(--ink-2)', marginBottom:24, fontWeight:400}}>
-                  {s.why_assistance}
-                </p>
-              </>
-            )}
-            {s.testimony && (
-              <>
-                <p style={{fontStyle:'italic', fontSize:15, color:'var(--ink-3)', marginTop:28, marginBottom:10}}>How did you come to know Jesus?</p>
-                <p style={{fontFamily:'var(--sans)', fontSize:17.5, lineHeight:1.7, color:'var(--ink-2)', marginBottom:24, fontWeight:400}}>
-                  {s.testimony}
-                </p>
-              </>
-            )}
-          </div>
+          {s.story && (
+            <div style={{marginBottom: 56}}>
+              <Eyebrow primary>{s.name}'s story</Eyebrow>
+              <p style={{fontFamily:'var(--sans)', fontSize:17.5, lineHeight:1.7, color:'var(--ink-2)', marginTop: 28, marginBottom: 0, fontWeight:400}}>
+                {s.story}
+              </p>
+              {s.quote && (
+                <>
+                  <div style={{marginTop: 40}}>
+                    <Eyebrow primary>In {s.name}'s own words</Eyebrow>
+                  </div>
+                  <p style={{fontFamily:'var(--serif)', fontStyle:'italic', fontSize:22, lineHeight:1.45, color:'var(--ink)', marginTop: 24, marginBottom: 0, fontWeight:400}}>
+                    "{s.quote}"
+                  </p>
+                </>
+              )}
+            </div>
+          )}
 
           <div style={{marginTop: 56, padding:'40px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)', textAlign:'center'}}>
             <p className="verse">"{story.verseText}"</p>
