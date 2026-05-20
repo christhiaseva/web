@@ -114,7 +114,7 @@ function Education({ navigate }) {
       </section>
 
       {/* Grid */}
-      <section style={{paddingBottom: 80}}>
+      <section style={{paddingTop: 24, paddingBottom: 80}}>
         <div className="container">
           <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap: 24}}>
             {all.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
