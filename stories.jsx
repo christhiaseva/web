@@ -7,7 +7,7 @@ const STUDENT_STORIES = [
     village: 'Shidalagatta',
     status: 'past',
     role: 'Nurse · graduated 8 years ago',
-    headline: '$200 a year for three years gave Silpa a whole new life.',
+    headline: 'Shilpa quit school at 11 to take care of mom. Now she\'s a nurse.',
     summary: "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
     outcome: 'Working as a nurse, Shilpa built the first brick home in her village.',
     tag: 'Healthcare',
@@ -273,7 +273,7 @@ const STORY_DETAILS = {
     name: 'Silpa',
     village: 'Shidalagatta',
     eyebrow: "Silpa's full story · in Mathew's words",
-    headline: <>$200 a year for three years. <em style={{color:'var(--primary)', fontStyle:'italic'}}>A whole new life.</em></>,
+    headline: <>Shilpa quit school at 11 to take care of mom. <em style={{color:'var(--primary)', fontStyle:'italic'}}>Now she's a nurse.</em></>,
     photo: '/images/silpa-story.jpg',
     photoAlt: 'Silpa in her nursing scrubs',
     paragraphs: [
@@ -285,8 +285,8 @@ const STORY_DETAILS = {
     quote: "It was a small amount for us, but a huge investment in Silpa's life. We didn't lose anything \u2014 she gained a new life.",
     quoteAttrib: 'Mathew Mathai, founder',
     stats: [
-      { n: '8 yrs', l: 'working as a nurse since' },
-      { n: '1', l: 'whole new life · and a house for her mom' },
+      { n: '8 yrs', l: 'working as a nurse' },
+      { n: '1st', l: 'in her family to go to college' },
     ],
     photoSlots: [
       { id: 'silpa-house', placeholder: "Silpa's brick home · the first in her village" },
@@ -337,14 +337,11 @@ function StoryDetail({ id, navigate }) {
 
       <section style={{padding:'40px 0 80px'}}>
         <div className="container">
-          <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom: 48, gap: 32, flexWrap:'wrap'}}>
-            <div style={{maxWidth: 720}}>
-              <Eyebrow primary>{story.eyebrow}</Eyebrow>
-              <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 18, fontWeight:400, letterSpacing:'-0.015em'}}>
-                {story.headline}
-              </h1>
-            </div>
-            <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase'}}>
+          <div style={{marginBottom: 12}}>
+            <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 0, fontWeight:400, letterSpacing:'-0.015em'}}>
+              {story.headline}
+            </h1>
+            <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase', marginTop: 16}}>
               {story.name} &middot; {story.village}
             </div>
           </div>
