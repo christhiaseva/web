@@ -7,9 +7,9 @@ const STUDENT_STORIES = [
     village: 'Shidalagatta',
     status: 'past',
     role: 'Nurse · graduated 8 years ago',
-    headline: 'Shilpa quit school at 11 to take care of mom. Now she\'s a nurse.',
+    headline: 'Silpa quit school at 11 to take care of mom. Now she\'s a nurse.',
     summary: "At eleven, Silpa had dropped out of school to care for her asthmatic mother. Today she's a working nurse who built the first brick home in her village.",
-    outcome: 'Working as a nurse, Shilpa built the first brick home in her village.',
+    outcome: 'Working as a nurse, Silpa built the first brick home in her village.',
     tag: 'Healthcare',
   },
   {
@@ -273,7 +273,7 @@ const STORY_DETAILS = {
     name: 'Silpa',
     village: 'Shidalagatta',
     eyebrow: "Silpa's full story · in Mathew's words",
-    headline: <>Shilpa quit school at 11 to take care of mom. <em style={{color:'var(--primary)', fontStyle:'italic'}}>Now she's a nurse.</em></>,
+    headline: <>She quit school at 11 to care for her mom. <em style={{color:'var(--primary)', fontStyle:'italic'}}>Now she's a nurse.</em></>,
     photo: '/images/silpa-story.jpg',
     photoAlt: 'Silpa in her nursing scrubs',
     paragraphs: [
@@ -286,7 +286,7 @@ const STORY_DETAILS = {
     quoteAttrib: 'Mathew Mathai, founder',
     stats: [
       { n: '8 yrs', l: 'working as a nurse' },
-      { n: '1st', l: 'in her family to go to college' },
+      { n: '1st', l: 'brick home in her village' },
     ],
     photoSlots: [
       { id: 'silpa-house', placeholder: "Silpa's brick home · the first in her village" },
@@ -337,13 +337,13 @@ function StoryDetail({ id, navigate }) {
 
       <section style={{padding:'40px 0 80px'}}>
         <div className="container">
-          <div style={{marginBottom: 12}}>
-            <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, marginTop: 0, fontWeight:400, letterSpacing:'-0.015em'}}>
-              {story.headline}
-            </h1>
-            <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase', marginTop: 16}}>
+          <div style={{marginBottom: 48}}>
+            <div style={{fontSize:13, color:'var(--ink-3)', letterSpacing:'0.16em', textTransform:'uppercase', marginBottom: 14}}>
               {story.name} &middot; {story.village}
             </div>
+            <h1 className="serif" style={{fontSize:'clamp(36px, 4.6vw, 60px)', lineHeight:1.05, fontWeight:400, letterSpacing:'-0.015em'}}>
+              {story.headline}
+            </h1>
           </div>
 
           <div className="silpa-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 56, alignItems:'flex-start'}}>

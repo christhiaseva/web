@@ -51,11 +51,28 @@ function HeroFeaturedStory({ navigate }) {
         <div className="hero-story-intro">
           <Eyebrow primary>A success story · Shidalagatta</Eyebrow>
           <h1 style={{fontFamily:'var(--serif)', fontSize:'clamp(40px, 5.4vw, 72px)', lineHeight:1.04, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            Shilpa quit school at 11 to take care of mom. <span className="under-wave">Now she's a nurse.</span>
+            Silpa quit school at 11 to take care of mom. <span className="under-wave">Now she's a nurse.</span>
           </h1>
           <p style={{fontSize:19, color:'var(--ink-2)', marginTop: 26, lineHeight:1.55, maxWidth: 520}}>
             At eleven, she quit school to take care of her asthmatic mom. Today she's a working nurse. She built the first brick home in her village.
           </p>
+        </div>
+        <div className="hero-story-stats">
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>{new Date().getFullYear() - 1980}</strong>years of ministry</div>
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
+          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
+        </div>
+        <div className="hero-story-photo" style={{position:'relative'}}>
+          <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', aspectRatio:'1 / 1', objectFit:'cover', objectPosition:'top', borderRadius:20, display:'block'}} />
+          <div className="hero-story-today" style={{
+            position:'absolute', left:-32, bottom:32,
+            background:'var(--card)', border:'1px solid var(--line)',
+            borderRadius: 12, padding:'18px 22px', maxWidth: 300,
+            boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
+          }}>
+            <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
+            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse, Silpa built the first brick home in her village.</div>
+          </div>
         </div>
         <div className="hero-story-buttons" style={{display:'flex', gap:14, flexWrap:'wrap'}}>
           <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
@@ -64,23 +81,6 @@ function HeroFeaturedStory({ navigate }) {
           <button className="btn btn-ghost" onClick={() => navigate('story-detail', { id: 'silpa' })}>
             Read Silpa's story
           </button>
-        </div>
-        <div className="hero-story-photo" style={{position:'relative'}}>
-          <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', height:600, objectFit:'cover', borderRadius:20, display:'block'}} />
-          <div style={{
-            position:'absolute', left:-32, bottom:32,
-            background:'var(--card)', border:'1px solid var(--line)',
-            borderRadius: 12, padding:'18px 22px', maxWidth: 300,
-            boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
-          }}>
-            <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse, Shilpa built the first brick home in her village.</div>
-          </div>
-        </div>
-        <div className="hero-story-stats">
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>{new Date().getFullYear() - 1980}</strong>years of ministry</div>
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
         </div>
       </div>
     </section>
