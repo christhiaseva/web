@@ -173,8 +173,9 @@ function MissionBand() {
 
 // ── Ministries ────────────────────────────
 function Ministries({ navigate }) {
+  const churchCount = (window.CHURCHES || []).length;
   const items = [
-    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.', verse:'Matthew 16:18', stat:'10', statLabel:'churches planted' },
+    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.', verse:'Matthew 16:18', stat: String(churchCount), statLabel:'churches planted' },
     { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
   ];
   return (
@@ -188,7 +189,7 @@ function Ministries({ navigate }) {
         {items.map(it => (
           <div key={it.key}
                className="card"
-               onClick={() => navigate(it.key === 'education' ? 'education' : it.key)}
+               onClick={() => navigate(it.key === 'churches' ? 'church-list' : 'education')}
                style={{
                  padding:'40px 36px',
                  cursor:'pointer',
@@ -304,28 +305,28 @@ const KARNATAKA_PATH = "M 74.5,23.6 L 75.4,22.6 L 76.5,22.4 L 77.5,21.55 L 77.6,
 const INDIA_VIEWBOX     = [67, 3,    31, 31];   // pad slightly past actual extent
 const KARNATAKA_VIEWBOX = [73.7, 21.2, 5.2, 7.5];
 
-// Real town coordinates in Chickaballapur district (Karnataka), projected as (lon, 40-lat)
-const TOWNS = [
-  { x: 77.79, y: 26.22, label: 'Bagepalli'      }, // 13.78 N
-  { x: 77.51, y: 26.39, label: 'Gauribidanur'   }, // 13.61 N
-  { x: 77.69, y: 26.32, label: 'Gudibande'      }, // 13.68 N
-  { x: 78.05, y: 26.60, label: 'Chintamani'     }, // 13.40 N
-  { x: 77.86, y: 26.61, label: 'Sidlaghatta'    }, // 13.39 N
-  { x: 77.71, y: 26.14, label: 'Chelur'         }, // 13.86 N
-  { x: 77.73, y: 26.57, label: 'Chickaballapur' }, // 13.43 N
-  { x: 77.77, y: 26.64, label: 'Peresandra'     }, // 13.36 N
-  { x: 77.27, y: 26.39, label: 'Kodigenahalli'  }, // 13.61 N
-  { x: 77.71, y: 26.75, label: 'Devanahalli'    }, // 13.25 N
-];
+// Expose geo constants so other pages can render a consistent Karnataka outline.
+window.KARNATAKA_PATH = KARNATAKA_PATH;
+window.KARNATAKA_VIEWBOX = KARNATAKA_VIEWBOX;
+
+// Map projection: (lon, 40-lat) so SVG y grows downward.
+// Town pins are derived from window.CHURCHES at render time — see ChurchesMap.
 
 // Centroid of Karnataka — approximate geographic center (around Davanagere/Chitradurga)
 const KARNATAKA_CENTROID = { x: 76, y: 25 }; // 15°N, 76°E
 
-function ChurchesMap() {
+function ChurchesMap({ navigate }) {
   const [view, setView] = useState('india'); // 'india' | 'karnataka'
   const [vb, setVb] = useState(INDIA_VIEWBOX);
   const sectionRef = useRef(null);
   const triggered = useRef(false);
+
+  const churches = window.CHURCHES || [];
+  const towns = churches
+    .filter(c => c.latitude != null && c.longitude != null)
+    .map(c => ({ x: c.longitude, y: 40 - c.latitude, label: c.name, id: c.id }));
+  const totalMembers = churches.reduce((s, c) => s + (c.member_count || 0), 0);
+  const featured = churches.find(c => c.id === 'chickaballapur');
 
   // Animate viewBox between targets
   useEffect(() => {
@@ -376,6 +377,10 @@ function ChurchesMap() {
   const pinsVisible = vb[2] < 10;
   const indiaPinVisible = vb[2] > 12;
 
+  const numberWords = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen','Twenty'];
+  const churchCountWord = numberWords[churches.length] || String(churches.length);
+  const inWorshipLabel = totalMembers > 0 ? `${totalMembers}+` : '960+';
+
   return (
     <section ref={sectionRef} className="section" style={{background:'var(--ink)', color:'var(--bg)'}}>
       <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1.15fr', gap: 80, alignItems:'center'}}>
@@ -385,23 +390,12 @@ function ChurchesMap() {
             <span className="dot" style={{background:'var(--accent-soft)'}}></span>Where we are
           </div>
           <h2 className="serif" style={{color:'var(--bg)', fontSize:'clamp(34px, 4.4vw, 54px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            From one corner of Karnataka, <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>ten churches and counting.</em>
+            From one corner of Karnataka, <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>{churchCountWord.toLowerCase()} churches and counting.</em>
           </h2>
           <p style={{fontSize:17, color:'rgba(247,241,226,0.72)', marginTop: 22, lineHeight:1.6, maxWidth: 480}}>
             Most of these congregations started in living rooms. A few began with a single family hosting prayer. Today they meet in homes, in rented halls, and in buildings the mission has helped construct, all within a 90-kilometer arc of where Mathew and Mary first arrived in 1980.
           </p>
-          <div style={{display:'flex', gap:32, marginTop: 36, flexWrap:'wrap'}}>
-            {[
-              {n:'10', l:'churches'},
-              {n:'8',  l:'pastors'},
-              {n:'960+', l:'in worship weekly'},
-            ].map(s => (
-              <div key={s.l}>
-                <div style={{fontFamily:'var(--serif)', fontSize:36, color:'var(--accent-soft)'}}>{s.n}</div>
-                <div style={{fontSize:12.5, color:'rgba(247,241,226,0.6)', marginTop:4}}>{s.l}</div>
-              </div>
-            ))}
-          </div>
+
           <div style={{display:'flex', gap: 8, marginTop: 36, padding: 4, background:'rgba(247,241,226,0.06)', borderRadius: 999, width:'fit-content', border:'1px solid rgba(247,241,226,0.1)'}}>
             <button onClick={() => setView('india')}
                     style={{padding:'9px 18px', borderRadius: 999, border:0, cursor:'pointer',
@@ -418,6 +412,43 @@ function ChurchesMap() {
               Karnataka
             </button>
           </div>
+
+          <div style={{display:'flex', gap:32, marginTop: 36, flexWrap:'wrap'}}>
+            {[
+              {n: String(churches.length), l:'churches'},
+              {n: inWorshipLabel,           l:'in worship weekly'},
+            ].map(s => (
+              <div key={s.l}>
+                <div style={{fontFamily:'var(--serif)', fontSize:36, color:'var(--accent-soft)'}}>{s.n}</div>
+                <div style={{fontSize:12.5, color:'rgba(247,241,226,0.6)', marginTop:4}}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+
+          {featured && (
+            <div onClick={() => navigate && navigate('church-list')}
+                 style={{marginTop:36, padding:'22px 24px', borderRadius:'var(--r-md)', background:'rgba(247,241,226,0.06)', border:'1px solid rgba(247,241,226,0.12)', cursor: navigate ? 'pointer' : 'default', transition:'background .15s ease'}}
+                 onMouseEnter={e => { if (navigate) e.currentTarget.style.background='rgba(247,241,226,0.10)';}}
+                 onMouseLeave={e => { e.currentTarget.style.background='rgba(247,241,226,0.06)';}}>
+              <div className="eyebrow" style={{color:'var(--accent-soft)'}}>
+                <span className="dot" style={{background:'var(--accent-soft)'}}></span>Our First Church
+              </div>
+              <div style={{display:'flex', alignItems:'center', gap:16, marginTop:14}}>
+                {featured.photo && (
+                  <img src={featured.photo} alt={featured.name}
+                       style={{width:64, height:64, borderRadius:'var(--r-sm)', objectFit:'cover', flexShrink:0}} />
+                )}
+                <div style={{minWidth:0}}>
+                  <div style={{fontFamily:'var(--serif)', fontSize:24, color:'var(--bg)', lineHeight:1.15}}>{featured.name}</div>
+                </div>
+              </div>
+              {navigate && (
+                <div style={{fontSize:13, color:'var(--accent-soft)', marginTop:14}}>
+                  See all churches →
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Right: map */}
@@ -457,8 +488,8 @@ function ChurchesMap() {
           </div>
 
           {/* Karnataka-view town pins */}
-          {TOWNS.map((t, i) => (
-            <TownPin key={t.label}
+          {towns.map((t, i) => (
+            <TownPin key={t.id || t.label}
                      town={t}
                      position={toScreen(t.x, t.y)}
                      visible={pinsVisible}
@@ -576,7 +607,7 @@ function FinalCTA({ navigate }) {
           <button className="btn" onClick={() => navigate('education')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
             Sponsor a student →
           </button>
-          <button className="btn" onClick={() => navigate('churches')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
+          <button className="btn" onClick={() => navigate('church-list')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
             Help plant a church →
           </button>
         </div>
@@ -594,7 +625,7 @@ function Home({ navigate, heroVariant }) {
       <Ministries navigate={navigate} />
       <Verse text="And he said to them, 'Go into all the world and proclaim the gospel to the whole creation.'" cite="Mark 16:15" />
       <EducationPreview navigate={navigate} />
-      <ChurchesMap />
+      <ChurchesMap navigate={navigate} />
       <FinalCTA navigate={navigate} />
     </>
   );

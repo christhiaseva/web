@@ -29,11 +29,6 @@ function StudentProfile({ id, navigate }) {
     verseText: 'For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.'
   };
 
-  const updates = [
-    { d:'Aug 2025', t:'Acceptance letter received', body:`${s.name} was accepted into ${s.school} for the upcoming term.` },
-    { d:'Sep 2025', t:'Tuition partially paid', body:`First semester tuition has been deposited from sponsor gifts.` },
-    { d:'Oct 2025', t:'Started classes', body:`${s.name} began coursework. First academic report expected at end of term.` },
-  ];
 
   return (
     <>
@@ -73,7 +68,7 @@ function StudentProfile({ id, navigate }) {
             <div style={{marginTop: 36, padding:'20px 0', borderTop:'1px solid var(--line)', borderBottom:'1px solid var(--line)', display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap: 24}}>
               <div>
                 <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--ink-3)', marginBottom:6}}>Studying</div>
-                <div style={{fontFamily:'var(--serif)', fontSize:18}}>{s.course}</div>
+                <div style={{fontFamily:'var(--serif)', fontSize:18}}>{s.course === '[not specified]' ? '' : s.course}</div>
                 <div style={{fontSize:13.5, color:'var(--ink-2)', marginTop:2}}>{s.school}</div>
               </div>
               <div>
@@ -91,12 +86,16 @@ function StudentProfile({ id, navigate }) {
                   <div style={{fontSize:13.5, color:'var(--ink-3)', marginTop:2}}>per year</div>
                 </div>
                 <div style={{textAlign:'right'}}>
-                  {s.sponsored
+                  {s.has_sponsor
                     ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
                     : <span className="tag tag-primary">Needs a sponsor</span>}
                 </div>
               </div>
-              {!s.sponsored && (
+              {s.has_sponsor ? (
+                <div style={{marginTop: 24, textAlign:'center', fontFamily:'var(--serif)', fontSize: 18, color:'var(--ink-2)'}}>
+                  {s.name} has been sponsored.
+                </div>
+              ) : (
                 <>
                   <button className="btn btn-primary btn-arrow"
                           style={{marginTop: 24, width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
@@ -104,7 +103,7 @@ function StudentProfile({ id, navigate }) {
                     Sponsor {s.name}
                   </button>
                   <div style={{textAlign:'center', fontSize: 13, color:'var(--ink-3)', marginTop: 14}}>
-                    100% goes to tuition. <a style={{cursor:'pointer', color:'var(--primary)', textDecoration:'underline'}}>Tax-deductible</a>.
+                    100% goes to tuition.
                   </div>
                 </>
               )}
@@ -142,30 +141,6 @@ function StudentProfile({ id, navigate }) {
         </div>
       </section>
 
-      {/* Updates */}
-      <section style={{padding:'80px 0'}}>
-        <div className="narrow">
-          <Eyebrow primary>Updates</Eyebrow>
-          <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 38px)', marginTop: 18, marginBottom: 36, fontWeight:400}}>
-            How {s.name}'s journey is unfolding.
-          </h2>
-          <div>
-            {updates.map((u, i) => (
-              <div key={i} style={{display:'grid', gridTemplateColumns:'120px 1fr', gap: 24, padding:'24px 0', borderTop: i === 0 ? '1px solid var(--line)' : 'none', borderBottom:'1px solid var(--line)'}}>
-                <div style={{fontFamily:'var(--serif)', fontSize: 16, color:'var(--primary)'}}>{u.d}</div>
-                <div>
-                  <h4 className="serif" style={{fontSize: 19, fontWeight:400, marginBottom: 6}}>{u.t}</h4>
-                  <p style={{color:'var(--ink-2)', fontSize:15.5, lineHeight:1.6}}>{u.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{marginTop: 40, fontSize: 14.5, color:'var(--ink-3)', fontStyle:'italic'}}>
-            Sponsors receive these updates by email, plus a personal letter from {s.name} once per academic year.
-          </div>
-        </div>
-      </section>
-
       {/* Other students */}
       <section style={{padding:'40px 0 100px', background:'var(--bg-2)', borderTop:'1px solid var(--line-soft)'}}>
         <div className="container">
@@ -189,7 +164,7 @@ function StudentProfile({ id, navigate }) {
                       )}
                       <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{o.name}</div>
                     </div>
-                    <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{o.course}</span>
+                    <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{o.course === '[not specified]' ? '' : o.course}</span>
                   </div>
                   {o.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{o.intro}</p>}
                   <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>

@@ -16,7 +16,8 @@
       "why_assistance": "Why the student needs financial assistance",
       "intro": "Short, compelling intro generated from testimony and why_assistance",
       "story": "First-person narrative (~60\u201380 words) for English-first sponsors, generated from testimony and why_assistance",
-      "quote": "One or two sentences lifted from the student's own writing, lightly cleaned"
+      "quote": "One or two sentences lifted from the student's own writing, lightly cleaned",
+      "has_sponsor": "true if the sheet's Sponsor column (Q) is populated for this student"
     }
   },
   "students": [
@@ -35,7 +36,8 @@
       "why_assistance": "I need this assistance for my further studies, we are facing some challenges at home & financially it will be good for my studies",
       "intro": "We've had some financial setbacks at home and a sponsorship would help me finish my business studies.",
       "story": "When I was younger, my mother was very sick. She had what we believed was an evil spirit attack, and nothing helped her. Someone told us to go to a church and ask the pastors to pray, and after they did, she was healed. That's how our whole family came to church. I'm now in my second year of pre-university commerce, and a sponsorship would help me get through the financial pressure at home.",
-      "quote": "Pastors prayed for my mother, and then she was cured. After that, we all came to church."
+      "quote": "Pastors prayed for my mother, and then she was cured. After that, we all came to church.",
+      "has_sponsor": true
     },
     {
       "id": "prem-kumar-f33",
@@ -52,7 +54,8 @@
       "why_assistance": "I need financial assistance to continue my higher education. My family has limited income and it is difficult to manage college fees & other expenses.",
       "intro": "My family's income barely covers our basics, and I'm asking for help to stay in school.",
       "story": "I came to Chintamani for high school and stayed with my aunty's family. They went to church every week, and I started going with them. That's how I came to know about Jesus. I believed, and I was baptized last year. I'm continuing into higher education, but my family's income is small and the college fees and other expenses are hard for them to manage.",
-      "quote": "I went to church with my aunty's family every week, and I came to know about Jesus. I believed, and I took baptism last year."
+      "quote": "I went to church with my aunty's family every week, and I came to know about Jesus. I believed, and I took baptism last year.",
+      "has_sponsor": false
     },
     {
       "id": "shruthi-mv-7d5",
@@ -69,7 +72,8 @@
       "why_assistance": "I need this help for my further studies & it will be very helpful for my college fees & very good help for my family to manage our financial needs.",
       "intro": "College fees stretch my family thin, and I'm hoping a sponsor can help me keep studying AI.",
       "story": "My family has been believers for the past 25 years, so I grew up around faith. My parents are the ones who first taught me about Jesus, and I went to church regularly and joined the choir. Singing and being in service is where I came to understand Him better. I'm studying AI and machine learning now, and college fees are stretching my family thin. A sponsorship would help us a lot.",
-      "quote": "By the help of my parents I came to know about Jesus. Being part of the choir gave me wisdom about God and a good relationship with Him."
+      "quote": "By the help of my parents I came to know about Jesus. Being part of the choir gave me wisdom about God and a good relationship with Him.",
+      "has_sponsor": false
     },
     {
       "id": "shylaja-mv-c3f",
@@ -86,7 +90,8 @@
       "why_assistance": "I need financial assistance. How to continue my higher education. My family has limited income, and it is difficult to manage college fees and other expenses.",
       "intro": "I've made it to my third year but covering the rest is tough without a sponsorship.",
       "story": "My family has been believers for the past 25 years, so I grew up in church. My parents taught me about Jesus, and I went to service regularly. Being part of the choir is where I really came to know Him. I'm in my third year of undergraduate studies now, and my family's income is small. Managing the college fees and other expenses on our own is more than we can do.",
-      "quote": "Being part of the choir team gave me wisdom about God, and I came to know Him more and have a good relationship with Jesus."
+      "quote": "Being part of the choir team gave me wisdom about God, and I came to know Him more and have a good relationship with Jesus.",
+      "has_sponsor": false
     },
     {
       "id": "johnson-6b4",
@@ -103,7 +108,8 @@
       "why_assistance": "I need a financial support for my education please. Help me and pray for me. Thank you.",
       "intro": "Medical training is my path to help others, but my family can't cover the fees on their own.",
       "story": "I grew up in a Christian home. My parents follow Jesus, and I was raised in Sunday School, youth meetings, and church. One Sunday during prayer I felt God speak to me and cleanse me of my sins. I gave my life to Him then, and He accepted me as His son. I'm now in a paramedical course and asking for help to keep my education going.",
-      "quote": "During Sunday prayer, God spoke to me and cleansed me of my sins. I gave my life to Jesus Christ, and He accepted me as His son."
+      "quote": "During Sunday prayer, God spoke to me and cleansed me of my sins. I gave my life to Jesus Christ, and He accepted me as His son.",
+      "has_sponsor": false
     },
     {
       "id": "sudeep-p-r-770",
@@ -120,7 +126,8 @@
       "why_assistance": "It will help to pay my sem exam fees and sem fees.",
       "intro": "Each semester's fees are hard for my family, so I'm seeking help to finish my computer studies.",
       "story": "I come from a poor family with a Hindu background. My parents didn't know who God was for a long time, but eventually they realized and came to church, and their lives changed. I've grown up in the faith since then. I'm in my Bachelor of Computer Applications now, and a sponsorship would help me pay the semester and exam fees that my family can't cover.",
-      "quote": "My parents did not know what God is. They realized and came to church, and their souls changed, and I am also grown in Christianity."
+      "quote": "My parents did not know what God is. They realized and came to church, and their souls changed, and I am also grown in Christianity.",
+      "has_sponsor": false
     },
     {
       "id": "reeta-31c",
@@ -137,7 +144,8 @@
       "why_assistance": "To take higher studies it is difficult to continue. So I need financial help. Please pray for my studies. I am seeking God for help.",
       "intro": "Continuing my medical training is hard for my family to afford, so a sponsorship would mean everything.",
       "story": "I grew up in church. My parents are Christians, and Sunday school was a part of my week for as long as I can remember. It was the pastors there who really taught me who Jesus is, and when I was ready I accepted Him as my Savior and was baptized. My whole family still goes to church together. That's where we're happiest. Continuing on to paramedical training is more than my family can manage alone, and I'm asking for help to keep going.",
-      "quote": "My whole family goes to church together, and we are happy in God."
+      "quote": "My whole family goes to church together, and we are happy in God.",
+      "has_sponsor": false
     },
     {
       "id": "nethravathi-747",
@@ -154,7 +162,8 @@
       "why_assistance": "My parents are economically poor. But I want to do further studies. I am praying and seeking God's help.",
       "intro": "My parents have very little, so even a small sponsorship would mean I can keep studying science.",
       "story": "My parents came from a Hindu background. Nineteen years ago they accepted Christ, and I was nine at the time. I started attending church and Sunday school with them, and as I grew up I came to follow Jesus on my own. I accepted Him as my Lord and Savior and was baptized. My parents don't have much income, but I want to continue my studies, and I'm praying and asking for help.",
-      "quote": "Nineteen years ago my parents accepted Christ. I attended church and Sunday school along with them, and as the days went on I became a follower of Jesus Christ."
+      "quote": "Nineteen years ago my parents accepted Christ. I attended church and Sunday school along with them, and as the days went on I became a follower of Jesus Christ.",
+      "has_sponsor": true
     },
     {
       "id": "chandrashekar-g-ee8",
@@ -171,7 +180,8 @@
       "why_assistance": "I want to study further. I am facing financial problems. It will be helpful for my future studies. Pray for me.",
       "intro": "Money is tight at home, and without a sponsor I'll struggle to finish my bachelor's degree.",
       "story": "I was born into a Hindu family. My mother used to worship other gods. Then some pastors told us about Jesus Christ, and after I heard what they shared I believed in Him as my Savior. I'm a child of God now. I'm in my fourth semester of a Bachelor of Arts, and my family is struggling financially. I'd be grateful for help that lets me keep studying.",
-      "quote": "My mother was praising other gods at that time. Pastors told us about Jesus Christ, and after listening, I believed in Him as my own Saviour."
+      "quote": "My mother was praising other gods at that time. Pastors told us about Jesus Christ, and after listening, I believed in Him as my own Saviour.",
+      "has_sponsor": false
     },
     {
       "id": "sukshitha-r-54f",
@@ -188,7 +198,8 @@
       "why_assistance": "I want to do higher studies. I need financial help. Please pray for my studies and help.",
       "intro": "Three years into medical training and stopping now isn't an option \u2014 I really need a sponsor.",
       "story": "I was born and raised in a Christian family. My parents follow Jesus, and I grew up going to Sunday school and youth meetings. That's where I heard the message from the pastors and came to understand that Jesus loved me and died for my sins. I needed Him, and I accepted Him as my Lord. I'm in my third year of naturopathy and medicine and need help to keep going.",
-      "quote": "I understood that Jesus loves me and died for my sins. I needed Him, and I accepted Him as my Lord."
+      "quote": "I understood that Jesus loves me and died for my sins. I needed Him, and I accepted Him as my Lord.",
+      "has_sponsor": false
     },
     {
       "id": "priyamani-dfa",
@@ -205,7 +216,8 @@
       "why_assistance": "I need assistance for my further studies to support. Because I am facing some financial problems in my family.",
       "intro": "Studies are expensive and my parents can't manage on their own, so a sponsorship would mean a lot.",
       "story": "I was born into a Hindu family, but since childhood I went to church with my parents. I grew up listening to God's word, and eventually I accepted Jesus Christ as my personal Savior. Now I'm part of His family. I'm in my pre-university science course, and my family is going through some financial trouble. I'm asking for support so I can keep studying.",
-      "quote": "From childhood I have been attending our church along with my parents and listening to God's word. I accepted Jesus Christ as my personal Saviour."
+      "quote": "From childhood I have been attending our church along with my parents and listening to God's word. I accepted Jesus Christ as my personal Saviour.",
+      "has_sponsor": false
     },
     {
       "id": "amruth-raj-a-s-687",
@@ -222,7 +234,8 @@
       "why_assistance": "I have some financial issues for my upcoming studies. So this might help for my higher education.",
       "intro": "Preparing for the medical school entrance exam is costly, and a sponsorship would ease the strain at home.",
       "story": "When I was in 10th standard I had bad stomach pain that wouldn't go away. I saw many doctors and didn't get better, and eventually had to have an operation. My family prayed for me through all of it, and after that I was healed. That's what made me start believing in Jesus. I know God saved me. I'm preparing for the NEET medical entrance exam, and I need help to manage the fees.",
-      "quote": "My family prayed for me, and through their prayer I was cured. God saved me, and I started to believe in Jesus."
+      "quote": "My family prayed for me, and through their prayer I was cured. God saved me, and I started to believe in Jesus.",
+      "has_sponsor": false
     },
     {
       "id": "stephen-d76",
@@ -239,7 +252,8 @@
       "why_assistance": "I need assistance for my further studies. It will be helping me financially. Thank you!",
       "intro": "An engineering degree is a stretch for my family \u2014 I'd really value a sponsor to see it through.",
       "story": "I've believed in Jesus Christ since I was a child. Our pastor uncles guided me onto the path of Christ, and I accepted Him as my Savior. I pray about everything and bring whatever I need to God, and He answers. My faith in Him is what I lean on. I'm studying engineering in data science, and a sponsorship would help me with my fees so I can keep going.",
-      "quote": "I pray for everything I want, and I ask God through my prayers. He has answered my prayers. I put my faith in Him."
+      "quote": "I pray for everything I want, and I ask God through my prayers. He has answered my prayers. I put my faith in Him.",
+      "has_sponsor": false
     },
     {
       "id": "uday-bhaskar-s-c81",
@@ -256,7 +270,8 @@
       "why_assistance": "For my higher education. I am seeking your assistance.",
       "intro": "Studying for my business certification takes time and money my family doesn't have, and I need help.",
       "story": "I was born and raised in a Christian family. From around the age of three I went to church with my mother, and the Jesus stories I heard there shaped me from the beginning. As I grew up I gave my life to Jesus and was baptized in His name. I'm pursuing the Company Secretary executive level course, and I'm asking for help so I can finish my higher education.",
-      "quote": "I heard Jesus stories at church, and I got motivated. Then I gave my life to Jesus and was baptized in the name of Jesus Christ."
+      "quote": "I heard Jesus stories at church, and I got motivated. Then I gave my life to Jesus and was baptized in the name of Jesus Christ.",
+      "has_sponsor": true
     },
     {
       "id": "srilakshmi-g-m-d0e",
@@ -273,7 +288,8 @@
       "why_assistance": "I need financial assistance to my family's financial difficult fees. It will help me pay my college fee.",
       "intro": "Our family is going through hard times, and I'm hoping a sponsor can help with college fees.",
       "story": "I trust Jesus Christ completely, and my faith is what holds me up. He helps me through hard times and gives me hope for what's ahead. I pray regularly and look for His guidance in my studies. I believe He has good plans for me. I'm in my pre-university science course, and my family is going through financial difficulty. A sponsorship would help with my college fees.",
-      "quote": "I pray regularly and see God's guidance in my education. I believe He has a good plan for me."
+      "quote": "I pray regularly and see God's guidance in my education. I believe He has a good plan for me.",
+      "has_sponsor": false
     },
     {
       "id": "swathi-g-m-fc1",
@@ -290,7 +306,8 @@
       "why_assistance": "I need financial assistance due to my family's financial difficulties. It will help me pay my college fee.",
       "intro": "Money has been tight at home for a while, so I'm reaching out for help to stay in school.",
       "story": "I believe in Jesus Christ and trust Him completely. My family puts our faith in Him together, and that's what helps us stay strong through hard times. He gives me hope for the future, and I pray regularly and look for His guidance in everything, especially in my studies. I'm in my pre-university science course, and a sponsorship would ease the financial strain on my family.",
-      "quote": "We stay strong during difficult times. He gives me hope in the future. I pray regularly and see God's guidance in my education."
+      "quote": "We stay strong during difficult times. He gives me hope in the future. I pray regularly and see God's guidance in my education.",
+      "has_sponsor": true
     },
     {
       "id": "naveen-d-n-d43",
@@ -307,7 +324,8 @@
       "why_assistance": "I thank God for my studies. I pray for scholarship help. Will be mouldable for my future.",
       "intro": "School costs are tough for my family, and some support would mean I can keep moving toward my goals.",
       "story": "I'm still growing in my faith, but I can already see how God has been working in my life. I notice changes in my heart, and I'm learning to trust Him more every day. Even in the difficult moments, He gives me strength and peace, and I know He's guiding me. I'm in my second year of pre-university science, and I'm praying for help with my studies.",
-      "quote": "Even in challenges, God gives me strength and peace. I know He guides me."
+      "quote": "Even in challenges, God gives me strength and peace. I know He guides me.",
+      "has_sponsor": false
     },
     {
       "id": "priyanka-d81",
@@ -324,7 +342,8 @@
       "why_assistance": "I need financial assistance due to my family's financial difficulties. It will help me pay my college fees.",
       "intro": "Engineering is expensive and my family is struggling \u2014 sponsorship would make all the difference.",
       "story": "I believe in Jesus Christ and trust Him completely. My faith is what keeps me steady through the hard times and gives me hope for what's ahead. I pray regularly and look to God for guidance in my studies and in my life. I believe He has a good plan for me. I'm in engineering for computer science, and my family is facing financial difficulty paying my college fees.",
-      "quote": "My faith helps me stay strong during difficult times and gives me hope for the future. I believe God has a good plan for me."
+      "quote": "My faith helps me stay strong during difficult times and gives me hope for the future. I believe God has a good plan for me.",
+      "has_sponsor": true
     },
     {
       "id": "masood-ahamad-91b",
@@ -341,7 +360,8 @@
       "why_assistance": "Because of this assistance I want to clear my financial problem. Mainly I want to clear my college fees.",
       "intro": "College fees have become hard for us to cover, and I'm hoping someone can help me finish this year.",
       "story": "When I was in primary school, my mother was suffering badly. Multiple illnesses and a lot of back pain. That was when she believed in Jesus Christ, and her diseases cleared. She said it herself: Jesus is a real Savior. I saw the wonders He did, and I believed too. I'm in my second year of pre-university now, and I need help to clear my college fees.",
-      "quote": "My mother believed in Jesus Christ. All her disease was cleared, and she said that Jesus is a real Saviour. I believed and saw wonders."
+      "quote": "My mother believed in Jesus Christ. All her disease was cleared, and she said that Jesus is a real Saviour. I believed and saw wonders.",
+      "has_sponsor": false
     },
     {
       "id": "robin-kumar-km-ddb",
@@ -358,7 +378,8 @@
       "why_assistance": "It will help me continue my education without interruption, cover my academic expenses.",
       "intro": "We come from a poor family and a sponsorship would let me finish my medical lab training without pausing.",
       "story": "I've been a believer at CSM church for the past four years. My family is financially poor, and I'm in a Diploma program in Medical Lab Technology. I'm asking humbly for support to continue without interruption and to cover my academic expenses. Any help would mean a lot to me and to my family.",
-      "quote": "I have been a believer in the CSM church for the past four years. I come from a financially poor family."
+      "quote": "I have been a believer in the CSM church for the past four years. I come from a financially poor family.",
+      "has_sponsor": false
     },
     {
       "id": "martha-m-84d",
@@ -375,7 +396,8 @@
       "why_assistance": "",
       "intro": "Being raised by a single parent makes school costs hard, and I'm hoping for sponsor support.",
       "story": "I'm Martha, studying my first year of pre-university at Best PU College in Chikkaballapur. I'm raised by a single parent, and we are facing real financial difficulty in covering my studies. I'm asking for support through a scholarship so I can keep going.",
-      "quote": "I am a single parent child. I have financial problem for my studies. I need your support for scholarship."
+      "quote": "I am a single parent child. I have financial problem for my studies. I need your support for scholarship.",
+      "has_sponsor": false
     },
     {
       "id": "abhishek-m-c30",
@@ -392,7 +414,8 @@
       "why_assistance": "My family has financial difficulties so I need assistance to continue my studies. This will help to pay my college fee.",
       "intro": "Business school costs more than my family can carry, so I'm looking for a sponsor to help me finish.",
       "story": "I believe in Jesus Christ and trust Him as my Savior. My faith gives me strength and hope. Through prayer and reading the Bible, I've learned to stay positive and work hard at my studies. My church and my family encourage me to keep growing spiritually. I'm in my Bachelor of Commerce, and my family is dealing with financial difficulty. A sponsorship would help me pay my college fees.",
-      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually."
+      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually.",
+      "has_sponsor": true
     },
     {
       "id": "prarthana-4f1",
@@ -409,7 +432,8 @@
       "why_assistance": "I need assistance because it will help me continue my studies without putting too much burden on my family.",
       "intro": "Studying without burdening my parents more is my goal, and a sponsorship would make that possible.",
       "story": "Before I knew Christ, I often felt worried and empty. When I learned about His love and forgiveness, my heart changed. Jesus gave me peace, hope, and the strength to face whatever comes. He guides me every day, and I'm grateful for His grace. I'm continuing my studies, and a sponsorship would help me carry on without putting too much on my family.",
-      "quote": "Before knowing Christ, I often felt worried and empty. When I learned about His love and forgiveness, my heart changed."
+      "quote": "Before knowing Christ, I often felt worried and empty. When I learned about His love and forgiveness, my heart changed.",
+      "has_sponsor": true
     },
     {
       "id": "rani-fb2",
@@ -426,7 +450,8 @@
       "why_assistance": "I need assistance because it will help me continue my studies.",
       "intro": "Staying in school is a real stretch for my family, so a sponsorship would take that worry away.",
       "story": "I believe in Jesus and try to trust Him in my daily life. When I get stressed about studies or exams, I pray, and that calms me and helps me focus. I'm grateful for His grace. A sponsorship would help me continue my studies, and I'd be thankful for the support.",
-      "quote": "When I feel stressed about studies or exams, I pray, and it helps me feel calm and focused. I am thankful for His grace."
+      "quote": "When I feel stressed about studies or exams, I pray, and it helps me feel calm and focused. I am thankful for His grace.",
+      "has_sponsor": true
     },
     {
       "id": "harsha-j-s-bf4",
@@ -443,7 +468,8 @@
       "why_assistance": "Due to higher education.",
       "intro": "College costs more than my family can comfortably manage, and I'm seeking help to keep studying.",
       "story": "I live in Chickaballapur with my mother, and I've been a regular believer at CSM church. I've trusted in Jesus for the past 15 years, and God has done many miracles in my life. I'm grateful for all of it. I'm in my second year of pre-university and need help to continue with my higher education.",
-      "quote": "I have trusted in Jesus for fifteen years. God has done many miracles in my life. I am so grateful to Him."
+      "quote": "I have trusted in Jesus for fifteen years. God has done many miracles in my life. I am so grateful to Him.",
+      "has_sponsor": true
     },
     {
       "id": "abhinandan-m-098",
@@ -460,7 +486,8 @@
       "why_assistance": "My family has financial difficulties, so I need assistance to continue my studies. This will help to pay my college fee.",
       "intro": "School fees are difficult for my family, and a sponsorship would let me focus on my studies.",
       "story": "I believe in Jesus Christ and trust Him as my Savior. My faith gives me strength and hope. Through prayer and reading the Bible, I've learned to stay positive and work hard at my studies. My church and family encourage me to keep growing spiritually. I'm in 10th standard, and my family is facing financial difficulty. A sponsorship would help me with my college fees.",
-      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually."
+      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually.",
+      "has_sponsor": false
     },
     {
       "id": "akanksha-s-f5b",
@@ -477,7 +504,8 @@
       "why_assistance": "I need assistance because my family is economically backward and this helps in my studies.",
       "intro": "Our finances are still a struggle, and a sponsor would mean I can stay enrolled and focused on school.",
       "story": "Before my family believed in Jesus Christ, we were very poor and faced a lot of trouble. Once we realized that Jesus was our Savior, things began to change. God made our life better, and my father got a good job. We're still a family of modest means, and I'm asking for help so I can continue my studies.",
-      "quote": "After we realized that Jesus is our Saviour, God made us better and gave a good job to my father."
+      "quote": "After we realized that Jesus is our Saviour, God made us better and gave a good job to my father.",
+      "has_sponsor": false
     },
     {
       "id": "gowtham-a-c66",
@@ -494,7 +522,8 @@
       "why_assistance": "[not specified]",
       "intro": "I'm training to be an electrician but the fees are heavy \u2014 without help, I won't be able to finish.",
       "story": "I'm Gowtham, training for ITI Electrician work. I come from a CSM church community and I'm asking for help to continue my education. A sponsorship would make a meaningful difference for me and my family.",
-      "quote": "I am asking for help to continue my education."
+      "quote": "I am asking for help to continue my education.",
+      "has_sponsor": false
     },
     {
       "id": "sharmitha-v-d4b",
@@ -511,7 +540,8 @@
       "why_assistance": "I need financial assistance due to my family's financial difficulties. It will help me pay my college fees.",
       "intro": "My family's finances are tight right now, and I'm hoping a sponsor can cover my business school fees.",
       "story": "I believe in Jesus Christ and trust Him completely. My faith helps me stay strong during the hard times and gives me hope for what's ahead. I pray regularly and look for God's guidance in my studies and my life. I believe He has a good plan for me. I'm in my first year of pre-university commerce, and a sponsorship would help my family cover the fees.",
-      "quote": "I pray regularly and seek God's guidance in my education and life. I believe He has a good plan for me."
+      "quote": "I pray regularly and seek God's guidance in my education and life. I believe He has a good plan for me.",
+      "has_sponsor": false
     },
     {
       "id": "mounika-t-887",
@@ -528,7 +558,8 @@
       "why_assistance": "To continue my education, it will help for my needed things and for my education.",
       "intro": "Covering my education on our own isn't possible, so I'm asking for help to keep going to college.",
       "story": "Faith in God gives me strength and hope in every situation. I trust that He guides me on the right path. Prayer is what makes me feel peaceful and closer to Him. I believe God always protects me and cares for me. I'm asking for help so I can continue my education and cover the things I need to keep going.",
-      "quote": "I trust that God guides me on the right path. Prayer helps me feel peaceful and closer to Him."
+      "quote": "I trust that God guides me on the right path. Prayer helps me feel peaceful and closer to Him.",
+      "has_sponsor": false
     },
     {
       "id": "manoj-r-0a0",
@@ -545,7 +576,8 @@
       "why_assistance": "To continue my education and it will help my for my needed things and for my education.",
       "intro": "Paying for my degree is more than my family can handle, so I'm reaching out for sponsorship.",
       "story": "Faith in God gives me strength and hope in every situation. I trust that He guides me on the right path. Prayer helps me feel peaceful and closer to Him, and I believe He always protects and cares for me. My faith is what keeps me positive. I'm pursuing my undergraduate degree, and a sponsorship would help me with my fees and the costs of continuing my education.",
-      "quote": "I believe God always protects and cares for me. My faith helps me stay positive."
+      "quote": "I believe God always protects and cares for me. My faith helps me stay positive.",
+      "has_sponsor": false
     },
     {
       "id": "deena-v-4cb",
@@ -562,7 +594,8 @@
       "why_assistance": "To study in law college need a lot of money so we can't afford so much, so I request to help us.",
       "intro": "Law school is expensive and my family can't keep up, so a sponsorship would let me finish my degree.",
       "story": "For a long time I didn't really believe in God. The first time I prayed was during exams. I asked simply to pass every semester without falling behind. He answered, and I passed every time with good marks. That's what convinced me to trust Him. I'm now in my sixth semester of law school, and the fees are more than my family can manage on their own.",
-      "quote": "I prayed that I would pass every semester, and God heard me. That is when I started to trust Him."
+      "quote": "I prayed that I would pass every semester, and God heard me. That is when I started to trust Him.",
+      "has_sponsor": false
     },
     {
       "id": "jeeranth-v-edf",
@@ -579,7 +612,8 @@
       "why_assistance": "I am studying IT in IT college, for that this scholarship will help to pay off my fees.",
       "intro": "Trade school fees are a stretch for my family, and I really need help to pay them off.",
       "story": "I used to take faith pretty casually. I wasn't a good person and I didn't even go to church. Then something happened in my life that gave me the faith to believe in Jesus Christ. After that I changed, and I started believing in Him. I'm studying at an IT college, and a sponsorship would help me pay off my fees.",
-      "quote": "I was not a good person, and I used to not attend church. After that incident, I changed and I believed in Jesus."
+      "quote": "I was not a good person, and I used to not attend church. After that incident, I changed and I believed in Jesus.",
+      "has_sponsor": false
     },
     {
       "id": "prajwal-y-n-d36",
@@ -596,7 +630,8 @@
       "why_assistance": "This scholarship will help me pay my fees and continue my studies without burdening my parents.",
       "intro": "I'm in my final year of engineering, and a sponsor would mean I can finish without burdening my parents.",
       "story": "I've believed in Jesus Christ and been an active part of church for the past 22 years. My faith gives me strength, guidance, and hope in daily life. I take part in church activities and try to live by Christian values. I'm in my fourth year of engineering, and a sponsorship would help me pay my fees without putting that burden on my parents.",
-      "quote": "I have been actively attending church for the past 22 years. My faith gives me strength, guidance, and hope in daily life."
+      "quote": "I have been actively attending church for the past 22 years. My faith gives me strength, guidance, and hope in daily life.",
+      "has_sponsor": false
     },
     {
       "id": "pallavi-y-n-7a9",
@@ -613,7 +648,8 @@
       "why_assistance": "For my education. It helps to my studies.",
       "intro": "I'm just starting my science degree, and I'm hoping for a sponsor to help with the fees.",
       "story": "I've believed in Jesus Christ and been actively attending church for the past 19 years. My faith gives me strength, guidance, and hope in my daily life. I'm in my first year of a Bachelor of Science, and a sponsorship would help me continue my studies.",
-      "quote": "I have been actively attending church for the past nineteen years. My faith gives me strength, guidance, and hope in daily life."
+      "quote": "I have been actively attending church for the past nineteen years. My faith gives me strength, guidance, and hope in daily life.",
+      "has_sponsor": false
     },
     {
       "id": "tejas-r-b7a",
@@ -630,7 +666,8 @@
       "why_assistance": "It will help me continue my education without interruption, cover my academic expenses.",
       "intro": "My parents can't afford my master's program, and a sponsorship would let me continue without dropping out.",
       "story": "I've been a believer at CSM church for the past 11 years. My family is poor, and my parents can't afford my education on their own. I'm doing a Master of Computer Applications, and I'm asking humbly for support so I can keep studying without interruption. Any help would be deeply appreciated.",
-      "quote": "I have been a believer in the CSM church for the past eleven years. I come from a financially poor family."
+      "quote": "I have been a believer in the CSM church for the past eleven years. I come from a financially poor family.",
+      "has_sponsor": false
     },
     {
       "id": "prajwal-r-6b1",
@@ -647,7 +684,8 @@
       "why_assistance": "It will help me continue my education without interruption, cover my academic expenses.",
       "intro": "Tuition is beyond my family's reach, and I'm seeking a sponsor to help me finish my business degree.",
       "story": "I've been a believer at CSM church for the past 11 years. My family is poor, and my parents aren't able to afford my education. I'm working on my Bachelor of Commerce, and I'm asking humbly for help so I can continue without interruption and cover my academic expenses.",
-      "quote": "I have been a believer in the CSM church for the past eleven years. My parents are unable to afford my education."
+      "quote": "I have been a believer in the CSM church for the past eleven years. My parents are unable to afford my education.",
+      "has_sponsor": false
     },
     {
       "id": "anusha-ga-e62",
@@ -664,7 +702,8 @@
       "why_assistance": "It will help me to continue my education without interruption, cover my academic expenses.",
       "intro": "Medical school fees are out of reach for my parents \u2014 sponsorship would let me continue without pausing.",
       "story": "I've been a believer at CSM church for the past 10 years. My family is financially poor, and my parents can't cover the cost of my education. I'm in a Diploma program in Paramedical Sciences, and I'm asking for help so I can continue my studies without interruption.",
-      "quote": "I have been a believer in the CSM church for the past ten years. My parents are unable to afford my education."
+      "quote": "I have been a believer in the CSM church for the past ten years. My parents are unable to afford my education.",
+      "has_sponsor": true
     },
     {
       "id": "prurthvi-raj-22f",
@@ -681,7 +720,8 @@
       "why_assistance": "It will help me to continue my education without interruption, cover my academic expenses.",
       "intro": "Technical school is more than my family can manage \u2014 I'm hoping a sponsor can help me earn my diploma.",
       "story": "I've been a believer at CSM church for the past 12 years. My family is poor, and my parents can't cover the cost of my education on their own. I'm in a polytechnic diploma program, and I'd be grateful for support so I can keep going without interruption.",
-      "quote": "I have been a believer in the CSM church for the past twelve years. My parents are unable to afford my education."
+      "quote": "I have been a believer in the CSM church for the past twelve years. My parents are unable to afford my education.",
+      "has_sponsor": false
     },
     {
       "id": "archana-k-g-35d",
@@ -698,7 +738,8 @@
       "why_assistance": "[not specified]",
       "intro": "I'm from a single-parent home, and I'm hoping for a sponsor to help me stay in school.",
       "story": "I'm Archana, studying my first year of pre-university at Gold and Dreams College in Chickaballapur. I'm raised by a single parent, and we're going through financial difficulty. I'm asking for scholarship support so I can continue my studies.",
-      "quote": "I am a single parent child. I have financial problem. I need your support on scholarship because of my studies."
+      "quote": "I am a single parent child. I have financial problem. I need your support on scholarship because of my studies.",
+      "has_sponsor": false
     },
     {
       "id": "akash-a-41c",
@@ -715,7 +756,8 @@
       "why_assistance": "I want to study but my parents are not able to pay college fees. I need financial support.",
       "intro": "Fees are out of reach for my parents \u2014 I need a sponsor to help me complete my electrician training.",
       "story": "God has given me good health and the ability to learn. He's the one who makes the impossible possible for me. I'm grateful for the way He's helped me through my education. I'm in my second year of ITI training as an electrician, and my parents can't pay my college fees. I need financial support to keep going.",
-      "quote": "God gave me good health and knowledge. He supports me. Every impossible thing becomes possible."
+      "quote": "God gave me good health and knowledge. He supports me. Every impossible thing becomes possible.",
+      "has_sponsor": false
     },
     {
       "id": "amrutha-beb",
@@ -732,7 +774,8 @@
       "why_assistance": "We are poor. My education was stuck between financial matter. I am single parent so I need financial help.",
       "intro": "I was raised by one parent, and I'm hoping for sponsorship to finish my last year of business school.",
       "story": "Jesus has saved me and helped me through my education. In my fifth semester I scored 635 marks with a 9.07 CGPA, and I know He gave me the knowledge and the courage to push through. I'm in the final year of my Bachelor of Commerce, but my family is poor and I'm a single-parent child. Financial trouble has nearly blocked my studies, and I need help to finish.",
-      "quote": "Jesus saved me and helped me in my education. He gave me knowledge and courage to face every evil thing."
+      "quote": "Jesus saved me and helped me in my education. He gave me knowledge and courage to face every evil thing.",
+      "has_sponsor": false
     },
     {
       "id": "nandan-kumar-d-m-a8f",
@@ -749,7 +792,8 @@
       "why_assistance": "We can't pay the college fees. You must help me and it was helpful for my studies of higher education.",
       "intro": "College fees are high and my middle-class family can't quite cover them \u2014 I'm asking for support.",
       "story": "We're a middle-class family, and my college fees come to more than 50,000, more than my parents are able to pay. I'm in my first year of pre-university, and I'm asking humbly for help so I can continue my higher education.",
-      "quote": "We are middle-class people. The fees must be above 50,000. We cannot pay that much. I kindly request you, help me."
+      "quote": "We are middle-class people. The fees must be above 50,000. We cannot pay that much. I kindly request you, help me.",
+      "has_sponsor": false
     },
     {
       "id": "uday-kumar-d-m-e8f",
@@ -766,7 +810,8 @@
       "why_assistance": "We can't pay the college fees. You must help me and it is helpful for my higher studies.",
       "intro": "I'm almost done with high school but the fees are beyond what we can pay, and I'm seeking help.",
       "story": "We're a middle-class family, and my college fees come to more than 50,000, more than my parents are able to pay. I'm in my second year of pre-university, and I'm asking for help so I can keep going with my higher studies.",
-      "quote": "We are middle-class people. The college fees must be above 50,000. We cannot pay that much. I kindly request you, help me."
+      "quote": "We are middle-class people. The college fees must be above 50,000. We cannot pay that much. I kindly request you, help me.",
+      "has_sponsor": false
     },
     {
       "id": "ullas-g-f57",
@@ -783,7 +828,8 @@
       "why_assistance": "It will surely help to my studies and books and other necessary things.",
       "intro": "Nursing school requires books and supplies my family can't cover, so a sponsorship would make it possible.",
       "story": "I believe Jesus Christ is my Savior. He's loved me when others haven't, and through Him I've found an eternal soul. I've kept believing in Him to this day, and I've seen miracles in my life. I'm studying for a Bachelor of Science in Nursing, and a sponsorship would help me cover my fees, books, and other necessities.",
-      "quote": "Where I stand, I am loved by Him. I found an eternal soul, and I have seen miracles in my life."
+      "quote": "Where I stand, I am loved by Him. I found an eternal soul, and I have seen miracles in my life.",
+      "has_sponsor": false
     },
     {
       "id": "suhas-bd6",
@@ -800,7 +846,8 @@
       "why_assistance": "It will surely help in my studies and necessary things.",
       "intro": "Operating room training costs more than my family can spare, and a sponsorship would let me continue.",
       "story": "I believe Jesus Christ is my Savior. He loved me when others rejected me, and through Him I found an eternal love. I've believed in Him for 10 years, and I've seen miracles in my life. He still cares for me. I'm in a Diploma program in Operation Theatre and Anesthesia Technology, and I need help to cover my fees and the things my studies require.",
-      "quote": "Where I was rejected by everyone, I was loved by Him. I have believed in Him for ten years, and I have seen miracles in my life."
+      "quote": "Where I was rejected by everyone, I was loved by Him. I have believed in Him for ten years, and I have seen miracles in my life.",
+      "has_sponsor": false
     },
     {
       "id": "akshaya-m-cfe",
@@ -817,7 +864,8 @@
       "why_assistance": "My family has financial difficulties, so I need assistance to continue my studies. This will help to pay my college fees.",
       "intro": "Money is short at home, and I'm hoping a sponsor can help me pay college fees and keep studying.",
       "story": "I believe in Jesus Christ and trust Him as my Savior. My faith gives me strength and hope. Through prayer and reading the Bible, I've learned to stay positive and work hard at my studies. My church and family encourage me to keep growing spiritually. I'm in my second year of pre-university, and my family is going through financial difficulty. A sponsorship would help me pay my fees.",
-      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually."
+      "quote": "Through prayer and reading the Bible, I have learned to stay positive and work hard in my studies. My church and family encourage me to grow spiritually.",
+      "has_sponsor": false
     },
     {
       "id": "vinutha-n-125",
@@ -834,7 +882,8 @@
       "why_assistance": "I need financial assistance to continue my education. This scholarship will help me pay my college fees and support my studies without burdening my family.",
       "intro": "I don't want to burden my family with my fees, so I'm reaching out for sponsorship to stay in college.",
       "story": "I believe in God and try to follow Christian values in my daily life. My faith gives me the strength, hope, and guidance I need to overcome difficulties and keep moving forward. I'm in my second year of pre-university commerce, and a sponsorship would help me pay my college fees and continue my studies without adding to the burden on my family.",
-      "quote": "My faith gives me strength, hope, and guidance to overcome difficulties and move forward in life."
+      "quote": "My faith gives me strength, hope, and guidance to overcome difficulties and move forward in life.",
+      "has_sponsor": false
     },
     {
       "id": "darshan-b-l-c1e",
@@ -851,7 +900,8 @@
       "why_assistance": "My family is facing financial difficulties and it is hard to manage my education expenses. This assistance will help me cover my fees and focus on my studies without stress.",
       "intro": "My family is going through tight times and a sponsorship would let me focus on my health inspector training.",
       "story": "I believe in God and try to live by Christian values every day. My faith gives me the strength, hope, and guidance to overcome difficulties and keep going. I'm in my second year of a Diploma program as a Health Inspector, and my family is dealing with real financial pressure right now. A sponsorship would help cover my fees and let me focus on my studies.",
-      "quote": "My faith gives me strength, hope, and guidance to overcome difficulties and move forward in life."
+      "quote": "My faith gives me strength, hope, and guidance to overcome difficulties and move forward in life.",
+      "has_sponsor": false
     },
     {
       "id": "thrisha-k-a17",
@@ -868,7 +918,8 @@
       "why_assistance": "I come from a financially weak family and it is difficult to afford my education expenses. Scholarship will help fulfill education expenses.",
       "intro": "We're a low-income family, and a sponsor would mean I can cover my school costs this year.",
       "story": "I believe in God and go to church regularly. My faith gives me strength and guides me, and I try to live by good values like honesty, kindness, and helping others. That's also what led me to take my studies seriously. I'm in pre-university now, and my family is financially weak. A sponsorship would help cover my education expenses.",
-      "quote": "I try to follow good values like honesty, kindness, and helping others. My faith naturally led me to study well."
+      "quote": "I try to follow good values like honesty, kindness, and helping others. My faith naturally led me to study well.",
+      "has_sponsor": false
     },
     {
       "id": "akshay-kumar-c-f5f",
@@ -885,7 +936,8 @@
       "why_assistance": "Me coming from a poor background, desire to complete education. So I need financial support.",
       "intro": "Dental school is more than my family can pay for \u2014 I need a sponsor to help me become a dentist.",
       "story": "My family and I believe in Jesus Christ as our Lord and Savior. Through prayer and church fellowship, I keep growing spiritually. I'm pursuing a Bachelor of Dental Surgery, and I come from a poor background. I really want to complete my education, but I need financial support to do it.",
-      "quote": "Me and my family believe in Jesus Christ as my Lord and Saviour. Through prayer and church fellowship, I continue to grow spiritually."
+      "quote": "Me and my family believe in Jesus Christ as my Lord and Saviour. Through prayer and church fellowship, I continue to grow spiritually.",
+      "has_sponsor": false
     },
     {
       "id": "ankith-kumar-c-c9a",
@@ -902,7 +954,8 @@
       "why_assistance": "Me coming from a poor background, desire to complete education. So I need financial support.",
       "intro": "Studying for the medical entrance exam is hard on a tight budget \u2014 I'm hoping for sponsor support.",
       "story": "My family and I believe in Jesus Christ as our Lord and Savior. Through prayer and church fellowship, I keep growing spiritually. I'm preparing for the NEET medical entrance exam, and I come from a poor background. I want to finish my education and become a doctor, but I need financial support to keep going.",
-      "quote": "Me and my family believe in Jesus Christ as my Lord and Saviour. Through prayer and church fellowship, I continue to grow spiritually."
+      "quote": "Me and my family believe in Jesus Christ as my Lord and Saviour. Through prayer and church fellowship, I continue to grow spiritually.",
+      "has_sponsor": false
     },
     {
       "id": "madhu-n-65d",
@@ -919,7 +972,8 @@
       "why_assistance": "I am going to college, because I have some financial need. Help to pay for college fee.",
       "intro": "My family is going through financial need, and I'm asking for help to keep paying for college.",
       "story": "I was Hindu first. That's where I first learned about God, and how I came to surrender my faith to Him. I'm now in my second year of pre-university, and I'm going to college with some financial need. A sponsorship would help me cover my college fees.",
-      "quote": "I first became a Hindu, and this is how I learned about God and surrendered faithfully to Him."
+      "quote": "I first became a Hindu, and this is how I learned about God and surrendered faithfully to Him.",
+      "has_sponsor": false
     },
     {
       "id": "shiva-283",
@@ -936,7 +990,8 @@
       "why_assistance": "It will be helpful to my financial situation. I truly appreciate your sponsor.",
       "intro": "A sponsorship would ease our financial situation and let me keep working toward my degree.",
       "story": "I believe in Jesus Christ. He's done many miracles in my family. That's what I keep coming back to. I'm in my undergraduate program, and our financial situation is hard. A sponsorship would mean a lot, and I truly appreciate the help.",
-      "quote": "I believe in Jesus Christ. He has done many miracles in my family."
+      "quote": "I believe in Jesus Christ. He has done many miracles in my family.",
+      "has_sponsor": false
     },
     {
       "id": "vennela-m-2e4",
@@ -953,7 +1008,8 @@
       "why_assistance": "I need assistance due to financial difficulties in my life and family. This support will help to achieve my goals.",
       "intro": "Things are tough for my family financially, and I'm hoping a sponsor can help me reach my goals.",
       "story": "I believe in God and I trust Him in my daily life. My faith helps me stay strong during hard times and guides me to do good things. I try to live by good values, and I pray regularly. I'm in a Bachelor of Arts program, and my family is going through financial difficulty. A sponsorship would help me reach my goals.",
-      "quote": "My faith helps me stay strong during difficult times and guides me to do good things."
+      "quote": "My faith helps me stay strong during difficult times and guides me to do good things.",
+      "has_sponsor": false
     },
     {
       "id": "sneha-m-779",
@@ -970,7 +1026,8 @@
       "why_assistance": "For the purpose of higher education, it will help future",
       "intro": "Medical training is expensive for my family, and I'm reaching out for a sponsor to stay on track.",
       "story": "I'm Sneha, training in paramedical sciences. My faith has reshaped what I think matters. Instead of measuring my life by the world's standards, I try to anchor it in unconditional love and a sense of purpose. A sponsorship would help me continue my higher education.",
-      "quote": "Turning of life, breaking from worldly valuation, anchored in unconditional love and purpose."
+      "quote": "Turning of life, breaking from worldly valuation, anchored in unconditional love and purpose.",
+      "has_sponsor": false
     },
     {
       "id": "amulya-bl-e7e",
@@ -987,7 +1044,8 @@
       "why_assistance": "This support will help me to continue my education in my life.",
       "intro": "Continuing my education isn't easy for my family, and some sponsor support would keep me going.",
       "story": "I believe in Jesus Christ as my Lord. He's changed my life by giving me hope and peace, forgiven my sins, and guided me with His love, kindness, and faith. I'm pursuing my studies, and a sponsorship would help me continue my education.",
-      "quote": "Jesus has forgiven my sins and guided me in His ways with His love, kindness, and faith."
+      "quote": "Jesus has forgiven my sins and guided me in His ways with His love, kindness, and faith.",
+      "has_sponsor": false
     },
     {
       "id": "adbutha-5ff",
@@ -1004,7 +1062,8 @@
       "why_assistance": "For my higher education. This help will help me study in a very good way",
       "intro": "Medical school costs are heavy for my family \u2014 I'm hoping a sponsor can help me train to heal others.",
       "story": "I've been coming to faith in Jesus since I was young. I've experienced many hardships and trials, and through them all I'm living in the fear of Christ and devoted to Him. I'm in a paramedical course, and a sponsorship would help me continue and study well.",
-      "quote": "Since I was young I have experienced many hardships and trials, and I am living in the fear and devotion of Christ."
+      "quote": "Since I was young I have experienced many hardships and trials, and I am living in the fear and devotion of Christ.",
+      "has_sponsor": false
     },
     {
       "id": "abilash-kv-bdc",
@@ -1021,7 +1080,8 @@
       "why_assistance": "We are very poor. This money will help in further studies and education.",
       "intro": "My family is very poor, and I'm seeking sponsor support to keep studying business and finish school.",
       "story": "I believe in God absolutely. I've been baptized at CSM, and my family is very poor. Even a small amount of help would be a big blessing for us. I'm in pre-university commerce now, and a sponsorship would let me continue my studies. I'm grateful, and I praise the Lord.",
-      "quote": "I have been baptized in CSM. A small amount of money will be a big blessing for us."
+      "quote": "I have been baptized in CSM. A small amount of money will be a big blessing for us.",
+      "has_sponsor": false
     },
     {
       "id": "abhishek-d35",
@@ -1038,7 +1098,8 @@
       "why_assistance": "This will be more helpful for our education.",
       "intro": "I'm working toward a business degree, and I'm hoping for a sponsor to take some pressure off my family.",
       "story": "Our family has believed in Jesus Christ for years. The Lord has done many miracles in our lives and in our family. I'm in a Bachelor of Commerce program, and a sponsorship would help me continue my education.",
-      "quote": "We have believed in Jesus Christ for years. The Lord has done many miracles in our own lives and family."
+      "quote": "We have believed in Jesus Christ for years. The Lord has done many miracles in our own lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "vidyashree-n-276",
@@ -1055,7 +1116,8 @@
       "why_assistance": "I need financial assistance to continue my education. This scholarship will help me pay my college fees and support my studies and burdens on my family.",
       "intro": "I want to keep studying without putting more burden on my family \u2014 a sponsor would make that possible.",
       "story": "I believe in God and try to live by Christian values in my daily life. My faith gives me strength, hope, and the guidance to overcome difficulty and keep moving forward. I'm in my second year of pre-university, and a sponsorship would help me pay my college fees and continue my studies without putting more burden on my family.",
-      "quote": "My faith gives me strength, hope, and guidance to overcome difficulty and move forward in life."
+      "quote": "My faith gives me strength, hope, and guidance to overcome difficulty and move forward in life.",
+      "has_sponsor": false
     },
     {
       "id": "asha-kr-d3a",
@@ -1072,7 +1134,8 @@
       "why_assistance": "Sir I need your kindly help for my education purpose because of my family poor condition.",
       "intro": "My family is in a tough spot financially, and I'm asking for help to continue with school.",
       "story": "My grandmother and parents are believers at CSM, so I grew up hearing God's word from the time I was a child. We still go to church now, and my sister and I are studying away from home in a hostel. I just finished 10th standard. My family is poor, and I'm asking for help to continue my education.",
-      "quote": "My grandmother and parents are believers at CSM church. When I was a child I heard God's word, and now we still attend church."
+      "quote": "My grandmother and parents are believers at CSM church. When I was a child I heard God's word, and now we still attend church.",
+      "has_sponsor": false
     },
     {
       "id": "akshitha-1d5",
@@ -1089,7 +1152,8 @@
       "why_assistance": "My education paper so need this help. You give this help I am do higher education please help me",
       "intro": "Physical therapy training is more than my family can afford, and I really need a sponsor to continue.",
       "story": "I started trusting Jesus when I was in second standard. He's been with me ever since. Through every bad situation, He's been my support. I'm proud to call myself His child. I'm pursuing a Bachelor of Physiotherapy, and I need help with the cost of my higher education.",
-      "quote": "I will be living in Jesus. He is with me forever. He has been my support in every bad situation."
+      "quote": "I will be living in Jesus. He is with me forever. He has been my support in every bad situation.",
+      "has_sponsor": false
     },
     {
       "id": "ambika-91f",
@@ -1106,7 +1170,8 @@
       "why_assistance": "This assistance I need very importantly because higher education.",
       "intro": "My master's program is a financial stretch for my family \u2014 I'm hoping for a sponsor to help me finish.",
       "story": "Our family believes in Jesus Christ. Ten years ago, before and after coming to faith, our life changed a lot. That's my testimony. I'm working on my Master of Arts, and I need support for my higher education.",
-      "quote": "Before and after, much changed in my life and my family. That is my testimony of faith."
+      "quote": "Before and after, much changed in my life and my family. That is my testimony of faith.",
+      "has_sponsor": false
     },
     {
       "id": "anusha-kv-74c",
@@ -1123,7 +1188,8 @@
       "why_assistance": "This money will help for my further studies.",
       "intro": "Even a small scholarship would mean a lot to my family as I work toward finishing school.",
       "story": "I believe in God, and I've been baptized at CSM. He's blessed me in different ways. I'm in pre-university commerce now, and a small amount of help would let me continue with my education.",
-      "quote": "I believed in God. I have been baptized in CSM, and God has blessed me in different ways."
+      "quote": "I believed in God. I have been baptized in CSM, and God has blessed me in different ways.",
+      "has_sponsor": false
     },
     {
       "id": "adarsha-n-bd1",
@@ -1140,7 +1206,8 @@
       "why_assistance": "I need assistance to ensure my future life.",
       "intro": "My family can't easily pay for my schooling, and I'm reaching out for sponsorship to build a future.",
       "story": "I'm from Kasaguthahalli, and I've been attending the church in Peresandra for 15 years. My mother was suffering from sickness, and God healed her with His mighty strength and grace. That's left me grateful both for her and for myself. I'm in my second year of pre-university, and I need help to ensure my future.",
-      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace, toward me and my mother."
+      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace, toward me and my mother.",
+      "has_sponsor": false
     },
     {
       "id": "aishwarya-0d4",
@@ -1157,7 +1224,8 @@
       "why_assistance": "This scholarship would greatly support my education without financial burden and help me focus on studies.",
       "intro": "A sponsor would take the financial pressure off my family and let me focus on finishing my degree.",
       "story": "My faith in Jesus Christ is what gives my life direction. In difficult times it gives me strength and hope, and it motivates me to stay disciplined in my studies and help others. I firmly believe that with God's guidance I can overcome challenges and reach my goals. I'm in my second year of a Bachelor of Management and IT, and a sponsorship would help me focus on my studies without financial pressure.",
-      "quote": "I firmly believe that with God's guidance I can overcome challenges and achieve my goals."
+      "quote": "I firmly believe that with God's guidance I can overcome challenges and achieve my goals.",
+      "has_sponsor": false
     },
     {
       "id": "bhoomika-cn-bbb",
@@ -1174,7 +1242,8 @@
       "why_assistance": "It will help us for further education.",
       "intro": "Continuing my medical training is tough for my family, and I'm hoping a sponsor can help me keep at it.",
       "story": "Our family has been at church for many years, and we keep growing in faith. I believe God has a purpose for my future, and I want to live in a way that honors Him. I'm in a Diploma program (DMCH), and a sponsorship would help me continue my education.",
-      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him."
+      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him.",
+      "has_sponsor": false
     },
     {
       "id": "narashimha-murthy-s-620",
@@ -1191,7 +1260,8 @@
       "why_assistance": "My education with this help we will be able to continue our education",
       "intro": "We can't continue my education without help, so I'm asking for sponsorship to stay in school.",
       "story": "I've believed in God since I was little, when I started going to Sunday school. God brought healing into my mother's life, and that experience keeps me wanting to grow stronger in Him. I'm in pre-university now, and a sponsorship would help our family continue my education.",
-      "quote": "God has given us healing in my mother's life. I hope we can grow stronger in Him by believing."
+      "quote": "God has given us healing in my mother's life. I hope we can grow stronger in Him by believing.",
+      "has_sponsor": false
     },
     {
       "id": "amulya-c1e",
@@ -1208,7 +1278,8 @@
       "why_assistance": "This assistance is needed because it is my future education.",
       "intro": "My business degree feels out of reach without help, and a sponsor would keep me on this path.",
       "story": "I've believed in Jesus for the past five years, and He's helped me through every problem. For me and for my family. He's saved my future. That's my testimony of faith. I'm in a Bachelor of Commerce, and I need help for my education.",
-      "quote": "I have believed in Jesus for five years. He helps me with all problems and my family. He has saved my future."
+      "quote": "I have believed in Jesus for five years. He helps me with all problems and my family. He has saved my future.",
+      "has_sponsor": false
     },
     {
       "id": "ambika-t-n-7ce",
@@ -1225,7 +1296,8 @@
       "why_assistance": "I need assistance so it will help for my further education.",
       "intro": "Two more years of college are ahead and my family can't fully afford them without some help.",
       "story": "I'm from Tumukonte, and I've been attending the church in Peresandra for nine years. God has carried our family through sickness, and we're grateful for His grace. I'm in my second year of a Bachelor of Arts, and I need help to continue my education.",
-      "quote": "God has blessed our family from sickness, and we praise His grace toward my family and me."
+      "quote": "God has blessed our family from sickness, and we praise His grace toward my family and me.",
+      "has_sponsor": false
     },
     {
       "id": "ashok-da-5ee",
@@ -1242,7 +1314,8 @@
       "why_assistance": "As the scholarship you are providing me is helping me a lot in my studies.",
       "intro": "A scholarship has made my studies possible so far, and continued help would let me finish my degree.",
       "story": "I've been attending church for about six years. I was badly suffering from sickness, and God brought His blessings into my life. I thank Him for the strength He's given me. I'm in my second year of a Bachelor of Science, and a sponsorship would be a real help with my studies.",
-      "quote": "As I was badly suffering from sickness, God has brightened my life with all His blessings. I thank Him for all His strength."
+      "quote": "As I was badly suffering from sickness, God has brightened my life with all His blessings. I thank Him for all His strength.",
+      "has_sponsor": false
     },
     {
       "id": "shashikala-v-g-f2e",
@@ -1259,7 +1332,8 @@
       "why_assistance": "I need financial assistance to continue my education because my family has limited income. This scholarship will help me pay my college fees and focus on my studies.",
       "intro": "My family has limited income, and a sponsor would help me pay fees and finish my business degree.",
       "story": "I believe in God and try to live by the teachings of Jesus Christ. My faith gives me strength, guides my decisions, and helps me stay positive in difficult times. I go to church regularly and try to live a life of kindness and honesty. I'm in a Bachelor of Commerce, and my family's income is limited. A sponsorship would help me pay my fees and focus on my studies.",
-      "quote": "My faith gives me strength, guides my decisions, and helps me stay positive during difficult times."
+      "quote": "My faith gives me strength, guides my decisions, and helps me stay positive during difficult times.",
+      "has_sponsor": false
     },
     {
       "id": "chaitra-n-37c",
@@ -1276,7 +1350,8 @@
       "why_assistance": "Connects our financial need with our academic goals, to bridge the gap b/w demonstration financial need.",
       "intro": "I'm starting college with very little to spare, and a sponsor would help me stay enrolled.",
       "story": "My faith in Christ is built on the change I've felt in myself, from clinging to sin to receiving His grace, hope, and a sense of purpose. I believe Jesus died and rose again to pay for my sins, and following Him has brought me joy and peace of mind. I'm in my first year of an undergraduate degree, and I need financial help to bridge the gap and meet my academic goals.",
-      "quote": "My faith in Christ is built on the transformation from clinging to sin to receiving grace, hope, and a purposeful life."
+      "quote": "My faith in Christ is built on the transformation from clinging to sin to receiving grace, hope, and a purposeful life.",
+      "has_sponsor": false
     },
     {
       "id": "naveen-kumar-s-df3",
@@ -1293,7 +1368,8 @@
       "why_assistance": "This help is for my education for raise paying for college",
       "intro": "Trade school costs are hard for my family to manage, and I'm asking for help to pay for them.",
       "story": "Ten years ago my mother was very sick. We took her to every doctor we could find and to the temples, but no one could help her. When our family came to believe in Jesus, she was set free from what was tormenting her and was healed. That miracle is why I follow Christ today. I'm training to become an automobile technician, and I'm asking for help with my college fees so I can finish.",
-      "quote": "We went to every doctor and to the temples, but no one could help my mother. When we believed in Jesus, she was healed."
+      "quote": "We went to every doctor and to the temples, but no one could help my mother. When we believed in Jesus, she was healed.",
+      "has_sponsor": false
     },
     {
       "id": "anusha-4d2",
@@ -1310,7 +1386,8 @@
       "why_assistance": "I need assistance to ensure my education and my future life.",
       "intro": "Securing my future means finishing school, and a sponsor would help my family afford the fees.",
       "story": "I'm from Gudibande, and I've been attending the church in Peresandra for 20 years. My mother was suffering from sickness, and God healed her with His mighty strength and grace. That grace touched our whole family. I'm in my second year of pre-university commerce, and I need help to keep going with my education.",
-      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace, toward her and my family."
+      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace, toward her and my family.",
+      "has_sponsor": true
     },
     {
       "id": "anjushree-7c3",
@@ -1327,7 +1404,8 @@
       "why_assistance": "I need your help in my studies because I have only mother helping (single parent).",
       "intro": "My mother is the only one supporting us, and I'm asking for help to stay in school.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me out of those moments. I'm in a Bachelor of Science program, and I'm raised by a single mother, so I'm asking for help to continue my studies.",
-      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "deekshita-m-aeb",
@@ -1344,7 +1422,8 @@
       "why_assistance": "I need assistance to ensure my education and my better further life.",
       "intro": "My family can't easily afford my schooling, so I'm reaching out for sponsorship to keep studying.",
       "story": "I'm from Boyanahalli village. I was suffering from health issues, and God healed me completely. After that I started going to church with my grandmother, and that's where I came to faith. I'm in my first year of pre-university, and a sponsorship would help me continue my education and build a better future.",
-      "quote": "I was suffering from health issues, and God healed me completely. After that I went to church with my grandmother."
+      "quote": "I was suffering from health issues, and God healed me completely. After that I went to church with my grandmother.",
+      "has_sponsor": false
     },
     {
       "id": "hemashree-m-k-a18",
@@ -1361,7 +1440,8 @@
       "why_assistance": "I need assistance to ensure education & further life.",
       "intro": "I'm two years into my degree and need a sponsor to help me get to graduation.",
       "story": "I'm from Mavathuru, and I've been attending the church in Peresandra for the past two years. God has carried our family through sickness, and we're grateful for His grace. I'm in my second year of a Bachelor of Science, and I'm asking for help to continue my education.",
-      "quote": "God has blessed our family from sickness, so my family praises His grace."
+      "quote": "God has blessed our family from sickness, so my family praises His grace.",
+      "has_sponsor": true
     },
     {
       "id": "chaitra-k-c4d",
@@ -1378,7 +1458,8 @@
       "why_assistance": "Education purpose. I need kindly support or help.",
       "intro": "I'm training in aeronautics, and a sponsor would lift the cost off my family's shoulders.",
       "story": "My parents accepted the Lord Jesus Christ, so I've grown up with Christian parents from the time I was a child. I trust the Lord and attend worship service every week. I'm in a Diploma program for Aeronautical Engineering, and I'm asking for help with my education.",
-      "quote": "My parents accepted the Lord Jesus Christ. I trust the Lord and attend worship service every week."
+      "quote": "My parents accepted the Lord Jesus Christ. I trust the Lord and attend worship service every week.",
+      "has_sponsor": false
     },
     {
       "id": "pavithra-p-112",
@@ -1395,7 +1476,8 @@
       "why_assistance": "For my education because it is very helpful for me for higher education",
       "intro": "I'm in my final year of business school, and a sponsor would help me cross the finish.",
       "story": "My faith is what keeps me strong. I believe in God, and He's done many miracles in my life. I thank Jesus every minute, and I lean on Him for courage and strength. I'm in the final year of my Bachelor of Commerce, and a sponsorship would be a real help with the cost of my higher education.",
-      "quote": "I am very thankful to my Jesus in every minute. I remember God, because He gives me courage and strength."
+      "quote": "I am very thankful to my Jesus in every minute. I remember God, because He gives me courage and strength.",
+      "has_sponsor": false
     },
     {
       "id": "anushree-006",
@@ -1412,7 +1494,8 @@
       "why_assistance": "I need your help in my studies because I have only mother helping (single parent).",
       "intro": "My mother is raising me on her own, and I'm looking for help to finish my science degree.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me through them. I'm pursuing a Bachelor of Science, and I'm raised by a single mother. I'm asking for help so I can continue my studies.",
-      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "divya-dn-6ea",
@@ -1429,7 +1512,8 @@
       "why_assistance": "I need assistance for my further education, because of my poor background, the scholarship you are providing will help me in my future education.",
       "intro": "I'm from a poor family, and continued scholarship support is what keeps me in school.",
       "story": "I'm a believer at S. Devaganhalli church and have been part of the congregation for seven years. God has done a lot of good things in my life, and I'm grateful for His blessings. I'm in my second semester of a Bachelor of Arts, and my family is poor. A sponsorship would help me continue my education.",
-      "quote": "God has done very good things in my life. I thank Him for all His blessings."
+      "quote": "God has done very good things in my life. I thank Him for all His blessings.",
+      "has_sponsor": false
     },
     {
       "id": "jahanavi-a-49b",
@@ -1446,7 +1530,8 @@
       "why_assistance": "I need assistance to ensure my education and my better future life.",
       "intro": "Law school is expensive \u2014 I really need a sponsor to help me build a better future.",
       "story": "I'm from Chowkanahalli, and I've been attending the church in Peresandra for 18 years. My family has found strength in the Lord's faith, and we're grateful for His grace. I'm pursuing a Bachelor of Laws, and I need help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith, and we praise His grace toward us."
+      "quote": "My family has found strength in the Lord's faith, and we praise His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "ashirvad-b99",
@@ -1463,7 +1548,8 @@
       "why_assistance": "This will be more helpful for education.",
       "intro": "Continuing my science studies is hard for my family \u2014 a sponsor would mean a lot.",
       "story": "We've been believing in Jesus Christ for the past four years, and God has done many miracles in our lives and in our family. I'm in a pre-university science course, and a sponsorship would help me continue with my education.",
-      "quote": "We have believed in Jesus Christ for the past four years. God has done many miracles in our lives and family."
+      "quote": "We have believed in Jesus Christ for the past four years. God has done many miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "divya-g-dfd",
@@ -1480,7 +1566,8 @@
       "why_assistance": "Kindly help for my further education purpose. It is our request to you to help me.",
       "intro": "My parents can't fully support my schooling, so I'm asking for help to continue my degree.",
       "story": "I'm baptized and believe in Jesus Christ. My mother and father haven't accepted Him yet, but I'm continuing on my own. I attend Sunday worship and I'm studying for a Bachelor of Arts. I'm asking humbly for help with my further education.",
-      "quote": "I am baptized and I believe in Jesus Christ. My mother and father have not accepted, but I am attending church and studying my BA degree."
+      "quote": "I am baptized and I believe in Jesus Christ. My mother and father have not accepted, but I am attending church and studying my BA degree.",
+      "has_sponsor": false
     },
     {
       "id": "pravalika-g-n-1a1",
@@ -1497,7 +1584,8 @@
       "why_assistance": "Education purpose. This money will help me get education.",
       "intro": "We can't manage my fees alone, and a sponsor would mean I can earn my computer degree.",
       "story": "I came to faith in Jesus through what my mother carried. She faced many problems, and I see God's powerful truth in the way He's been present for us. I'm pursuing a Bachelor of Computer Applications, and a sponsorship would help me with my education.",
-      "quote": "God is the powerful truth I have come to know. I came to faith in Jesus."
+      "quote": "God is the powerful truth I have come to know. I came to faith in Jesus.",
+      "has_sponsor": false
     },
     {
       "id": "nalinakshi-d-k-60f",
@@ -1514,7 +1602,8 @@
       "why_assistance": "I come from a financially weak family. It is difficult to afford my education goals. This scholarship will help me pay my fees and buy books, and build a better future.",
       "intro": "I come from a low-income family \u2014 a sponsor would help me pay fees, buy books, and finish school.",
       "story": "I have faith in God and trust Him in everything. He's guided me through the challenges I've faced and given me the strength to keep going with my education. I believe He has a plan for me, and I want to grow in my faith and live by His teachings. I'm in my second year of pre-university, and I come from a financially weak family. A sponsorship would help me cover my fees, buy books, and build a better future.",
-      "quote": "He has guided me through the challenges of my life and given me strength to continue my education."
+      "quote": "He has guided me through the challenges of my life and given me strength to continue my education.",
+      "has_sponsor": false
     },
     {
       "id": "josna-d-5e7",
@@ -1531,7 +1620,8 @@
       "why_assistance": "I need assistance to ensure my education and my further life.",
       "intro": "My family can't easily afford my education, and a sponsor would mean a brighter future for me.",
       "story": "I'm from Peresandra and have been going to the church there with my parents for 14 years. My family has found strength in the Lord's faith, and we're grateful for His grace. I'm in my second year of pre-university, and I'm asking for help to continue my education and build a better future.",
-      "quote": "I have been coming to church with my parents since fourteen years. My family has found strength in the Lord's faith."
+      "quote": "I have been coming to church with my parents since fourteen years. My family has found strength in the Lord's faith.",
+      "has_sponsor": false
     },
     {
       "id": "karthik-da-a53",
@@ -1548,7 +1638,8 @@
       "why_assistance": "I need your greater assistance for my studies as I am from a poor family. It will be so much of helpful.",
       "intro": "I come from a poor family, and starting business school will only be possible with sponsor support.",
       "story": "I've been attending the church at S. Devaganhalli for about 10 years. After I started going, God healed all my health issues. I'm so grateful for the way He's blessed me and my family. I'm in my first year of a Bachelor of Business Administration, and I'm from a poor family. A sponsorship would be a real help with my studies.",
-      "quote": "After attending church, God healed all my health issues and sickness. I am so grateful that He has blessed me and my family."
+      "quote": "After attending church, God healed all my health issues and sickness. I am so grateful that He has blessed me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "namithashree-f5b",
@@ -1565,7 +1656,8 @@
       "why_assistance": "This will be more helpful for our education.",
       "intro": "I'm almost done with high school, and a sponsor would help me cover the cost to finish.",
       "story": "We've been believers in Jesus Christ for the past six years, and God has done many unbelievable miracles in our lives and our family. I'm in my second year of pre-university, and a sponsorship would help me continue my education.",
-      "quote": "We have believed in Jesus Christ for the past six years. God has done many unbelievable miracles in our lives and family."
+      "quote": "We have believed in Jesus Christ for the past six years. God has done many unbelievable miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "elesha-765",
@@ -1582,7 +1674,8 @@
       "why_assistance": "Help for further education.",
       "intro": "Continuing my studies isn't easy on our budget \u2014 without a sponsor, I'll struggle to continue.",
       "story": "My faith in Christ is built on what He's transformed in me: His love and grace, and the way He's moved me from just seeking fulfillment to something deeper. I'm continuing my studies, and a sponsorship would help me with my further education.",
-      "quote": "My faith in Christ is built on the realization of His transformation, love, and grace."
+      "quote": "My faith in Christ is built on the realization of His transformation, love, and grace.",
+      "has_sponsor": false
     },
     {
       "id": "sathya-p-r-a46",
@@ -1599,7 +1692,8 @@
       "why_assistance": "I need financial assistance to support my education as it is difficult for my family to manage all expenses.",
       "intro": "My robotics degree is hard for my family to manage, and I'm asking for help to keep at it.",
       "story": "I believe in God and try to follow His teachings in my daily life. My faith gives me strength, hope, and guidance, especially during difficult times. Through prayer and church, I've learned to stay positive, help others, and trust His plan for my future. I'm in a Bachelor of Technology for Robotics and Automation, and managing all the expenses is hard for my family. A sponsorship would help.",
-      "quote": "Through prayer and church, I have learned to stay positive, help others, and trust God's plan for my future."
+      "quote": "Through prayer and church, I have learned to stay positive, help others, and trust God's plan for my future.",
+      "has_sponsor": false
     },
     {
       "id": "karthik-y-n-023",
@@ -1616,7 +1710,8 @@
       "why_assistance": "I need assistance to ensure my education and my better further life.",
       "intro": "I'm close to finishing high school, and a sponsor would let me finish without overwhelming my family.",
       "story": "I'm from Vaychukuralli, and I've been attending the church in Peresandra for about 10 years. My family has found strength in the Lord's faith, and we're grateful for His grace. I'm in my second year of pre-university, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith, and we praise His grace toward us."
+      "quote": "My family has found strength in the Lord's faith, and we praise His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "apeksha-m-60a",
@@ -1633,7 +1728,8 @@
       "why_assistance": "I come from a financially weak family and it is difficult to afford my education expenses. Scholarship will help fully with education expenses.",
       "intro": "I'm in my third year of nursing, and a sponsor would help my low-income family see me through.",
       "story": "I believe in God and go to church regularly. My faith gives me strength and guides me, and I try to live by good values like honesty, kindness, and helping others. That's also what keeps me focused on my studies. I'm in my third year of a Bachelor of Science in Nursing, and my family is financially weak. A sponsorship would help me cover my education expenses.",
-      "quote": "I try to follow good values like honesty, kindness, and helping others. My faith motivates me to study well."
+      "quote": "I try to follow good values like honesty, kindness, and helping others. My faith motivates me to study well.",
+      "has_sponsor": false
     },
     {
       "id": "nandisha-4cd",
@@ -1650,7 +1746,8 @@
       "why_assistance": "I do not have proper support from my family so please help me in education.",
       "intro": "I don't have much family support, and I'm reaching out for help to finish my degree.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me through them. I'm in my fourth year of an undergraduate degree, and I don't have proper support from my family. I'm asking for help with my education.",
-      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "manasa-2bc",
@@ -1667,7 +1764,8 @@
       "why_assistance": "They will help for my education by providing financial support which helps me to continue my education to reach my goal.",
       "intro": "I need financial support to continue with my business degree and reach my goals.",
       "story": "I believe in Jesus because His love is unconditional and never fails. His teaching inspires me to live with compassion, humility, and truth. In times of struggle, my faith in Him gives me strength and comfort. I'm in a Bachelor of Commerce, and a sponsorship would help me continue my education and work toward my goals.",
-      "quote": "His love is unconditional and never fails. His teaching inspires me to live with compassion, humility, and truth."
+      "quote": "His love is unconditional and never fails. His teaching inspires me to live with compassion, humility, and truth.",
+      "has_sponsor": false
     },
     {
       "id": "karthik-b-n-3b1",
@@ -1684,7 +1782,8 @@
       "why_assistance": "To need assistance to ensure my education and my further life.",
       "intro": "I'm just starting pharmacy school, and I could really use a sponsor to help with the costs.",
       "story": "I'm from Bodampalli, and I've been attending the church in Peresandra for 11 years. Both my father and mother were suffering from sickness, and God healed them. His grace is on me and my family. I'm in my first year of a Bachelor of Pharmacy, and I need help to continue my education.",
-      "quote": "My father and mother were suffering from sickness. God healed them, and now His grace is on me and my family."
+      "quote": "My father and mother were suffering from sickness. God healed them, and now His grace is on me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "chandana-g-a-a0f",
@@ -1701,7 +1800,8 @@
       "why_assistance": "Education help",
       "intro": "My pharmacy training is more than my family can easily afford \u2014 I'm asking for sponsor help.",
       "story": "God is always with me. He gives me good health, knowledge, and the ability to keep going in my education. I'm pursuing a Diploma in Pharmacy, and a sponsorship would help me with my studies.",
-      "quote": "God always helps me, giving me knowledge, good health, and my education. He is always in my heart."
+      "quote": "God always helps me, giving me knowledge, good health, and my education. He is always in my heart.",
+      "has_sponsor": false
     },
     {
       "id": "keerthan-m-987",
@@ -1718,7 +1818,8 @@
       "why_assistance": "I need assistance due to financial difficulties in my life and family. This support will help to achieve my goals.",
       "intro": "Money is a struggle for my family, and some sponsor support would keep me studying science.",
       "story": "I believe in God and trust Him in my daily life. My faith helps me stay strong through difficult times and guides me to do good things. I pray regularly and try to live by good values. I'm in a pre-university science course, and my family is going through financial difficulty. A sponsorship would help me reach my goals.",
-      "quote": "My faith helps me stay strong during difficult times and guides me to do good things."
+      "quote": "My faith helps me stay strong during difficult times and guides me to do good things.",
+      "has_sponsor": false
     },
     {
       "id": "harika-ns-8ab",
@@ -1735,7 +1836,8 @@
       "why_assistance": "For my education. Because I need money for my future education as very important.",
       "intro": "My medical lab training costs more than we can manage \u2014 I really need a sponsor to continue.",
       "story": "My faith journey began when I realized I couldn't find lasting peace through my own efforts. When I accepted Jesus as my Savior, something changed deep in me. Anxiety was replaced by joy and a sense of purpose. Through the Bible and prayer, I experience His unconditional love and guidance every day. I'm in a Diploma program in Medical Lab Technology, and I need help to pay for my education.",
-      "quote": "Accepting Jesus as Saviour brought a profound transformation, replacing anxiety with the joy of purpose."
+      "quote": "Accepting Jesus as Saviour brought a profound transformation, replacing anxiety with the joy of purpose.",
+      "has_sponsor": false
     },
     {
       "id": "navitha-995",
@@ -1752,7 +1854,8 @@
       "why_assistance": "I do not have proper support from my family so please help me in education.",
       "intro": "I don't have strong family support, and a sponsor would help me stay focused on my degree.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me through them. I'm in my second year of an undergraduate degree, and I don't have proper support from my family. I'm asking for help with my education.",
-      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "manoj-kumar-bs-85b",
@@ -1769,7 +1872,8 @@
       "why_assistance": "The scholarship you have been providing me since three years had a great impact on my brighter future. So I am thankful for the help you provide me towards.",
       "intro": "Continued scholarship support means I can finish my business degree and keep moving forward.",
       "story": "I'm from Boyanahalli, and I've been attending the church at S. Devaganhalli for about 30 years. God has blessed my father. He was suffering from sickness, and after we believed in the Lord, our whole family found strength and grace. I'm in my third year of a Bachelor of Commerce, and a sponsorship would have a real impact on my future.",
-      "quote": "My father was suffering from sickness. After believing in the Lord, my family got all the might and strength to praise God for His grace."
+      "quote": "My father was suffering from sickness. After believing in the Lord, my family got all the might and strength to praise God for His grace.",
+      "has_sponsor": false
     },
     {
       "id": "lakshmi-d-693",
@@ -1786,7 +1890,8 @@
       "why_assistance": "I need assistance to ensure my education and better future.",
       "intro": "I'm just starting high school and a sponsor would help my family afford the rest of my education.",
       "story": "I'm from Jeeganahalli, and I've been going to the church in Peresandra with my parents for 12 years. God has healed sickness in our family, and we praise Him for the mighty life He's given us. I'm in my first year of pre-university, and I need help to continue my education and build a better future.",
-      "quote": "God has healed our family from sickness and given us a mighty life to praise Him."
+      "quote": "God has healed our family from sickness and given us a mighty life to praise Him.",
+      "has_sponsor": false
     },
     {
       "id": "darshan-m-184",
@@ -1803,7 +1908,8 @@
       "why_assistance": "Education help. Thankyou.",
       "intro": "School costs are heavy for my family \u2014 even small help would keep me in class.",
       "story": "I've been coming to church for years now, and since we came to know God's truth, our whole family has lived with good health and happiness. I go every week with them. I'm in 10th standard, and a sponsorship would really help with my education.",
-      "quote": "After knowing God's truth, my family is living with good health and happiness. I come to church every week with them."
+      "quote": "After knowing God's truth, my family is living with good health and happiness. I come to church every week with them.",
+      "has_sponsor": false
     },
     {
       "id": "navanith-kumar-65c",
@@ -1820,7 +1926,8 @@
       "why_assistance": "This will be more helpful for our education.",
       "intro": "I'm working through an engineering diploma, and we can't quite afford it \u2014 a sponsor would help.",
       "story": "We've been blessed in Jesus Christ for the past 10 years, and God has done many unbelievable miracles in our lives and our family. I'm in my second year of a Diploma program for Electrical and Electronics Engineering, and a sponsorship would help me continue my education.",
-      "quote": "We have been blessed in Jesus Christ for the past ten years. God has done many unbelievable miracles in our lives and family."
+      "quote": "We have been blessed in Jesus Christ for the past ten years. God has done many unbelievable miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "v-lokesh-f6a",
@@ -1837,7 +1944,8 @@
       "why_assistance": "I need assistance to ensure my education and better future life.",
       "intro": "I'm just starting college, and my family will need help to keep me there long-term.",
       "story": "I'm from Sadali Cross, and I've been attending the church in Peresandra for about three years. My family has found strength in the Lord's faith, and we praise God for the way He's been with us. I'm in my first year of pre-university arts, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for being with us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for being with us.",
+      "has_sponsor": false
     },
     {
       "id": "nagalakshmi-dl-d51",
@@ -1854,7 +1962,8 @@
       "why_assistance": "The scholarship you have provided has helped me a lot to complete my 1st PU. So it would be helpful if you provide me scholarship for my future education.",
       "intro": "Last year's scholarship helped me finish first-year \u2014 I'm hoping for the same support to continue.",
       "story": "I live in S. Devaganhalli, and I've been attending Sunday service there for the past six years. God has blessed my life and my family. I'm grateful for everything He's done. I'm in my second year of pre-university, and I'm asking for support so I can continue my education.",
-      "quote": "I have been attending Sunday service for the past six years. God has blessed my life and my family."
+      "quote": "I have been attending Sunday service for the past six years. God has blessed my life and my family.",
+      "has_sponsor": false
     },
     {
       "id": "divay-38d",
@@ -1871,7 +1980,8 @@
       "why_assistance": "Education help",
       "intro": "Continuing my schooling is hard for my family \u2014 a sponsor would help me reach the next step.",
       "story": "God has given me good health and the ability to learn. He's strengthened my family for many years, and I'm thankful to Jesus for saving us. I'm in my first year of pre-university, and a sponsorship would help me with my education.",
-      "quote": "God has given me good health and knowledge. He has strengthened my family for long years."
+      "quote": "God has given me good health and knowledge. He has strengthened my family for long years.",
+      "has_sponsor": false
     },
     {
       "id": "manasa-4e9",
@@ -1888,7 +1998,8 @@
       "why_assistance": "I need assistance to ensure for my education.",
       "intro": "I'm hoping for a sponsor so I can finish high school without straining my family's finances.",
       "story": "I'm from Devasthanavasahalli. My grandmother was suffering from a health issue, and God healed her completely. She's been going to church for 10 years, and I joined her. That's how I came to believe in God. I'm in my second year of pre-university arts, and I'm asking for help to continue my education.",
-      "quote": "My grandmother was suffering from a health issue. God healed her completely, and I joined her at church."
+      "quote": "My grandmother was suffering from a health issue. God healed her completely, and I joined her at church.",
+      "has_sponsor": false
     },
     {
       "id": "jeffi-joanna-l-6c7",
@@ -1905,7 +2016,8 @@
       "why_assistance": "It will help us for further education.",
       "intro": "Studying business and law is expensive \u2014 sponsor support would mean a lot to my family.",
       "story": "Our family has been attending church for many years, and we keep growing in our faith. I believe God has a purpose for my future, and I want to live in a way that honors Him. I'm in a Bachelor of Business Administration combined with Laws program, and a sponsorship would help me continue my education.",
-      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him."
+      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him.",
+      "has_sponsor": false
     },
     {
       "id": "nisarga-5d0",
@@ -1922,7 +2034,8 @@
       "why_assistance": "I do not have proper support from my family. So please help me in education.",
       "intro": "My family can't help much with school, and I really need a sponsor to continue.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me through them. I'm in my second year of pre-university, and I don't have proper support from my family. I'm asking for help with my education.",
-      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having everything go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "nandesha-kp-d3f",
@@ -1939,7 +2052,8 @@
       "why_assistance": "We are poor. This small amount helps in my education.",
       "intro": "We're a poor family, and even a small sponsorship would make a real difference in my education.",
       "story": "I believe in Christ. God helps in so many ways: in accidents, in education, in everything. I'm in a pre-university science course, and even a small amount of help would make a real difference for me. My family is poor, and I'm asking for support so I can continue my studies.",
-      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education."
+      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education.",
+      "has_sponsor": false
     },
     {
       "id": "rupali-add",
@@ -1956,7 +2070,8 @@
       "why_assistance": "It will help to pursue my next education purpose",
       "intro": "I'm reaching for the next step in school, and I need a sponsor to make it possible.",
       "story": "I thank God for the love and care He gives me. He's the one who helps me get through life. The Word of God is what keeps me going. He's strengthened my family for many years, and I'm thankful to Jesus for saving us. I'm in my first year of pre-university, and a sponsorship would help me with my next stage of education.",
-      "quote": "I thank God for the love and care He gives me. I thank Jesus for saving me and my family."
+      "quote": "I thank God for the love and care He gives me. I thank Jesus for saving me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "kavya-gk-958",
@@ -1973,7 +2088,8 @@
       "why_assistance": "I need financial assistance to continue my education because my family has limited income. This scholarship will help me focus on my studies.",
       "intro": "My family has limited income, and a scholarship would let me focus on finishing my master's.",
       "story": "I believe in God and have faith in His guidance. He's helped me overcome many challenges and given me the strength to continue my education. I attend church regularly and try to live by good values. I'm in a Master of Arts program in History and Economics, and my family's income is limited. A sponsorship would help me focus on my studies.",
-      "quote": "He has helped me overcome many challenges and given me strength to continue my education."
+      "quote": "He has helped me overcome many challenges and given me strength to continue my education.",
+      "has_sponsor": false
     },
     {
       "id": "manoja-562",
@@ -1990,7 +2106,8 @@
       "why_assistance": "I need assistance to ensure my education and my future life.",
       "intro": "Money is a challenge at home, and I need a sponsor to help me finish high school.",
       "story": "I'm from Peresandra and I've been attending the church there for 15 years. My family was suffering from sickness, and God healed us with His mighty strength and grace. I'm in my second year of pre-university, and I'm asking for help to continue my education.",
-      "quote": "My family was suffering from sickness. God healed us with mighty strength and grace."
+      "quote": "My family was suffering from sickness. God healed us with mighty strength and grace.",
+      "has_sponsor": false
     },
     {
       "id": "pavan-kumar-hv-bff",
@@ -2007,7 +2124,8 @@
       "why_assistance": "I need your assistance for my education. We are very poor.",
       "intro": "We're a very poor family, and I'm asking for help to keep going with my business degree.",
       "story": "I've been attending the church at S. Devaganhalli for five years. God has helped me through different kinds of suffering. I'm in a Bachelor of Commerce, and my family is very poor. A sponsorship would help me continue my studies.",
-      "quote": "I have been attending church at S. Devaganhalli for five years. God helps in various sufferings."
+      "quote": "I have been attending church at S. Devaganhalli for five years. God helps in various sufferings.",
+      "has_sponsor": true
     },
     {
       "id": "roja-907",
@@ -2024,7 +2142,8 @@
       "why_assistance": "I need assistance to ensure my education.",
       "intro": "I want to study business, but my family will need a sponsor's help to make it happen.",
       "story": "I'm from Sonaganahalli, and I've been attending the church in Peresandra for about 10 years. My family has found strength in the Lord's faith, and we're grateful for His grace. I'm in my first year of pre-university commerce, and I'm asking for help to continue my education.",
-      "quote": "My family has found strength in the Lord's faith. We are grateful for His grace."
+      "quote": "My family has found strength in the Lord's faith. We are grateful for His grace.",
+      "has_sponsor": false
     },
     {
       "id": "keerthi-raj-r-198",
@@ -2041,7 +2160,8 @@
       "why_assistance": "I need assistance to support my education and daily needs. This help will reduce my financial burden on my studies.",
       "intro": "Engineering tuition is a heavy load \u2014 a sponsor would ease the burden on my studies.",
       "story": "I believe in God and trust Him. My faith gives me strength and peace, and it helps me do good and stay positive. I'm in a Bachelor of Technology for Electronics and Communication Engineering, and I'm asking for help to support my education and daily needs. It would reduce the financial burden on me and my family.",
-      "quote": "My faith gives me strength and peace. It helps me do good and stay positive."
+      "quote": "My faith gives me strength and peace. It helps me do good and stay positive.",
+      "has_sponsor": false
     },
     {
       "id": "pavithra-bs-84b",
@@ -2058,7 +2178,8 @@
       "why_assistance": "The scholarship you have been providing me since three years had a great impact on my brighter future. So I am thankful for the help you have towards me.",
       "intro": "Three years of scholarship support brought me this far \u2014 I'm asking for help to finish.",
       "story": "I'm from Boyanahalli, and I've been attending the church at S. Devaganhalli for about 30 years. My father was suffering from sickness, and after we believed in the Lord, our whole family found the strength to praise Him for His grace. I'm in my third year of a Bachelor of Commerce, and a sponsorship would have a real impact on my future.",
-      "quote": "After believing in the Lord, my family got all the might and strength to praise God for His grace."
+      "quote": "After believing in the Lord, my family got all the might and strength to praise God for His grace.",
+      "has_sponsor": true
     },
     {
       "id": "b-shilaya-39d",
@@ -2075,7 +2196,8 @@
       "why_assistance": "I need assistance to ensure my education and better future life.",
       "intro": "I'm starting college and we'll need sponsor help to afford the fees over the next few years.",
       "story": "I'm from Bandahalli, and I've been attending the church in Peresandra for 12 years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my first year of pre-university arts, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "prarthana-787",
@@ -2092,7 +2214,8 @@
       "why_assistance": "I need your kind support for my further studies.",
       "intro": "I'm asking for support to continue my schooling \u2014 my family can't manage the costs alone.",
       "story": "My God has been leading me from the day I was born, and He's always with me and my family. Believing in Him is how I'm going to find my future. I'm in my second year of pre-university, and I'm asking for support to continue my studies.",
-      "quote": "My God is leading me from the day I was born. He is always with me and my family."
+      "quote": "My God is leading me from the day I was born. He is always with me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "kruthika-6bb",
@@ -2109,7 +2232,8 @@
       "why_assistance": "This scholarship will help me pay my college fees, buy books, and without burdening my family.",
       "intro": "I don't want to put more burden on my family \u2014 a sponsor would help me pay for college.",
       "story": "I believe in God and try to live by Christian values in my daily life. My faith helps me stay positive, make good decisions, and respect others. I attend church regularly and take part in spiritual activities. I'm in my second year of pre-university science, and a sponsorship would help me pay my college fees and buy books without putting more pressure on my family.",
-      "quote": "My faith helps me stay positive, make good decisions, and respect others."
+      "quote": "My faith helps me stay positive, make good decisions, and respect others.",
+      "has_sponsor": false
     },
     {
       "id": "sampath-kumar-ec7",
@@ -2126,7 +2250,8 @@
       "why_assistance": "This will be more helpful for our further education.",
       "intro": "Finishing my science studies is tight for our family, and sponsor support would mean a lot.",
       "story": "We've been believing in Jesus Christ for the past 15 years, and God has done many unbelievable miracles in our lives and our family. I'm in my second year of pre-university science, and a sponsorship would help me continue my education.",
-      "quote": "We have believed in Jesus Christ for fifteen years. God has done many unbelievable miracles in our lives and family."
+      "quote": "We have believed in Jesus Christ for fifteen years. God has done many unbelievable miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "prashanth-cn-8a9",
@@ -2143,7 +2268,8 @@
       "why_assistance": "The scholarship you have been providing me has helped me for my good education. So it will be helpful for my higher education.",
       "intro": "Continued scholarship support means I can finish medical school and become a doctor.",
       "story": "I'm from Chinthakayanahalli. I was badly suffering from health issues, and God healed me completely and gave me the strength to worship Him with all my might. I'm grateful for His grace. I'm in my fourth year of studies, and a sponsorship would help me with my higher education.",
-      "quote": "As I was badly suffering from health issues, God healed me completely and gave me strength to worship Him with all my might."
+      "quote": "As I was badly suffering from health issues, God healed me completely and gave me strength to worship Him with all my might.",
+      "has_sponsor": false
     },
     {
       "id": "mounika-gn-499",
@@ -2160,7 +2286,8 @@
       "why_assistance": "Help for further education.",
       "intro": "Continuing my education would be tough without help, and I'm asking for a sponsor's support.",
       "story": "My faith in Christ is built on what He's transformed in me: His love and grace, and the way He's moved me from just seeking fulfillment to something deeper. My testimony is an example of the gospel message. I'm continuing my studies, and a sponsorship would help with my further education.",
-      "quote": "My faith in Christ is built on the realization of His transformation, love, and grace."
+      "quote": "My faith in Christ is built on the realization of His transformation, love, and grace.",
+      "has_sponsor": false
     },
     {
       "id": "pratheep-cn-20e",
@@ -2177,7 +2304,8 @@
       "why_assistance": "I need assistance to complete my higher studies and for my better future life.",
       "intro": "I'm finishing my master's in physical therapy, and a sponsor would help me see it through.",
       "story": "I'm from Chinthakayanahalli, and I was studying for my Master of Physiotherapy at Dayananda Sagar University. After I came to church, God's grace carried me through and I was able to complete my course successfully. Everything is possible by His grace. I'm continuing into higher studies, and a sponsorship would help me build a better future.",
-      "quote": "After coming to the church, by God's grace I was able to complete my course successfully. Everything is possible with the grace of God."
+      "quote": "After coming to the church, by God's grace I was able to complete my course successfully. Everything is possible with the grace of God.",
+      "has_sponsor": false
     },
     {
       "id": "sharanya-b8c",
@@ -2194,7 +2322,8 @@
       "why_assistance": "I do not have proper support from my family so please help me in education.",
       "intro": "I don't have much family support, and a sponsor would help me finish high school.",
       "story": "Faith isn't always about everything going right. It's about trusting God even when things go wrong. There have been moments in my life when I felt lost and confused, and Jesus is the one who helped me through them. I'm in my second year of pre-university, and I don't have proper support from my family. I'm asking for help with my education.",
-      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong."
+      "quote": "Faith is not always about having things go right. It is about trusting even when things go wrong.",
+      "has_sponsor": false
     },
     {
       "id": "prabhavathi-r-3eb",
@@ -2211,7 +2340,8 @@
       "why_assistance": "I need assistance to support my education and daily needs. This help will reduce my financial burden on my studies.",
       "intro": "Medical lab training is more than my family can carry, and I need sponsor help.",
       "story": "I believe in God and trust Him. My faith gives me strength and peace, and it helps me do good and stay positive. I'm in a Diploma program for Medical Lab Technology, and I'm asking for help with my education and daily needs. It would reduce the financial burden on my studies.",
-      "quote": "My faith gives me strength and peace. It helps me do good and stay positive."
+      "quote": "My faith gives me strength and peace. It helps me do good and stay positive.",
+      "has_sponsor": false
     },
     {
       "id": "sirisha-r-e4d",
@@ -2228,7 +2358,8 @@
       "why_assistance": "I need assistance to ensure for my education.",
       "intro": "I'm in my last year of high school, and a sponsor would help me cover the costs to finish.",
       "story": "I'm from Yelepet Chikka, and I've been attending the church in Peresandra for about six years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my second year of pre-university, and I'm asking for help to continue my education.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "sharath-ea5",
@@ -2245,7 +2376,8 @@
       "why_assistance": "This will be more helpful for our further education.",
       "intro": "I'm earning a mechanical engineering diploma, and a sponsor would help my family afford the fees.",
       "story": "We've been believing in Jesus Christ for the past 10 years, and God has done many unbelievable miracles in our lives and our family. I'm in a Diploma program for Mechanical Engineering, and a sponsorship would help me continue my education.",
-      "quote": "We have believed in Jesus Christ for the past ten years. God has done many unbelievable miracles in our lives and family."
+      "quote": "We have believed in Jesus Christ for the past ten years. God has done many unbelievable miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "praveen-v-cf3",
@@ -2262,7 +2394,8 @@
       "why_assistance": "This scholarship will help for my studies. For joining of MBA/M.Com for higher studies.",
       "intro": "I'm working toward my business degree and then graduate school \u2014 sponsor help would mean a lot.",
       "story": "I'm from Chakkappannahalli. When I was in 10th standard I was suffering with fever and stomach pain, right as my board exams were starting. I prayed, and God gave me strength, courage, and grace to get through it. So that I could worship and glorify Him. I'm in a Bachelor of Commerce, and a sponsorship would help me continue into MBA or M.Com for my higher studies.",
-      "quote": "When my board exams started, I was suffering from fever and stomach pain. I prayed, and God gave me strength, courage, and grace."
+      "quote": "When my board exams started, I was suffering from fever and stomach pain. I prayed, and God gave me strength, courage, and grace.",
+      "has_sponsor": false
     },
     {
       "id": "sneha-m-b74",
@@ -2279,7 +2412,8 @@
       "why_assistance": "I need assistance to ensure my education and better further life.",
       "intro": "Funds are short at home, and I'm hoping for sponsor support to finish high school.",
       "story": "I'm from Adagallu, and I've been attending the church in Peresandra for about 20 years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my second year of pre-university, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": true
     },
     {
       "id": "prarthana-r-afa",
@@ -2296,7 +2430,8 @@
       "why_assistance": "This support will help me continue my studies.",
       "intro": "Continuing high school is hard for my family, and I'm asking for sponsorship to keep going.",
       "story": "I believe in Jesus Christ as my Lord and Savior. He's changed my life by giving me hope and peace. He's forgiven my sins and guided me to live with love, kindness, and faith. I'm in my second year of pre-university, and a sponsorship would help me continue my studies.",
-      "quote": "Jesus has forgiven my sins and guided me to live with love, kindness, and faith."
+      "quote": "Jesus has forgiven my sins and guided me to live with love, kindness, and faith.",
+      "has_sponsor": false
     },
     {
       "id": "sireesha-8d7",
@@ -2313,7 +2448,8 @@
       "why_assistance": "This will be more helpful for our further education.",
       "intro": "I'm halfway through my computer degree, and a sponsor would help me reach graduation.",
       "story": "We've been believing in Jesus Christ for the past 16 years, and God has done many unbelievable miracles in our lives and our family. I'm in my fourth semester of a Bachelor of Computer Applications, and a sponsorship would help me continue my education.",
-      "quote": "We have believed in Jesus Christ for sixteen years. God has done many unbelievable miracles in our lives and family."
+      "quote": "We have believed in Jesus Christ for sixteen years. God has done many unbelievable miracles in our lives and family.",
+      "has_sponsor": false
     },
     {
       "id": "sumanth-31b",
@@ -2330,7 +2466,8 @@
       "why_assistance": "I need assistance to ensure my education and better future life.",
       "intro": "I'm just starting technical school, and a sponsor would help my family afford the next few years.",
       "story": "I'm from Adagallu, and I've been attending the church in Peresandra for about 20 years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my first year of a polytechnic diploma, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "sandhya-hv-815",
@@ -2347,7 +2484,8 @@
       "why_assistance": "We are poor. This small amount helps in my education.",
       "intro": "We're a poor family, and even a small sponsorship would help me stay in school.",
       "story": "I believe in Christ. God helps in so many ways: in accidents, in education, in everything. A small amount goes a long way for me. I'm in a pre-university commerce course, and my family is poor. I'm asking for support so I can continue my studies.",
-      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education."
+      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education.",
+      "has_sponsor": false
     },
     {
       "id": "pravachana-9eb",
@@ -2364,7 +2502,8 @@
       "why_assistance": "I need assistance to support my education and to reduce financial burden on my studies.",
       "intro": "I want to keep studying without adding to my family's burden, and a sponsor would help.",
       "story": "I believe in God and trust Him deeply. My faith gives me strength and peace, and it helps me do good and stay positive. I'm in an undergraduate program, and I'm asking for support to continue my education and reduce the financial burden on my studies.",
-      "quote": "My faith gives me strength and peace. It helps me do good and stay positive. I trust so much in God."
+      "quote": "My faith gives me strength and peace. It helps me do good and stay positive. I trust so much in God.",
+      "has_sponsor": false
     },
     {
       "id": "supriya-f06",
@@ -2381,7 +2520,8 @@
       "why_assistance": "I need assistance to ensure my education and my future life.",
       "intro": "Engineering tuition is more than my family can handle, and a sponsor would change that.",
       "story": "I'm from Gudibande, and I've been attending the church in Peresandra for 20 years. My mother was suffering from sickness, and God healed her with His mighty strength and grace. His grace covers me and my family. I'm in engineering for computer science, and I need help to continue my education and build my future.",
-      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace toward me and my family."
+      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace toward me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "srelakshmi-dl-56b",
@@ -2398,7 +2538,8 @@
       "why_assistance": "I need assistance for my future study. It has helped me to complete my two years of degree.",
       "intro": "Two years of scholarship support helped me get here \u2014 I need one more to graduate.",
       "story": "I attend church at S. Devaganhalli. One of my family members wasn't doing well, and after we prayed, God helped him a lot. I'm grateful for the blessings He's brought into my life and my family. I'm in my sixth semester of a Bachelor of Science, and a sponsorship would help me complete my degree.",
-      "quote": "One of my family members was not feeling well. After praying, God has helped him a lot."
+      "quote": "One of my family members was not feeling well. After praying, God has helped him a lot.",
+      "has_sponsor": false
     },
     {
       "id": "b-s-thanush-66a",
@@ -2415,7 +2556,8 @@
       "why_assistance": "I need assistance to ensure for my education, purpose.",
       "intro": "I'm hoping for sponsor support so my family can afford to keep me in school.",
       "story": "I'm from Bandahalli, and I've been attending the church in Peresandra for 10 years. My mother was suffering from sickness, and God healed her with His mighty strength and grace. That grace touched me and my family. I'm in my first year of pre-university science, and I need help to continue my education.",
-      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace toward me and my family."
+      "quote": "My mother was suffering from sickness. God healed her with mighty strength and grace toward me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "pravalika-530",
@@ -2432,7 +2574,8 @@
       "why_assistance": "I need assistance to support my education and to reduce financial problems on my studies.",
       "intro": "Money is a problem for my family, and a sponsor would help me focus on my studies.",
       "story": "I believe in God. My faith gives me strength and peace, and it helps me trust Him, do good, and stay positive. I'm in my second year of studies, and I'm asking for support so I can continue my education without the financial strain.",
-      "quote": "My faith gives me strength and peace, and trust in Him. It helps me do good and stay blessed."
+      "quote": "My faith gives me strength and peace, and trust in Him. It helps me do good and stay blessed.",
+      "has_sponsor": false
     },
     {
       "id": "venugopal-e84",
@@ -2449,7 +2592,8 @@
       "why_assistance": "I need assistance to ensure my education and my better future life.",
       "intro": "I'm just starting high school, and my family will struggle to pay without sponsor help.",
       "story": "I'm from Aruvu village. My grandmother was suffering from a health issue, and God healed her completely. She's been going to church for 10 years, and I joined her. That's how I came to believe in God. I'm in my first year of pre-university, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My grandmother was suffering from a health issue. God healed her completely, and I joined her at church."
+      "quote": "My grandmother was suffering from a health issue. God healed her completely, and I joined her at church.",
+      "has_sponsor": false
     },
     {
       "id": "subramani-cv-7cd",
@@ -2466,7 +2610,8 @@
       "why_assistance": "This scholarship will help in for my studies. This will be helpful for my higher education.",
       "intro": "I'm training in medical lab science, and a sponsor would help me see it through.",
       "story": "I'm from Chinthakayanahalli. I was badly suffering from Chorea movements, and God healed me completely. He gave me His grace, faith, and the strength to worship and glorify Him. I'm in a Bachelor of Science for Medical Lab Technology, and a sponsorship would help me with my higher education.",
-      "quote": "I was suffering badly. God healed me completely and gave me grace, faith, and strength to worship Him."
+      "quote": "I was suffering badly. God healed me completely and gave me grace, faith, and strength to worship Him.",
+      "has_sponsor": false
     },
     {
       "id": "sirisha-de5",
@@ -2483,7 +2628,8 @@
       "why_assistance": "It is our need assistance because future education purpose.",
       "intro": "I'm starting high school, and we need help with the costs over the next two years.",
       "story": "Our family started believing in Jesus Christ about 10 years ago, and He's helped us a lot. He's saved our lives. That's my testimony of faith. I'm in my first year of pre-university arts, and I'm asking for help to continue my education.",
-      "quote": "Our family came to believe in Jesus Christ ten years back. He helps my family, and He has saved our lives."
+      "quote": "Our family came to believe in Jesus Christ ten years back. He helps my family, and He has saved our lives.",
+      "has_sponsor": false
     },
     {
       "id": "praveen-kumar-yl-3fe",
@@ -2500,7 +2646,8 @@
       "why_assistance": "I need financial assistance to continue my education because my family has limited income. This scholarship will help me focus on my studies.",
       "intro": "My family has limited income, and a sponsor would help me complete my master's degree.",
       "story": "My faith in Christ is built on the love and grace He's brought into my life. I've found true peace, purpose, and redemption in Him. I'm in a Master of Arts program, and my family's income is limited. A sponsorship would help me focus on my studies.",
-      "quote": "My faith in Christ is built on the realization of His transformative love and grace."
+      "quote": "My faith in Christ is built on the realization of His transformative love and grace.",
+      "has_sponsor": false
     },
     {
       "id": "vadde-dhanush-315",
@@ -2517,7 +2664,8 @@
       "why_assistance": "I need assistance to ensure my education and better future life.",
       "intro": "I'm just beginning college, and my family will need sponsor help to keep me enrolled.",
       "story": "I'm from Sadali Cross, and I've been attending the church in Peresandra for about eight years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my first year of pre-university arts, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "trisha-s-9c8",
@@ -2534,7 +2682,8 @@
       "why_assistance": "The scholarship you have been providing has a great impact on my brighter future. So I am thankful for the help sir.",
       "intro": "Scholarship support has shaped my future, and I'm asking for help to finish high school.",
       "story": "I'm from Varadhaganahalli, and I attend church at S. Devaganhalli. I was suffering from a health issue, but once I started going to church my health improved. God blessed me. I'm in my second year of pre-university commerce, and a sponsorship would have a real impact on my future.",
-      "quote": "I was suffering from a health issue. When I started going to church, I got good health. God has blessed me."
+      "quote": "I was suffering from a health issue. When I started going to church, I got good health. God has blessed me.",
+      "has_sponsor": false
     },
     {
       "id": "vadde-santhosh-91c",
@@ -2551,7 +2700,8 @@
       "why_assistance": "I need assistance to ensure my education & for future life.",
       "intro": "I'm starting college, and my family can't afford the fees without a sponsor's help.",
       "story": "I'm from Sadali Cross, and I've been attending the church in Peresandra for about eight years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my first year of pre-university arts, and I'm asking for help to continue my education and build my future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "prem-kumar-co-3ea",
@@ -2568,7 +2718,8 @@
       "why_assistance": "My family has financial difficulties in supporting my education. This assistance will help me continue my studies and reduce the burden on my family.",
       "intro": "Engineering tuition strains my family, and a sponsor would help me continue without that burden.",
       "story": "I believe in Jesus Christ as my Lord and Savior, and faith plays a big role in my life. He gives me strength, peace, and direction, especially through the hard moments. I've learned to stay positive, patient, and focused on my goals. I believe He has a purpose for my life. I'm in a Bachelor of Technology program, and my family is going through financial difficulty. A sponsorship would help me continue my studies.",
-      "quote": "He gives me strength, peace, and direction, especially during difficult times. I believe God has a purpose for my life."
+      "quote": "He gives me strength, peace, and direction, especially during difficult times. I believe God has a purpose for my life.",
+      "has_sponsor": false
     },
     {
       "id": "varalakshmi-hv-a86",
@@ -2585,7 +2736,8 @@
       "why_assistance": "We are poor. This small amount helps in my education.",
       "intro": "Our family is poor, and any sponsorship would help me earn my business degree.",
       "story": "I believe in Christ. God helps in so many ways: in accidents, in education, in everything. A small amount goes a long way for me. I'm in a Bachelor of Commerce, and my family is poor. I'm asking for support so I can continue my studies.",
-      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education."
+      "quote": "I believed in Christ. God helps in many ways: accidents, education, everything. A small amount helps in my education.",
+      "has_sponsor": false
     },
     {
       "id": "vadesha-j-a-8f6",
@@ -2602,7 +2754,8 @@
       "why_assistance": "To need assistance to ensure my education and my future.",
       "intro": "I'm close to finishing high school, and a sponsor would mean my family doesn't take a hit.",
       "story": "I'm from Jeedagamakalahalli, and I've been attending the church in Peresandra for 14 years. My family has found strength in the Lord's faith, and we praise God for His grace toward us. I'm in my second year of pre-university, and I'm asking for help to continue my education.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "varsha-r-7cc",
@@ -2619,7 +2772,8 @@
       "why_assistance": "I need assistance to ensure for my education.",
       "intro": "I'm in my second year of a computer engineering diploma, and a sponsor would help me finish.",
       "story": "I'm from Yelepet Chikkaballapur, and I've been going to the church in Peresandra with my family for about six years. We've found strength in the Lord's faith, and we praise God for His grace. I'm in my second year of a Diploma program for Computer Science Engineering, and I'm asking for help to continue my education.",
-      "quote": "We have found all the strength in the Lord's faith. We praise God for His grace toward me and my family."
+      "quote": "We have found all the strength in the Lord's faith. We praise God for His grace toward me and my family.",
+      "has_sponsor": false
     },
     {
       "id": "y-v-anusha-fa8",
@@ -2636,7 +2790,8 @@
       "why_assistance": "I need assistance to ensure my education and better further life.",
       "intro": "Money is tight at home, and a sponsor would mean I can finish high school.",
       "story": "I'm from Yalagalahalli, and I've been attending the church in Peresandra for about 18 years. My family has found strength in the Lord's faith, and we praise His grace toward us. I'm in my second year of pre-university, and I'm asking for help to continue my education and build a better future.",
-      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us."
+      "quote": "My family has found strength in the Lord's faith. We praise God for His grace toward us.",
+      "has_sponsor": false
     },
     {
       "id": "vennela-bm-b1f",
@@ -2653,7 +2808,8 @@
       "why_assistance": "I need assistance for my further education because of my poor background. The scholarship you are providing will help in my future education.",
       "intro": "I'm from a poor family, and a scholarship is what keeps me on track in school.",
       "story": "I'm a believer at S. Devaganhalli church and have been part of the congregation for six years. God has done good things in my life, and I'm grateful for His blessings. I'm in my second year of pre-university, and I'm from a poor family. A sponsorship would help me continue my education.",
-      "quote": "God has done very good things in my life. I thank Him for all His blessings."
+      "quote": "God has done very good things in my life. I thank Him for all His blessings.",
+      "has_sponsor": false
     },
     {
       "id": "yashwanth-a2f",
@@ -2670,7 +2826,8 @@
       "why_assistance": "I need assistance for my further education because of my poor background. The scholarship you are providing will help in my future education.",
       "intro": "Coming from a poor family, I'm hoping a scholarship can help me with my education.",
       "story": "I'm a believer at S. Devaganhalli church and have been part of the congregation for six years. God has done good things in my life, and I'm grateful for His blessings. I'm in my first year of pre-university, and I'm from a poor family. A sponsorship would help me continue my education.",
-      "quote": "God has done very good things in my life. I thank Him for all His blessings."
+      "quote": "God has done very good things in my life. I thank Him for all His blessings.",
+      "has_sponsor": false
     },
     {
       "id": "ravi-chetthari-r-748",
@@ -2687,7 +2844,8 @@
       "why_assistance": "I need assistance to support my education and daily needs. This help will reduce my financial burden on my studies.",
       "intro": "I'd like to keep studying without being a financial burden, and a sponsor would help.",
       "story": "I believe in God and trust Him. My faith gives me strength and peace, and it helps me do good and stay positive. I'm in an undergraduate program, and I'm asking for help with my education and daily needs. It would reduce the financial burden on my studies.",
-      "quote": "My faith gives me strength and peace. It helps me do good and stay positive."
+      "quote": "My faith gives me strength and peace. It helps me do good and stay positive.",
+      "has_sponsor": false
     },
     {
       "id": "saraswathi-bv-615",
@@ -2704,7 +2862,8 @@
       "why_assistance": "I need assistance for my further education because of my poor background. The scholarship you are providing will help in my future education.",
       "intro": "I'm training to be a teacher, and a sponsor would help my poor family afford the fees.",
       "story": "I was attacked by something I believed was a devil and bad power. I was sick, and the medicines weren't helping. Then I started going to church and praying to Jesus. My health began to turn around, and now I'm fully healed. That's why I believe in Jesus completely, and I feel blessed. I'm in my fourth semester of a Bachelor of Education, and I'm from a poor background. A sponsorship would help me with my education.",
-      "quote": "I started to go to church and pray to Jesus. After that my health became better, and now my health issues are cured."
+      "quote": "I started to go to church and pray to Jesus. After that my health became better, and now my health issues are cured.",
+      "has_sponsor": true
     },
     {
       "id": "supriya-g-112",
@@ -2721,7 +2880,8 @@
       "why_assistance": "This support will help me in continue my education in my further.",
       "intro": "Continuing my education isn't something my family can fund alone \u2014 I need sponsor help.",
       "story": "I believe in Jesus Christ as my Lord. He's changed my life by giving me hope and peace. He's forgiven my sins and guided me with His love, kindness, and faith. I'm continuing my studies, and a sponsorship would help me keep going with my education.",
-      "quote": "Jesus has changed my life by giving me hope and peace. He has forgiven my sins and guided me with His love, kindness, and faith."
+      "quote": "Jesus has changed my life by giving me hope and peace. He has forgiven my sins and guided me with His love, kindness, and faith.",
+      "has_sponsor": false
     },
     {
       "id": "sanjana-s-210",
@@ -2738,7 +2898,8 @@
       "why_assistance": "I need financial assistance to support my education and help me pay my college fees, buy books.",
       "intro": "I need financial support to keep studying civil engineering and pay for my fees and books.",
       "story": "I believe in God and try to live by Christian values in my daily life. My faith helps me stay positive, make good decisions, and respect others. I attend church regularly and take part in spiritual activities. I'm in a Diploma program for Civil Engineering, and I'm asking for help to pay my college fees and buy books.",
-      "quote": "My faith helps me stay positive, make good decisions, and respect others."
+      "quote": "My faith helps me stay positive, make good decisions, and respect others.",
+      "has_sponsor": false
     },
     {
       "id": "santhosh-r-45f",
@@ -2755,7 +2916,8 @@
       "why_assistance": "Sir we are all poor condition. So need for there education purpose. Please kindly help me.",
       "intro": "We're in a poor situation, and I'm asking for help to keep me in my arts degree.",
       "story": "My parents are believers at CSM church, so we've trusted in Jesus' name as a family. From childhood, I've been at worship service every week. I'm in the first year of a Bachelor of Arts and living in a hostel. We're poor, and I'm asking humbly for help so I can continue my education.",
-      "quote": "My parents are believers at CSM church, so we trust in Jesus' name. From childhood until now, we are all attending worship service."
+      "quote": "My parents are believers at CSM church, so we trust in Jesus' name. From childhood until now, we are all attending worship service.",
+      "has_sponsor": false
     },
     {
       "id": "shalini-k-375",
@@ -2772,7 +2934,8 @@
       "why_assistance": "Connects our financial need with our academic goals, to bridge the gap between demonstrating financial need.",
       "intro": "Money is a real challenge for my family, and a sponsor would help me reach my academic goals.",
       "story": "My faith in Christ is built on the change from living in sin to receiving His grace, hope, and a sense of purpose. I believe Jesus died and rose again to pay for my sins, and choosing to follow Him as my Savior has brought me peace, joy, and freedom from old habits. I'm in my first year of pre-university, and I need financial support to keep going with my studies.",
-      "quote": "My decision to follow Him as Saviour brought peace, joy, and freedom from sinful habits."
+      "quote": "My decision to follow Him as Saviour brought peace, joy, and freedom from sinful habits.",
+      "has_sponsor": false
     },
     {
       "id": "steffi-l-80b",
@@ -2789,7 +2952,8 @@
       "why_assistance": "It will help us for further education.",
       "intro": "Studying business and law isn't easy on our budget \u2014 a sponsor would make a real difference.",
       "story": "Our family has been attending church for many years, and we keep growing in our faith. I believe God has a purpose for my future, and I want to live in a way that honors Him. I'm in a Bachelor of Business Administration combined with Laws program, and a sponsorship would help me continue my education.",
-      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him."
+      "quote": "I believe God has a purpose for my future, and I want to live in a way that honors Him.",
+      "has_sponsor": false
     },
     {
       "id": "suja-gn-d60",
@@ -2806,7 +2970,8 @@
       "why_assistance": "I need financial assistance to continue my education, because my family has limited income. This scholarship will help me focus on my studies.",
       "intro": "Tuition is a stretch on our income \u2014 I'm hoping a sponsor can help me focus on studies.",
       "story": "I believe in God and have faith in His guidance. He's helped me overcome many challenges and given me the strength to continue my education. I go to church regularly and try to live by good values. I'm in a Bachelor of Business Administration program, and my family's income is limited. A sponsorship would help me focus on my studies.",
-      "quote": "He has helped me overcome many challenges and given me strength to continue my education."
+      "quote": "He has helped me overcome many challenges and given me strength to continue my education.",
+      "has_sponsor": false
     },
     {
       "id": "preethi-bl-8f5",
@@ -2823,7 +2988,8 @@
       "why_assistance": "This support will help me in continue my studies in my further.",
       "intro": "Continuing my studies isn't easy without help, and I'd be grateful for a sponsor's support.",
       "story": "My parents accepted the Lord Jesus Christ, so I've grown up with Christian parents from the time I was a child. I trust the Lord and attend worship service every week. I'm continuing my studies, and a sponsorship would help me keep going.",
-      "quote": "My parents accepted the Lord Jesus Christ. I trust the Lord and attend worship service every week."
+      "quote": "My parents accepted the Lord Jesus Christ. I trust the Lord and attend worship service every week.",
+      "has_sponsor": false
     },
     {
       "id": "sanmith-k-9f4",
@@ -2840,7 +3006,8 @@
       "why_assistance": "I come from a financially weak family and it is difficult to afford my education expenses. My scholarship will help my education expenses.",
       "intro": "Just one year left in my business degree \u2014 a sponsor would help me cross the finish line.",
       "story": "I believe in God and go to church regularly. My faith gives me strength and guidance, and I value honesty, kindness, and helping others. My faith and my community help me stay focused on my studies. I'm in the final year of my Bachelor of Commerce, and my family is financially weak. A sponsorship would help me with my education expenses.",
-      "quote": "I try to follow God and value honesty, kindness, and helping others. My faith helps me to study well and focus."
+      "quote": "I try to follow God and value honesty, kindness, and helping others. My faith helps me to study well and focus.",
+      "has_sponsor": false
     }
   ]
 }

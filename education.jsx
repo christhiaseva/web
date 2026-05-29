@@ -17,10 +17,32 @@ const STUDENT_TAGS = ['All', 'Healthcare', 'Trade', 'Business', 'Ministry', 'Tec
 
 function StudentCard({ s, navigate }) {
   return (
-    <article className="card" style={{padding:'22px 24px', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease', display:'flex', flexDirection:'column', height:'100%'}}
+    <article className="card" style={{position:'relative', padding:'22px 24px', cursor:'pointer', transition:'transform .15s ease, box-shadow .2s ease', display:'flex', flexDirection:'column', height:'100%'}}
              onClick={() => navigate('profile', { id: s.id })}
              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(42,32,20,0.10)';}}
              onMouseLeave={e => { e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='';}}>
+      {s.has_sponsor && (
+        <div aria-hidden="true" style={{
+          position:'absolute',
+          top:22,
+          right:-42,
+          width:150,
+          transform:'rotate(45deg)',
+          transformOrigin:'center',
+          background:'var(--accent-soft)',
+          color:'var(--ink)',
+          textAlign:'center',
+          padding:'4px 0',
+          borderTop:'1px solid var(--line)',
+          borderBottom:'1px solid var(--line)',
+          fontSize:10.5,
+          letterSpacing:'0.18em',
+          textTransform:'uppercase',
+          fontWeight:500,
+          pointerEvents:'none',
+          boxShadow:'0 2px 6px rgba(42,32,20,0.10)',
+        }}>Sponsored</div>
+      )}
       <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
         <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
           {s.photo && (
@@ -29,7 +51,7 @@ function StudentCard({ s, navigate }) {
           )}
           <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
         </div>
-        <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
+        <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course && s.course !== '[not specified]' ? `${s.course} · ${s.village}` : s.village}</span>
       </div>
       {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
       <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:'auto', paddingTop:14}}>
@@ -73,6 +95,9 @@ function HowItWorks() {
 
 function Education({ navigate }) {
   const all = window.STUDENTS || STUDENTS;
+  const sponsored = all.filter(s => s.has_sponsor);
+  const unsponsored = all.filter(s => !s.has_sponsor);
+  const sponsoredPct = all.length ? Math.round((sponsored.length / all.length) * 100) : 0;
 
   return (
     <>
@@ -98,29 +123,54 @@ function Education({ navigate }) {
 
       {/* Stats strip */}
       <section style={{padding:'24px 0 24px', borderTop:'1px solid var(--line-soft)', borderBottom:'1px solid var(--line-soft)', background:'var(--bg-2)'}}>
-        <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 32}}>
-          {[
-            {n:'200+', l:'students supported since 2003'},
-            {n:'94%',  l:'graduation rate'},
-            {n:'$1,650', l:'average annual cost'},
-            {n:'100%', l:'goes directly to tuition'},
-          ].map(s => (
-            <div key={s.l} style={{padding:'12px 0'}}>
-              <div style={{fontFamily:'var(--serif)', fontSize: 32, color:'var(--primary)'}}>{s.n}</div>
-              <div style={{fontSize:13, color:'var(--ink-3)', marginTop:4}}>{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Grid */}
-      <section style={{paddingTop: 24, paddingBottom: 80}}>
         <div className="container">
-          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap: 24}}>
-            {all.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
+          <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 32}}>
+            {[
+              {n: String(all.length),         l:'students applied for scholarships'},
+              {n: String(unsponsored.length), l:'students still looking for a sponsor'},
+              {n:'100%',                      l:'goes directly to the student'},
+            ].map(s => (
+              <div key={s.l} style={{padding:'12px 0'}}>
+                <div style={{fontFamily:'var(--serif)', fontSize: 32, color:'var(--primary)'}}>{s.n}</div>
+                <div style={{fontSize:13, color:'var(--ink-3)', marginTop:4}}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{marginTop: 18, display:'flex', alignItems:'center', gap: 16}}>
+            <div className="progress" style={{flex:1}}>
+              <div className="progress-fill" style={{width: `${sponsoredPct}%`}}></div>
+            </div>
+            <div style={{fontSize:13, color:'var(--ink-3)', fontFamily:'var(--serif)', whiteSpace:'nowrap'}}>
+              {sponsoredPct}% sponsored
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Grid — unsponsored first, then sponsored */}
+      <section style={{paddingTop: 24, paddingBottom: 40}}>
+        <div className="container">
+          <h2 className="serif" style={{fontSize:'clamp(24px, 2.6vw, 32px)', fontWeight:400, marginBottom:24}}>
+            Looking for a sponsor ({unsponsored.length})
+          </h2>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap: 24}}>
+            {unsponsored.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
+          </div>
+        </div>
+      </section>
+
+      {sponsored.length > 0 && (
+        <section style={{paddingTop: 24, paddingBottom: 80}}>
+          <div className="container">
+            <h2 className="serif" style={{fontSize:'clamp(24px, 2.6vw, 32px)', fontWeight:400, marginBottom:24, color:'var(--ink-2)'}}>
+              Already sponsored ({sponsored.length})
+            </h2>
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap: 24}}>
+              {sponsored.map(s => <StudentCard key={s.id} s={s} navigate={navigate} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       <HowItWorks />
 

@@ -10,7 +10,7 @@ function StoryHero() {
           And a bus that turned around.
         </h1>
         <p style={{fontSize: 20, color:'var(--ink-2)', marginTop: 32, maxWidth: 720, lineHeight:1.55}}>
-          The story of Christhia Seva Mission begins with a young couple, a sponsoring church, a long journey, and a plan that fell apart, only to be rebuilt by God, mile by mile, into something they never could have engineered themselves.
+          The story of Christhia Seva Mission begins with a young couple, a sponsoring church, a long journey, and a plan that fell apart, only to be rebuilt by God, mile by mile, into something they never could have imagined themselves.
         </p>
       </div>
     </section>
@@ -63,7 +63,11 @@ const dropStyle = {
   fontWeight: 400,
 };
 
-function StoryProse() {
+function StoryProse({ navigate }) {
+  const churchCount = (window.CHURCHES || []).length;
+  const pastorCount = (window.PASTORS || []).length;
+  const linkStyle = { cursor:'pointer', color:'var(--primary)', textDecoration:'underline' };
+
   return (
     <section style={{paddingBottom: 40}}>
       <div className="narrow">
@@ -143,7 +147,16 @@ function StoryProse() {
         </div>
 
         <p style={proseStyle}>
-          Today, more than fifteen pastors serve across ten churches, ministering to over a thousand people who have come to know Christ. Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.
+          Today, {pastorCount > 0 ? `${pastorCount} pastors` : 'more than thirty pastors'} serve across {churchCount || 'ten'} churches, ministering to over a thousand people who have come to know Christ. Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.
+        </p>
+
+        <div style={{margin:'40px 0'}}>
+          <img src="/images/story-pastoral-staff.jpg" alt="Christhia Seva Mission pastoral staff" style={{width:'100%', borderRadius:12, display:'block'}} />
+          <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Christhia Seva Mission pastoral staff</p>
+        </div>
+
+        <p style={proseStyle}>
+          God isn't done writing the story. Support us by <a onClick={() => navigate('education')} style={linkStyle}>sponsoring a student</a> or <a onClick={() => navigate('donate', { fund:'church' })} style={linkStyle}>planting the next church</a>.
         </p>
 
         <div style={{margin:'40px 0'}}>
@@ -169,19 +182,20 @@ function StoryVerse() {
 }
 
 function StoryStats() {
+  const churchCount = (window.CHURCHES || []).length;
   return (
     <section className="section">
       <SectionHeader
         eyebrow={`${new Date().getFullYear() - 1980} years on`}
         title="Where the work stands today."
-        sub="What started in one intersection in Karnataka has grown into a multi-state mission across southern India."
+        sub="What started in one intersection in Karnataka has grown into a thriving mission across the Chickballapur district."
       />
       <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 24}}>
         {[
-          {n:'1980', l:'Year the mission began'},
-          {n:'14',   l:'Churches planted'},
-          {n:'200+', l:'Students supported'},
-          {n:'1,200+', l:'In worship weekly'},
+          {n: String(new Date().getFullYear() - 1980), l:'Years serving God'},
+          {n: String(churchCount || 14), l:'Churches planted'},
+          {n:'30+',      l:'Pastors on staff'},
+          {n:'10,000+',  l:'Christians saved'},
         ].map(s => (
           <div key={s.l} className="card" style={{padding:'32px 28px'}}>
             <div style={{fontFamily:'var(--serif)', fontSize: 44, color:'var(--primary)', lineHeight: 1}}>{s.n}</div>
@@ -242,7 +256,7 @@ function Story({ navigate }) {
       <Breadcrumb crumbs={[{ label:'Our story' }]} navigate={navigate} />
       <StoryHero />
       <StoryHeroPhoto />
-      <StoryProse />
+      <StoryProse navigate={navigate} />
       <StoryVerse />
       <StoryFamily />
       <StoryStats />

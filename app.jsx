@@ -29,7 +29,7 @@ const ROUTES = [
   { page: 'stories',      path: '/student-stories'      },
   { page: 'story-detail', path: '/student-stories/:id' },
   { page: 'story',     path: '/our-story'         },
-  { page: 'churches',  path: '/plant-a-church'    },
+  { page: 'church-list',   path: '/churches'      },
   { page: 'contact',   path: '/contact'           },
   { page: 'profile',   path: '/student/:id'       },
 ];
@@ -170,8 +170,8 @@ function App() {
     content = <StoryDetail id={route.params.id} navigate={navigate} />;
   } else if (route.page === 'stories') {
     content = <Stories navigate={navigate} />;
-  } else if (route.page === 'churches') {
-    content = <Churches navigate={navigate} />;
+  } else if (route.page === 'church-list') {
+    content = <ChurchList navigate={navigate} />;
   } else if (route.page === 'contact') {
     content = <Contact navigate={navigate} />;
   } else {

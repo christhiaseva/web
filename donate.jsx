@@ -44,12 +44,29 @@ function getDesignation({ fund, id }) {
     receiptName: 'students',
   };
 
+  if (fund === 'church' && id) {
+    const c = (window.CHURCHES || []).find(x => x.id === id);
+    if (c) return {
+      kind: 'church', fund, id,
+      title: `Help plant a church in ${c.name}`,
+      heading: <>Help plant a church in <em style={{fontStyle:'italic', color:'var(--primary)'}}>{c.name}.</em></>,
+      sub: `Your gift goes directly to the building of a permanent church in ${c.name}.`,
+      breadcrumb: ['church-list'],
+      crumbLabels: ['Help Plant a Church', c.name],
+      presets: [50, 100, 250, 500, 1000],
+      defaultRecurring: false,
+      defaultAmount: 100,
+      sidebar: { kind: 'church', c },
+      receiptName: `the ${c.name} church`,
+    };
+  }
+
   if (fund === 'church') return {
     kind:'fund', fund, id: null,
     title: 'Help plant the next church',
     heading: <>Help us plant <em style={{fontStyle:'italic', color:'var(--primary)'}}>the next church.</em></>,
     sub: "Your gift supports the church-planting fund, helping new and growing congregations take root across the district.",
-    breadcrumb: ['churches'],
+    breadcrumb: ['church-list'],
     crumbLabels: ['Help Plant a Church'],
     presets: [50, 100, 250, 500, 1000],
     defaultRecurring: false,
@@ -170,6 +187,7 @@ function Donate({ params, navigate }) {
           anonymous: info.anon ? 'Yes' : 'No',
           note: info.note || '(none)',
           ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
+          ...(d.kind === 'church' && d.sidebar?.c ? { church: d.sidebar.c.name } : {}),
         }),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
@@ -185,7 +203,7 @@ function Donate({ params, navigate }) {
     <>
       <Breadcrumb crumbs={(() => {
         if (!d.crumbLabels.length) return [{ label: 'Donate' }];
-        if (d.kind === 'student') return [
+        if (d.kind === 'student' || d.kind === 'church') return [
           { label: 'Donate', page: 'donate' },
           { label: d.crumbLabels[0], page: 'donate', params: { fund } },
           { label: d.crumbLabels[1] },
@@ -432,23 +450,47 @@ function DonateSidebar({ d, navigate }) {
     );
   }
 
+  if (d.sidebar.kind === 'church') {
+    const c = d.sidebar.c;
+    return (
+      <div className="card" style={{padding: 0}}>
+        <div style={{aspectRatio:'4/3'}}>
+          {c.photo
+            ? <img src={c.photo} alt={c.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}} />
+            : <ImgSlot id={`don-church-${c.id}`} h="100%" placeholder={c.name} radius={0} />
+          }
+        </div>
+        <div style={{padding: 22}}>
+          <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{c.name}</div>
+          {c.description && (
+            <p style={{fontSize:14, color:'var(--ink-2)', marginTop: 12, lineHeight:1.55, whiteSpace:'pre-line'}}>
+              {c.description}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   if (d.sidebar.kind === 'fund-church') {
+    const churchCount = (window.CHURCHES || []).length;
     return (
       <div className="card" style={{padding: 28}}>
         <h3 className="serif" style={{fontSize: 22, fontWeight:400, marginBottom: 14}}>Church planting fund</h3>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16, marginBottom: 18}}>
-          {[{n:'--', l:'churches planted'}, {n:'----', l:'in worship weekly'}].map(s => (
+          {[
+            {n: String(churchCount), l:'churches planted'},
+            {n: '10,000+',            l:'Christians'},
+          ].map(s => (
             <div key={s.l} style={{padding:'10px 0'}}>
               <div style={{fontFamily:'var(--serif)', fontSize: 22, color:'var(--primary)'}}>{s.n}</div>
               <div style={{fontSize:12, color:'var(--ink-3)', marginTop:2}}>{s.l}</div>
             </div>
           ))}
         </div>
-        <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
+        <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6}}>
           By donating to the church planting fund, you'll receive updates as we identify where the next church will be and have the opportunity to join us on the journey from the very beginning.
         </p>
-        <button className="btn btn-ghost" style={{marginTop: 18, width:'100%', justifyContent:'center'}}
-                onClick={() => navigate('churches')}>See where we are →</button>
       </div>
     );
   }

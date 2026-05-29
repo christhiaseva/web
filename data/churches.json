@@ -1,18 +1,150 @@
 {
   "_meta": {
-    "description": "Churches planted, in roughly the order they were planted. status: mature | growing | new.",
-    "needs": "null if self-sustaining; otherwise { kind: building|pastor, goal, raised, label }"
+    "description": "Churches/towns where CSM has planted congregations.",
+    "fields": {
+      "id": "URL slug \u2014 auto-generated from name (lowercased, non-alphanumerics \u2192 dashes)",
+      "name": "Town/church name (e.g. 'Chickaballapur')",
+      "start_date": "When the church was planted (free-form string)",
+      "member_count": "Approximate member count (integer; 0 if unknown)",
+      "photo": "Local path /images/churches/{id}.jpg \u2014 set from the local file system, never from the sheet",
+      "description": "Short description of the church",
+      "latitude": "Decimal latitude in degrees (null if unknown)",
+      "longitude": "Decimal longitude in degrees (null if unknown)",
+      "raising_support": "true when this congregation is raising funds to build a permanent church building"
+    }
   },
   "churches": [
-    { "id": "chickaballapur", "town": "Chickaballapur", "established": "--", "members": "--", "pastor": "--", "status": "mature",  "note": "The district-headquarters congregation. Meets in a rented hall; saving toward a permanent space.", "needs": null },
-    { "id": "shidalagatta",   "town": "Shidalagatta",   "established": "--", "members": "--", "pastor": "--", "status": "mature",  "note": "Where the mission began. The first home gathering met here in 1980, and where Silpa came to faith as a child.", "needs": null },
-    { "id": "chintamani",     "town": "Chintamani",     "established": "--", "members": "--", "pastor": "--", "status": "mature",  "note": "A built sanctuary serving the silk-trading town. Hosts the regional Bible study and youth gatherings.", "needs": null },
-    { "id": "gowribindanur",  "town": "Gowribindanur",  "established": "--", "members": "--", "pastor": "--", "status": "mature",  "note": "Planted in a market town near the Andhra border; a steady, self-supporting congregation.", "needs": null },
-    { "id": "bagepalli",      "town": "Bagepalli",      "established": "--", "members": "--", "pastor": "--", "status": "growing", "note": "A farming community on the highway north. Worship under a tin roof beside the pastor's home.", "needs": null },
-    { "id": "devaganhalli",   "town": "Devaganhalli",   "established": "--", "members": "--", "pastor": "--", "status": "growing", "note": "A young congregation gathered from three nearby hamlets; meets weekly in a rented shopfront.", "needs": null },
-    { "id": "chelur",         "town": "Chelur",         "established": "--", "members": "--", "pastor": "--", "status": "growing", "note": "A village plant born out of evening prayer meetings. Many first-generation believers.", "needs": null },
-    { "id": "gudibande",      "town": "Gudibande",      "established": "--", "members": "--", "pastor": "--", "status": "growing", "note": "A small hill-fort town. The congregation walks in from surrounding hamlets for Sunday worship.", "needs": null },
-    { "id": "peresandra",     "town": "Peresandra",     "established": "--", "members": "--", "pastor": "--", "status": "new",     "note": "A roadside village along the Bangalore highway. Twelve families meet every Sunday in a home.", "needs": null },
-    { "id": "kodigenhalli",   "town": "Kodigenhalli",   "established": "--", "members": "--", "pastor": "--", "status": "new",     "note": "The newest plant. A home gathering of seven families; raising funds for a meeting hall.", "needs": null }
+    {
+      "id": "bagepalli",
+      "name": "Bagepalli",
+      "start_date": "5/28/2001",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.7834,
+      "longitude": 77.7944,
+      "raising_support": false,
+      "photo": "/images/churches/bagepalli.jpg"
+    },
+    {
+      "id": "chelur",
+      "name": "Chelur",
+      "start_date": "5/28/2012",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.86,
+      "longitude": 77.71,
+      "raising_support": false,
+      "photo": "/images/churches/chelur.jpg"
+    },
+    {
+      "id": "chickaballapur",
+      "name": "Chickaballapur",
+      "start_date": "5/28/1980",
+      "member_count": 0,
+      "description": "We have two services at our main church building. The distance is too far to travel for some Christians so we have started two more services in nearby villages. One is in a rented building and another in someone's home. We're planning to build a church in each village.",
+      "latitude": 13.4355,
+      "longitude": 77.7315,
+      "raising_support": true,
+      "photo": "/images/churches/chickaballapur.jpg"
+    },
+    {
+      "id": "chintamani",
+      "name": "Chintamani",
+      "start_date": "5/28/1988",
+      "member_count": 0,
+      "description": "We are currently meeting in someone's home. We've purchased land and are planning to build a church building on it.",
+      "latitude": 13.402,
+      "longitude": 78.0551,
+      "raising_support": true,
+      "photo": "/images/churches/chintamani.jpg"
+    },
+    {
+      "id": "gowribindanur",
+      "name": "Gowribindanur",
+      "start_date": "5/28/1987",
+      "member_count": 0,
+      "description": "We have a church building in Gowribindanur but the distance is too far for some Christians. We have a weekly service at a nearby village in someone's home and plan to build a church building as they've outgrown the home.",
+      "latitude": 13.6112,
+      "longitude": 77.517,
+      "raising_support": true,
+      "photo": "/images/churches/gowribindanur.jpg"
+    },
+    {
+      "id": "gudibande",
+      "name": "Gudibande",
+      "start_date": "5/28/1996",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.671,
+      "longitude": 77.7041,
+      "raising_support": false,
+      "photo": "/images/churches/gudibande.jpg"
+    },
+    {
+      "id": "kodigenhalli",
+      "name": "Kodigenhalli",
+      "start_date": "5/28/2001",
+      "member_count": 0,
+      "description": "We are currently meeting in a rented building. We have purchased land and plan to build a church building on it.",
+      "latitude": 13.7203,
+      "longitude": 77.386,
+      "raising_support": true,
+      "photo": "/images/churches/kodigenhalli.jpg"
+    },
+    {
+      "id": "peresandra",
+      "name": "Peresandra",
+      "start_date": "5/28/2012",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.5853,
+      "longitude": 77.7931,
+      "raising_support": false,
+      "photo": "/images/churches/peresandra.jpg"
+    },
+    {
+      "id": "s-devaganhalli",
+      "name": "S Devaganhalli",
+      "start_date": "5/28/1980",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.2699,
+      "longitude": 77.8614,
+      "raising_support": false,
+      "photo": "/images/churches/s-devaganhalli.jpg"
+    },
+    {
+      "id": "shidalagatta",
+      "name": "Shidalagatta",
+      "start_date": "5/28/1988",
+      "member_count": 0,
+      "description": "",
+      "latitude": 13.3885,
+      "longitude": 77.8641,
+      "raising_support": false,
+      "photo": "/images/churches/shidalagatta.jpg"
+    },
+    {
+      "id": "selbundi",
+      "name": "Selbundi",
+      "start_date": "5/28/1987",
+      "member_count": 0,
+      "description": "",
+      "latitude": null,
+      "longitude": null,
+      "raising_support": false,
+      "photo": "/images/churches/selbundi.jpg"
+    },
+    {
+      "id": "sevamandir",
+      "name": "Sevamandir",
+      "start_date": "5/28/1996",
+      "member_count": 0,
+      "description": "We are meeting in a rented classroom. We are planning to buy land and build a church building.",
+      "latitude": 13.4355,
+      "longitude": 77.7315,
+      "raising_support": true,
+      "photo": "/images/churches/sevamandir.jpg"
+    }
   ]
 }

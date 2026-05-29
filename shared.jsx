@@ -39,9 +39,9 @@ function Nav({ page, navigate }) {
   const go = (p, params) => { setMobileOpen(false); navigate(p, params); };
 
   const mobileLinks = [
-    { key: 'story',     label: 'Our Story' },
-    { key: 'education', label: 'Sponsor a Student' },
-    { key: 'churches',  label: 'Help Plant a Church' },
+    { key: 'story',         label: 'Our Story' },
+    { key: 'education',     label: 'Sponsor a Student' },
+    { key: 'church-list',   label: 'Help Plant a Church' },
   ];
 
   return (
@@ -63,8 +63,8 @@ function Nav({ page, navigate }) {
           <a className={`nav-link ${['education', 'profile'].includes(page) ? 'active' : ''}`}
              onClick={() => navigate('education')}>Sponsor a Student</a>
 
-          <a className={`nav-link ${page === 'churches' ? 'active' : ''}`}
-             onClick={() => navigate('churches')}>Help Plant a Church</a>
+          <a className={`nav-link ${['churches', 'church-list', 'church-detail'].includes(page) ? 'active' : ''}`}
+             onClick={() => navigate('church-list')}>Help Plant a Church</a>
 
           <button className="donate-cta" onClick={() => navigate('donate')}>
             Donate
@@ -126,7 +126,7 @@ function Footer({ navigate }) {
         <div>
           <h4>Ministries</h4>
           <a onClick={() => navigate('education')}>Education</a>
-          <a onClick={() => navigate('churches')}>Churches</a>
+          <a onClick={() => navigate('church-list')}>Churches</a>
         </div>
         <div>
           <h4>About</h4>
