@@ -227,7 +227,8 @@ function Ministries({ navigate }) {
 function EducationPreview({ navigate }) {
   const all = window.STUDENTS || homeStudents;
   const [featured] = useState(() => {
-    const shuffled = [...all].sort(() => Math.random() - 0.5);
+    const unsponsored = all.filter(s => !s.has_sponsor);
+    const shuffled = [...unsponsored].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, 3);
   });
   return (

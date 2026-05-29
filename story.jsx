@@ -141,8 +141,8 @@ function StoryProse({ navigate }) {
             <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Church in Shidalagatta being built</p>
           </div>
           <div>
-            <img src="/images/story-baptism.jpg" alt="Pastor Moses baptizing a young woman" style={{width:'100%', aspectRatio:'1', objectFit:'cover', borderRadius:12, display:'block'}} />
-            <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>Pastor Moses baptizing a young woman</p>
+            <img src="/images/story-baptism.jpg" alt="A CSM pastor baptizing a young woman" style={{width:'100%', aspectRatio:'1', objectFit:'cover', borderRadius:12, display:'block'}} />
+            <p style={{fontSize:13, color:'var(--ink-3)', fontStyle:'italic', marginTop:10, textAlign:'center'}}>A CSM pastor baptizing a young woman</p>
           </div>
         </div>
 

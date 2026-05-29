@@ -154,7 +154,7 @@ function StudentProfile({ id, navigate }) {
             <button className="btn btn-ghost btn-arrow" onClick={() => navigate('education')}>See all students</button>
           </div>
           <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 20}}>
-            {(window.STUDENTS || []).filter(x => x.id !== s.id && !x.sponsored).slice(0, 3).map(o => (
+            {(window.STUDENTS || []).filter(x => x.id !== s.id && !x.has_sponsor).slice(0, 3).map(o => (
                 <div key={o.id} className="card" style={{padding:'22px 24px', cursor:'pointer'}} onClick={() => navigate('profile', {id: o.id})}>
                   <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
                     <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
