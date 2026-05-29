@@ -58,27 +58,17 @@ function HeroFeaturedStory({ navigate }) {
           </p>
         </div>
         <div className="hero-story-stats">
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>{new Date().getFullYear() - 1980}</strong>years of ministry</div>
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>10</strong>churches planted</div>
-          <div><strong style={{color:'var(--ink)', fontFamily:'var(--serif)', fontSize:24, display:'block'}}>200+</strong>students supported</div>
+          <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
+            Sponsor a Student
+          </button>
+          <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>
+            Help Plant a Church
+          </button>
         </div>
         <div className="hero-story-photo" style={{position:'relative'}}>
           <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', aspectRatio:'1 / 1', objectFit:'cover', objectPosition:'top', borderRadius:20, display:'block'}} />
-          <div className="hero-story-today" style={{
-            position:'absolute', left:-32, bottom:32,
-            background:'var(--card)', border:'1px solid var(--line)',
-            borderRadius: 12, padding:'18px 22px', maxWidth: 300,
-            boxShadow: '0 12px 40px rgba(42,32,20,0.08)'
-          }}>
-            <div style={{fontSize:11.5, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--primary)', marginBottom:10, fontWeight:500}}>Today</div>
-            <div style={{fontFamily:'var(--serif)', fontSize:20, lineHeight:1.3}}>Working as a nurse, Silpa built the first brick home in her village.</div>
-          </div>
-        </div>
-        <div className="hero-story-buttons" style={{display:'flex', gap:14, flexWrap:'wrap'}}>
-          <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
-            Sponsor a student
-          </button>
-          <button className="btn btn-ghost" onClick={() => navigate('story-detail', { id: 'silpa' })}>
+          <button className="btn btn-ghost hero-story-read-btn"
+                  onClick={() => navigate('story-detail', { id: 'silpa' })}>
             Read Silpa's story
           </button>
         </div>
@@ -174,9 +164,10 @@ function MissionBand() {
 // ── Ministries ────────────────────────────
 function Ministries({ navigate }) {
   const churchCount = (window.CHURCHES || []).length;
+  const studentCount = (window.STUDENTS || []).length;
   const items = [
     { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.', verse:'Matthew 16:18', stat: String(churchCount), statLabel:'churches planted' },
-    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat:'200+', statLabel:'students supported', highlight:true },
+    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat: String(studentCount), statLabel:'students applied', highlight:true },
   ];
   return (
     <section className="section">

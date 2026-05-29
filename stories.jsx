@@ -350,13 +350,6 @@ function StoryDetail({ id, navigate }) {
             {/* Photo column */}
             <div className="silpa-photos" style={{position:'sticky', top: 92, alignSelf:'flex-start', display:'flex', flexDirection:'column', gap: 12}}>
               <img src={story.photo} alt={story.photoAlt} style={{width:'100%', height:540, objectFit:'cover', borderRadius:16, display:'block'}} />
-              {story.photoSlots && (
-                <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 12}}>
-                  {story.photoSlots.map(slot => (
-                    <ImgSlot key={slot.id} id={slot.id} h="180px" placeholder={slot.placeholder} radius={12} />
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* Story column */}

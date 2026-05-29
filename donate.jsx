@@ -437,7 +437,7 @@ function DonateSidebar({ d, navigate }) {
           Pooled gifts support students who don't yet have a sponsor, and cover books, hostels, and emergency tuition gaps.
         </p>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
-          {[{n:'200+', l:'students supported'}, {n:'$200', l:'annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
+          {[{n: String((window.STUDENTS || []).length), l:'students applied'}, {n:'$200', l:'annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
             <div key={s.l} style={{padding:'10px 0'}}>
               <div style={{fontFamily:'var(--serif)', fontSize: 22, color:'var(--primary)'}}>{s.n}</div>
               <div style={{fontSize:12, color:'var(--ink-3)', marginTop:2}}>{s.l}</div>
