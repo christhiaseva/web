@@ -311,15 +311,36 @@ async function loadData() {
       // Silent — fall back to in-file constants.
     }
   };
+  // students + churches come from GCS (kept fresh by the export pipeline).
+  // stories + site stay local (edited in-repo, no external pipeline).
+  const GCS = 'https://storage.googleapis.com/csm-web-public/data';
   await Promise.all([
-    tryLoad('/data/students.json', 'STUDENTS'),
-    tryLoad('/data/churches.json', 'CHURCHES'),
-    tryLoad('/data/stories.json',  'STORIES'),
-    tryLoad('/data/site.json',     'SITE'),
+    tryLoad(`${GCS}/students.json`, 'STUDENTS'),
+    tryLoad(`${GCS}/churches.json`, 'CHURCHES'),
+    tryLoad('/data/stories.json',   'STORIES'),
+    tryLoad('/data/site.json',      'SITE'),
   ]);
 }
 
+// Refresh JSON data when the tab regains focus, throttled so quick
+// tab-switches don't hammer the network. Tabs open for a long time will
+// pick up a fresh export the first time the user comes back to them.
+let lastFetched = 0;
+const STALE_MS = 5 * 60 * 1000; // 5 minutes
+
 loadData().then(() => {
+  lastFetched = Date.now();
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(<App />);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') return;
+    if (Date.now() - lastFetched < STALE_MS) return;
+    loadData().then(() => {
+      lastFetched = Date.now();
+      // Nudge the router to re-derive state; components then read fresh
+      // values from window.STUDENTS / window.CHURCHES / etc.
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    });
+  });
 });

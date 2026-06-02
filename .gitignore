@@ -12,3 +12,4 @@ uploads/
 
 # Local dev server
 serve.py
+.playwright-mcp/
