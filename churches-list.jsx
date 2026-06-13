@@ -1,16 +1,5 @@
 // churches-list.jsx — Browse all CSM congregations + plant-a-church CTA
 
-function churchBlurb(c) {
-  if (c.description) return c.description;
-  const m = String(c.start_date || '').match(/(\d{4})/);
-  if (!m) return '';
-  const year = parseInt(m[1], 10);
-  if (year < 1900 || year > 2100) return '';
-  const years = new Date().getFullYear() - year;
-  if (years < 0) return '';
-  return `Worshiping for ${years} year${years === 1 ? '' : 's'} since ${year}.`;
-}
-
 function ChurchCard({ c, navigate }) {
   const raising = !!c.raising_support;
   return (
@@ -23,14 +12,11 @@ function ChurchCard({ c, navigate }) {
       )}
       <div style={{padding:'18px 22px', display:'flex', flexDirection:'column', flex:1}}>
         <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{c.name}</div>
-        {(() => {
-          const blurb = churchBlurb(c);
-          return blurb && (
-            <p style={{fontSize:14, color:'var(--ink-2)', lineHeight:1.55, marginTop:8, whiteSpace:'pre-line'}}>
-              {blurb}
-            </p>
-          );
-        })()}
+        {c.description && (
+          <p style={{fontSize:14, color:'var(--ink-2)', lineHeight:1.55, marginTop:8, whiteSpace:'pre-line'}}>
+            {c.description}
+          </p>
+        )}
         <div style={{marginTop:'auto', paddingTop:18}}>
           {raising && (
             <button className="btn btn-primary btn-arrow"
@@ -57,14 +43,11 @@ function FeaturedChurch({ c, navigate }) {
         <h2 className="serif" style={{fontSize:'clamp(28px, 4vw, 52px)', marginTop:14, fontWeight:400, lineHeight:1.05, letterSpacing:'-0.01em'}}>
           {c.name}
         </h2>
-        {(() => {
-          const blurb = churchBlurb(c);
-          return blurb && (
-            <p style={{fontSize:16, color:'var(--ink-2)', lineHeight:1.6, marginTop:16, whiteSpace:'pre-line'}}>
-              {blurb}
-            </p>
-          );
-        })()}
+        {c.description && (
+          <p style={{fontSize:16, color:'var(--ink-2)', lineHeight:1.6, marginTop:16, whiteSpace:'pre-line'}}>
+            {c.description}
+          </p>
+        )}
         {raising && (
           <div style={{marginTop:22}}>
             <button className="btn btn-primary btn-arrow"
