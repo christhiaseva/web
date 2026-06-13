@@ -160,9 +160,10 @@ function Donate({ params, navigate }) {
   const submitGift = async () => {
     if (submitting) return;
     const next = {};
-    if (!info.name.trim())    next.name = true;
-    if (!info.email.trim())   next.email = true;
-    if (!info.country.trim()) next.country = true;
+    if (!info.name.trim())    next.name = 'Please enter your name';
+    if (!info.email.trim())   next.email = 'Please enter your email';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email.trim())) next.email = 'Please enter a valid email address';
+    if (!info.country.trim()) next.country = 'Please enter your country';
     if (Object.keys(next).length) {
       setErrors(next);
       const first = ['name', 'email', 'country'].find(f => next[f]);
@@ -193,6 +194,7 @@ function Donate({ params, navigate }) {
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStep(3);
     } catch (e) {
+      console.error('Donation submit failed:', e);
       setSubmitError("We couldn't submit your gift. Please try again, or email us at hello@csmforchrist.com.");
     } finally {
       setSubmitting(false);
@@ -508,6 +510,9 @@ function FormField({ label, value, onChange, type = 'text', inputRef, error }) {
                      border: error ? '2px solid #E53935' : '1px solid var(--line)',
                      background:'var(--card)', color:'var(--ink)', fontFamily:'var(--sans)',
                      fontSize:15, outline:'none'}} />
+      {error && typeof error === 'string' && (
+        <span style={{fontSize:12.5, color:'#C62828', marginTop:-2}}>{error}</span>
+      )}
     </label>
   );
 }
