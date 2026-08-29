@@ -98,7 +98,7 @@ function StudentProfile({ id, navigate }) {
               ) : (
                 <div className="sponsor-cta">
                   <div>
-                    <button className="btn btn-primary btn-arrow"
+                    <button className="btn btn-primary"
                             style={{width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
                             onClick={() => navigate('donate', { fund:'education', id: s.id })}>
                       Sponsor {s.name}
