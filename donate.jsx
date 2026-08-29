@@ -307,8 +307,8 @@ function Donate({ params, navigate }) {
                     So we can send your tax receipt and updates from {d.receiptName}.
                   </p>
                   <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 20}}>
-                    <FormField label="Full name" value={info.name} onChange={v => updateInfo('name', v)} inputRef={infoRefs.name} error={errors.name} />
-                    <FormField label="Email" value={info.email} onChange={v => updateInfo('email', v)} type="email" inputRef={infoRefs.email} error={errors.email} />
+                    <FormField label="Full name" value={info.name} onChange={v => updateInfo('name', v)} inputRef={infoRefs.name} error={errors.name} placeholder="Full Name" />
+                    <FormField label="Email" value={info.email} onChange={v => updateInfo('email', v)} type="email" inputRef={infoRefs.email} error={errors.email} placeholder="you@email.com" />
                     <FormField label="Country" value={info.country} onChange={v => updateInfo('country', v)} inputRef={infoRefs.country} error={errors.country} />
                     <FormField label="Address (optional)" value={info.address || ''} onChange={v => setInfo({...info, address: v})} />
                   </div>
@@ -488,11 +488,11 @@ function DonateSidebar({ d, navigate }) {
   return null;
 }
 
-function FormField({ label, value, onChange, type = 'text', inputRef, error }) {
+function FormField({ label, value, onChange, type = 'text', inputRef, error, placeholder }) {
   return (
     <label style={{display:'flex', flexDirection:'column', gap:8}}>
       <span style={{fontSize:13, color:'var(--ink-2)', fontWeight:500}}>{label}</span>
-      <input type={type} ref={inputRef} value={value} onChange={e => onChange(e.target.value)}
+      <input type={type} ref={inputRef} value={value} placeholder={placeholder} onChange={e => onChange(e.target.value)}
              style={{padding:'14px 16px', borderRadius:10,
                      border: error ? '2px solid #E53935' : '1px solid var(--line)',
                      background:'var(--card)', color:'var(--ink)', fontFamily:'var(--sans)',
