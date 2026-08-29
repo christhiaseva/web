@@ -9,6 +9,8 @@
 //   /donate/church                   → church planting fund
 //   ?amount=NN appended → preselect amount
 
+const PUSHPAY_URL = 'https://pushpay.com/g/whiteoakoutreach?lang=en&src=pcgl&a=200&fnd=CSM%20Scholarship%20(30553)&rcv=false&r=no';
+
 function getDesignation({ fund, id }) {
   fund = fund || 'general';
 
@@ -155,7 +157,9 @@ function Donate({ params, navigate }) {
   }, [step]);
 
   const finalAmount = d.lockedAmount || (custom ? Number(custom) : amount);
-  const stepLabels = ['Amount', 'Your info'];
+  // Single-sponsor students skip amount selection and finish at a payment handoff.
+  const sponsorFlow = !!d.lockedAmount;
+  const stepLabels = sponsorFlow ? ['Your info', 'Complete payment'] : ['Amount', 'Your info'];
 
   const submitGift = async () => {
     if (submitting) return;
@@ -192,7 +196,7 @@ function Donate({ params, navigate }) {
         }),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      setStep(3);
+      setStep(sponsorFlow ? 2 : 3);
     } catch (e) {
       console.error('Donation submit failed:', e);
       setSubmitError("We couldn't submit your gift. Please try again, or email us at hello@csmforchrist.com.");
@@ -259,38 +263,6 @@ function Donate({ params, navigate }) {
             </div>
 
             <div style={{marginTop: 36}}>
-              {step === 1 && d.lockedAmount && (
-                <>
-                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Sponsor for $200/year</h2>
-                  <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 28}}>{d.sub}</p>
-
-                  <div style={{padding:'28px 22px', borderRadius:14, textAlign:'left',
-                              background:'var(--ink)', color:'var(--bg)', border:'1px solid var(--ink)'}}>
-                    <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', opacity: .7, marginBottom: 8}}>One-time</div>
-                    <div style={{fontFamily:'var(--serif)', fontSize: 38, lineHeight: 1}}>$200</div>
-                    <div style={{fontSize:13.5, marginTop: 8, opacity: .8}}>Tuition, books, and hostel for the full school year</div>
-                  </div>
-
-                  <div style={{marginTop: 28, padding:'18px 22px', background:'var(--bg-2)', borderRadius: 10, border:'1px solid var(--line-soft)', fontSize:14, color:'var(--ink-2)', display:'flex', gap:14, alignItems:'flex-start'}}>
-                    <span style={{width:6, height:6, borderRadius:'50%', background:'var(--primary)', flexShrink:0, marginTop: 8}}></span>
-                    <div>
-                      Want to give a different amount? Smaller gifts go to the{' '}
-                      <a onClick={() => navigate('donate', { fund:'education' })}
-                         style={{color:'var(--primary)', cursor:'pointer', borderBottom:'1px solid var(--primary)'}}>
-                        general student fund
-                      </a>
-                      {' '}and covers students who don't yet have a personal sponsor.
-                    </div>
-                  </div>
-
-                  <button className="btn btn-primary btn-arrow"
-                          style={{marginTop: 36, fontSize: 16, padding:'16px 28px'}}
-                          onClick={() => setStep(2)}>
-                    Continue · $200
-                  </button>
-                </>
-              )}
-
               {step === 1 && !d.lockedAmount && (
                 <>
                   <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Choose an amount</h2>
@@ -328,7 +300,7 @@ function Donate({ params, navigate }) {
                 </>
               )}
 
-              {step === 2 && (
+              {((sponsorFlow && step === 1) || (!sponsorFlow && step === 2)) && (
                 <>
                   <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>A little about you</h2>
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 32}}>
@@ -366,12 +338,27 @@ function Donate({ params, navigate }) {
                     </div>
                   )}
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
-                    <button className="btn btn-ghost" onClick={() => setStep(1)} disabled={submitting}>← Back</button>
+                    {!sponsorFlow && (
+                      <button className="btn btn-ghost" onClick={() => setStep(1)} disabled={submitting}>← Back</button>
+                    )}
                     <button className={`btn btn-primary${submitting ? '' : ' btn-arrow'}`} onClick={submitGift} disabled={submitting}>
-                      {submitting ? 'Sending…' : `Complete gift · $${Number(finalAmount).toLocaleString()}`}
+                      {submitting ? 'Sending…' : (sponsorFlow ? 'Continue' : `Complete gift · $${Number(finalAmount).toLocaleString()}`)}
                       {submitting && <span className="btn-spinner" aria-hidden="true"></span>}
                     </button>
                   </div>
+                </>
+              )}
+
+              {sponsorFlow && step === 2 && (
+                <>
+                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Complete payment</h2>
+                  <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 32}}>
+                    You're almost there. Enter your payment details to finish your ${Number(finalAmount).toLocaleString()} gift toward {d.receiptName}.
+                  </p>
+                  <a href={PUSHPAY_URL} className="btn btn-primary btn-arrow"
+                     style={{fontSize: 16, padding:'16px 28px'}}>
+                    Enter payment details
+                  </a>
                 </>
               )}
 
