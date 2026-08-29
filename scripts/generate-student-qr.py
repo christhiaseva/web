@@ -25,8 +25,8 @@ def build_svg(matrix):
                     f'<rect x="{c + BORDER}" y="{r + BORDER}" width="1" height="1"/>'
                 )
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" '
-        f'shape-rendering="crispEdges">'
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" '
+        f'viewBox="0 0 {size} {size}" shape-rendering="crispEdges">'
         f'<rect width="{size}" height="{size}" fill="#FFFFFF"/>'
         f'<g fill="{RUST}">{"".join(rects)}</g>'
         f"</svg>\n"

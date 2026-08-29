@@ -604,6 +604,20 @@ image-slot::before {
 /* Student profile: desktop shows big sticky photo + name; mobile shows compact header */
 .profile-hero-mobile { display: none; }
 
+/* Sponsor CTA: button and QR code split the card in half; QR hides on phones */
+.sponsor-cta {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.sponsor-cta-qr img { display: block; width: 100%; height: auto; }
+@media (max-width: 767px) {
+  .sponsor-cta { grid-template-columns: 1fr; }
+  .sponsor-cta-qr { display: none; }
+}
+
 /* ── Mobile responsive ─────────────────────────── */
 @media (max-width: 820px) {
   .profile-hero-photo-desktop,

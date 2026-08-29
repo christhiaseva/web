@@ -96,16 +96,22 @@ function StudentProfile({ id, navigate }) {
                   {s.name} has been sponsored.
                 </div>
               ) : (
-                <>
-                  <button className="btn btn-primary btn-arrow"
-                          style={{marginTop: 24, width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
-                          onClick={() => navigate('donate', { fund:'education', id: s.id })}>
-                    Sponsor {s.name}
-                  </button>
-                  <div style={{textAlign:'center', fontSize: 13, color:'var(--ink-3)', marginTop: 14}}>
-                    100% goes to tuition.
+                <div className="sponsor-cta">
+                  <div>
+                    <button className="btn btn-primary btn-arrow"
+                            style={{width:'100%', justifyContent:'center', fontSize: 16, padding:'16px 22px'}}
+                            onClick={() => navigate('donate', { fund:'education', id: s.id })}>
+                      Sponsor {s.name}
+                    </button>
+                    <div style={{textAlign:'center', fontSize: 13, color:'var(--ink-3)', marginTop: 14}}>
+                      100% goes to tuition.
+                    </div>
                   </div>
-                </>
+                  <div className="sponsor-cta-qr">
+                    <img src={`/images/qr-codes/students/${s.id}.svg`}
+                         alt={`QR code linking to ${s.name}'s sponsorship page`} />
+                  </div>
+                </div>
               )}
             </div>
           </div>
