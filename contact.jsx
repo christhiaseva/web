@@ -196,7 +196,7 @@ function Contact({ navigate }) {
             Join the mission.
           </h2>
           <div style={{display:'flex', gap:14, justifyContent:'center', marginTop: 40, flexWrap:'wrap'}}>
-            <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
+            <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>Help plant a church</button>
             <button className="btn btn-outline" onClick={() => navigate('donate')} style={{color:'#FFF8EA', borderColor:'rgba(255,248,234,0.7)'}}>
               Make a donation
             </button>

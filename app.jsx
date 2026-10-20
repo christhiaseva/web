@@ -16,22 +16,15 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 //
 // Pattern → page
 //   /                        → home
-//   /sponsor-a-student       → education
-//   /student-stories         → stories
 //   /our-story               → story
 //   /plant-a-church          → churches
-//   /student/:id             → profile
 //   /donate[/:fund[/:id]]    → donate (?amount=N supported)
 //
 // Legacy hash URLs (#/donate/...) are redirected once at load.
 const ROUTES = [
-  { page: 'education', path: '/sponsor-a-student' },
-  { page: 'stories',      path: '/student-stories'      },
-  { page: 'story-detail', path: '/student-stories/:id' },
   { page: 'story',     path: '/our-story'         },
   { page: 'church-list',   path: '/churches'      },
   { page: 'contact',   path: '/contact'           },
-  { page: 'profile',   path: '/student/:id'       },
 ];
 
 // Base path — supports deploys to /foo/ subpaths. Inferred from the path to
@@ -128,8 +121,8 @@ function App() {
   const navigate = (page, params = {}) => {
     // Back-compat: old "sponsor" page redirects to /donate
     if (page === 'sponsor') {
-      const fund = params.studentId ? 'education' : (params.church ? 'church' : 'general');
-      const id   = params.studentId || params.church || undefined;
+      const fund = params.church ? 'church' : 'general';
+      const id   = params.church || undefined;
       return navigate('donate', { fund, id, amount: params.amount });
     }
 
@@ -158,18 +151,10 @@ function App() {
   let content;
   if (route.page === 'home') {
     content = <Home navigate={navigate} heroVariant={t.heroVariant} />;
-  } else if (route.page === 'education') {
-    content = <Education navigate={navigate} />;
-  } else if (route.page === 'profile') {
-    content = <StudentProfile id={route.params.id} navigate={navigate} />;
   } else if (route.page === 'donate') {
     content = <Donate params={route.params} navigate={navigate} />;
   } else if (route.page === 'story') {
     content = <Story navigate={navigate} />;
-  } else if (route.page === 'story-detail') {
-    content = <StoryDetail id={route.params.id} navigate={navigate} />;
-  } else if (route.page === 'stories') {
-    content = <Stories navigate={navigate} />;
   } else if (route.page === 'church-list') {
     content = <ChurchList navigate={navigate} />;
   } else if (route.page === 'contact') {
@@ -282,7 +267,7 @@ function ComingSoon({ page, navigate }) {
         </div>
         <div style={{display:'flex', gap:14, marginTop: 40, justifyContent:'center'}}>
           <button className="btn btn-primary btn-arrow" onClick={() => navigate('home')}>Back to home</button>
-          <button className="btn btn-ghost" onClick={() => navigate('education')}>Sponsor a student</button>
+          <button className="btn btn-ghost" onClick={() => navigate('church-list')}>Help plant a church</button>
         </div>
       </div>
     </section>
@@ -291,7 +276,7 @@ function ComingSoon({ page, navigate }) {
 
 // ── Data bootstrap ─────────────────────────────────
 // Load JSON content from /data/*.json before mounting React.
-// Components read from window.STUDENTS / window.CHURCHES / window.STORIES / window.SITE.
+// Components read from window.CHURCHES / window.SITE.
 // If a fetch fails (file:// dev, offline, etc.) we fall back to the in-file constants
 // each module assigns at the bottom of its file.
 async function loadData() {
@@ -301,23 +286,19 @@ async function loadData() {
       if (!res.ok) return;
       const json = await res.json();
       // Each JSON file has the array under a known key
-      if (key === 'STUDENTS' && json.students) window.STUDENTS = json.students;
       if (key === 'CHURCHES' && json.churches) {
         window.CHURCHES = json.churches;
       }
-      if (key === 'STORIES'  && json.stories)  window.STORIES  = json.stories;
       if (key === 'SITE')                      window.SITE     = json;
     } catch (e) {
       // Silent — fall back to in-file constants.
     }
   };
-  // students + churches come from GCS (kept fresh by the export pipeline).
-  // stories + site stay local (edited in-repo, no external pipeline).
+  // churches come from GCS (kept fresh by the export pipeline).
+  // site stays local (edited in-repo, no external pipeline).
   const GCS = 'https://storage.googleapis.com/csm-web-public/data';
   await Promise.all([
-    tryLoad(`${GCS}/students.json`, 'STUDENTS'),
     tryLoad(`${GCS}/churches.json`, 'CHURCHES'),
-    tryLoad('/data/stories.json',   'STORIES'),
     tryLoad('/data/site.json',      'SITE'),
   ]);
 }
@@ -339,7 +320,7 @@ loadData().then(() => {
     loadData().then(() => {
       lastFetched = Date.now();
       // Nudge the router to re-derive state; components then read fresh
-      // values from window.STUDENTS / window.CHURCHES / etc.
+      // values from window.CHURCHES / etc.
       window.dispatchEvent(new PopStateEvent('popstate'));
     });
   });

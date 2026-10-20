@@ -31,7 +31,6 @@ function Nav({ page, navigate }) {
   }, [mobileOpen]);
 
   const ministries = [
-    { key: 'education', label: 'Education', sub: 'Sponsor a student' },
     { key: 'evangelism', label: 'Evangelism', sub: 'Sharing the Gospel' },
     { key: 'churches',   label: 'Churches',   sub: 'Planting and pastoring' },
   ];
@@ -40,7 +39,6 @@ function Nav({ page, navigate }) {
 
   const mobileLinks = [
     { key: 'story',         label: 'Our Story' },
-    { key: 'education',     label: 'Sponsor a Student' },
     { key: 'church-list',   label: 'Help Plant a Church' },
   ];
 
@@ -59,9 +57,6 @@ function Nav({ page, navigate }) {
         <div className="nav-links">
           <a className={`nav-link ${page === 'story' ? 'active' : ''}`}
              onClick={() => navigate('story')}>Our Story</a>
-
-          <a className={`nav-link ${['education', 'profile'].includes(page) ? 'active' : ''}`}
-             onClick={() => navigate('education')}>Sponsor a Student</a>
 
           <a className={`nav-link ${['churches', 'church-list', 'church-detail'].includes(page) ? 'active' : ''}`}
              onClick={() => navigate('church-list')}>Help Plant a Church</a>
@@ -90,7 +85,7 @@ function Nav({ page, navigate }) {
           </div>
           <div className="mobile-menu-links">
             {mobileLinks.map(l => (
-              <a key={l.key} className={`mobile-menu-link ${(l.key === 'education' ? ['education', 'profile'].includes(page) : page === l.key) ? 'active' : ''}`}
+              <a key={l.key} className={`mobile-menu-link ${page === l.key ? 'active' : ''}`}
                  onClick={() => go(l.key)}>{l.label}</a>
             ))}
             <button className="donate-cta mobile-donate" onClick={() => go('donate')}>
@@ -125,7 +120,6 @@ function Footer({ navigate }) {
         </div>
         <div>
           <h4>Ministries</h4>
-          <a onClick={() => navigate('education')}>Education</a>
           <a onClick={() => navigate('church-list')}>Churches</a>
         </div>
         <div>
@@ -135,7 +129,6 @@ function Footer({ navigate }) {
         </div>
         <div>
           <h4>Give</h4>
-          <a onClick={() => navigate('education')}>Sponsor a Student</a>
           <a onClick={() => navigate('donate', { fund:'church' })}>Plant a Church</a>
         </div>
       </div>
@@ -222,10 +215,4 @@ function Progress({ value, max }) {
   );
 }
 
-const STRIPE_BG = 'repeating-linear-gradient(-45deg, var(--bg-2), var(--bg-2) 8px, var(--line-soft) 8px, var(--line-soft) 9px)';
-function StudentPhoto({ src, alt, style }) {
-  if (src) return <img src={src} alt={alt || ''} style={{width:'100%', height:'100%', objectFit:'cover', display:'block', ...style}} />;
-  return <div style={{width:'100%', height:'100%', background: STRIPE_BG, ...style}} />;
-}
-
-Object.assign(window, { Nav, Footer, Verse, Eyebrow, SectionHeader, ImgSlot, Progress, CrossIcon, StudentPhoto });
+Object.assign(window, { Nav, Footer, Verse, Eyebrow, SectionHeader, ImgSlot, Progress, CrossIcon });

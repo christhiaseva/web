@@ -8,31 +8,24 @@ Everything is hosted as flat HTML — no build step, no server.
 ```
 index.html        ← entry; loads React + Babel + all .jsx files
 app.jsx           ← router, tweaks, shared state
-home.jsx          ← home page (hero variants, ministries, Silpa story, map, timeline)
-education.jsx     ← Sponsor a Student grid
-profile.jsx       ← Single student detail page
-sponsor.jsx       ← Sponsor flow (legacy — donate.jsx is canonical now)
-donate.jsx        ← Donation page (handles ?fund=education&id=priya etc.)
+home.jsx          ← home page (hero variants, Silpa story, map)
+donate.jsx        ← Donation page (/donate/:fund/:id — general or church)
 churches.jsx      ← Help Plant a Church page
-stories.jsx       ← Student stories page (past + current)
 story.jsx         ← Our Story (Mathew & Mary's founding narrative)
 shared.jsx        ← Nav, Footer, Verse, Eyebrow, common UI
 styles.css        ← All styling
 image-slot.js     ← Drag-and-drop image placeholder web component
 tweaks-panel.jsx  ← In-page tweaks UI (toggle from Open Macroscope toolbar)
-data/*.json       ← Content (students, churches, stories, site config)
+data/*.json       ← Content (site config; churches load from GCS)
 admin/            ← Decap CMS admin page (config.yml + index.html)
 ```
 
 ### Data model
 
-**Students** are single-sponsor, $200/year. `data/students.json` is the source of truth.
-At runtime, `app.jsx` fetches all four JSON files in parallel before mounting the React tree
+At runtime, `app.jsx` fetches the JSON files in parallel before mounting the React tree
 and assigns them to:
 
-- `window.STUDENTS` — array of student records (from `data/students.json`)
-- `window.CHURCHES` — array of church records (from `data/churches.json`)
-- `window.STORIES`  — array of story records (from `data/stories.json`)
+- `window.CHURCHES` — array of church records (from `churches.json` on GCS)
 - `window.SITE`     — site config (from `data/site.json`)
 
 Components read these globals. Nothing else fetches.
@@ -40,14 +33,13 @@ Components read these globals. Nothing else fetches.
 ### Routing
 
 `app.jsx` owns a tiny pushState router with clean URLs:
-`/sponsor-a-student`, `/student/priya`, `/our-story`, `/student-stories`,
-`/plant-a-church`, `/donate/:fund/:id?amount=N`. All inter-page links call
+`/our-story`, `/churches`, `/contact`, `/donate/:fund/:id?amount=N`. All inter-page links call
 `navigate(page, params)` which is passed down as a prop. Back/forward and
 refresh work via `popstate`.
 
 **SPA fallback (required for deploy):** `_redirects` at the project root
 contains `/*  /index.html  200` — both Cloudflare Pages and Netlify honor
-this file natively so deep links (e.g. `/student/priya`) serve `index.html`
+this file natively so deep links (e.g. `/our-story`) serve `index.html`
 instead of 404'ing on direct visit. If you ever switch to a host that does
 not read `_redirects`, set up an equivalent rewrite rule there.
 
@@ -163,9 +155,9 @@ one per active student/church if you want per-recipient tracking) and gets an em
    prototype but should be migrated: real photos should live in `/images/students/<id>.jpg`
    etc. and be referenced from the JSON. Decap CMS can manage this.
 
-4. **`window.STUDENTS` vs JSON.** Once the JSON loader in `app.jsx` is in place,
-   the inline `STUDENTS` constant in `education.jsx` becomes vestigial — keep it
-   only as a fallback if fetch fails. Same for `CHURCHES` in `churches.jsx`.
+4. **`window.CHURCHES` vs JSON.** Once the JSON loader in `app.jsx` is in place,
+   the inline `CHURCHES` constant in `churches.jsx` becomes vestigial — keep it
+   only as a fallback if fetch fails.
 
 5. **The "10 churches" stat is hardcoded in many places.** When churches are added
    via the CMS, those scattered "10" references won't update. Eventually replace with

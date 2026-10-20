@@ -1,11 +1,5 @@
 // home.jsx — Home page
 
-const homeStudents = [
-  { id: 'priya',   name: 'Priya',   course: 'B.Sc. Nursing',      village: 'Chintamani',     goal: 200, sponsored: false },
-  { id: 'arjun',   name: 'Arjun',   course: 'Diploma · Mechanic', village: 'Bagepalli',      goal: 200, sponsored: false },
-  { id: 'lakshmi', name: 'Lakshmi', course: 'B.Com',              village: 'Chickaballapur', goal: 200, sponsored: true  },
-];
-
 // ── Hero variants ─────────────────────────
 function HeroPhotoOverlay({ navigate }) {
   return (
@@ -30,8 +24,8 @@ function HeroPhotoOverlay({ navigate }) {
               Jesus is reaching villages across India, <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>one family at a time.</em>
             </h1>
             <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
-              <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
-                Sponsor a student
+              <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>
+                Help plant a church
               </button>
               <button className="btn btn-outline" onClick={() => navigate('story')} style={{color:'#FFF8EA', borderColor:'rgba(255,248,234,0.6)'}}>
                 Our story
@@ -58,19 +52,12 @@ function HeroFeaturedStory({ navigate }) {
           </p>
         </div>
         <div className="hero-story-stats">
-          <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>
-            Sponsor a Student
-          </button>
           <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>
             Help Plant a Church
           </button>
         </div>
         <div className="hero-story-photo" style={{position:'relative'}}>
           <img src="/images/silpa-story.jpg" alt="Silpa in her nursing scrubs" style={{width:'100%', aspectRatio:'1 / 1', objectFit:'cover', objectPosition:'top', borderRadius:20, display:'block'}} />
-          <button className="btn btn-ghost hero-story-read-btn"
-                  onClick={() => navigate('story-detail', { id: 'silpa' })}>
-            Read Silpa's story
-          </button>
         </div>
       </div>
     </section>
@@ -98,7 +85,7 @@ function HeroCollage({ navigate }) {
             Every photograph here is someone: a student, a pastor, a family hearing the Gospel for the first time.
           </p>
           <div style={{display:'flex', gap:14, marginTop: 32}}>
-            <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
+            <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>Help plant a church</button>
             <button className="btn btn-ghost" onClick={() => navigate('story')}>Our story</button>
           </div>
         </div>
@@ -128,7 +115,7 @@ function HeroVerseSplit({ navigate }) {
             Bringing that abundant life, Gospel, education, and hope, to villages across India since 1980.
           </h2>
           <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
-            <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
+            <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>Help plant a church</button>
             <button className="btn btn-ghost" onClick={() => navigate('story')}>Our story</button>
           </div>
         </div>
@@ -156,126 +143,6 @@ function MissionBand() {
         <h2 className="serif" style={{fontSize:'clamp(28px, 3.4vw, 42px)', lineHeight:1.2, marginTop: 22, fontWeight:400, letterSpacing:'-0.01em'}}>
           We exist to make Jesus known in the towns and villages of southern India, through churches, schools, and the daily care of our neighbors.
         </h2>
-      </div>
-    </section>
-  );
-}
-
-// ── Ministries ────────────────────────────
-function Ministries({ navigate }) {
-  const churchCount = (window.CHURCHES || []).length;
-  const studentCount = (window.STUDENTS || []).length;
-  const items = [
-    { key:'churches',   label:'Churches',   kicker:'Planting & pastoring', desc:'Each church began the same way: a Bible study, a home gathering, and the slow, steady work of the Gospel taking root.', verse:'Matthew 16:18', stat: String(churchCount), statLabel:'churches planted' },
-    { key:'education',  label:'Education',  kicker:'Sponsor a student',  desc:'Helping young people from low-income families afford college, trades, and nursing schools, opening generational doors.', verse:'Proverbs 22:6', stat: String(studentCount), statLabel:'students applied', highlight:true },
-  ];
-  return (
-    <section className="section">
-      <SectionHeader
-        eyebrow="Ministries"
-        title="Two ways the mission ministers."
-        sub="The Gospel is the heart of everything we do. Around it, we build the practical work that makes love visible: schools, churches, and care for those in need."
-      />
-      <div className="container" style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap: 20}}>
-        {items.map(it => (
-          <div key={it.key}
-               className="card"
-               onClick={() => navigate(it.key === 'churches' ? 'church-list' : 'education')}
-               style={{
-                 padding:'40px 36px',
-                 cursor:'pointer',
-                 background: it.highlight ? 'var(--ink)' : 'var(--card)',
-                 color: it.highlight ? 'var(--bg)' : 'inherit',
-                 border: it.highlight ? '1px solid var(--ink)' : '1px solid var(--line-soft)',
-                 transition: 'transform .15s ease, box-shadow .2s ease',
-               }}
-               onMouseEnter={e => e.currentTarget.style.boxShadow = '0 12px 40px rgba(42,32,20,0.10)'}
-               onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}>
-            <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start'}}>
-              <div>
-                <div style={{fontSize:11.5, letterSpacing:'0.18em', textTransform:'uppercase', color: it.highlight ? 'var(--accent-soft)' : 'var(--primary)', fontWeight:500}}>
-                  {it.kicker}
-                </div>
-                <h3 style={{fontFamily:'var(--serif)', fontSize:'clamp(28px, 3vw, 38px)', marginTop: 12, fontWeight:400, color: it.highlight ? 'var(--bg)' : 'var(--ink)'}}>
-                  {it.label}
-                </h3>
-              </div>
-              <div style={{textAlign:'right'}}>
-                <div style={{fontFamily:'var(--serif)', fontSize: 36, lineHeight:1, color: it.highlight ? 'var(--accent-soft)' : 'var(--primary)'}}>{it.stat}</div>
-                <div style={{fontSize:11, color: it.highlight ? 'rgba(247,241,226,0.65)' : 'var(--ink-3)', marginTop:6, maxWidth: 130, textAlign:'right'}}>{it.statLabel}</div>
-              </div>
-            </div>
-            <p style={{fontSize:16.5, lineHeight:1.55, marginTop: 22, color: it.highlight ? 'rgba(247,241,226,0.82)' : 'var(--ink-2)', maxWidth: 460}}>
-              {it.desc}
-            </p>
-            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop: 32, paddingTop: 22, borderTop: it.highlight ? '1px solid rgba(247,241,226,0.14)' : '1px solid var(--line-soft)'}}>
-              <span style={{fontFamily:'var(--serif)', fontStyle:'italic', fontSize:14.5, color: it.highlight ? 'var(--accent-soft)' : 'var(--ink-3)'}}>
-                {it.verse}
-              </span>
-              <span style={{fontSize:14, fontWeight:500, color: it.highlight ? 'var(--bg)' : 'var(--primary)'}}>
-                Learn more →
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ── Education preview ─────────────────────
-function EducationPreview({ navigate }) {
-  const all = window.STUDENTS || homeStudents;
-  const [featured] = useState(() => {
-    const unsponsored = all.filter(s => !s.has_sponsor);
-    const shuffled = [...unsponsored].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 3);
-  });
-  return (
-    <section className="section">
-      <div className="container" style={{display:'grid', gridTemplateColumns:'1fr 1.1fr', gap: 80, alignItems:'center'}}>
-        <div>
-          <Eyebrow primary>Education · Sponsor a student</Eyebrow>
-          <h2 className="serif" style={{fontSize:'clamp(34px, 4.4vw, 54px)', lineHeight:1.05, marginTop: 22, fontWeight:400, letterSpacing:'-0.015em'}}>
-            Choose a student. <em style={{fontStyle:'italic', color:'var(--primary)'}}>Change a generation.</em>
-          </h2>
-          <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 22, lineHeight:1.6}}>
-            Education is one of the surest ways out of generational poverty. We work directly with students whose families cannot afford post-secondary tuition (colleges, nursing schools, and trade programs) and connect them to sponsors around the world.
-          </p>
-          <p style={{fontSize:18, color:'var(--ink-2)', marginTop: 18, lineHeight:1.6}}>
-            Every student has a profile, a story, and a transparent funding goal. You'll see exactly where your gift goes.
-          </p>
-          <div style={{display:'flex', gap:14, marginTop: 36, flexWrap:'wrap'}}>
-            <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Browse students</button>
-          </div>
-        </div>
-        <div style={{display:'flex', flexDirection:'column', gap:16, minWidth:0}}>
-          {featured.map(s => (
-              <div key={s.id} className="card" style={{padding:'22px 24px', minWidth:0}}>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12, flexWrap:'wrap'}}>
-                  <div style={{display:'flex', alignItems:'center', gap:10, minWidth:0}}>
-                    {s.photo && (
-                      <img src={s.photo} alt={s.name}
-                           style={{width:32, height:32, borderRadius:'50%', objectFit:'cover', flexShrink:0, display:'block'}} />
-                    )}
-                    <div style={{fontFamily:'var(--serif)', fontSize:22, fontWeight:400}}>{s.name}</div>
-                  </div>
-                  <span style={{fontSize:13.5, color:'var(--ink-3)'}}>{s.course} · {s.village}</span>
-                </div>
-                {s.intro && <p style={{fontSize:15, color:'var(--ink-2)', marginTop:10, lineHeight:1.55}}>{s.intro}</p>}
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:14}}>
-                  {s.sponsored
-                    ? <span className="tag" style={{background:'var(--ink)', color:'#FFF8EA', borderColor:'transparent'}}>Sponsored</span>
-                    : <span style={{fontFamily:'var(--serif)', fontSize:16, color:'var(--ink-2)'}}>${s.goal.toLocaleString()}/year</span>}
-                  <a style={{fontSize:14, fontWeight:500, color:'var(--primary)', cursor:'pointer'}}
-                     onClick={() => navigate('profile', { id: s.id })}>Read more →</a>
-                </div>
-              </div>
-          ))}
-          <button className="btn btn-ghost btn-arrow" onClick={() => navigate('education')} style={{alignSelf:'flex-end', marginTop: 4}}>
-            See all {all.length} students
-          </button>
-        </div>
       </div>
     </section>
   );
@@ -593,12 +460,9 @@ function FinalCTA({ navigate }) {
           Romans 10:15
         </span>
         <h2 className="serif" style={{color:'#FFF8EA', fontSize:'clamp(34px, 4.4vw, 56px)', lineHeight:1.1, marginTop: 56, fontWeight:400, letterSpacing:'-0.015em'}}>
-          Walk with us. Send a child to school. Help build a church.
+          Walk with us. Help build a church.
         </h2>
         <div style={{display:'flex', justifyContent:'center', gap:14, marginTop: 44, flexWrap:'wrap'}}>
-          <button className="btn" onClick={() => navigate('education')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
-            Sponsor a student →
-          </button>
           <button className="btn" onClick={() => navigate('church-list')} style={{background:'#FFF8EA', color:'var(--primary)', padding:'14px 24px', borderRadius:999, fontWeight:500}}>
             Help plant a church →
           </button>
@@ -614,9 +478,7 @@ function Home({ navigate, heroVariant }) {
     <>
       <Hero variant={heroVariant} navigate={navigate} />
       <MissionBand />
-      <Ministries navigate={navigate} />
       <Verse text="And he said to them, 'Go into all the world and proclaim the gospel to the whole creation.'" cite="Mark 16:15" />
-      <EducationPreview navigate={navigate} />
       <ChurchesMap navigate={navigate} />
       <FinalCTA navigate={navigate} />
     </>

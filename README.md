@@ -1,7 +1,7 @@
 # Christhia Seva Mission — Website
 
 Static HTML website for [Christhia Seva Mission](https://example.org), a faith-led
-mission planting churches and supporting education in Karnataka, India.
+mission planting churches in Karnataka, India.
 
 ## Local dev
 
@@ -19,9 +19,7 @@ Open http://localhost:8000.
 ## Content editing
 
 Content lives in `data/*.json`:
-- `students.json` — current students seeking sponsorship
 - `churches.json` — churches and their needs
-- `stories.json` — past graduates and current student stories
 - `site.json` — site-wide config (stats, contact, hero variant)
 
 Once Decap CMS is wired up (see `CLAUDE.md`), staff edit these via `/admin/`.

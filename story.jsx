@@ -156,7 +156,7 @@ function StoryProse({ navigate }) {
         </div>
 
         <p style={proseStyle}>
-          God isn't done writing the story. Support us by <a onClick={() => navigate('education')} style={linkStyle}>sponsoring a student</a> or <a onClick={() => navigate('donate', { fund:'church' })} style={linkStyle}>planting the next church</a>.
+          God isn't done writing the story. Support us by <a onClick={() => navigate('donate', { fund:'church' })} style={linkStyle}>planting the next church</a>.
         </p>
 
         <div style={{margin:'40px 0'}}>
@@ -237,10 +237,10 @@ function StoryCTA({ navigate }) {
           The story isn't over. <em style={{color:'var(--accent-soft)', fontStyle:'italic'}}>Walk with us.</em>
         </h2>
         <p style={{fontSize:17, color:'rgba(247,241,226,0.72)', marginTop: 22, lineHeight:1.6, maxWidth: 560, margin:'22px auto 0'}}>
-          Sponsor a student. Support a church plant. Pray for the next intersection where God turns a bus around.
+          Support a church plant. Pray for the next intersection where God turns a bus around.
         </p>
         <div style={{display:'flex', gap:14, justifyContent:'center', marginTop: 40, flexWrap:'wrap'}}>
-          <button className="btn btn-primary btn-arrow" onClick={() => navigate('education')}>Sponsor a student</button>
+          <button className="btn btn-primary btn-arrow" onClick={() => navigate('church-list')}>Help plant a church</button>
           <button className="btn btn-outline" onClick={() => navigate('donate')} style={{color:'#FFF8EA', borderColor:'rgba(255,248,234,0.7)'}}>
             Make a donation
           </button>

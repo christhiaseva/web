@@ -1,50 +1,15 @@
 // donate.jsx — Unified donation flow
 // Designations:
-//   fund = 'general' | 'education' | 'church'
-//   id   = student id (when fund=education) | 'next' | undefined
+//   fund = 'general' | 'church'
+//   id   = church id (when fund=church) | undefined
 // Routes parsed by app.jsx:
 //   /donate                          → general
-//   /donate/education                → education general fund
-//   /donate/education/{studentId}    → specific student
 //   /donate/church                   → church planting fund
+//   /donate/church/{churchId}        → specific church
 //   ?amount=NN appended → preselect amount
-
-const PUSHPAY_URL = 'https://pushpay.com/g/whiteoakoutreach?lang=en&src=pcgl&a=200&fnd=CSM%20Scholarship%20(30553)&rcv=false&r=no';
 
 function getDesignation({ fund, id }) {
   fund = fund || 'general';
-
-  if (fund === 'education' && id) {
-    const s = (window.STUDENTS || []).find(x => x.id === id);
-    if (s) return {
-      kind:'student', fund, id,
-      title: `Sponsor ${s.name}`,
-      heading: <>Sponsor {s.name} for <em style={{fontStyle:'italic', color:'var(--primary)'}}>$200 a year.</em></>,
-      sub: `Each student is sponsored by one person for $200/year. That covers tuition, books, and hostel for the full school year.`,
-      breadcrumb: ['education', `profile:${s.id}`],
-      crumbLabels: ['Sponsor a student', s.name],
-      // Locked amount — single-sponsor model
-      lockedAmount: 200,
-      defaultRecurring: false,
-      defaultAmount: 200,
-      sidebar: { kind:'student', s },
-      receiptName: s.name,
-    };
-  }
-
-  if (fund === 'education') return {
-    kind:'fund', fund, id:null,
-    title:'Give to education',
-    heading: <>Sponsor the next <em style={{fontStyle:'italic', color:'var(--primary)'}}>generation of students.</em></>,
-    sub: 'Your gift goes to the general education fund, supporting students who don\'t yet have a sponsor of their own.',
-    breadcrumb: ['education'],
-    crumbLabels: ['Sponsor a student'],
-    presets: [50, 100, 250, 500, 1000],
-    defaultRecurring: false,
-    defaultAmount: 100,
-    sidebar: { kind:'fund-education' },
-    receiptName: 'students',
-  };
 
   if (fund === 'church' && id) {
     const c = (window.CHURCHES || []).find(x => x.id === id);
@@ -96,7 +61,6 @@ function getDesignation({ fund, id }) {
 function FundTabs({ fund, navigate }) {
   const tabs = [
     { id:'general',   label:'General' },
-    { id:'education', label:'Education' },
     { id:'church',    label:'Church planting' },
   ];
   return (
@@ -156,10 +120,8 @@ function Donate({ params, navigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [step]);
 
-  const finalAmount = d.lockedAmount || (custom ? Number(custom) : amount);
-  // Single-sponsor students skip amount selection and finish at a payment handoff.
-  const sponsorFlow = !!d.lockedAmount;
-  const stepLabels = sponsorFlow ? ['Your info', 'Complete payment'] : ['Amount', 'Your info'];
+  const finalAmount = custom ? Number(custom) : amount;
+  const stepLabels = ['Amount', 'Your info'];
 
   const submitGift = async () => {
     if (submitting) return;
@@ -191,12 +153,11 @@ function Donate({ params, navigate }) {
           fund: d.fund,
           anonymous: info.anon ? 'Yes' : 'No',
           note: info.note || '(none)',
-          ...(d.kind === 'student' && d.id ? { profile: window.location.origin + '/student/' + d.id } : {}),
           ...(d.kind === 'church' && d.sidebar?.c ? { church: d.sidebar.c.name } : {}),
         }),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      setStep(sponsorFlow ? 2 : 3);
+      setStep(3);
     } catch (e) {
       console.error('Donation submit failed:', e);
       setSubmitError("We couldn't submit your gift. Please try again, or email us at hello@csmforchrist.com.");
@@ -209,7 +170,7 @@ function Donate({ params, navigate }) {
     <>
       <Breadcrumb crumbs={(() => {
         if (!d.crumbLabels.length) return [{ label: 'Donate' }];
-        if (d.kind === 'student' || d.kind === 'church') return [
+        if (d.kind === 'church') return [
           { label: 'Donate', page: 'donate' },
           { label: d.crumbLabels[0], page: 'donate', params: { fund } },
           { label: d.crumbLabels[1] },
@@ -229,8 +190,8 @@ function Donate({ params, navigate }) {
               {d.heading}
             </h1>
 
-            {/* Show fund tabs only when not pinned to a specific student/church */}
-            {step === 1 && d.kind !== 'student' && d.kind !== 'church' && (
+            {/* Show fund tabs only when not pinned to a specific church */}
+            {step === 1 && d.kind !== 'church' && (
               <FundTabs fund={fund} navigate={navigate} />
             )}
 
@@ -263,7 +224,7 @@ function Donate({ params, navigate }) {
             </div>
 
             <div style={{marginTop: 36}}>
-              {step === 1 && !d.lockedAmount && (
+              {step === 1 && (
                 <>
                   <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Choose an amount</h2>
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 28}}>{d.sub}</p>
@@ -300,7 +261,7 @@ function Donate({ params, navigate }) {
                 </>
               )}
 
-              {((sponsorFlow && step === 1) || (!sponsorFlow && step === 2)) && (
+              {step === 2 && (
                 <>
                   <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>A little about you</h2>
                   <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 32}}>
@@ -317,7 +278,7 @@ function Donate({ params, navigate }) {
                       A note (optional)
                     </label>
                     <textarea value={info.note} onChange={e => setInfo({...info, note: e.target.value})}
-                              placeholder={d.kind === 'student' ? `"Praying for you…"` : 'A word of encouragement…'}
+                              placeholder="A word of encouragement…"
                               rows={3}
                               style={{width:'100%', padding:'14px 16px', borderRadius:10, border:'1px solid var(--line)',
                                       background:'var(--card)', color:'var(--ink)', fontFamily:'var(--sans)', fontSize:15,
@@ -338,38 +299,18 @@ function Donate({ params, navigate }) {
                     </div>
                   )}
                   <div style={{display:'flex', gap:14, marginTop: 36}}>
-                    {!sponsorFlow && (
-                      <button className="btn btn-ghost" onClick={() => setStep(1)} disabled={submitting}>← Back</button>
-                    )}
+                    <button className="btn btn-ghost" onClick={() => setStep(1)} disabled={submitting}>← Back</button>
                     <button className={`btn btn-primary${submitting ? '' : ' btn-arrow'}`} onClick={submitGift} disabled={submitting}>
-                      {submitting ? 'Sending…' : (sponsorFlow ? 'Continue' : `Complete gift · $${Number(finalAmount).toLocaleString()}`)}
+                      {submitting ? 'Sending…' : `Complete gift · $${Number(finalAmount).toLocaleString()}`}
                       {submitting && <span className="btn-spinner" aria-hidden="true"></span>}
                     </button>
                   </div>
                 </>
               )}
 
-              {sponsorFlow && step === 2 && (
-                <>
-                  <h2 className="serif" style={{fontSize: 26, fontWeight:400, marginBottom: 8}}>Complete payment</h2>
-                  <p style={{color:'var(--ink-2)', fontSize:15, marginBottom: 32}}>
-                    You're almost there. Enter your payment details to finish your ${Number(finalAmount).toLocaleString()} gift toward {d.receiptName}.
-                  </p>
-                  <a href={PUSHPAY_URL} className="btn btn-primary btn-arrow"
-                     style={{fontSize: 16, padding:'16px 28px'}}>
-                    Enter payment details
-                  </a>
-                </>
-              )}
-
               {step === 3 && (
                 <div style={{padding:'40px 0', textAlign:'center', maxWidth: 560, margin:'0 auto'}}>
-                  {d.sidebar.kind === 'student' && d.sidebar.s?.photo ? (
-                    <img src={d.sidebar.s.photo} alt={d.sidebar.s.name}
-                         style={{width: 120, height: 120, borderRadius:'50%', objectFit:'cover', margin:'0 auto', display:'block'}} />
-                  ) : (
-                    <div style={{width: 72, height: 72, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 32, fontFamily:'var(--serif)'}}>✓</div>
-                  )}
+                  <div style={{width: 72, height: 72, borderRadius:'50%', background:'var(--primary)', color:'#FFF8EA', margin:'0 auto', display:'grid', placeItems:'center', fontSize: 32, fontFamily:'var(--serif)'}}>✓</div>
                   <h2 className="serif" style={{fontSize:'clamp(28px, 3.6vw, 42px)', marginTop: 32, fontWeight:400, lineHeight:1.15}}>
                     Thank you.
                   </h2>
@@ -381,7 +322,6 @@ function Donate({ params, navigate }) {
                     <span className="verse-cite" style={{fontStyle:'normal'}}>Matthew 10:42</span>
                   </p>
                   <div style={{display:'flex', gap:14, justifyContent:'center', marginTop: 36, flexWrap:'wrap'}}>
-                    <button className="btn btn-ghost" onClick={() => navigate('education')}>Sponsor another student</button>
                     <button className="btn btn-primary btn-arrow" onClick={() => navigate('home')}>Back to home</button>
                   </div>
                 </div>
@@ -400,45 +340,6 @@ function Donate({ params, navigate }) {
 }
 
 function DonateSidebar({ d, navigate }) {
-  if (d.sidebar.kind === 'student') {
-    const s = d.sidebar.s;
-    return (
-      <div className="card" style={{padding: 22}}>
-        <div style={{borderRadius:8, overflow:'hidden', marginBottom: 18, aspectRatio:'4/3'}}>
-          {s.photo
-            ? <img src={s.photo} alt={s.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}} />
-            : <ImgSlot id={`don-stu-${s.id}`} h="100%" placeholder={s.name} radius={8} />
-          }
-        </div>
-        <div style={{fontFamily:'var(--serif)', fontSize: 22, fontWeight:400}}>{s.name}</div>
-        <div style={{fontSize:13, color:'var(--ink-3)', marginTop: 4}}>{s.course}</div>
-        <div style={{fontSize:13, color:'var(--ink-3)'}}>{s.school}</div>
-        <div style={{fontSize:13, color:'var(--ink-2)', marginTop: 12}}>${s.goal.toLocaleString()}/year</div>
-      </div>
-    );
-  }
-
-  if (d.sidebar.kind === 'fund-education') {
-    return (
-      <div className="card" style={{padding: 28}}>
-        <h3 className="serif" style={{fontSize: 22, fontWeight:400, marginBottom: 14}}>Education fund</h3>
-        <p style={{fontSize:14.5, color:'var(--ink-2)', lineHeight:1.6, marginBottom: 18}}>
-          Pooled gifts support students who don't yet have a sponsor, and cover books, hostels, and emergency tuition gaps.
-        </p>
-        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 16}}>
-          {[{n: String((window.STUDENTS || []).length), l:'students applied'}, {n:'$200', l:'annual cost'}, {n:'100%', l:'to tuition'}].map(s => (
-            <div key={s.l} style={{padding:'10px 0'}}>
-              <div style={{fontFamily:'var(--serif)', fontSize: 22, color:'var(--primary)'}}>{s.n}</div>
-              <div style={{fontSize:12, color:'var(--ink-3)', marginTop:2}}>{s.l}</div>
-            </div>
-          ))}
-        </div>
-        <button className="btn btn-ghost" style={{marginTop: 18, width:'100%', justifyContent:'center'}}
-                onClick={() => navigate('education')}>Browse students →</button>
-      </div>
-    );
-  }
-
   if (d.sidebar.kind === 'church') {
     const c = d.sidebar.c;
     return (
